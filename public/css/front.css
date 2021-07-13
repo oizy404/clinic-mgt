@@ -1,0 +1,17 @@
+body{ 
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+.front-container1{
+    background-color: #ffff;
+    height: 400px;
+}
+.front-container2{
+    background-color: #25aae1;
+    height: 278px;
+}
+#acdLogo{
+    width: 200px;
+    margin-top: 150px;
+}
