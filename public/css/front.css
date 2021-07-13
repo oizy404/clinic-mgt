@@ -9,9 +9,14 @@ body{
 }
 .front-container2{
     background-color: #25aae1;
-    height: 278px;
+    height: 295px;
 }
 #acdLogo{
     width: 200px;
     margin-top: 150px;
+}
+#btn-login{
+    margin-top: 10px;
+    width: 200px;
+    font-size: 18px;
 }
