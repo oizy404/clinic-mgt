@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.front');
 });
+Route::get('/student-health-data', function () {
+    return view('pages.student-health-data');
+});
+Route::get('/student-consultation-record', function () {
+    return view('pages.student-consultation-record');
+});
+Route::get('/personel-health-data', function () {
+    return view('pages.personel-health-data');
+});
+Route::get('/personel-consultation-record', function () {
+    return view('pages.personel-consultation-record');
+});
