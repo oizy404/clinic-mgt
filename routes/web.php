@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.front');
 });
+Route::get('/admin-home', function () {
+    return view('pages.admin-home');
+});
 Route::get('/student-health-data', function () {
     return view('pages.student-health-data');
 });

@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('acdclinic')
+@section('title')
     ACD CLINIC
 @stop
 

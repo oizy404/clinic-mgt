@@ -1,0 +1,8 @@
+.admin-navbar{
+    background-color: rgba(var(--d87,255,255,255),1);
+    border-bottom: 0.2px solid rgb(187, 187, 187);
+}
+h5{
+    margin-top: 5px;
+    margin-left: 40px;
+}

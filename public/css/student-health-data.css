@@ -1,0 +1,23 @@
+.student-health-data{
+    background-color: rgba(var(--d87,255,255,255),1);
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    padding: 20px;
+    width: 80%;
+    margin-top: 5px;
+    
+}
+.health-data-addbtn{
+    background-color: rgba(var(--d87,255,255,255),1);
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    padding: 10px 15px 10px 15px;
+    width: 80%;
+    margin-top: 30px;
+    
+}
+#btn-data{
+    background-color: gray;
+}
+#btn-batchdata{
+    background-color: gray;
+    margin-top: 8px;
+}
