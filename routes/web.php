@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +17,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.front');
-});
-Route::get('/admin-home', function () {
-    return view('pages.admin-home');
-});
+})->name('front')->middleware('ifLoggedIn');
+
+Route::post("authenticate", [LoginController::class, "login"])->name("login");
+
+// Route::middleware(['ifLoggedOut'])->group(function () {
+
+    Route::get('/admin-home', function () {
+        return view('pages.admin-home');
+    })->name("admin-home");
+// });
 Route::get('/student-health-data', function () {
     return view('pages.student-health-data');
 });
 Route::get('/student-consultation-record', function () {
     return view('pages.student-consultation-record');
 });
-Route::get('/personel-health-data', function () {
-    return view('pages.personel-health-data');
+Route::get('/personnel-health-data', function () {
+    return view('pages.personnel-health-data');
 });
-Route::get('/personel-consultation-record', function () {
-    return view('pages.personel-consultation-record');
+Route::get('/personnel-consultation-record', function () {
+    return view('pages.personnel-consultation-record');
 });
+
+// Route::get('/test', function(){
+//              $password ="admin";
+//              echo Hash::make($password);
+//          });

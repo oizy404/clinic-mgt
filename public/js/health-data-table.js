@@ -1,3 +1,3 @@
 $(document).ready( function () {
-    $('#student-data').DataTable();
+    $('#health-data').DataTable();
 } );

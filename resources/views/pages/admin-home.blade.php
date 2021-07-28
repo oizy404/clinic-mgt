@@ -8,6 +8,9 @@
 @include('shared.admin-header')
 @include('shared.admin-sidenav') 
  
+    <div class="dashboard">
+        
+    </div>
 
 
 @stop

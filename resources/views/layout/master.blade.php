@@ -16,8 +16,11 @@
     <link rel="stylesheet" href="{{asset('css/admin-home.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin-header.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin-sidenav.css')}}">
-    <link rel="stylesheet" href="{{asset('css/student-health-data.css')}}">
+    <link rel="stylesheet" href="{{asset('css/health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/add-student-health-data.css')}}">
+    <link rel="stylesheet" href="{{asset('css/add-personel-health-data.css')}}">
+    <link rel="stylesheet" href="{{asset('css/batch-personel-health-data.css')}}">
+    <link rel="stylesheet" href="{{asset('css/batch-student-health-data.css')}}">
     
 </head>
 <body>
@@ -29,8 +32,9 @@
     
     <script src="{{asset('js/admin-login.js')}}"></script>
     <script src="{{asset('js/admin-sidenav.js')}}"></script>
-    <script src="{{asset('js/student-health-data-table.js')}}"></script>
-    <script src="{{asset('js/add-student-health-data.js')}}"></script>
+    <script src="{{asset('js/health-data-table.js')}}"></script>
+    <script src="{{asset('js/add-health-data.js')}}"></script>
+    <script src="{{asset('js/batch-health-data.js')}}"></script>
 
 </body>
 </html>

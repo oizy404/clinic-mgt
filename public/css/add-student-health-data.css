@@ -11,6 +11,64 @@
     margin-left: auto;
     overflow-y: scroll;
 }
+.panel-heading{
+    padding: 20px 20px 10px 20px;
+    background-color: rgb(245 245 245);
+    text-align: center;
+}
 div #create-student-health-data{
-    padding: 20px;
+    margin-top: -5px;
+    padding: 10px 20px 20px 20px;
+    background-color: rgb(245 245 245);
+}
+#create-student-health-data p{
+    margin-bottom: 0px;
+}
+#create-student-health-data h5{
+    padding: 3px;
+    background-color: rgb(226, 226, 226);
+}
+#create-student-health-data h6{
+    margin-bottom: 0px;
+}
+.heredo-heading{
+    padding: 3px;
+    background-color: rgb(226, 226, 226);
+    text-align: center;
+}
+.vaccine-heading{
+    padding: 3px;
+    background-color: rgb(226, 226, 226);
+    text-align: center;
+}
+.med-history-heading{
+    padding: 3px;
+    background-color: rgb(226, 226, 226);
+    text-align: center;
+}
+#carouselbtn{
+    background-color: transparent;
+    border: none;
+    width: 8%;
+}
+label{
+    font-size: 15px;
+}
+#studenthealthdata-btn{
+    background-color: rgb(141, 141, 141);
+}
+#students-medic-data1{
+    padding: 5px;
+}
+#students-medic-data2{
+    padding: 5px;
+}
+#students-personalinfo{
+    padding: 5px;
+}
+#students-family-data{
+    padding: 5px;
+}
+#students-medic-data1 hr{
+    margin: 0px;
 }

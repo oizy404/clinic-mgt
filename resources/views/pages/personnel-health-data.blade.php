@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    STUDENT HEALTH DATA
+    PERSONNEL HEALTH DATA
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
                 <button class="btn" id="btn-batchdata"><i class="fas fa-plus"></i> Add Batch Health Data</button>
             </div>    
             <div class="col-md-4 offset-md-3 hlth-dta">
-                <h3>STUDENT HEALTH DATA</h3>
+                <h3>PERSONNEL HEALTH DATA</h3>
             </div>
         </div>
         <div class="offset-md-1 health-data">
@@ -46,7 +46,7 @@
                         <td><i class="far fa-eye"></i></td>
                     </tr>
                     <tr>
-                        <td>1000804389</td>
+                        <td>1000804387</td>
                         <td>Lindsay William</td>
                         <td>Jan, 02, 2021</td>
                         <td><i class="far fa-edit"></i></td>
@@ -122,7 +122,7 @@
         </div>  
     </div>
 </div>
-@include('pages.add-student-health-data')
-@include('pages.batch-student-health-data')
+@include('pages.add-personel-health-data')
+@include('pages.batch-personel-health-data')
 @stop
 

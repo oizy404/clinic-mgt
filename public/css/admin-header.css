@@ -1,8 +1,12 @@
 .admin-navbar{
     background-color: rgba(var(--d87,255,255,255),1);
     border-bottom: 0.2px solid rgb(187, 187, 187);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
-h5{
+.admin-navbar h5{
     margin-top: 5px;
-    margin-left: 40px;
+    margin-left: 45px;
 }
