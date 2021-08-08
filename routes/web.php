@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
+
+use App\Model\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +42,9 @@ Route::get('/personnel-health-data', function () {
 Route::get('/personnel-consultation-record', function () {
     return view('pages.personnel-consultation-record');
 });
+
+Route::get('/student-health-data', [StudentController::class, "importForm"]);
+Route::post('/student-health-data',[StudentController::class,'import'])->name('student.import');
 
 // Route::get('/test', function(){
 //              $password ="admin";
