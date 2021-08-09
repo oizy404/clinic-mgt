@@ -17,34 +17,34 @@
                         <div class="form-group" id="students-personalinfo" style="background-color: white;">
                             <h5>PERSONAL INFORMATION</h5>
                             <div class="col-md-2 form-group">
-                                <label for="student-idnumber" class=""><b>ID Number</b></label>
-                                <input type="text" class="form-control" name="student-idnumber">
+                                <label for="student_idnumber" class=""><b>ID Number</b></label>
+                                <input type="text" class="form-control" name="student_idnumber">
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="firstname" class=""><b>First Name</b></label>
-                                        <input type="text" class="form-control" name="firstname">
+                                        <label for="first_name" class=""><b>First Name</b></label>
+                                        <input type="text" class="form-control" name="first_name">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="middlename" class=""><b>Middle Name</b></label>
-                                        <input type="text" class="form-control" name="middlename">
+                                        <label for="middle_name" class=""><b>Middle Name</b></label>
+                                        <input type="text" class="form-control" name="middle_name">
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="lastname" class=""><b>Last Name</b></label>
-                                        <input type="text" class="form-control" name="lastname">
+                                        <label for="last_name" class=""><b>Last Name</b></label>
+                                        <input type="text" class="form-control" name="last_name">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="birthdate" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="birthdate">
+                                        <label for="birthday" class=""><b>Date of Birth</b></label>
+                                        <input type="date" class="form-control" name="birthday">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -65,14 +65,14 @@
                             <div class="row mt-2">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <label for="fbaccount" class=""><b>Facebook Account</b></label>
-                                        <input type="text" class="form-control" name="fbaccount">
+                                        <label for="fb_account" class=""><b>Facebook Account</b></label>
+                                        <input type="text" class="form-control" name="fb_account">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="contactnum" class=""><b>Contact Number</b></label>
-                                        <input type="text" class="form-control" name="contactnum">
+                                        <label for="contact_number" class=""><b>Contact Number</b></label>
+                                        <input type="text" class="form-control" name="contact_number">
                                     </div>
                                 </div>
                             </div>
@@ -208,8 +208,8 @@
                             <!-- end of guardian's info -->
                             <!-- start siblings info -->
                             <div class="form-group">
-                                <label for="siblings-info" class=""><b>Siblings</b></label>
-                                <textarea class="form-control" name="siblings-info" id="siblings-info" cols="10" rows="2">Siblings (Complete Name, Age, Sex)</textarea>
+                                <label for="siblings_info" class=""><b>Siblings</b></label>
+                                <textarea class="form-control" name="siblings_info" id="siblings-info" cols="10" rows="2">Siblings (Complete Name, Age, Sex)</textarea>
                             </div>
                             <!-- end siblings info -->
                         </div>

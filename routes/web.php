@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
 use App\Model\Student;
 
@@ -30,18 +30,17 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
         return view('pages.admin-home');
     })->name("admin-home");
 // });
-Route::get('/student-health-data', function () {
-    return view('pages.student-health-data');
-});
-Route::get('/student-consultation-record', function () {
-    return view('pages.student-consultation-record');
-});
-Route::get('/personnel-health-data', function () {
-    return view('pages.personnel-health-data');
-});
-Route::get('/personnel-consultation-record', function () {
-    return view('pages.personnel-consultation-record');
-});
+Route::get('/student-health-data', [StudentController::class, 'index'])->name('student-health-data');
+
+// Route::get('/student-consultation-record', function () {
+//     return view('pages.student-consultation-record');
+// });
+// Route::get('/personnel-health-data', function () {
+//     return view('pages.personnel-health-data');
+// });
+// Route::get('/personnel-consultation-record', function () {
+//     return view('pages.personnel-consultation-record');
+// });
 
 Route::get('/student-health-data', [StudentController::class, "importForm"]);
 Route::post('/student-health-data',[StudentController::class,'import'])->name('student.import');

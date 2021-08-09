@@ -13,8 +13,4 @@ class Student extends Model
 
     protected $fillable = ['first_name', 'middle_name', 'last_name'];
 
-    // public static function getStudent(){
-    //     $records = DB::table('tbl_students')->select('id', 'first_name', 'middle_name', 'last_name');
-    //     return $records;
-    // }
 }

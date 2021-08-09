@@ -25,89 +25,25 @@
                     <tr>
                         <th>ID Number</th>
                         <th>Name</th>
+                        <th>Last Name</th>
                         <th>Date Recorded</th>
                         <th>Edit</th>
                         <th>View</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach ($tbl_students as $tbl_student)
                     <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
+                        <td>{{$tbl_student->id}}</td>
+                        <td>{{$tbl_student->first_name}}</td>
+                        <td>{{$tbl_student->last_name}}</td>
+                        <td>{{$tbl_student->created_at}}</td>
                         <td><i class="far fa-edit"></i></td>
                         <td><i class="far fa-eye"></i></td>
+                        <td><i class="fas fa-trash-alt"></i></td>
                     </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804389</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>1000804387</td>
-                        <td>Lindsay William</td>
-                        <td>Jan, 02, 2021</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                    </tr>
+                @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
