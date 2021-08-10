@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentBatchController;
 // use Illuminate\Http\Request;
 
 use App\Model\Student;
@@ -30,7 +31,7 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
         return view('pages.admin-home');
     })->name("admin-home");
 // });
-Route::get('/student-health-data', [StudentController::class, 'index'])->name('student-health-data');
+//Route::get('/student-health-data', [StudentController::class, "index"])->name('studentHealthData');
 
 // Route::get('/student-consultation-record', function () {
 //     return view('pages.student-consultation-record');
@@ -42,7 +43,8 @@ Route::get('/student-health-data', [StudentController::class, 'index'])->name('s
 //     return view('pages.personnel-consultation-record');
 // });
 
-Route::get('/student-health-data', [StudentController::class, "importForm"]);
+//Route::get('/student-health-data', [StudentController::class, "importForm"]);
+Route::get('/student-health-data', [StudentController::class, "index"])->name("student-health-data");
 Route::post('/student-health-data',[StudentController::class,'import'])->name('student.import');
 
 // Route::get('/test', function(){

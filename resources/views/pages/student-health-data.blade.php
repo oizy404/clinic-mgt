@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($tbl_students as $tbl_student)
+                @foreach($tbl_students as $tbl_student)
                     <tr>
                         <td>{{$tbl_student->id}}</td>
                         <td>{{$tbl_student->first_name}}</td>

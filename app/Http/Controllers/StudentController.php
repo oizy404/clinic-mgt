@@ -1,14 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Imports\StudentImport;
 
-use Illuminate\Http\Request;
 use Excel;
 
 class StudentController extends Controller
 {
+    public function import(Request $request){
+
+        Excel::import(new StudentImport, $request->file);
+        return back()->with('Record are fucking imported successfully');
+    }
+
     public function index(){
         $tbl_students = Student::all();
         return view("pages.student-health-data")->with("tbl_students", $tbl_students);
@@ -45,13 +51,8 @@ class StudentController extends Controller
 
     }
 
-    public function importForm(){
-        return view('pages.student-health-data');
-    }
-    public function import(Request $request){
-
-        Excel::import(new StudentImport, $request->file);
-        echo "<script> alert('Record are fucking imported successfully'); </script>";
-        return view('pages.student-health-data');
-    }
+    // public function importForm(){
+    //     return view('pages.student-health-data');
+    // }
+    
 }
