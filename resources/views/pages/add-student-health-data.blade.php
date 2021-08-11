@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="col-md-10 offset-md-1 rounded" id="create-student-health-data">
-        <form action="">
+        <form action="{{route('tbl_students.insert')}}">
             <!-- <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active"> -->
@@ -249,7 +249,7 @@
                             </div><br>
                             <!-- end of desease info -->
                             <!-- start of immunization info -->
-                            <div class="form-group">
+                            <div class="form-group" id="students-medic-data1">
                                 <div class="form-group vaccine-heading">
                                     <h6><strong>IMMUNIZATION RECORD</strong></h6>
                                     <small><i>(Have your child have had any of the following immunization?)</i></small>
@@ -334,7 +334,7 @@
 
                     <div class="carousel-item"> -->
                         <!-- start of past medical history info -->
-                        <div class="form-group" id="students-medic-data2"style="background-color: white;">
+                        <div class="form-group" id="students-medic-data3"style="background-color: white;">
                             <div class="form-group med-history-heading">
                                 <h6><strong>PAST MEDICAL HISTORY</strong></h6>
                                 <small><i>(Have your child had any of the following illnesses?)</i></small>

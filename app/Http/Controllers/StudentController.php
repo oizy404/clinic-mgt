@@ -15,16 +15,13 @@ class StudentController extends Controller
         return back()->with('Record are fucking imported successfully');
     }
 
+    //STUDENTS PERSONAL INFORMATION
     public function index(){
         $tbl_students = Student::all();
         return view("pages.student-health-data")->with("tbl_students", $tbl_students);
     }
 
-    public function create(){
-        return view("pages.student-health-data");
-    }
-
-    public function store(Request $request){
+    public function insert(Request $request){
 
         $tbl_student = new Student();
 
@@ -44,15 +41,25 @@ class StudentController extends Controller
 
         return redirect()->route('tbl_students.index');
     }
-    public function show($id){
+    // public function show($id){
         
-    }
-    public function delete($id){
+    // }
+    // public function delete($id){
 
-    }
+    // }
 
     // public function importForm(){
     //     return view('pages.student-health-data');
     // }
+
+    //STUDENTS FAMILY DATA
+
+    //STUDENTS MEDICAL DATA1 (DISEASES)
+
+    //STUDENTS MEDICAL DATA2 (IMMUNIZATIONS)
+
+    //STUDENTS MEDICAL DATA3 (HISTORY ILLNESSES)
+    
+    //STUDENTS REMARKS
     
 }
