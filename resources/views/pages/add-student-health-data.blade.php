@@ -10,9 +10,9 @@
     </div>
     <div class="col-md-10 offset-md-1 rounded" id="create-student-health-data">
         <form action="">
-            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+            <!-- <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active"> -->
                         <!-- Start of Student's Personal Info1 -->
                         <div class="form-group" id="students-personalinfo" style="background-color: white;">
                             <h5>PERSONAL INFORMATION</h5>
@@ -98,9 +98,9 @@
                             </div>
                         </div>
                         <!-- end of Student's Persnal Info -->
-                    </div>
+                    <!-- </div> -->
 
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item"> -->
                         <!-- Start of Family data -->
                         <div class="form-group" id="students-family-data" style="background-color: white;">
                             <!-- start of Father's info -->
@@ -213,8 +213,8 @@
                             </div>
                             <!-- end siblings info -->
                         </div>
-                    </div>
-                    <div class="carousel-item">
+                    <!-- </div>
+                    <div class="carousel-item"> -->
                         <!-- start of Student's Personal Info2 -->
                         <div class="form-group" id="students-medic-data1" style="background-color: white;">
                             <small><i><strong>Please put a check mark on the box that corresponds the answer to the questions:</strong></i></small>
@@ -330,9 +330,9 @@
                             </div>
                         </div>
                         <!-- end of immunization info -->
-                    </div>
+                    <!-- </div>
 
-                    <div class="carousel-item">
+                    <div class="carousel-item"> -->
                         <!-- start of past medical history info -->
                         <div class="form-group" id="students-medic-data2"style="background-color: white;">
                             <div class="form-group med-history-heading">
@@ -434,18 +434,18 @@
                             <!-- end of remarks -->
                             <button type="submit" class="btn" id="studenthealthdata-btn">Submit</button>
                         </div>
-                    </div>
+                    <!-- </div> -->
                     <!-- end of Student's Personal Info2 -->
-                </div>
-            </div>
+                <!-- </div>
+            </div> -->
         </form>
-        <button class="carousel-control-prev" id="carouselbtn" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+        <!-- <button class="carousel-control-prev" id="carouselbtn" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" id="carouselbtn" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
-        </button>
+        </button> -->
     </div>
 </div>

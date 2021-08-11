@@ -20,9 +20,9 @@ class StudentController extends Controller
         return view("pages.student-health-data")->with("tbl_students", $tbl_students);
     }
 
-    // public function create(){
-    //     return view("pages.student-health-data");
-    // }
+    public function create(){
+        return view("pages.student-health-data");
+    }
 
     public function store(Request $request){
 
