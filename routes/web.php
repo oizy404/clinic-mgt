@@ -44,8 +44,10 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
 // });
 
 //Route::get('/student-health-data', [StudentController::class, "importForm"]);
-Route::resource('tbl_students', StudentController::class);
+// Route::resource('tbl_students', StudentController::class);
 Route::get('/student-health-data', [StudentController::class, "index"])->name("student-health-data");
+Route::get('/create-student-health-data', [StudentController::class, "insert"])->name("create-student-health-data");
+
 Route::post('/student-health-data',[StudentController::class,'import'])->name('student.import');
 
 // Route::get('/test', function(){

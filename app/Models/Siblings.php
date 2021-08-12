@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Siblings extends Model
 {
     use HasFactory;
+
+    protected $table ="tbl_siblings";
 }

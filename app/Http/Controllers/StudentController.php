@@ -32,19 +32,24 @@ class StudentController extends Controller
         $tbl_student->birthday = $request->birthday;
         $tbl_student->sex = $request->sex;
         $tbl_student->address = $request->address;
-        $tbl_student->fb_account = $request->fb_account;
         $tbl_student->contact_number = $request->contact_number;
         $tbl_student->status = $request->status;
         $tbl_student->religion = $request->religion;
         $tbl_student->nationality = $request->nationality;
         $tbl_student->save();
 
-        return redirect()->route('tbl_students.index');
+        return redirect()->route('student-health-data');
     }
     // public function show($id){
         
     // }
-    // public function delete($id){
+        // public function edit($id){
+
+        // }
+        // public function update(Request $request, $id){
+
+        // }
+    // public function destroy($id){
 
     // }
 
@@ -52,14 +57,7 @@ class StudentController extends Controller
     //     return view('pages.student-health-data');
     // }
 
-    //STUDENTS FAMILY DATA
-
-    //STUDENTS MEDICAL DATA1 (DISEASES)
-
-    //STUDENTS MEDICAL DATA2 (IMMUNIZATIONS)
-
-    //STUDENTS MEDICAL DATA3 (HISTORY ILLNESSES)
     
-    //STUDENTS REMARKS
+
     
 }

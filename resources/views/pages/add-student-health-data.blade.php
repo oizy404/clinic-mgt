@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="col-md-10 offset-md-1 rounded" id="create-student-health-data">
-        <form action="{{route('tbl_students.insert')}}">
+        <form action="{{route('create-student-health-data')}}">
             <!-- <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active"> -->
@@ -58,15 +58,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="address" class=""><b>Complete Address</b></label>
-                                <input type="text" class="form-control" name="address">
-                            </div>
                             <div class="row mt-2">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <label for="fb_account" class=""><b>Facebook Account</b></label>
-                                        <input type="text" class="form-control" name="fb_account">
+                                        <label for="address" class=""><b>Complete Address</b></label>
+                                        <input type="text" class="form-control" name="address">
                                     </div>
                                 </div>
                                 <div class="col-md-3">

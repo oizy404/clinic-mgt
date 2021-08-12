@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class HistoryIllnes extends Model
 {
     use HasFactory;
+
+    protected $table ="tbl_historyillnesses";
 }
