@@ -23,7 +23,8 @@ class StudentController extends Controller
 
     public function insert(Request $request){
 
-        $tbl_student = new Student();
+        $tbl_student = Student::find(41);
+        dd($tbl_student->tbl_sibling());
 
         $tbl_student->id_number = $request->student_idnumber;
         $tbl_student->first_name = $request->first_name;
@@ -36,6 +37,7 @@ class StudentController extends Controller
         $tbl_student->status = $request->status;
         $tbl_student->religion = $request->religion;
         $tbl_student->nationality = $request->nationality;
+        
         $tbl_student->save();
 
         return redirect()->route('student-health-data');

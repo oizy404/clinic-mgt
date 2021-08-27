@@ -10,4 +10,8 @@ class Guardian extends Model
     use HasFactory;
 
     protected $table ="tbl_guardians";
+
+    public function tbl_student(){
+        return $this->belongsTo(Student::class, "patient_id");
+    }
 }

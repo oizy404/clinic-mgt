@@ -10,4 +10,10 @@ class Desease extends Model
     use HasFactory;
 
     protected $table ="tbl_deseases";
+
+    protected $fillable = ['desease_name'];
+
+    public function tbl_student(){
+        return $this->belongsTo(Student::class, "patient_id");
+    }
 }
