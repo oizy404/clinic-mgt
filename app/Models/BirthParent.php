@@ -11,7 +11,7 @@ class BirthParent extends Model
 
     protected $table ="tbl_parents";
 
-    public function tbl_student(){
+    public function student(){
         return $this->belongsTo(Student::class, "patient_id");
     }
 }

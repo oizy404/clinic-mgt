@@ -11,7 +11,14 @@ class Guardian extends Model
 
     protected $table ="tbl_guardians";
 
-    public function tbl_student(){
+    protected $fillable = [
+        'complete_name', 'relationship', 'contact_number',
+    ];
+
+    public function student(){
         return $this->belongsTo(Student::class, "patient_id");
+    }
+    public function location(){
+        return $this->hasOne(Location::class, 'location_id');
     }
 }

@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sibling extends Model
+class Province extends Model
 {
     use HasFactory;
 
-    protected $table ="tbl_siblings";
+    protected $table ="tbl_provinces";
 
     protected $fillable = [
-        'sibling_info',
+        'province',
     ];
 
-    public function student(){
-        return $this->belongsTo(Student::class, "patient_id");
+    public function city(){
+        return $this->belongsTo(City::class, "city_id");
     }
 }

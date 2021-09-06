@@ -68,7 +68,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="contact_number" class=""><b>Contact Number</b></label>
-                                        <input type="text" class="form-control" name="contact_number">
+                                        <input type="tel" class="form-control" name="contact_number">
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="FcontactNo" class=""><b>Contact Number</b></label>
-                                        <input type="text" class="form-control" name="FcontactNo">
+                                        <input type="tel" class="form-control" name="FcontactNo">
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="McontactNo" class=""><b>Contact Number</b></label>
-                                        <input type="text" class="form-control" name="McontactNo">
+                                        <input type="tel" class="form-control" name="McontactNo">
                                     </div>
                                 </div>
                             </div>
@@ -190,14 +190,34 @@
                             <div class="row mt-2">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <label for="GAddress" class=""><b>Complete Address</b></label>
-                                        <input type="text" class="form-control" name="GAddress">
+                                        <label for="streetAdd" class=""><b>Street Address</b></label>
+                                        <input type="text" class="form-control" name="streetAdd">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="GContactNo" class=""><b>Contact Number</b></label>
-                                        <input type="text" class="form-control" name="GContactNo">
+                                        <input type="tel" class="form-control" name="GContactNo">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="barangay" class=""><b>Barangay</b></label>
+                                        <input type="text" class="form-control" name="barangay">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="city" class=""><b>City</b></label>
+                                        <input type="text" class="form-control" name="city">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="province" class=""><b>Province</b></label>
+                                        <input type="text" class="form-control" name="province">
                                     </div>
                                 </div>
                             </div>
