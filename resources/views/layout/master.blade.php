@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('css/add-personel-health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/batch-personel-health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/batch-student-health-data.css')}}">
+    <link rel="stylesheet" href="{{asset('css/supplies-inventory.css')}}">
     
 </head>
 <body>

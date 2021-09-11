@@ -54,3 +54,7 @@ Route::post('/student-health-data',[StudentController::class,'import'])->name('s
 //              $password ="admin";
 //              echo Hash::make($password);
 //          });
+
+Route::get('/medical-supplies-inventory', function () {
+    return view('pages.medical-supplies-inventory');
+});
