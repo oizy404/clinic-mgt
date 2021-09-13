@@ -7,8 +7,8 @@ use App\Imports\StudentImport;
 use App\Models\Sibling;
 use App\Models\Guardian;
 use App\Models\Location;
-use App\Models\city;
-use App\Models\province;
+use App\Models\City;
+use App\Models\Province;
 
 use Excel;
 

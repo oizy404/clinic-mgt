@@ -42,7 +42,7 @@
               </div>
             </div><br>
 
-            <a href="#" id="sidebarmenu"><i class="fas fa-briefcase-medical"></i><span>Medical Supplies</span></a><br>
+            <a href="/medical-supplies-inventory" id="sidebarmenu"><i class="fas fa-briefcase-medical"></i><span>Medical Supplies</span></a><br>
 
             <a href="#" id="sidebarmenu"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a><br>
     </div>

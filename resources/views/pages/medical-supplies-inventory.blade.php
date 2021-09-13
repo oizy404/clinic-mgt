@@ -30,16 +30,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($med_supplies as $med_supply)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$med_supply->id}}</td>
+                        <td>{{$med_supply->product_name}}</td>
+                        <td>{{$med_supply->med_type->medicine_type}}</td>
+                        <td>{{$med_supply->stock}}</td>
+                        <td>{{$med_supply->expiry_date}}</td>
                         <td><i class="far fa-edit"></i></td>
                         <td><i class="far fa-eye"></i></td>
                         <td><i class="fas fa-trash-alt"></i></td>
                     </tr>
+                @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
@@ -57,4 +59,5 @@
         </div>  
     </div>
 </div>
+@include('pages.add-medical-supplies')
 @stop

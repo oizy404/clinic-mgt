@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{asset('css/batch-personel-health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/batch-student-health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/supplies-inventory.css')}}">
+    <link rel="stylesheet" href="{{asset('css/add-medical-supply.css')}}">
+    
     
 </head>
 <body>
@@ -36,6 +38,10 @@
     <script src="{{asset('js/health-data-table.js')}}"></script>
     <script src="{{asset('js/add-health-data.js')}}"></script>
     <script src="{{asset('js/batch-health-data.js')}}"></script>
+    <script src="{{asset('js/add-medical-supply.js')}}"></script>
+    
+    <script src="{{asset('js/medical-supply-table.js')}}"></script>
+    
 
 </body>
 </html>

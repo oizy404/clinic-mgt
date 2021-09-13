@@ -4,9 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentBatchController;
+use App\Http\Controllers\MedicalSupplyController;
 // use Illuminate\Http\Request;
 
 use App\Model\Student;
+use App\Model\MedicalSupply;
+use App\Model\MedType;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,11 +53,15 @@ Route::get('/create-student-health-data', [StudentController::class, "insert"])-
 
 Route::post('/student-health-data',[StudentController::class,'import'])->name('student.import');
 
+Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
+Route::get('/add-medical-supplies', [MedicalSupplyController::class, "add"])->name("add-medical-supplies");
+Route::get('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
+
 // Route::get('/test', function(){
 //              $password ="admin";
 //              echo Hash::make($password);
 //          });
 
-Route::get('/medical-supplies-inventory', function () {
-    return view('pages.medical-supplies-inventory');
-});
+// Route::get('/medical-supplies-inventory', function () {
+//     return view('pages.medical-supplies-inventory');
+// });
