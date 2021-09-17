@@ -11,6 +11,7 @@
     <div class="dashboard">
         <p>cata</p>
         <p>cata1</p>
+        <p>cata2</p>
     </div>
 
 
