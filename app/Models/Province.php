@@ -16,6 +16,6 @@ class Province extends Model
     ];
 
     public function city(){
-        return $this->belongsTo(City::class, "city_id");
+        return $this->hasMany(City::class);
     }
 }
