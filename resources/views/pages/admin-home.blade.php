@@ -9,7 +9,7 @@
 @include('shared.admin-sidenav') 
  
     <div class="dashboard">
-        <p>mitz mia c</p>
+        <p>cata</p>
     </div>
 
 
