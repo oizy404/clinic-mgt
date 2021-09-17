@@ -19,6 +19,6 @@ class Guardian extends Model
         return $this->belongsTo(Student::class, "patient_id");
     }
     public function location(){
-        return $this->hasOne(Location::class, 'location_id');
+        return $this->belongsTo(Location::class, 'location_id');
     }
 }

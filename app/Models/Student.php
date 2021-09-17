@@ -18,11 +18,11 @@ class Student extends Model
     // public function tbl_parent(){
     //     return $this->hasMany(BirthParent::class);
     // }
-    // public function tbl_guardian(){
-    //     return $this->hasOne(Guardian::class);
-    // }
+    public function tbl_guardian(){
+        return $this->hasOne(Guardian::class);
+    }
     public function sibling(){
-        return $this->hasOne(Sibling::class, 'patient_id');
+        return $this->hasOne(Sibling::class);
     }
     // public function tbl_desease(){
     //     return $this->hasMany(Desease::class);
