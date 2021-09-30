@@ -13,7 +13,10 @@
         <div class="offset-md-1 supplies-inventory-addbtn">
             <div class="col-md-4">
                 <button class="btn" id="btn-item"><i class="fas fa-plus"></i> Add Item</button><br>
-            </div>    
+            </div>
+            <div class="col-md-4 offset-md-3 hlth-dta">
+                <h3>MEDICAL SUPPLIES</h3>
+            </div>   
         </div>
         <div class="offset-md-1 supplies-inventory">
             <table id="supplies-inventory" class="table table-hover" style="width:100%">
@@ -37,9 +40,13 @@
                         <td>{{$med_supply->med_type->medicine_type}}</td>
                         <td>{{$med_supply->stock}}</td>
                         <td>{{$med_supply->expiry_date}}</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                        <td><i class="fas fa-trash-alt"></i></td>
+                        <td>
+                            <a href="{{route('edit-medical-record', $med_supply->id)}}"><center><i class="far fa-edit"></i></center></a>
+                        </td>
+                        <td><center><i class="far fa-eye"></i></center></td>
+                        <td>
+                            <a href="{{route('delete', $med_supply->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

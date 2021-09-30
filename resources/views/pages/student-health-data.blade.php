@@ -39,9 +39,9 @@
                         <td>{{$student->first_name}}</td>
                         <td>{{$student->last_name}}</td>
                         <td>{{$student->created_at}}</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                        <td><i class="fas fa-trash-alt"></i></td>
+                        <td><center><i class="far fa-edit"></i></center></td>
+                        <td><center><i class="far fa-eye"></center></i></td>
+                        <td><center><i class="fas fa-trash-alt"></center></i></td>
                     </tr>
                 @endforeach
                 </tbody>

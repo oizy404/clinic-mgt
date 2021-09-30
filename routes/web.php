@@ -53,9 +53,15 @@ Route::get('/create-student-health-data', [StudentController::class, "insert"])-
 
 Route::post('/student-health-data',[StudentController::class,'import'])->name('student.import');
 
+
+
 Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
-Route::get('/add-medical-supplies', [MedicalSupplyController::class, "add"])->name("add-medical-supplies");
-Route::get('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
+// Route::get('/add-medical-supplies', [MedicalSupplyController::class, "add"])->name("add-medical-supplies");
+Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
+Route::get('delete/{id}', [MedicalSupplyController::class, "delete"])->name('delete');
+Route::get('edit/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
+Route::get('update/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
+
 
 // Route::get('/test', function(){
 //              $password ="admin";
