@@ -1,0 +1,11 @@
+$(document).ready(function(){
+    $("#btn-record").click(function(){
+        $(".edit-medical-record").fadeIn(500);
+    });
+    $("#btn-item-cancel").click(function(){
+        $(".edit-medical-record").fadeOut(500);
+    });
+    $("#btn-edit-item").click(function(){
+        $(".edit-medical-record").fadeOut(500);
+    });
+})

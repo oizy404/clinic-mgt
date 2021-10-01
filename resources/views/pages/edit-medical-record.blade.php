@@ -1,6 +1,6 @@
-<div class="add-medical-supply">
-    <div class="col-md-6 offset-md-3 mt-3 rounded" id="add-medical-supply" style="background-color: white;">
-        <form action="{{route('update-medical-record', $med_supply->id)}}" method="post">
+<div class="edit-medical-record">
+    <div class="col-md-6 offset-md-3 mt-3 rounded" id="edit-medical-record" style="background-color: white;">
+        <form action="{{route('update-medical-record', $med_supply->id, $med_types)}}" method="post">
             @csrf
             @method('post')
             <div class="form-group">
@@ -12,7 +12,7 @@
                     <div class="form-group">
                         <label for="medicine_type">Medicine Type</label>
                         <select name="medicine_type" class="form-control" id="medicine_type">
-                            @foreach($med_supply->med_types as $med_type)
+                            @foreach($med_types as $med_type)
                             <option value="{{$med_type->id}}">{{$med_type->medicine_type}}</option>
                             @endforeach
                         </select>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <a href="/medical-supplies-inventory" class="btn" id="btn-item-cancel">Cancel</a>
-            <button type="submit" class="btn" id="btn-add-item">Add</button>
+            <button type="submit" class="btn" id="btn-edit-item">Update</button>
         </form>
     </div>
 </div>

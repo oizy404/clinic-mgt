@@ -41,7 +41,7 @@
                         <td>{{$med_supply->stock}}</td>
                         <td>{{$med_supply->expiry_date}}</td>
                         <td>
-                            <a href="{{route('edit-medical-record', $med_supply->id)}}"><center><i class="far fa-edit"></i></center></a>
+                            <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" id="btn-record"><center><i class="far fa-edit"></i></center></a>
                         </td>
                         <td><center><i class="far fa-eye"></i></center></td>
                         <td>

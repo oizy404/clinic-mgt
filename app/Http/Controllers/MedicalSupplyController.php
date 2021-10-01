@@ -41,7 +41,9 @@ class MedicalSupplyController extends Controller
 
     public function edit($id){
         $med_supply = MedicalSupply::find($id);
-        return view("pages.edit-medical-record")->with("med_supply", $med_supply);
+        $med_types = MedType::all();
+
+        return view("pages.edit-medical-record")->with("med_supply", $med_supply)->with("med_types", $med_types);
     }
 
     public function update(Request $request, $id)
@@ -55,7 +57,7 @@ class MedicalSupplyController extends Controller
         $med_supply->purchase_date = $request->purchase_date;
 
         $med_supply->save();
-        return redirect()->back();
+        return redirect()->route('medical-supplies-inventory');
     }
 
     public function delete($id){

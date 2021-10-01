@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('css/batch-student-health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/supplies-inventory.css')}}">
     <link rel="stylesheet" href="{{asset('css/add-medical-supply.css')}}">
+    <link rel="stylesheet" href="{{asset('css/edit-medical-record.css')}}">
     
     
 </head>
@@ -39,7 +40,7 @@
     <script src="{{asset('js/add-health-data.js')}}"></script>
     <script src="{{asset('js/batch-health-data.js')}}"></script>
     <script src="{{asset('js/add-medical-supply.js')}}"></script>
-    
+    <script src="{{asset('js/edit-medical-record.js')}}"></script>
     <script src="{{asset('js/medical-supply-table.js')}}"></script>
     
 
