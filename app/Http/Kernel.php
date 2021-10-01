@@ -43,6 +43,21 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'ifLoggedOut' => [
+            \App\Http\Middleware\CheckIfLoggedOut::class,
+        ],
+        'manageAdminAccess' =>[
+            \App\Http\Middleware\ManageAdminAccess::class,
+        ],
+
+        'manageDoctorAccess' =>[
+            \App\Http\Middleware\manageDoctorAccess::class,
+        ],
+        'manageSupervisorAccess' =>[
+            \App\Http\Middleware\manageSupervisorAccess::class,
+        ],
+
+
     ];
 
     /**
@@ -62,7 +77,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'ifLoggedIn' => \App\Http\Middleware\CheckedIfLoggedIn::class,
-        'ifLoggedOut' => \App\Http\Middleware\CheckedIfLoggedOut::class,
+        'ifLoggedIn' => \App\Http\Middleware\CheckIfLoggedIn::class,
+        'ifLoggedOut' => \App\Http\Middleware\CheckIfLoggedOut::class,
     ];
 }

@@ -1,16 +1,18 @@
 @extends("layouts.master")
     @section('title')
-        Home
+        Home 
 @stop
     @section('content')
-    @include("layouts.navbar")
+    @include("layouts.user-navbar")
 
 <div class="container">
-   	<center>
-       <h1>Admin Home Page</h1>
+    <center>
+        <h1>Supervisor Home Page</h1>
         {{session('rank')}}
+        
         <br>
+
+
 </div>
     </center>
-
-@stop
+@stop            

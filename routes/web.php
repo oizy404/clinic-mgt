@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
 use App\Model\Student;
 use App\Model\MedicalSupply;
@@ -28,11 +28,41 @@ Route::get('/', function () {
 
 Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
-// Route::middleware(['ifLoggedOut'])->group(function () {
+Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 
     Route::get('/admin-home', function () {
         return view('pages.admin-home');
     })->name("admin-home");
+
+});    
+
+
+Route::post("authenticate-doctor", [LoginController::class, "loginDoctor"])->name("loginDoctor");
+
+Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
+
+
+    Route::get('/doctor-home', function () {
+    	return view("pages.doctor-home");
+    })->name("doctor-home");
+
+
+});
+
+Route::post("authenticate-supervisor", [LoginController::class, "loginSupervisor"])->name("loginSupervisor");
+
+Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
+
+
+	Route::get('/supervisor-home', function () {
+		return view("pages.supervisor-home");
+	})->name("supervisor-home");
+
+});
+
+
+
+
 // });
 //Route::get('/student-health-data', [StudentController::class, "index"])->name('studentHealthData');
 
@@ -65,3 +95,9 @@ Route::get('/add-medical-supply', [MedicalSupplyController::class, "insert"])->n
 // Route::get('/medical-supplies-inventory', function () {
 //     return view('pages.medical-supplies-inventory');
 // });
+
+Route::get('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->flush();
+    return redirect()->route('front');
+});
