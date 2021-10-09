@@ -37,9 +37,13 @@
                         <td>{{$med_supply->med_type->medicine_type}}</td>
                         <td>{{$med_supply->stock}}</td>
                         <td>{{$med_supply->expiry_date}}</td>
-                        <td><i class="far fa-edit"></i></td>
-                        <td><i class="far fa-eye"></i></td>
-                        <td><i class="fas fa-trash-alt"></i></td>
+                        <td>
+                            <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" id="btn-record"><center><i class="far fa-edit"></i></center></a>
+                        </td>
+                        <td><center><i class="far fa-eye"></i></center></td>
+                        <td>
+                            <a href="{{route('delete', $med_supply->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
