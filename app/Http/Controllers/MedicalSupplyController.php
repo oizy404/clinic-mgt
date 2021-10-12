@@ -44,12 +44,12 @@ class MedicalSupplyController extends Controller
         $med_types = MedType::all();
 
         return view("pages.edit-medical-record")->with("med_supply", $med_supply)->with("med_types", $med_types);
-        return view ('pages.associate.clients.clients_list')
-        ->with( compact('modes',$modes,
-                        'corporates',$corporates,
-                        'taxForms',$taxForms,
+        // return view ('pages.associate.clients.clients_list')
+        // ->with( compact('modes',$modes,
+        //                 'corporates',$corporates,
+        //                 'taxForms',$taxForms,
                         
-        ));
+        // ));
     }
 
     public function update(Request $request, $id)

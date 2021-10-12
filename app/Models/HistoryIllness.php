@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Immunization extends Model
+class HistoryIllness extends Model
 {
     use HasFactory;
 
-    protected $table ="tbl_immunizations";
+    protected $table ="tbl_history_illnesses";
 
-    protected $fillable = ['vaccine_name'];
-
-    public function vaccine(){
-        return $this->belongsTo(Vaccine::class, 'vaccine_id');
+    public function illness(){
+        return $this->belongsTo(Illness::class, "illness    _id");
     }
 
     public function patientProfile(){

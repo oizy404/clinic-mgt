@@ -13,7 +13,8 @@ class Desease extends Model
 
     protected $fillable = ['desease_name'];
 
-    public function tbl_student(){
-        return $this->belongsTo(Student::class, "patient_id");
+    public function familyDesease(){
+        return $this->hasMany(FamilyDesease::class);
     }
+
 }

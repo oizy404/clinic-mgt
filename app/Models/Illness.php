@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HistoryIlness extends Model
+class Illness extends Model
 {
     use HasFactory;
 
-    protected $table ="tbl_historyillnesses";
+    protected $table ="tbl_illnesses";
 
     protected $fillable = ['illness_name'];
 
-    public function tbl_student(){
-        return $this->belongsTo(Student::class, "patient_id");
+    public function historyIllness(){
+        return $this->hasMany(HistoryIllness::class);
     }
 }
