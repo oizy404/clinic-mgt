@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
 // use Illuminate\Http\Request;
@@ -33,6 +33,12 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
     Route::get('/admin-home', function () {
         return view('pages.admin-home');
     })->name("admin-home");
+    
+    //for docu
+    Route::get('/student-consultation-record', function () {
+        return view('pages.student-consultation-record');
+    })->name("student-consultation-record");
+
 // });
 //Route::get('/student-health-data', [StudentController::class, "index"])->name('studentHealthData');
 
@@ -48,10 +54,10 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
 //Route::get('/student-health-data', [StudentController::class, "importForm"]);
 // Route::resource('tbl_students', StudentController::class);
-Route::get('/student-health-data', [StudentController::class, "index"])->name("student-health-data");
-Route::get('/create-student-health-data', [StudentController::class, "insert"])->name("create-student-health-data");
+Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
+Route::get('/create-student-health-data', [PatientController::class, "insert"])->name("create-student-health-data");
 
-Route::post('/student-health-data',[StudentController::class,'import'])->name('student.import');
+Route::post('/student-health-data',[PatientController::class,'import'])->name('student.import');
 
 
 

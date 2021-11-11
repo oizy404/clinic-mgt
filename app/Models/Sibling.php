@@ -12,7 +12,7 @@ class Sibling extends Model
     protected $table ="tbl_siblings";
 
     protected $fillable = [
-        'sibling_info',
+        'complete_name','age','sex'
     ];
 
     public function student(){

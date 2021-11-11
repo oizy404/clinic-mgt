@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{asset('css/supplies-inventory.css')}}">
     <link rel="stylesheet" href="{{asset('css/add-medical-supply.css')}}">
     <link rel="stylesheet" href="{{asset('css/edit-medical-record.css')}}">
+    <link rel="stylesheet" href="{{asset('css/add-consultation-record.css')}}">
+    <link rel="stylesheet" href="{{asset('css/consultation-record.css')}}">
     
     
 </head>
@@ -34,14 +36,16 @@
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/datatables.js')}}"></script>
     
+    <script src="{{asset('js/data-tables.js')}}"></script>
     <script src="{{asset('js/admin-login.js')}}"></script>
     <script src="{{asset('js/admin-sidenav.js')}}"></script>
-    <script src="{{asset('js/health-data-table.js')}}"></script>
     <script src="{{asset('js/add-health-data.js')}}"></script>
     <script src="{{asset('js/batch-health-data.js')}}"></script>
     <script src="{{asset('js/add-medical-supply.js')}}"></script>
     <script src="{{asset('js/edit-medical-record.js')}}"></script>
     <script src="{{asset('js/medical-supply-table.js')}}"></script>
+    <script src="{{asset('js/add-consultation-record.js')}}"></script>
+    <script src="{{asset('js/add-remove-field.js')}}"></script>
     
 
 </body>

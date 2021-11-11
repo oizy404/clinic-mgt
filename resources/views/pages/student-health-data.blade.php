@@ -33,12 +33,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($students as $student)
+                @foreach($patients as $patient)
                     <tr>
-                        <td>{{$student->school_id}}</td>
-                        <td>{{$student->first_name}}</td>
-                        <td>{{$student->last_name}}</td>
-                        <td>{{$student->created_at}}</td>
+                        <td>{{$patient->school_id}}</td>
+                        <td>{{$patient->first_name}}</td>
+                        <td>{{$patient->last_name}}</td>
+                        <td>{{$patient->created_at}}</td>
                         <td><center><i class="far fa-edit"></i></center></td>
                         <td><center><i class="far fa-eye"></center></i></td>
                         <td><center><i class="fas fa-trash-alt"></center></i></td>

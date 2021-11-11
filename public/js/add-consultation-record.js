@@ -1,0 +1,11 @@
+$(document).ready(function(){
+    $("#btn-record").click(function(){
+        $(".add-consultation-record").fadeIn(500);
+    });
+    $("#btn-cancel").click(function(){
+        $(".add-consultation-record").fadeOut(500);
+    });
+    $("#btn-add-consultation").click(function(){
+        $(".add-consultation-record").fadeOut(500);
+    });
+})

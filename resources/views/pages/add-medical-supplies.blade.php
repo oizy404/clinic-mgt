@@ -1,5 +1,10 @@
 <div class="add-medical-supply">
-    <div class="col-md-6 offset-md-3 mt-3 rounded" id="add-medical-supply" style="background-color: white;">
+    <div class="panel-heading col-md-6 offset-md-3 mt-3 rounded">
+        <div class="col-md-4 offset-md-8 p-head">
+            <h5 class="mb-0">Add Medical Item</h5>
+        </div>
+    </div>
+    <div class="col-md-6 offset-md-3 rounded" id="add-medical-supply" style="background-color: white;">
         <form action="{{route('add-medical-supply')}}" method="post">
             @csrf
             @method('post')
@@ -24,12 +29,12 @@
                         <input type="text" class="form-control" name="quantity">
                     </div>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <div class="form-group">
                         <label for="stock">Stock</label>
                         <input type="text" class="form-control" name="stock">
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row mt-2">
                 <div class="col">
