@@ -9,6 +9,7 @@
 @include('shared.admin-sidenav')
 
 <div class="content">
+    {{session('rank')}}
     <div class="supplies-inventory-dashboard">
         <div class="offset-md-1 supplies-inventory-addbtn">
             <div class="col-md-4">

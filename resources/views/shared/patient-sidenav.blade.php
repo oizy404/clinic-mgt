@@ -24,25 +24,13 @@
     <!--mobile navigation bar end-->
     <!--sidebar start-->
     <div class="sidebar">
-            <a href="/admin-home" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Dashboard</span></a><br>
+            <a href="/patient-dashboard" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Dashboard</span></a><br>
 
-            <div class="dropdown">
-              <a href="" id="sidebarmenu"><i class="fas fa-book-medical"></i><span>Health Data</span></a>
-              <div class="dropdown-content">
-                  <a href="/personnel-health-data" id="person">Personnel</a>
-                  <a href="/student-health-data" id="person">Student</a>
-              </div>
-            </div><br>
+            <a href="/compose" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Compose</span></a><br>
 
-            <div class="dropdown">
-              <a href="" id="sidebarmenu"><i class="fas fa-file-medical"></i><span>Consultation Record</span></a>
-              <div class="dropdown-content">
-                  <a href="/personnel-consultation-record" id="person">Personnel</a>
-                  <a href="/student-consultation-record" id="person">Student</a>
-              </div>
-            </div><br>
+            <a href="/inbox" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Inbox</span></a><br>
 
-            <a href="/medical-supplies-inventory" id="sidebarmenu"><i class="fas fa-briefcase-medical"></i><span>Medical Supplies</span></a><br>
+            <a href="/outbox" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Sent</span></a><br>
 
             <a href="/logout" id="sidebarmenu"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a><br>
     </div>

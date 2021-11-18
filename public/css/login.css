@@ -1,0 +1,110 @@
+.admin-login{
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: -1px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+}
+.doctor-login{
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: -1px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+}
+.supervisor-login{
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: -1px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+}
+.patient-login{
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: -1px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+}
+.register-patient{
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: -1px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+}
+div #admin-login{
+    padding: 20px;
+    background-color: #def0fe;
+    margin-top: 100px;
+    height: 70%;
+}
+div #doctor-login{
+    padding: 20px;
+    background-color: #97d0fc;
+    margin-top: 100px;
+    height: 70%;
+}
+div #supervisor-login{
+    padding: 20px;
+    background-color: #42aafa;
+    margin-top: 100px;
+    height: 70%;
+}
+div #patient-login{
+    padding: 20px;
+    background-color: #299ef8;
+    margin-top: 100px;
+    height: 70%;
+}
+div #register-patient{
+    padding: 20px;
+    background-color: #088ef5;
+    margin-top: 100px;
+    height: 70%;
+}
+#acdclinicLogo{
+    width: 150px;
+}
+#adminbtn-login{
+    padding: 5px 15px 5px 15px;
+    float: left;
+    border: none;
+    border-radius: 2px;
+}
+#adminbtn-cancel{
+    padding: 5px 15px 5px 15px;
+    float: right;
+    border: none;
+    border-radius: 2px;
+}

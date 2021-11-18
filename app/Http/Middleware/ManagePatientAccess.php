@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CheckedIfLoggedIn
+class ManagePatientAccess
 {
     /**
      * Handle an incoming request.
@@ -17,21 +16,17 @@ class CheckedIfLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-        $rank = $request->session()->get('rank');       // gets the value of the sesseion 'rank'
+        $rank = $request->session()->get('rank');
         
-        if(Auth::check() && $rank == "admin"){          // checks if user is logged in and session rank is admin
+        if($rank == "admin"){
             return redirect()->route("admin-home");
         }
-        else if(Auth::check() && $rank == "doctor"){     // checks if user is logged in and session rank is staff
+        else if($rank == "doctor"){
             return redirect()->route("student-consultation-record");
         }
-        else if(Auth::check() && $rank == "supervisor"){
+        else if($rank == "supervisor"){
             return redirect()->route("medical-supplies-inventory");
         }
-        else if(Auth::check() && $rank == "patient"){
-            return redirect()->route("student-health-data");
-        }
-
         return $next($request);
     }
 }

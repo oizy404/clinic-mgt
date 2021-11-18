@@ -43,6 +43,24 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'ifLoggedOut' => [
+            \App\Http\Middleware\CheckedIfLoggedOut::class,
+        ],
+        'manageAdminAccess' =>[
+            \App\Http\Middleware\ManageAdminAccess::class,
+        ],
+
+        'manageDoctorAccess' =>[
+            \App\Http\Middleware\ManageDoctorAccess::class,
+        ],
+        'manageSupervisorAccess' =>[
+            \App\Http\Middleware\ManageSupervisorAccess::class,
+        ],
+        'managePatientAccess' =>[
+            \App\Http\Middleware\ManagePatientAccess::class,
+        ],
+
+
     ];
 
     /**

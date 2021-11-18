@@ -1,13 +1,13 @@
 <?php
-
+use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
-use App\Model\Student;
+use App\Model\PatientProfile;
 use App\Model\MedicalSupply;
 use App\Model\MedType;
 
@@ -28,16 +28,70 @@ Route::get('/', function () {
 
 Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
-// Route::middleware(['ifLoggedOut'])->group(function () {
+Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 
     Route::get('/admin-home', function () {
         return view('pages.admin-home');
     })->name("admin-home");
+
+});  
+
+Route::post("authenticate-doctor", [LoginController::class, "loginDoctor"])->name("loginDoctor");
+
+Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     
-    //for docu
     Route::get('/student-consultation-record', function () {
         return view('pages.student-consultation-record');
     })->name("student-consultation-record");
+
+});
+
+Route::post("authenticate-supervisor", [LoginController::class, "loginSupervisor"])->name("loginSupervisor");
+
+Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
+
+    Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
+    // Route::get('/add-medical-supplies', [MedicalSupplyController::class, "add"])->name("add-medical-supplies");
+    Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
+    Route::get('delete/{id}', [MedicalSupplyController::class, "delete"])->name('delete');
+    Route::get('edit/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
+    Route::post('update/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
+
+});
+
+Route::post("authenticate-patient", [LoginController::class, "loginPatient"])->name("loginPatient");
+
+Route::middleware(['ifLoggedOut', 'managePatientAccess'])->group(function () {
+
+    Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
+    Route::get('/create-student-health-data', [PatientController::class, "insert"])->name("create-student-health-data");
+    Route::post('/student-health-data',[PatientController::class,'import'])->name('student.import');
+
+});
+
+Route::post('/registerPatient', [LoginController::class, "registerPatient"])->name("registerPatient");
+
+Route::get('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->flush();
+    return redirect()->route('front');
+});
+
+
+Route::get('/patient-dashboard', function () {
+    return view('pages.patient.patient-dashboard');
+})->name("patient-dashboard");
+
+// Route::middleware(['ifLoggedOut'])->group(function () {
+
+    // Route::get('/admin-home', function () {
+    //     return view('pages.admin-home');
+    // })->name("admin-home");
+    
+    // //for docu
+    // Route::get('/student-consultation-record', function () {
+    //     return view('pages.student-consultation-record');
+    // })->name("student-consultation-record");
 
 // });
 //Route::get('/student-health-data', [StudentController::class, "index"])->name('studentHealthData');
@@ -54,23 +108,23 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
 //Route::get('/student-health-data', [StudentController::class, "importForm"]);
 // Route::resource('tbl_students', StudentController::class);
-Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
-Route::get('/create-student-health-data', [PatientController::class, "insert"])->name("create-student-health-data");
+// Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
+// Route::get('/create-student-health-data', [PatientController::class, "insert"])->name("create-student-health-data");
 
-Route::post('/student-health-data',[PatientController::class,'import'])->name('student.import');
+// Route::post('/student-health-data',[PatientController::class,'import'])->name('student.import');
 
 
 
-Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
-// Route::get('/add-medical-supplies', [MedicalSupplyController::class, "add"])->name("add-medical-supplies");
-Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
-Route::get('delete/{id}', [MedicalSupplyController::class, "delete"])->name('delete');
-Route::get('edit/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
-Route::post('update/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
+// Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
+// // Route::get('/add-medical-supplies', [MedicalSupplyController::class, "add"])->name("add-medical-supplies");
+// Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
+// Route::get('delete/{id}', [MedicalSupplyController::class, "delete"])->name('delete');
+// Route::get('edit/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
+// Route::post('update/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
 
 
 // Route::get('/test', function(){
-//              $password ="admin";
+//              $password ="supervisor";
 //              echo Hash::make($password);
 //          });
 

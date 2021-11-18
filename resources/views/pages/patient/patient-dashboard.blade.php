@@ -1,14 +1,14 @@
 @extends('layout.master')
 
 @section('title')
-    Admin Home
+    Patient Dashboard
 @stop
 
 @section('content')
 @include('shared.admin-header')
-@include('shared.admin-sidenav') 
+@include('shared.patient-sidenav') 
  
-    <div class="dashboard">
+    <div class="patient-dashboard">
         {{session('rank')}}
     </div>
 

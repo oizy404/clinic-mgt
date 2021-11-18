@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/front.css')}}">
     <link rel="stylesheet" href="{{asset('css/datatables.css')}}">
 
-    <link rel="stylesheet" href="{{asset('css/admin-login.css')}}">
+    <link rel="stylesheet" href="{{asset('css/login.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin-home.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin-header.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin-sidenav.css')}}">
@@ -37,7 +37,7 @@
     <script src="{{asset('js/datatables.js')}}"></script>
     
     <script src="{{asset('js/data-tables.js')}}"></script>
-    <script src="{{asset('js/admin-login.js')}}"></script>
+    <script src="{{asset('js/login.js')}}"></script>
     <script src="{{asset('js/admin-sidenav.js')}}"></script>
     <script src="{{asset('js/add-health-data.js')}}"></script>
     <script src="{{asset('js/batch-health-data.js')}}"></script>
