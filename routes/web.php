@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 
 use App\Model\PatientProfile;
@@ -43,12 +44,19 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     Route::get('/student-consultation-record', function () {
         return view('pages.student-consultation-record');
     })->name("student-consultation-record");
+    
+    Route::get('/compose-doctor', [MessageController::class, "doctorIndex"])->name("compose-doctor");
+    Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
 
 });
 
 Route::post("authenticate-supervisor", [LoginController::class, "loginSupervisor"])->name("loginSupervisor");
 
 Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
+
+    Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
+    Route::get('/create-student-health-data', [PatientController::class, "insert"])->name("create-student-health-data");
+    Route::post('/student-health-data',[PatientController::class,'import'])->name('student.import');
 
     Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
     // Route::get('/add-medical-supplies', [MedicalSupplyController::class, "add"])->name("add-medical-supplies");
@@ -63,9 +71,9 @@ Route::post("authenticate-patient", [LoginController::class, "loginPatient"])->n
 
 Route::middleware(['ifLoggedOut', 'managePatientAccess'])->group(function () {
 
-    Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
-    Route::get('/create-student-health-data', [PatientController::class, "insert"])->name("create-student-health-data");
-    Route::post('/student-health-data',[PatientController::class,'import'])->name('student.import');
+    Route::get('/patient-dashboard', [MessageController::class, "index"])->name("patient-dashboard");
+    Route::get('/compose-patient', [MessageController::class, "patientIndex"])->name("compose-patient");
+    Route::post('/compose-patientmsg', [MessageController::class, "insertPatientMsg"])->name("compose-patientmsg");
 
 });
 
@@ -78,9 +86,8 @@ Route::get('/logout', function (Request $request) {
 });
 
 
-Route::get('/patient-dashboard', function () {
-    return view('pages.patient.patient-dashboard');
-})->name("patient-dashboard");
+
+
 
 // Route::middleware(['ifLoggedOut'])->group(function () {
 

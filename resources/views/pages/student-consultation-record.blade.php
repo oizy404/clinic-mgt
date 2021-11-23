@@ -1,12 +1,12 @@
 @extends('layout.master')
 
 @section('title')
-    STUDENT HEALTH DATA
+    CONSULTATION RECORD
 @stop
 
 @section('content')
 @include('shared.admin-header')
-@include('shared.admin-sidenav')
+@include('shared.doctor-sidenav')
 
 <div class="content">
     {{session('rank')}}

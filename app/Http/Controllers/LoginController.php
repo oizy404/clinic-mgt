@@ -79,7 +79,7 @@ class LoginController extends Controller
 		}
 		if (Auth::attempt($credentials)) {
 		    $request->session()->put('rank', $rank);
-		    return redirect()->route('student-health-data');
+		    return redirect()->route('patient-dashboard');
 		}
 
 	    return back()->withErrors([
