@@ -32,12 +32,14 @@ class MessageController extends Controller
 
         return redirect()->back();
     }
+
     public function patientIndex(){
         $users = User::all();
-        $messages = Message::all();
+        $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
 
         return view("pages.messaging.compose-patient")->with("messages", $messages)->with("users", $users);
     }
+
     public function insertPatientMsg(Request $request){
 
         $message = new Message();
@@ -49,6 +51,14 @@ class MessageController extends Controller
 
         return redirect()->back();
     }
+
+    public function patientInbox(){
+        $users = User::all();
+        $messages = Message::all();
+
+        return view("pages.messaging.inbox-patient")->with("messages", $messages)->with("users", $users);
+    }
+
     public function show($id){
 
     }

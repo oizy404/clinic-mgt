@@ -74,7 +74,7 @@ Route::middleware(['ifLoggedOut', 'managePatientAccess'])->group(function () {
     Route::get('/patient-dashboard', [MessageController::class, "index"])->name("patient-dashboard");
     Route::get('/compose-patient', [MessageController::class, "patientIndex"])->name("compose-patient");
     Route::post('/compose-patientmsg', [MessageController::class, "insertPatientMsg"])->name("compose-patientmsg");
-
+    Route::get('/inbox', [MessageController::class, "patientInbox"])->name("inbox");
 });
 
 Route::post('/registerPatient', [LoginController::class, "registerPatient"])->name("registerPatient");

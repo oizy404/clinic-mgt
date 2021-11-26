@@ -14,10 +14,6 @@ class MedicalSupplyController extends Controller
         
         return view("pages.medical-supplies-inventory")->with("med_supplies", $med_supplies)->with("med_types", $med_types);
     }
-    // public function add(){
-    //     $med_types = MedType::all();
-    //     return view("pages.add-medical-supplies")->with("med_types", $med_types);
-    // }
     
     public function insert(Request $request){
 
@@ -52,8 +48,7 @@ class MedicalSupplyController extends Controller
         // ));
     }
 
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $med_supply = MedicalSupply::find($id);
         $med_supply->product_name = $request->product_name;
         $med_supply->med_type_id = $request->medicine_type;

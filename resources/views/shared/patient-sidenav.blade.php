@@ -26,7 +26,7 @@
     <div class="sidebar">
             <a href="/patient-dashboard" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Dashboard</span></a><br>
 
-            <a href="/compose" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Compose</span></a><br>
+            <a href="/compose-patient" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Compose</span></a><br>
 
             <a href="/inbox" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Inbox</span></a><br>
 

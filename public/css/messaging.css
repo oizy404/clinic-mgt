@@ -1,0 +1,36 @@
+.patient-msg .card{
+    height: 500px;
+}
+.msg_card_body{
+    overflow-y: scroll;
+}
+.msg_card_body::-webkit-scrollbar {
+    display: none;
+  }
+.outbox{
+    padding: 8px;
+    margin: none;
+    max-width: 50%;
+    background-color: rgb(209, 209, 209);
+    border-radius: 10px;
+}
+.inbox{
+    padding: 8px;
+    margin: none;
+    max-width: 50%;
+    background-color: rgb(196, 190, 173);
+    border-radius: 10px;
+}
+.input-file{
+    display:none;  
+}
+.file-ups{
+    cursor: pointer;
+}
+.type_msg{
+    height: 10px;
+}
+.attach_btn{
+    background: none;
+    border: none;
+}
