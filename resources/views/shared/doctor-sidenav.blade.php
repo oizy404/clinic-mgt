@@ -42,7 +42,7 @@
               </div>
             </div><br>
 
-            <a href="/compose-doctor" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Compose</span></a><br>
+            <a href="/message-doctor" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Message</span></a><br>
 
             <a href="/logout" id="sidebarmenu"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a><br>
     </div>

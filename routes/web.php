@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Model\PatientProfile;
 use App\Model\MedicalSupply;
 use App\Model\MedType;
+use App\Model\User;
+use App\Model\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +47,7 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
         return view('pages.student-consultation-record');
     })->name("student-consultation-record");
     
-    Route::get('/compose-doctor', [MessageController::class, "doctorIndex"])->name("compose-doctor");
+    Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
     Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
 
 });
@@ -71,10 +73,9 @@ Route::post("authenticate-patient", [LoginController::class, "loginPatient"])->n
 
 Route::middleware(['ifLoggedOut', 'managePatientAccess'])->group(function () {
 
-    Route::get('/patient-dashboard', [MessageController::class, "index"])->name("patient-dashboard");
-    Route::get('/compose-patient', [MessageController::class, "patientIndex"])->name("compose-patient");
+    Route::get('/patient-dashboard', [MessageController::class, "patientIndex"])->name("patient-dashboard");
+    // Route::get('/message-patient', [MessageController::class, "patientIndex"])->name("message-patient");
     Route::post('/compose-patientmsg', [MessageController::class, "insertPatientMsg"])->name("compose-patientmsg");
-    Route::get('/inbox', [MessageController::class, "patientInbox"])->name("inbox");
 });
 
 Route::post('/registerPatient', [LoginController::class, "registerPatient"])->name("registerPatient");

@@ -1,17 +1,15 @@
 @extends('layout.master')
 
 @section('title')
-    Patient Dashboard
+    Doctor Dashboard
 @stop
 
 @section('content')
 @include('shared.admin-header')
-@include('shared.patient-sidenav') 
+@include('shared.admin-sidenav') 
  
-    <div class="patient-dashboard">
+    <div class="doctor-dashboard">
         {{session('rank')}}
     </div>
 
-
-@include('pages.messaging.message-patient')
 @stop

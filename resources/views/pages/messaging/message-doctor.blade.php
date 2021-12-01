@@ -1,28 +1,47 @@
 @extends('layout.master')
 
 @section('title')
-    Compose Message
+    Doctor Message
 @stop
 
 @section('content')
- 
-    <div class="col-md-6 offset-md-3 message-patient">
-        <div class="patient-msg mt-5">
+<div class="row">
+    <div class="col-md-4 offset-md-1 doctor-sender">
+        <div class="doctor-sender mt-5">
             <div class="card">
                 <div class="card-header">
-                    <h6>CHAT WITH STAFF: {{Auth::user()->username}}</h6>
-                    <a href="/patient-dashboard" class="btn-danger" id="btn-compose-cancel">Cancel</a>
+                    <h6>CLINIC STAFF</h6>
                 </div>
-                <div class="card-body msg_card_body">
+                <div class="card-body doctormsg_card_body">
                     @foreach($messages as $message)
-                        @if(Auth::user()->id == $message->sender)
-                            <div class="d-flex justify-content-end">
+
+                        @foreach($users as $user)
+                            <div class="form-group">
+                                {{$user->username}}
+                            </div>
+                        @endforeach
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 message-doctor">
+        <div class="doctor-msg mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h6>PATIENT NAME HERE</h6>
+                    <a href="doctor-dashboard" id="btn-compose-cancel" style="float:right; color: red;"><i class="fas fa-times-circle"></i></a>
+                </div>
+                <div class="card-body doctormsg_card_body">
+                    @foreach($messages as $message)
+                        @if(Auth::user()->id == $message->receiver)
+                            <div class="d-flex justify-content-start">
                                 <div class="outbox">
                                     {{$message->message}}
                                 </div>
                             </div><br>
-                        @elseif(Auth::user()->id == $message->receiver)
-                            <div class="d-flex justify-content-start">
+                        @elseif(Auth::user()->id == $message->sender)
+                            <div class="d-flex justify-content-end">
                                 <div class="inbox">
                                     {{$message->message}}
                                 </div>
@@ -31,10 +50,10 @@
                     @endforeach
                 </div>
                 <div class="card-footer">
-                    <form action="{{route('compose-patientmsg')}}" method="post">
+                    <form action="{{route('compose-doctormsg')}}" method="post">
                         @csrf
                         @method('post')
-                        <div class="input-group patient-compose">
+                        <div class="input-group doctor-compose">
                             <div class="input-group-append file-ups">
                                 <label for="fileups">
                                     <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
@@ -51,6 +70,5 @@
             </div>
         </div>
     </div>
-
-
+</div>
 @stop
