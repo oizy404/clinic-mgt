@@ -11,6 +11,7 @@ use App\Models\Message;
 class MessageController extends Controller
 {
     public $messages;
+    public $message;
 
     public $users;
     // public function index(){
@@ -20,10 +21,18 @@ class MessageController extends Controller
     //     return view("pages.patient.patient-dashboard")->with("messages", $messages)->with("users", $users);
     // }
     public function doctorIndex(){
-        $users = User::all();
+        
         $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
-
-        return view("pages.messaging.message-doctor")->with("messages", $messages)->with("users", $users);
+        
+        $users = DB::table('users')
+            ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
+            ->select('users.*','tbl_messages.sender')
+            ->orderBy('tbl_messages.created_at','desc')
+            ->where('rank','patient')
+            ->get()->groupBy('sender');
+            
+        return view("pages.messaging.message-doctor")->with( compact("messages", $messages,
+                                                    "users", $users));
     }
     public function insertDoctorMsg(Request $request){
 
@@ -49,6 +58,7 @@ class MessageController extends Controller
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
+        $message->read = 1;
         $message->receiver = 2;
 
         $message->save();

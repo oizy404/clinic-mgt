@@ -13,13 +13,10 @@
                     <h6>CLINIC STAFF</h6>
                 </div>
                 <div class="card-body doctormsg_card_body">
-                    @foreach($messages as $message)
-
-                        @foreach($users as $user)
-                            <div class="form-group">
-                                {{$user->username}}
-                            </div>
-                        @endforeach
+                    @foreach($users as $user)
+                        <div class="form-group">
+                            {{$user->first()->username}}
+                        </div>
                     @endforeach
                 </div>
             </div>
