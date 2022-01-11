@@ -15,7 +15,7 @@
         <div class="doctor-sender mt-5">
             <div class="card" style="width:94%; float:right;">
                 <div class="card-header">
-                    <h6>PATIENTS</h6>
+                    <h6>CLINIC STAFF</h6>
                 </div>
                 <div class="card-body doctormsg_card_body">
                     @foreach($users as $user)
@@ -33,9 +33,7 @@
                 <div class="card-header">
                     <h6>PATIENT NAME HERE</h6>
                 </div>
-                <h1>You don't have a message selected</h1>
-                <p>Choose one from your existing messages, or start a new one.</p>
-                <!-- <div class="card-body doctormsg_card_body">
+                <div class="card-body doctormsg_card_body">
                     @foreach($messages as $message)
                         @if(Auth::user()->id == $message->receiver)
                             <div class="d-flex justify-content-start">
@@ -69,7 +67,7 @@
                             </div>
                         </div>
                     </form>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

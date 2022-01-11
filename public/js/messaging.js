@@ -8,4 +8,4 @@ $(document).ready(function(){
     $("#btn-compose-msg").click(function(){
         $(".message-patient").fadeOut(500);
     });
-})
+});

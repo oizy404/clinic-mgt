@@ -89,7 +89,6 @@ class LoginController extends Controller
 	}
 	public function registerPatient(Request $request){
 		$credentials = new User();
-		$credentials->name = 'samplePatient';
 		$credentials->username = $request->username;
 		$password = $request->password;
 		$credentials->password = Hash::make($password);
