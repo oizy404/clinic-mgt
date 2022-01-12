@@ -6,6 +6,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\test;
 use Illuminate\Http\Request;
 
 use App\Model\PatientProfile;
@@ -24,6 +25,8 @@ use App\Model\Message;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test', [test::class, "test"]);
 
 Route::get('/', function () {
     return view('pages.front');

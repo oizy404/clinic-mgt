@@ -5,10 +5,10 @@
 @stop
 
 @section('content')
-    <div class="front-container1">
+    <!-- <div class="front-container1">
         <div class="row-md">
             <div class="col-md-2 offset-md-5">
-                <!-- <img src="images/acdLogo.png" alt="acd logo" class="rounded-circle" id="acdLogo"> -->
+                <img src="images/acdLogo.png" alt="acd logo" class="rounded-circle" id="acdLogo">
             </div>
         </div>
     </div>
@@ -20,6 +20,21 @@
                 <button type="Add" class="btn btn-primary" id="btn-supervisorlogin">Supervisor</button>
                 <button type="Add" class="btn btn-primary" id="btn-patient">Patient</button>
                 <button type="Add" class="btn btn-primary" id="btn-registerPatient">Register Patient</button>
+            </div>
+        </div>
+    </div> -->
+    <div class="front-container">
+        <div class="col-md-4 offset-md-4 front-cont">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group mb-5 mt-5">
+                        <img src="images/acdLogo.png" alt="acd logo" class="rounded-circle" id="acdLogo"><br>
+                    </div>
+                    <div class="form-group">
+                        <button type="Add" class="btn btn-primary" id="btn-acdstaff">ACD Patient</button>
+                        <button type="Add" class="btn btn-success" id="btn-acdpatient">ACD Clinic Staff</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
