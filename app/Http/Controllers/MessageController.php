@@ -34,6 +34,13 @@ class MessageController extends Controller
         return view("pages.messaging.message-doctor")->with( compact("messages", $messages,
                                                     "users", $users));
     }
+    public function doctorMessageShow(Request $request, $id){
+        $message = DB::table('tbl_messages')->where('sender',$request->id)
+        ->orWhere('receiver',$request->id)
+        ->orderBy('created_at', 'asc')->get();
+
+        return ($message);
+    }
     public function insertDoctorMsg(Request $request){
 
         $message = new Message();
