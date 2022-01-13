@@ -22,52 +22,26 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt($credentials)){
-        	$request->session()->put('rank', $rank);    // put session data named 'rank'. Which value is either 'admin', 'doctor' , 'supervisor'
-            return redirect()->route('admin-home');
+			if($request->session()->put('rank', $rank)=='admin'){// put session data named 'rank'. Which value is either 'admin',
+				return redirect()->route('admin-home');
+			}
+			if($request->session()->put('rank', $rank)=='doctor'){// put session data named 'rank'. Which value is either 'doctor',
+				return redirect()->route('student-consultation-record');
+			} 
+			if($request->session()->put('rank', $rank)=='supervisor'){// put session data named 'rank'. Which value is either 'supervisor',
+				return redirect()->route('medical-supplies-inventory');
+			}     
+            else{
+				return back()->withErrors([
+					"Invalid Login"
+				]);
+			}
         }
 
         return back()->withErrors([
             "Invalid Login"
         ]);
     }
-
-    public function loginDoctor(Request $request){
-    	$credentials = $request->only('username', 'password');
-    	$users = DB::table('users')->where('username', $request->username)->get("rank");
-
-    	$rank;
-
-    	foreach($users as $user){
-    	  	$rank = $user->rank;
-    	}
-    	if (Auth::attempt($credentials)) {
-        	$request->session()->put('rank', $rank);
-        	return redirect()->route('student-consultation-record');
-		}
-        return back()->withErrors([
-            "Invalid Login"
-		]);
-	}
-	
-	public function loginSupervisor(Request $request){
-		$credentials = $request->only('username', 'password');
-		$users = DB::table('users')->where('username', $request->username)->get("rank");
-
-		$rank;
-
-		foreach($users as $user){
-		    $rank = $user->rank;
-		}
-		if (Auth::attempt($credentials)) {
-		    $request->session()->put('rank', $rank);
-		    return redirect()->route('medical-supplies-inventory');
-		}
-
-	    return back()->withErrors([
-	        "Invalid Login"
-
-		]);        
- 	}
 	public function loginPatient(Request $request){
 		$credentials = $request->only('username', 'password');
 		$users = DB::table('users')->where('username', $request->username)->get("rank");

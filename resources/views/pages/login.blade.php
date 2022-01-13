@@ -1,7 +1,7 @@
-<div class="supervisor-login">
-    <div class="col-md-4 offset-md-4 rounded" id="supervisor-login">
+<div class="login">
+    <div class="col-md-4 offset-md-4 rounded" id="login">
     <center><img src="images/acdclinicLogo.jpg" alt="acd clinic logo" class="acdclinic-Logo" id="acdclinicLogo"></center>
-        <form action="{{route('loginSupervisor')}}" method="post">
+        <form action="{{route('login')}}" method="post">
             @csrf
             @method('post')
             <div class="mb-3 mt-3">

@@ -1,32 +1,6 @@
-.admin-login{
+.login{
     padding: 0px;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: -1px;
-    margin-right: auto;
-    margin-left: auto;
-    overflow-y: scroll;
-}
-.doctor-login{
-    padding: 0px;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: -1px;
-    margin-right: auto;
-    margin-left: auto;
-    overflow-y: scroll;
-}
-.supervisor-login{
-    padding: 0px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.034);
     width: 100%;
     height: 100%;
     display: none;
@@ -39,7 +13,7 @@
 }
 .patient-login{
     padding: 0px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
     width: 100%;
     height: 100%;
     display: none;
@@ -63,21 +37,9 @@
     margin-left: auto;
     overflow-y: scroll;
 }
-div #admin-login{
+div #login{
     padding: 20px;
     background-color: #def0fe;
-    margin-top: 100px;
-    height: 70%;
-}
-div #doctor-login{
-    padding: 20px;
-    background-color: #97d0fc;
-    margin-top: 100px;
-    height: 70%;
-}
-div #supervisor-login{
-    padding: 20px;
-    background-color: #42aafa;
     margin-top: 100px;
     height: 70%;
 }
@@ -96,13 +58,13 @@ div #register-patient{
 #acdclinicLogo{
     width: 150px;
 }
-#adminbtn-login{
+#loginbtn-login{
     padding: 5px 15px 5px 15px;
     float: left;
     border: none;
     border-radius: 2px;
 }
-#adminbtn-cancel{
+#loginbtn-cancel{
     padding: 5px 15px 5px 15px;
     float: right;
     border: none;

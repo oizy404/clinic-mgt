@@ -32,6 +32,8 @@ Route::get('/', function () {
     return view('pages.front');
 })->name('front')->middleware('ifLoggedIn');
 
+
+//------------ADMIN---------------------------------------------------------------------
 Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
 Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
@@ -42,7 +44,8 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 
 });  
 
-Route::post("authenticate-doctor", [LoginController::class, "loginDoctor"])->name("loginDoctor");
+//-------------DOCTOR--------------------------------------------------------------
+Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
 Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     
@@ -56,7 +59,8 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
 
 });
 
-Route::post("authenticate-supervisor", [LoginController::class, "loginSupervisor"])->name("loginSupervisor");
+//--------------SUPERVISOR---------------------------------------------------------
+Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
 Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
 

@@ -1,12 +1,12 @@
 $(document).ready(function(){
     $("#btn-acdstaff").click(function(){
-        $(".admin-login").fadeIn(500);
+        $(".login").fadeIn(500);
     });
     $("#loginbtn-cancel").click(function(){
-        $(".admin-login").fadeOut(500);
+        $(".login").fadeOut(500);
     });
     $("#loginbtn-login").click(function(){
-        $(".admin-login").fadeOut(500);
+        $(".login").fadeOut(500);
     });
 });
 $(document).ready(function(){

@@ -6,7 +6,7 @@
 
 @section('content')
 @include('shared.admin-header')
-@include('shared.admin-sidenav')
+@include('shared.supervisor-sidenav')
 
 <div class="content">
     {{session('rank')}}

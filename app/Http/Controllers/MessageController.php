@@ -46,11 +46,12 @@ class MessageController extends Controller
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
-        $message->receiver = $request->username;
+        $message->receiver = $request->receiver_id;
+        $message->read = 0;
 
         $message->save();
 
-        return redirect()->back();
+        return redirect()->route('message-doctor');
     }
 
     public function patientIndex(){
