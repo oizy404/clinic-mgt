@@ -44,7 +44,7 @@
     <script src="{{asset('js/batch-health-data.js')}}"></script>
     <script src="{{asset('js/add-medical-supply.js')}}"></script>
     <script src="{{asset('js/edit-medical-record.js')}}"></script>
-    <script src="{{asset('js/medical-supply-table.js')}}"></script>
+    <!-- <script src="{{asset('js/medical-supply-table.js')}}"></script> -->
     <script src="{{asset('js/add-consultation-record.js')}}"></script>
     <script src="{{asset('js/add-remove-field.js')}}"></script>
     <script src="{{asset('js/messaging.js')}}"></script>

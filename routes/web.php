@@ -52,6 +52,7 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     
     Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
     Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
+    Route::get('/show-doctormsg/{id}', [MessageController::class, "doctorMessageShow"])->name("show-doctormsg");
 
 });
 
