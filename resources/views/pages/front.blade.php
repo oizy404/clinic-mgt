@@ -27,12 +27,12 @@
         <div class="col-md-4 offset-md-4 front-cont">
             <div class="card">
                 <div class="card-body">
-                    <div class="form-group mb-5 mt-5">
+                    <div class="form-group mb-5 mt-3">
                         <img src="images/acdLogo.png" alt="acd logo" class="rounded-circle" id="acdLogo"><br>
                     </div>
-                    <div class="form-group">
-                        <button type="Add" class="btn btn-primary" id="btn-acdstaff">ACD Patient</button>
-                        <button type="Add" class="btn btn-success" id="btn-acdpatient">ACD Clinic Staff</button>
+                    <div class="form-group login-btn">
+                        <button type="Add" class="btn btn-primary" id="btn-acdstaff">Patient</button>
+                        <button type="Add" class="btn btn-success" id="btn-acdpatient">Clinic Staff</button>
                     </div>
                 </div>
             </div>

@@ -30,15 +30,18 @@ html,body{
     height: 100%;
 }
 .front-cont{
-    padding-top: 150px;
+    padding-top: 100px;
 }
 .front-cont .card{
     text-align: center;
-    width: 70%;
+    width: 75%;
     height: 400px;
     margin: auto;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
+.login-btn{
+    padding-top: 55px;
+}
 .front-cont button{
-    width: 45%;
+    width: 40%;
 }

@@ -53,6 +53,14 @@
 }
 
 /* message-doctor css */
+#username{
+    cursor: pointer;
+}
+.doctor-inbox{
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+}
 .doctor-sender{
     padding: 0px;
 }
@@ -61,7 +69,7 @@
 }
 .message-doctor{
     padding: 0px;
-    width: 57%;
+    /* width: 57%; */
 }
 .doctor-msg .card{
     height: 550px;
