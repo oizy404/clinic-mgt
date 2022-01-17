@@ -8,7 +8,7 @@
   <div class="sidebar">
     <a href="/student-health-data" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Dashboard</span></a><br>
 
-    <a href="/student-health-data" id="sidebarmenu"><i class="fas fa-book-medical"></i><span>Create Patient Account</span></a><br>
+    <a href="/student-health-data" id="sidebarmenu"><i class="fas fa-user-plus"></i><span>Create Patient Account</span></a><br>
 
     <a href="/student-health-data" id="sidebarmenu"><i class="fas fa-book-medical"></i><span>Health Data</span></a><br>
 

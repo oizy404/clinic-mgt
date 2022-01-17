@@ -1,4 +1,3 @@
-
 <div class="message-patient">
     <div class="patient-msg mt-5">
         <div class="card">

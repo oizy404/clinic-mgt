@@ -3,16 +3,16 @@
     padding: 0px;
     background-color: #fff;
     width: 25%;
-    height: 70%;
+    height: 80%;
     display: none;
     position: fixed;
-    bottom: 0px;
+    bottom: -130px;
     z-index: 2;
-    right: 20px;
+    right: 15px;
 }
-.patient-msg .card{
+/* .patient-msg .card{
     height: 400px;
-}
+} */
 .patient-msg h6{
     width: 50%;
     float: left;

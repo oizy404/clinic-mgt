@@ -21,7 +21,7 @@
         </div>
     </div>
 
-@include('pages.login')
+@include('pages.loginStaff')
 @include('pages.registerPatient')
 @include('pages.loginPatient')
 @stop

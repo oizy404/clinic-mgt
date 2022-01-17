@@ -26,7 +26,7 @@
     <div class="sidebar">
             <a href="/patient-dashboard" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Dashboard</span></a><br>
             
-            <a href=""><i class="fas fa-book-medical"></i><span>HEALTH DATA</span></a>
+            <a href="" id="sidebarmenu"><i class="fas fa-book-medical"></i><span>HEALTH DATA</span></a>
 
             <a href="#" class="message-patient-btn"id="sidebarmenu"><i class="fas fa-envelope"></i><span>Message</span></a><br>
 

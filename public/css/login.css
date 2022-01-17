@@ -24,34 +24,15 @@
     margin-left: auto;
     overflow-y: scroll;
 }
-.register-patient{
-    padding: 0px;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: -1px;
-    margin-right: auto;
-    margin-left: auto;
-    overflow-y: scroll;
-}
 div #login{
     padding: 20px;
-    background-color: #def0fe;
+    background-color: #299ef8;
     margin-top: 100px;
     height: 70%;
 }
 div #patient-login{
     padding: 20px;
     background-color: #299ef8;
-    margin-top: 100px;
-    height: 70%;
-}
-div #register-patient{
-    padding: 20px;
-    background-color: #088ef5;
     margin-top: 100px;
     height: 70%;
 }

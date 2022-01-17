@@ -1,4 +1,4 @@
-<div class="register-patient">
+<div class="register-patient" style="display:none;">
     <div class="col-md-4 offset-md-4 rounded" id="register-patient">
     <center><img src="images/acdclinicLogo.jpg" alt="acd clinic logo" class="acdclinic-Logo" id="acdclinicLogo"></center>
         <form action="{{route('registerPatient')}}" method="post">
@@ -13,7 +13,7 @@
                 <input type="password" class="form-control" name="password">
             </div><br>
             <button type="submit" class="btn-primary" id="loginbtn-login">Log In</button>
-            <button type="submit" class="btn-danger" id="loginbtn-cancel">Cancel</button>
+            <button type="button" class="btn-danger" id="loginbtn-cancel">Cancel</button>
         </form>
     </div>
 </div>
