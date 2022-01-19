@@ -107,9 +107,9 @@
         })
     })
 
-    $("#Form").on('btn-compose-msg',function(e) {
-
-        e.preventDefault(); // avoid to execute the actual submit of the form.
+    $("#Form").on('btn-compose-msg',function(event) {
+        
+        event.preventDefault(); // avoid to execute the actual submit of the form.
 
         let fileups = $('#fileups').val();
         var message = $("#message").val();

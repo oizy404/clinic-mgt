@@ -1,11 +1,11 @@
 <div class="message-patient">
-    <div class="patient-msg mt-5">
+    <!-- <div class="patient-msg mt-5"> -->
         <div class="card">
-            <div class="card-header">
+            <div class="card-header patientmsg-cardheader">
                 <h6>CLINIC PERSONEL</h6>
                 <a href="#" id="btn-compose-cancel" style="float:right; color: red;"><i class="fas fa-times-circle"></i></a>
             </div>
-            <div class="card-body msg_card_body">
+            <div class="card-body patientmsg_card_body">
                 @foreach($messages as $message)
                     @if(Auth::user()->id == $message->sender)
                         <div class="d-flex justify-content-end">
@@ -41,5 +41,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </div>

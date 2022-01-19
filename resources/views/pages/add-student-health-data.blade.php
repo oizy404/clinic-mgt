@@ -73,7 +73,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="status" class=""><b>Civil Status</b></label>
-                                        <input type="text" class="form-control" name="status">
+                                        <input type="text" class="form-control" name="status" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
@@ -231,13 +231,13 @@
                                     <div class="col-md-1">
                                         <div class="form-group">
                                             <label for="siblingAge" class=""><b>Age</b></label>
-                                            <input type="text" class="form-control" name="siblingAge">
+                                            <input type="number" class="form-control" name="siblingAge">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="siblingSex" class=""><b>Gender</b></label>
-                                            <input type="text" class="form-control" name="siblingSex">
+                                            <input type="text" class="form-control" name="siblingSex" oninput="this.value = this.value.toUpperCase()">
                                         </div>
                                     </div>
                                     <div class="col-md-1 mt-4">

@@ -53,7 +53,7 @@ class PatientController extends Controller
         $parent->contact_number = $request->parentsContact_number;
         $parent->occupation = $request->parentsOccupation;
         $parent->employment_address = $request->parentsEmployment_address;
-        $parent->patient_id = $student->id;
+        $parent->patient_id = $patient->id;
         $parent->save();
 
 

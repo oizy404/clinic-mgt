@@ -13,5 +13,6 @@
     </div>
 
 
+@include('pages.add-student-health-data')
 @include('pages.messaging.message-patient')
 @stop
