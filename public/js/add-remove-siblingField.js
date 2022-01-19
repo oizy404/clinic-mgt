@@ -15,20 +15,20 @@ $(document).ready(function () {
             <div class="input-box row mt-2">
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label for="sName" class=""><b>Sibling's Complete Name</b></label>
-                        <input type="text" class="form-control" name="sName" oninput="this.value = this.value.toUpperCase()">
+                        <label for="siblingComplete_name" class=""><b>Sibling's Complete Name</b></label>
+                        <input type="text" class="form-control" name="siblingComplete_name" oninput="this.value = this.value.toUpperCase()">
                     </div>
                 </div>
                 <div class="col-md-1">
                     <div class="form-group">
-                        <label for="sAge" class=""><b>Age</b></label>
-                        <input type="text" class="form-control" name="sAge">
+                        <label for="siblingAge" class=""><b>Age</b></label>
+                        <input type="text" class="form-control" name="siblingAge">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label for="sGender" class=""><b>Gender</b></label>
-                        <input type="text" class="form-control" name="sGender">
+                        <label for="siblingSex" class=""><b>Gender</b></label>
+                        <input type="text" class="form-control" name="siblingSex">
                     </div>
                 </div>
                 <div class="col-md-1 mt-4">

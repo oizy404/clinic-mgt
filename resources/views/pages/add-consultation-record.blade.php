@@ -14,7 +14,7 @@
             @method('post')
             <div class="form-group" id="health-evaluation" style="background-color: white;">
                 <div class="col-md-2 form-group">
-                    <label for="idnumber" class=""><b>ID Number</b></label>
+                    <label for="idnumber" class=""><b>School ID Number</b></label>
                     <input type="text" class="form-control" name="idnumber">
                 </div>
                 <div class="row mt-2">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PatientProfile;
 use App\Imports\StudentImport;
+use App\Models\BirthParent;
 use App\Models\Sibling;
 use App\Models\Guardian;
 use App\Models\Location;
@@ -44,20 +45,18 @@ class PatientController extends Controller
         $patient->status = $request->status;
         $patient->religion = $request->religion;
         $patient->nationality = $request->nationality;
-        $patient->patient_division_id = 1;
         $patient->save();
 
-        // $parent = new BirthParent();
-        // $parent->complete_name = $request->FName->MName;
-        // $parent->birthday = $request->Fbirthdate,
-        // $parent->contact_number = $request->FcontactNo,
-        // $parent->occupation = $request->FOccupation,
-        // $parent->employment_address = $request->FEmploymentAdd,
-        // $parent->patient_id = $student->id;
-        // $parent->save();
+        $parent = new BirthParent();
+        $parent->complete_name = $request->parentsComplete_name;
+        $parent->birthday = $request->parentsBirthday;
+        $parent->contact_number = $request->parentsContact_number;
+        $parent->occupation = $request->parentsOccupation;
+        $parent->employment_address = $request->parentsEmployment_address;
+        $parent->patient_id = $student->id;
+        $parent->save();
 
 
-        
         $province = new Province();
         $province->province = $request->province;
         $province->save();
@@ -82,9 +81,9 @@ class PatientController extends Controller
         $guardian->save();
 
         $sibling = new Sibling();
-        $sibling->complete_name = $request->sName;
-        $sibling->age = $request->sAge;
-        $sibling->sex = $request->sSex;
+        $sibling->complete_name = $request->siblingComplete_name;
+        $sibling->age = $request->siblingAge;
+        $sibling->sex = $request->siblingSex;
         $sibling->patient_id = $patient->id;
         $sibling->save();
 

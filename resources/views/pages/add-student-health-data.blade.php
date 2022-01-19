@@ -1,18 +1,17 @@
 <div class="add-student-health-data">
-    <div class="panel-heading col-md-10 offset-md-1 mt-3 rounded">
+    <div class="panel-heading col-md-8 offset-md-2 mt-3 rounded">
         <div class="col-md-1">
             <a href="#" id="btn-cancel" style="float:left; color: red;"><i class="fas fa-times-circle"></i></a>
         </div>
         <div class="col-md-3 offset-md-9 p-head">
             <h4 class="mb-0">HEALTH DATA SHEET</h4>
-            <!-- <small>STUDENT</small> -->
         </div>
     </div>
-    <div class="col-md-10 offset-md-1 rounded" id="create-student-health-data">
+    <div class="col-md-8 offset-md-2 rounded" id="create-student-health-data">
         <form action="{{route('create-student-health-data')}}">
-            <!-- <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                 <div class="carousel-inner">
-                    <div class="carousel-item active"> -->
+                    <div class="carousel-item active">
                         <!-- Start of Student's Personal Info1 -->
                         <div class="form-group" id="students-personalinfo" style="background-color: white;">
                             <h5>PATIENT PROFILE</h5>
@@ -59,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-9">
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="address" class=""><b>Complete Address</b></label>
                                         <input type="text" class="form-control" name="address" oninput="this.value = this.value.toUpperCase()">
@@ -71,14 +70,14 @@
                                         <input type="tel" class="form-control" name="contact_number">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mt-2">
-                                <div class="col">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="status" class=""><b>Civil Status</b></label>
                                         <input type="text" class="form-control" name="status">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row mt-2">
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="religion" class=""><b>Religion</b></label>
@@ -94,9 +93,7 @@
                             </div>
                         </div>
                         <!-- end of Student's Persnal Info -->
-                    <!-- </div> -->
 
-                    <!-- <div class="carousel-item"> -->
                         <!-- Start of Family data -->
                         <div class="form-group" id="students-family-data" style="background-color: white;">
                             <!-- start of Father's info -->
@@ -104,34 +101,34 @@
                             <div class="row mt-5">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="FName" class=""><b>Father's Complete Name</b></label>
-                                        <input type="text" class="form-control" name="FName" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsComplete_name" class=""><b>Father's Complete Name</b></label>
+                                        <input type="text" class="form-control" name="parentsComplete_name" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="Fbirthdate" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="Fbirthdate" placeholder="MM/DD/YYYY">
+                                        <label for="parentsBirthday" class=""><b>Date of Birth</b></label>
+                                        <input type="date" class="form-control" name="parentsBirthday" placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="FcontactNo" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="FcontactNo">
+                                        <label for="parentsContact_number" class=""><b>Contact Number</b></label>
+                                        <input type="tel" class="form-control" name="parentsContact_number">
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="FOccupation" class=""><b>Occupation</b></label>
-                                        <input type="text" class="form-control" name="FOccupation" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsOccupation" class=""><b>Occupation</b></label>
+                                        <input type="text" class="form-control" name="parentsOccupation" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="FEmploymentAdd" class=""><b>Employment Address</b></label>
-                                        <input type="text" class="form-control" name="FEmploymentAdd" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsEmployment_address" class=""><b>Employment Address</b></label>
+                                        <input type="text" class="form-control" name="parentsEmployment_address" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
@@ -140,34 +137,34 @@
                             <div class="row mt-2">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="MName" class=""><b>Mother's Name</b></label>
-                                        <input type="text" class="form-control" name="MName" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsComplete_name" class=""><b>Mother's Name</b></label>
+                                        <input type="text" class="form-control" name="parentsComplete_name" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="Mbirthdate" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="Mbirthdate" placeholder="MM/DD/YYYY">
+                                        <input type="date" class="form-control" name="parentsBirthday" placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="McontactNo" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="McontactNo">
+                                        <label for="parentsContact_number" class=""><b>Contact Number</b></label>
+                                        <input type="tel" class="form-control" name="parentsContact_number">
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="MOccupation" class=""><b>Occupation</b></label>
-                                        <input type="text" class="form-control" name="MOccupation" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsOccupation" class=""><b>Occupation</b></label>
+                                        <input type="text" class="form-control" name="parentsOccupation" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="MEmploymentAdd" class=""><b>Employment Address</b></label>
-                                        <input type="text" class="form-control" name="MEmploymentAdd" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsEmployment_address" class=""><b>Employment Address</b></label>
+                                        <input type="text" class="form-control" name="parentsEmployment_address" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
@@ -227,20 +224,20 @@
                                 <div class="row mt-2 input-box">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label for="sName" class=""><b>Sibling's Complete Name</b></label>
-                                            <input type="text" class="form-control" name="sName" oninput="this.value = this.value.toUpperCase()">
+                                            <label for="siblingComplete_name" class=""><b>Sibling's Complete Name</b></label>
+                                            <input type="text" class="form-control" name="siblingComplete_name" oninput="this.value = this.value.toUpperCase()">
                                         </div>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <label for="sAge" class=""><b>Age</b></label>
-                                            <input type="text" class="form-control" name="sAge">
+                                            <label for="siblingAge" class=""><b>Age</b></label>
+                                            <input type="text" class="form-control" name="siblingAge">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="sSex" class=""><b>Gender</b></label>
-                                            <input type="text" class="form-control" name="sSex">
+                                            <label for="siblingSex" class=""><b>Gender</b></label>
+                                            <input type="text" class="form-control" name="siblingSex">
                                         </div>
                                     </div>
                                     <div class="col-md-1 mt-4">
@@ -250,13 +247,15 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="form-group">
-                                    <button class="btn btn-success add-btn">Add More</button>
+                                    <button type="button" class="btn btn-success add-btn">Add More</button>
                                 </div>
                             </div>
                             <!-- end siblings info -->
                         </div>
-                    <!-- </div>
-                    <div class="carousel-item"> -->
+                    </div>
+                    <!-- end of Student's Personal Info2 -->
+
+                    <div class="carousel-item">
                         <!-- start of Student's Personal Info2 -->
                         <div class="form-group" id="students-medic-data1" style="background-color: white;">
                             <small><i><strong>Please put a check mark on the box that corresponds the answer to the questions:</strong></i></small>
@@ -372,9 +371,8 @@
                             </div>
                         </div>
                         <!-- end of immunization info -->
-                    <!-- </div>
 
-                    <div class="carousel-item"> -->
+                    
                         <!-- start of past medical history info -->
                         <div class="form-group" id="students-medic-data3"style="background-color: white;">
                             <div class="form-group med-history-heading">
@@ -476,18 +474,18 @@
                             <!-- end of remarks -->
                             <button type="submit" class="btn" id="studenthealthdata-btn">Submit</button>
                         </div>
-                    <!-- </div> -->
-                    <!-- end of Student's Personal Info2 -->
-                <!-- </div>
-            </div> -->
+                    </div>
+
+                </div>
+            </div>
         </form>
-        <!-- <button class="carousel-control-prev" id="carouselbtn" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+        <button class="carousel-control-prev" id="carouselbtn" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" id="carouselbtn" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
-        </button> -->
+        </button>
     </div>
 </div>
