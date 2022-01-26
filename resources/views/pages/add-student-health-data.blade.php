@@ -267,25 +267,25 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <input type="checkbox" id="disease1" name="mddisease[]" value="Diabetes">
-                                        <label for="disease1">Diabetes</label><br>
-                                        <input type="checkbox" id="disease2" name="mddisease[]" value="Asthma">
-                                        <label for="disease2">Asthma</label><br>
-                                        <input type="checkbox" id="disease3" name="mddisease[]" value="Mental Disorder/ Psychological Problem">
-                                        <label for="disease3">Mental Disorder/ Psychological Problem</label><br>
-                                        <input type="checkbox" id="disease4" name="mddisease[]" value="Hypertension or High Blood Pressure">
-                                        <label for="disease4">Hypertension or High Blood Pressure</label><br>
-                                        <input type="checkbox" id="disease5" name="mddisease[]" value="Tuberculosis">
-                                        <label for="disease5">Tuberculosis</label><br>
+                                        <input type="checkbox" id="desease1" name="deseases[]" value="1">
+                                        <label for="desease1">Diabetes</label><br>
+                                        <input type="checkbox" id="desease2" name="deseases[]" value="2">
+                                        <label for="desease2">Asthma</label><br>
+                                        <input type="checkbox" id="desease3" name="deseases[]" value="3">
+                                        <label for="desease3">Mental Disorder/ Psychological Problem</label><br>
+                                        <input type="checkbox" id="desease4" name="deseases[]" value="4">
+                                        <label for="desease4">Hypertension or High Blood Pressure</label><br>
+                                        <input type="checkbox" id="desease5" name="deseases[]" value="5">
+                                        <label for="desease5">Tuberculosis</label><br>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group">
-                                        <label for="disease6" class="">Cancer of the</label><br>
-                                        <textarea class="form-control" id="disease6" name="mddisease[]" cols="10" rows="1"></textarea>
-                                        <label for="disease7" class="" >Others: Please Specify</label><br>
-                                        <textarea class="form-control" id="disease7" name="mddisease[]" cols="10" rows="1"></textarea>
-                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label for="desease6" class="">Cancer of the</label><br>
+                                        <textarea class="form-control" id="desease6" name="deseases[]" cols="10" rows="1"></textarea>
+                                        <label for="desease7" class="" >Others: Please Specify</label><br>
+                                        <textarea class="form-control" id="desease7" name="deseases[]" cols="10" rows="1"></textarea>
+                                    </div> -->
                                 </div>
                             </div><br>
                             <!-- end of desease info -->
@@ -305,7 +305,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="vaccine1" name="mdvaccine[]" value="BCG">
+                                        <input type="checkbox" id="vaccine1" name="vaccines[]" value="BCG">
                                         <label for="vaccine1">BCG</label><hr>
                                     </div>
                                     <div class="col">
@@ -314,7 +314,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="vaccine2" name="mdvaccine[]" value="HEPATITIS B">
+                                        <input type="checkbox" id="vaccine2" name="vaccines[]" value="HEPATITIS B">
                                         <label for="vaccine2">HEPATITIS B</label><hr>
                                     </div>
                                     <div class="col">  
@@ -323,7 +323,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="vaccine3" name="mdvaccine[]" value="PENTAVALENT VACCINE">
+                                        <input type="checkbox" id="vaccine3" name="vaccines[]" value="PENTAVALENT VACCINE">
                                         <label for="vaccine3">PENTAVALENT VACCINE(DPT-HEP BIP)</label><hr>
                                     </div>
                                     <div class="col">
@@ -332,7 +332,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="vaccine4" name="mdvaccine[]" value="ORAL POLIO VACCINE (OPV)">
+                                        <input type="checkbox" id="vaccine4" name="vaccines[]" value="ORAL POLIO VACCINE (OPV)">
                                         <label for="vaccine4">ORAL POLIO VACCINE (OPV)</label><hr>
                                     </div>
                                     <div class="col">
@@ -341,7 +341,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="vaccine5" name="mdvaccine[]" value="INACTIVATED POLIO VACCINE (IPV)">
+                                        <input type="checkbox" id="vaccine5" name="vaccines[]" value="INACTIVATED POLIO VACCINE (IPV)">
                                         <label for="vaccine5">INACTIVATED POLIO VACCINE (IPV)</label><hr>
                                     </div>
                                     <div class="col">
@@ -350,7 +350,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="vaccine6" name="mdvaccine[]" value="PNEUMOCOCCAL CONJUGATE VACCINE (PCV)">
+                                        <input type="checkbox" id="vaccine6" name="vaccines[]" value="PNEUMOCOCCAL CONJUGATE VACCINE (PCV)">
                                         <label for="vaccine6">PNEUMOCOCCAL CONJUGATE VACCINE (PCV)</label><hr>
                                     </div>
                                     <div class="col">
@@ -359,7 +359,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="vaccine7" name="mdvaccine[]" value="MEASLES, MUMPS, RUBELLA (MMR)">
+                                        <input type="checkbox" id="vaccine7" name="vaccines[]" value="MEASLES, MUMPS, RUBELLA (MMR)">
                                         <label for="vaccine7">MEASLES, MUMPS, RUBELLA (MMR)</label><hr>
                                     </div>
                                     <div class="col">
@@ -381,87 +381,87 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-3">
-                                    <input type="checkbox" id="mdhistory1" name="mdhistory[]" value="Chickenpox (Hangga)">
+                                    <input type="checkbox" id="mdhistory1" name="illnesses[]" value="Chickenpox (Hangga)">
                                     <label for="mdhistory1">Chickenpox (Hangga)</label><br>
-                                    <input type="checkbox" id="mdhistory2" name="mdhistory[]" value="Measles (Tigdas/Tipdas)">
+                                    <input type="checkbox" id="mdhistory2" name="illnesses[]" value="Measles (Tigdas/Tipdas)">
                                     <label for="mdhistory2">Measles (Tigdas/Tipdas)</label><br>
-                                    <input type="checkbox" id="mdhistory3" name="mdhistory[]" value="Mumps (Beke/Bayuok)">
+                                    <input type="checkbox" id="mdhistory3" name="illnesses[]" value="Mumps (Beke/Bayuok)">
                                     <label for="mdhistory3">Mumps (Beke/Bayuok)</label><br>
-                                    <input type="checkbox" id="mdhistory4" name="mdhistory[]" value="Dengue Fever">
+                                    <input type="checkbox" id="mdhistory4" name="illnesses[]" value="Dengue Fever">
                                     <label for="mdhistory4">Dengue Fever</label><br>
-                                    <input type="checkbox" id="mdhistory5" name="mdhistory[]" value="Asthma (Hubak/Hika)">
+                                    <input type="checkbox" id="mdhistory5" name="illnesses[]" value="Asthma (Hubak/Hika)">
                                     <label for="mdhistory5">Asthma (Hubak/Hika)</label><br>
-                                    <input type="checkbox" id="mdhistory6" name="mdhistory[]" value="Pneumonia (Pulmonya)">
+                                    <input type="checkbox" id="mdhistory6" name="illnesses[]" value="Pneumonia (Pulmonya)">
                                     <label for="mdhistory6">Pneumonia (Pulmonya)</label><br>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="checkbox" id="mdhistory7" name="mdhistory[]" value="Primary Complex">
+                                    <input type="checkbox" id="mdhistory7" name="illnesses[]" value="Primary Complex">
                                     <label for="mdhistory7">Primary Complex</label><br>
-                                    <input type="checkbox" id="mdhistory8" name="mdhistory[]" value="Tuberculosis">
+                                    <input type="checkbox" id="mdhistory8" name="illnesses[]" value="Tuberculosis">
                                     <label for="mdhistory8">Tuberculosis</label><br>
-                                    <input type="checkbox" id="mdhistory9" name="mdhistory[]" value="Hearing Problems">
+                                    <input type="checkbox" id="mdhistory9" name="illnesses[]" value="Hearing Problems">
                                     <label for="mdhistory9">Hearing Problems</label><br>
-                                    <input type="checkbox" id="mdhistory10" name="mdhistory[]" value="Speech Problem">
+                                    <input type="checkbox" id="mdhistory10" name="illnesses[]" value="Speech Problem">
                                     <label for="mdhistory10">Speech Problem</label><br>
-                                    <input type="checkbox" id="mdhistory11" name="mdhistory[]" value="Visual Problem">
+                                    <input type="checkbox" id="mdhistory11" name="illnesses[]" value="Visual Problem">
                                     <label for="mdhistory11">Visual Problem</label><br>
-                                    <input type="checkbox" id="mdhistory12" name="mdhistory[]" value="Ear Discharge">
+                                    <input type="checkbox" id="mdhistory12" name="illnesses[]" value="Ear Discharge">
                                     <label for="mdhistory12">Ear Discharge</label><br>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="checkbox" id="mdhistory13" name="mdhistory[]" value="Tonsilitis">
+                                    <input type="checkbox" id="mdhistory13" name="illnesses[]" value="Tonsilitis">
                                     <label for="mdhistory13">Tonsilitis</label><br>
-                                    <input type="checkbox" id="mdhistory14" name="mdhistory[]" value="Anemia">
+                                    <input type="checkbox" id="mdhistory14" name="illnesses[]" value="Anemia">
                                     <label for="mdhistory14">Anemia</label><br>
                                     <input type="checkbox" id="mdhistory15" name="mdhistory15" value="G6PD (Glucose-6-phosphate dehydrogenase deficiency)">
                                     <label for="mdhistory15">G6PD (Glucose-6-phosphate)</label><br>
                                     <label for="mdhistory15">(dehydrogenase deficiency)</label><br>
-                                    <input type="checkbox" id="mdhistory16" name="mdhistory[]" value="Bleeding Problems">
+                                    <input type="checkbox" id="mdhistory16" name="illnesses[]" value="Bleeding Problems">
                                     <label for="mdhistory16">Bleeding Problems</label><br>
-                                    <input type="checkbox" id="mdhistory17" name="mdhistory[]" value="Urinary Tract Infection (UTI)">
+                                    <input type="checkbox" id="mdhistory17" name="illnesses[]" value="Urinary Tract Infection (UTI)">
                                     <label for="mdhistory17">Urinary Tract Infection (UTI)</label><br>
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="checkbox" id="mdhistory18" name="mdhistory[]" value="Kidney Desease">
+                                    <input type="checkbox" id="mdhistory18" name="illnesses[]" value="Kidney Desease">
                                     <label for="mdhistory19">Kidney Desease</label><br>
-                                    <input type="checkbox" id="mdhistory19" name="mdhistory[]" value="Diabetes">
+                                    <input type="checkbox" id="mdhistory19" name="illnesses[]" value="Diabetes">
                                     <label for="mdhistory20">Diabetes</label><br>
-                                    <input type="checkbox" id="mdhistory20" name="mdhistory[]" value="Recurrent Indigestion">
+                                    <input type="checkbox" id="mdhistory20" name="illnesses[]" value="Recurrent Indigestion">
                                     <label for="mdhistory21">Recurrent Indigestion</label><br>
-                                    <input type="checkbox" id="mdhistory21" name="mdhistory[]" value="Heart or Cardiac Desease">
+                                    <input type="checkbox" id="mdhistory21" name="illnesses[]" value="Heart or Cardiac Desease">
                                     <label for="mdhistory22">Heart or Cardiac Desease</label><br>
-                                    <input type="checkbox" id="mdhistory22" name="mdhistory[]" value="Seizures (Patol)">
+                                    <input type="checkbox" id="mdhistory22" name="illnesses[]" value="Seizures (Patol)">
                                     <label for="mdhistory23">Seizures (Patol)</label><br>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     <label for="mdhistory23" class=""><b>Allergy: </b></label>
-                                    <input type="text" class="form-control" name="mdhistory[]">
+                                    <input type="text" class="form-control" name="illnesses[]">
                                 </div>
                                 <div class="col">
                                     <label for="mdhistory24" class=""><b>Fracture in </b></label>
-                                    <input type="text" class="form-control" name="mdhistory[]">
+                                    <input type="text" class="form-control" name="illnesses[]">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <label for="mdhistory25" class=""><b>Operation of the </b></label>
-                                    <input type="text" class="form-control" name="mdhistory[]">
+                                    <input type="text" class="form-control" name="illnesses[]">
                                 </div>
                                 <div class="col">
                                     <label for="mdhistory26" class=""><b>Hospitalization </b></label>
-                                    <input type="text" class="form-control" name="mdhistory[]">
+                                    <input type="text" class="form-control" name="illnesses[]">
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col">
                                     <label for="mdhistory27" class=""><b>Behavioral/ Psychological Problems </b></label>
-                                    <input type="text" class="form-control" name="mdhistory[]">
+                                    <input type="text" class="form-control" name="illnesses[]">
                                 </div>
                                 <div class="col">
                                     <label for="mdhistory28" class=""><b>Others: Please Specify: </b></label>
-                                    <input type="text" class="form-control" name="mdhistory[]">
+                                    <input type="text" class="form-control" name="illnesses[]">
                                 </div>
                             </div>
                             <!-- end of past medical history info -->

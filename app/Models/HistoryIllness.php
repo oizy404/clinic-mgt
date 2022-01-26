@@ -12,7 +12,7 @@ class HistoryIllness extends Model
     protected $table ="tbl_history_illnesses";
 
     public function illness(){
-        return $this->belongsTo(Illness::class, "illness    _id");
+        return $this->belongsTo(Illness::class, "illness_id");
     }
 
     public function patientProfile(){

@@ -6,7 +6,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\test;
+use App\Http\Controllers\FullCalenderController;
 use Illuminate\Http\Request;
 
 use App\Model\PatientProfile;
@@ -94,7 +94,8 @@ Route::get('/logout', function (Request $request) {
     return redirect()->route('front');
 });
 
-
+Route::get('fullcalender', [FullCalenderController::class, 'index']);
+Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
 
 

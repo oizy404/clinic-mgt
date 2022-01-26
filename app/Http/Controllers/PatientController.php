@@ -11,6 +11,10 @@ use App\Models\Guardian;
 use App\Models\Location;
 use App\Models\City;
 use App\Models\Province;
+use App\Models\FamilyDesease;
+use App\Models\Desease;
+use App\Models\Illness;
+use App\Models\Vaccine;
 
 use Excel;
 
@@ -25,13 +29,20 @@ class PatientController extends Controller
     //STUDENTS PERSONAL INFORMATION
     public function index(){
         $patients = PatientProfile::all();
-        return view("pages.student-health-data")->with("patients", $patients);
+        $deseases = Desease::all();
+        $illnesses = Illness::all();
+        $vaccines = Vaccine::all();
+        return view("pages.student-health-data")->with(compact("patients", $patients,
+                                                                "deseases", $deseases,
+                                                                "illnesses", $illnesses,
+                                                                "vaccines", $vaccines));
     }
 
     public function insert(Request $request){
 
         // $tbl_student = Student::find(41);
         // dd($tbl_student->tbl_sibling());
+        // dd($request->all());
         $patient = new PatientProfile();
         
         $patient->school_id = $request->student_idnumber;
@@ -87,6 +98,26 @@ class PatientController extends Controller
         $sibling->patient_id = $patient->id;
         $sibling->save();
 
+        foreach($request->deseases as $desease){
+            FamilyDesease::create([
+                'desease_id' => $desease,
+                'patient_id' => $patient->id,
+            ]);
+        }
+
+        foreach($request->illnesses as $illness){
+            HistoryIllness::create([
+                'desease_id' => $illness,
+                'patient_id' => $patient->id,
+            ]);
+        }
+
+        foreach($request->vaccines as $vaccine){
+            Immunization::create([
+                'desease_id' => $vaccine,
+                'patient_id' => $patient->id,
+            ]);
+        }
 
         return redirect()->route('student-health-data');
     }
