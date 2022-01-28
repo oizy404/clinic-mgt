@@ -94,10 +94,11 @@ Route::get('/logout', function (Request $request) {
     return redirect()->route('front');
 });
 
-Route::get('fullcalender', [FullCalenderController::class, 'index']);
+Route::get('/fullcalender', [FullCalenderController::class, 'index']);
 Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
-
+Route::resource('appointments', 'Admin\AppointmentsController');
+Route::post('appointments_ajax_update', ['uses' => 'Admin\AppointmentsController@ajaxUpdate', 'as' => 'appointments.ajax_update']);
 
 // Route::middleware(['ifLoggedOut'])->group(function () {
 

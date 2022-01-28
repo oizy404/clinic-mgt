@@ -15,7 +15,7 @@ class HistoryIllness extends Model
         return $this->belongsTo(Illness::class, "illness_id");
     }
 
-    public function patientProfile(){
+    public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }

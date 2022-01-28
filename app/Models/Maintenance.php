@@ -16,7 +16,7 @@ class Maintenance extends Model
         'frequency',
     ];
 
-    public function patientProfile(){
+    public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }

@@ -15,8 +15,8 @@ class Guardian extends Model
         'complete_name', 'relationship', 'contact_number',
     ];
 
-    public function student(){
-        return $this->belongsTo(Student::class, "patient_id");
+    public function patient(){
+        return $this->belongsTo(PatientProfile::class, "patient_id");
     }
     public function location(){
         return $this->belongsTo(Location::class, 'location_id');

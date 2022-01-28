@@ -16,7 +16,7 @@ class FamilyDesease extends Model
     public function desease(){
         return $this->belongsTo(Desease::class, 'desease_id');
     }
-    public function patientProfile(){
+    public function patient(){
         return $this->belongsTo(PatientProfile::class, 'patient_id');
     }
 }

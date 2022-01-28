@@ -11,7 +11,7 @@ class Remark extends Model
 
     protected $table ="tbl_remarks";
 
-    public function tbl_student(){
-        return $this->belongsTo(Student::class, "patient_id");
+    public function patient(){
+        return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }

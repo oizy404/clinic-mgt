@@ -17,7 +17,7 @@ class Immunization extends Model
         return $this->belongsTo(Vaccine::class, 'vaccine_id');
     }
 
-    public function patientProfile(){
+    public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }
