@@ -7,6 +7,8 @@ use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\EventController;
 use Illuminate\Http\Request;
 
 use App\Model\PatientProfile;
@@ -94,12 +96,19 @@ Route::get('/logout', function (Request $request) {
     return redirect()->route('front');
 });
 
-Route::get('/fullcalender', [FullCalenderController::class, 'index']);
-Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+// Route::get('/fullcalender', [FullCalenderController::class, 'index']);
+// Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
-Route::resource('appointments', 'Admin\AppointmentsController');
-Route::post('appointments_ajax_update', ['uses' => 'Admin\AppointmentsController@ajaxUpdate', 'as' => 'appointments.ajax_update']);
+// Route::get('/appointment', [AppointmentController::class, 'index']);
+// Route::post('appointmentAjax', [AppointmentController::class, 'ajax']);
 
+Route::get('/appointments', function () {
+    return view('pages.appointments');
+})->name("appointments");
+
+Route::get('index', [EventController::class, 'index'])->name("allEvent");
+Route::post('store', [EventController::class, 'store'])->name("eventStore");
+Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
 // Route::middleware(['ifLoggedOut'])->group(function () {
 
     // Route::get('/admin-home', function () {

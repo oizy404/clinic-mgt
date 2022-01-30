@@ -92,15 +92,15 @@
             })
             .done(function(data){  
                 $.each(data, function(index, value) {
-                if(value.receiver == {{Auth::user()->id}}){
-                    $("#message_box").append(
-                        "<div class='d-flex justify-content-start'><div class='outbox'>"+value.message+"</div></div><br>"
-                    )
-                }else if(value.sender == {{Auth::user()->id}}){
-                    $("#message_box").append(
-                        "<div class='d-flex justify-content-end'><div class='outbox bg-primary text-light'>"+value.message+"</div></div><br>"
-                    )
-                }
+                    if(value.receiver == {{Auth::user()->id}}){
+                        $("#message_box").append(
+                            "<div class='d-flex justify-content-start'><div class='outbox'>"+value.message+"</div></div><br>"
+                        )
+                    }else if(value.sender == {{Auth::user()->id}}){
+                        $("#message_box").append(
+                            "<div class='d-flex justify-content-end'><div class='outbox bg-primary text-light'>"+value.message+"</div></div><br>"
+                        )
+                    }
                 });
                 window.history.pushState('', 'New Page Title', '/message-doctor/'+id);
             });

@@ -9,9 +9,12 @@ class Appointment extends Model
 {
     use HasFactory;
 
-    protected $table ="tbl_appointments";
+    // protected $table ="tbl_appointments";
+    protected $table ="tbl_consultation_schedules";
 
-    public function patient(){
-        return $this->belongsTo(Student::class, "patient_id");
-    }
+    protected $fillable = ['title','start','end'];
+
+    // public function patient(){
+    //     return $this->belongsTo(Student::class, "patient_id");
+    // }
 }
