@@ -26,7 +26,7 @@ class LoginController extends Controller
 				return redirect()->route('admin-home');
 			}
 			if($request->session()->put('rank', $rank)=='doctor'){// put session data named 'rank'. Which value is either 'doctor',
-				return redirect()->route('student-consultation-record');
+				return redirect()->route('appointments');
 			} 
 			if($request->session()->put('rank', $rank)=='supervisor'){// put session data named 'rank'. Which value is either 'supervisor',
 				return redirect()->route('medical-supplies-inventory');

@@ -5,15 +5,20 @@
 @stop
 
 @section('content')
+@include('shared.admin-header')
+@include('shared.doctor-sidenav')
+
 <!-- Jquery Ui Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-    <div class="content">
-        <h1>APPOINTMENT BOOKING</h1>
-        <div class="container">
-            <div class="add-event">
-                <button class="btn btn-danger" id="addEventBtn">Add Event</button>
+    <div class="appointment-content">
+        <div class="col-md-9 offset-md-2">
+            <h1>APPOINTMENTS BOOKING</h1>
+            <div class="container">
+                <div class="add-event">
+                    <button class="btn btn-danger" id="addEventBtn">Add Event</button>
+                </div>
+                <div id="calendar"></div>
             </div>
-            <div id="calendar"></div>
         </div>
     </div>
     <!-- day click dialog -->
@@ -48,13 +53,52 @@
                 </div>
                 <input type="hidden" name="event_id" id="eventId">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success" id="update">Add Event</button>
-                    <a href="" class="btn btn-danger" id="deleteEvent" onclick="return confirm('Are you sure to delete event?')">Delete Event</a>
+                    <button type="submit" class="btn btn-success">Add Event</button>
                 </div>
             </form>
         </div>
     </div>
     <!-- day click dialog end -->
+
+    <!-- edit/delete dialog -->
+    <div id="edit-delete-dialog" style="display:none;">
+        <div id="dialog-body">
+            <form action="{{route('eventStore')}}" id="dayClick" method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="title">Event Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
+                </div>
+                <div class="form-group">
+                    <label for="start">Start Date/Time</label>
+                    <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
+                </div>
+                <div class="form-group">
+                    <label for="end">End Date/Time</label>
+                    <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
+                </div>
+                <div class="form-group">
+                    <label for="allDay">All Day</label><br>
+                    <input type="checkbox" value="1" name="allDay" checked>All Day<br>   
+                    <input type="checkbox" value="0" name="Partial">Partial<br>
+                </div>
+                <div class="form-group">
+                    <label for="color">Background Color</label>
+                    <input type="color" class="form-control" name="color" id="color">
+                </div>
+                <div class="form-group">
+                    <label for="textColor">Text Color</label>
+                    <input type="color" class="form-control" name="textColor" id="textColor">
+                </div>
+                <input type="hidden" name="event_id" id="eventId">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Update Event</button>
+                    <a href="" class="btn btn-danger" id="deleteEvent" onclick="return confirm('Are you sure to delete event?')">Delete Event</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- edit/delete dialog end -->
 
 <!-- Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -143,7 +187,7 @@ jQuery(document).ready(function($){
                 var url="{{url('deleteEvent')}}";
                 $('#deleteEvent').attr('href',url+'/'+event.id)
                 
-                $('#dialog').dialog({
+                $('#edit-delete-dialog').dialog({
                     title:'Edit Event',
                     width:600,
                     height:600,

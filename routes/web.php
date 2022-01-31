@@ -51,6 +51,14 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
 Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     
+    Route::get('/appointments', function () {
+        return view('pages.appointments');
+    })->name("appointments");
+    
+    Route::get('index', [EventController::class, 'index'])->name("allEvent");
+    Route::post('store', [EventController::class, 'store'])->name("eventStore");
+    Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
+
     Route::get('/student-consultation-record', function () {
         return view('pages.student-consultation-record');
     })->name("student-consultation-record");
@@ -96,19 +104,7 @@ Route::get('/logout', function (Request $request) {
     return redirect()->route('front');
 });
 
-// Route::get('/fullcalender', [FullCalenderController::class, 'index']);
-// Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
-// Route::get('/appointment', [AppointmentController::class, 'index']);
-// Route::post('appointmentAjax', [AppointmentController::class, 'ajax']);
-
-Route::get('/appointments', function () {
-    return view('pages.appointments');
-})->name("appointments");
-
-Route::get('index', [EventController::class, 'index'])->name("allEvent");
-Route::post('store', [EventController::class, 'store'])->name("eventStore");
-Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
 // Route::middleware(['ifLoggedOut'])->group(function () {
 
     // Route::get('/admin-home', function () {

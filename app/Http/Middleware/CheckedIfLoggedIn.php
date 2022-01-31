@@ -23,7 +23,7 @@ class CheckedIfLoggedIn
             return redirect()->route("admin-home");
         }
         else if(Auth::check() && $rank == "doctor"){     // checks if user is logged in and session rank is staff
-            return redirect()->route("student-consultation-record");
+            return redirect()->route("appointments");
         }
         else if(Auth::check() && $rank == "supervisor"){
             return redirect()->route("medical-supplies-inventory");

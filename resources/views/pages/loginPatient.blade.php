@@ -12,8 +12,8 @@
                 <label for="password" class="form-label"><b>Password</b></label>
                 <input type="password" class="form-control" name="password">
             </div><br>
-            <button type="submit" class="btn-primary" id="loginbtn-login">Log In</button>
-            <button type="button" class="btn-danger" id="loginbtn-cancel">Cancel</button>
+            <button type="submit" class="btn-primary" id="patientbtn-login">Log In</button>
+            <button type="button" class="btn-danger" id="patientbtn-cancel">Cancel</button>
         </form>
     </div>
 </div>

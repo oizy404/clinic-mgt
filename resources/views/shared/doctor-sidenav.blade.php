@@ -6,7 +6,7 @@
 </header>
   <!--sidebar start-->
   <div class="sidebar">
-    <a href="/student-consultation-record" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Dashboard</span></a><br>
+    <a href="/appointments" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Dashboard</span></a><br>
 
     <a href="/student-consultation-record" id="sidebarmenu"><i class="fas fa-file-medical"></i><span>Consultation Record</span></a><br>
 

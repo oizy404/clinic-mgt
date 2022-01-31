@@ -51,3 +51,15 @@ div #patient-login{
     border: none;
     border-radius: 2px;
 }
+#patientbtn-login{
+    padding: 5px 15px 5px 15px;
+    float: left;
+    border: none;
+    border-radius: 2px;
+}
+#patientbtn-cancel{
+    padding: 5px 15px 5px 15px;
+    float: right;
+    border: none;
+    border-radius: 2px;
+}

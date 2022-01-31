@@ -8,9 +8,8 @@
 @include('shared.admin-header')
 @include('shared.admin-sidenav') 
  
-    <div class="dashboard">
+    <div class="admin-dashboard">
         {{session('rank')}}
     </div>
-
 
 @stop

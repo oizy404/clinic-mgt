@@ -1,5 +1,5 @@
 header{
-    z-index: 1;
+    z-index: 5;
     position: fixed;
     padding: 20px;
     width: calc(100% - 0%);
@@ -7,9 +7,9 @@ header{
     height: 30px;
 }
 .sidebar{
-  z-index: 1;
+  z-index: 5;
   top: 0;
-  background: #2f323a;
+  background: #007bff;
   margin-top: 53px;
   padding-top: 30px;
   position: fixed;
@@ -32,7 +32,7 @@ header{
 }
 
 #sidebarmenu:hover{
-  background: #59627D;
+  background: #0376f1;
 }
 
 .sidebar i{
