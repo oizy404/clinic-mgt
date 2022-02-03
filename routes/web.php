@@ -9,6 +9,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ChartController;
 use Illuminate\Http\Request;
 
 use App\Model\PatientProfile;
@@ -40,9 +41,11 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
 
 Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 
-    Route::get('/admin-home', function () {
-        return view('pages.admin-home');
-    })->name("admin-home");
+    // Route::get('/admin-home', function () {
+    //     return view('pages.admin-home');
+    // })->name("admin-home");
+
+    Route::get('admin-home', [ChartController::class, 'medicalSupplyIndex'])->name("admin-home");
 
 });  
 
