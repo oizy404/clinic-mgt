@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         \Maatwebsite\Excel\ExcelServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
 
         /*
