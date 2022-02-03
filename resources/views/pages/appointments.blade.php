@@ -7,7 +7,20 @@
 @section('content')
 @include('shared.admin-header')
 @include('shared.doctor-sidenav')
-
+<style>
+    .edit-delete-btn{
+        background-color: #d6d6d6;
+        text-align: center;
+        margin-top: -62px;
+        width: 40%;
+        /* top: 0; */
+        position: absolute;
+        z-index:3;
+    }
+    .edit-delete-btn .btn{
+        font-size: 20px;
+    }
+</style>
 <!-- Jquery Ui Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <div class="appointment-content">
@@ -99,6 +112,10 @@
         </div>
     </div>
     <!-- edit/delete dialog end -->
+    <!-- <div class="edit-delete-btn" style="display:none;">
+        <button><i class="fas fa-pen-square"></i></button>
+        <button><i class="fas fa-trash"></i></button>
+    </div> -->
 
 <!-- Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -110,6 +127,8 @@
 <script src="{{asset('js/fullcalendar.js')}}"></script>
 
 <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+<script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
+<script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
 
 <script>
 jQuery(document).ready(function($){
@@ -195,9 +214,17 @@ jQuery(document).ready(function($){
                     show:{effect:'clip', duration:300},
                     hide:{effect:'clip', duration:250}
                 })
-            }
-        })
-    })
+            },
+            eventMouseover: function(event, jsEvent, view) {
+                $('.fc-day-grid-event').append(
+                    '<div class="edit-delete-btn"><button class="btn"><i class="fas fa-pen-square"></i></button><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?"><i class="fas fa-trash"></i></a></div>'
+                );
+            },
+            eventMouseout: function(event, jsEvent) {
+                $('.edit-delete-btn').remove();
+            },
+        });
+    });
 });
 </script>
 @include('vendor.sweetalert.alert')
