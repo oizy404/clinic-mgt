@@ -1,4 +1,4 @@
-<div class="add-student-health-data">
+<div class="add-student-health-data mt-5">
     <div class="panel-heading col-md-8 offset-md-2 mt-3 rounded">
         <div class="col-md-1">
             <a href="#" id="btn-cancel" style="float:left; color: red;"><i class="fas fa-times-circle"></i></a>

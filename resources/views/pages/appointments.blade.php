@@ -100,6 +100,11 @@
     </div>
     <!-- edit/delete dialog end -->
 
+    <div class="event-hover-btn">
+        <button><span><i class="fas fa-trash"></i></span></button>
+        <button><span><i class="fas fa-pen-square"></i></span></button>
+    </div>
+
 <!-- Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- moment js -->
@@ -138,9 +143,10 @@ jQuery(document).ready(function($){
                 show:{effect:'clip', duration:300},
                 hide:{effect:'clip', duration:250}
             })
-        })
+        });
         var calendar = $('#calendar').fullCalendar({ //display page, show all the events
             selectable: true,
+            selectHelper: true,
             // aspectRatio: 2,
             height: 650,
             showNonCurrentDates: false,
@@ -195,8 +201,62 @@ jQuery(document).ready(function($){
                     show:{effect:'clip', duration:300},
                     hide:{effect:'clip', duration:250}
                 })
+            },
+            // eventRender: function(event, element) {
+            //     $(element).tooltip({title: event.title});             
+            // }
+            
+            // eventRender: function(event){
+            //     $('.fc-content', this).popover({
+            //         animation:true,
+            //         delay: 300,
+            //         content: '<b>Inicio</b>:'+event.start+"<b>Fin</b>:"+event.end,
+            //         trigger: 'hover'
+            //     });
+            // },
+            // eventMouseover: function(event, jsEvent, view) {
+            //     $('.fc-content', this).append('<div id=\"'+event.id+'\" class=\"hover-end\">'+$.fullCalendar.formatDate(event.end, 'h:mmt')+'</div>');
+            // },
+
+            // eventMouseout: function(event, jsEvent, view) {
+            //     $('#'+event.id).remove();
+            // }
+            eventRender: function(event){
+                $('.fc-content',this).tooltip({
+                    items: '.fc-content',
+                    content: '.event-hover-btn',
+                    show: null,
+                    open: function(event, ui)
+                    {
+                        if (typeof(event.originalEvent) === 'undefined')
+                        {
+                            return false;
+                        }
+                        
+                        var $id = $(ui.tooltip).attr('class');
+                        
+                        // close any lingering tooltips
+                        $('div.ui-tooltip').not('#' + $id).remove();
+                        
+                        // ajax function to pull in data and add it to the tooltip goes here
+                    },
+                    close: function(event, ui)
+                    {
+                        ui.tooltip.hover(function()
+                        {
+                            $(this).stop(true).fadeTo(400, 1); 
+                        },
+                        function()
+                        {
+                            $(this).fadeOut('400', function()
+                            {
+                                $(this).remove();
+                            });
+                        });
+                    }
+                })
             }
-        })
+        });
     })
 });
 </script>

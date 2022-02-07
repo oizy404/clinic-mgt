@@ -51,8 +51,7 @@ class ChartController extends Controller
                 'rgb(88, 203, 70)',
             ],
         ]);
-        $med_supplies->title('Medical Supplies Inventory Chart')
-            ->displayAxes(false)
+        $med_supplies->displayAxes(false)
             ->displayLegend(false);
             
         // Medical Supplies Inventory Chart end
