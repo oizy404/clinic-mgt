@@ -7,7 +7,20 @@
 @section('content')
 @include('shared.admin-header')
 @include('shared.doctor-sidenav')
-
+<style>
+    .edit-delete-btn{
+        background-color: #d6d6d6;
+        text-align: center;
+        margin-top: -62px;
+        width: 40%;
+        /* top: 0; */
+        position: absolute;
+        z-index:3;
+    }
+    .edit-delete-btn .btn{
+        font-size: 20px;
+    }
+</style>
 <!-- Jquery Ui Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <div class="appointment-content">
@@ -99,6 +112,10 @@
         </div>
     </div>
     <!-- edit/delete dialog end -->
+    <!-- <div class="edit-delete-btn" style="display:none;">
+        <button><i class="fas fa-pen-square"></i></button>
+        <button><i class="fas fa-trash"></i></button>
+    </div> -->
 
     <div class="event-hover-btn">
         <button><span><i class="fas fa-trash"></i></span></button>
@@ -115,6 +132,8 @@
 <script src="{{asset('js/fullcalendar.js')}}"></script>
 
 <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+<script src='https://unpkg.com/popper.js/dist/umd/popper.min.js'></script>
+<script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
 
 <script>
 jQuery(document).ready(function($){
@@ -202,6 +221,7 @@ jQuery(document).ready(function($){
                     hide:{effect:'clip', duration:250}
                 })
             },
+<<<<<<< HEAD
             // eventRender: function(event, element) {
             //     $(element).tooltip({title: event.title});             
             // }
@@ -258,6 +278,18 @@ jQuery(document).ready(function($){
             }
         });
     })
+=======
+            eventMouseover: function(event, jsEvent, view) {
+                $('.fc-day-grid-event').append(
+                    '<div class="edit-delete-btn"><button class="btn"><i class="fas fa-pen-square"></i></button><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?"><i class="fas fa-trash"></i></a></div>'
+                );
+            },
+            eventMouseout: function(event, jsEvent) {
+                $('.edit-delete-btn').remove();
+            },
+        });
+    });
+>>>>>>> cb08b36114f653e04d585eb8a3423543afce2a70
 });
 </script>
 @include('vendor.sweetalert.alert')
