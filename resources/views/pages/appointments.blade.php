@@ -202,60 +202,14 @@ jQuery(document).ready(function($){
                     hide:{effect:'clip', duration:250}
                 })
             },
-            // eventRender: function(event, element) {
-            //     $(element).tooltip({title: event.title});             
-            // }
-            
-            // eventRender: function(event){
-            //     $('.fc-content', this).popover({
-            //         animation:true,
-            //         delay: 300,
-            //         content: '<b>Inicio</b>:'+event.start+"<b>Fin</b>:"+event.end,
-            //         trigger: 'hover'
-            //     });
-            // },
-            // eventMouseover: function(event, jsEvent, view) {
-            //     $('.fc-content', this).append('<div id=\"'+event.id+'\" class=\"hover-end\">'+$.fullCalendar.formatDate(event.end, 'h:mmt')+'</div>');
-            // },
-
-            // eventMouseout: function(event, jsEvent, view) {
-            //     $('#'+event.id).remove();
-            // }
-            eventRender: function(event){
-                $('.fc-content',this).tooltip({
-                    items: '.fc-content',
-                    content: '.event-hover-btn',
-                    show: null,
-                    open: function(event, ui)
-                    {
-                        if (typeof(event.originalEvent) === 'undefined')
-                        {
-                            return false;
-                        }
-                        
-                        var $id = $(ui.tooltip).attr('class');
-                        
-                        // close any lingering tooltips
-                        $('div.ui-tooltip').not('#' + $id).remove();
-                        
-                        // ajax function to pull in data and add it to the tooltip goes here
-                    },
-                    close: function(event, ui)
-                    {
-                        ui.tooltip.hover(function()
-                        {
-                            $(this).stop(true).fadeTo(400, 1); 
-                        },
-                        function()
-                        {
-                            $(this).fadeOut('400', function()
-                            {
-                                $(this).remove();
-                            });
-                        });
-                    }
-                })
-            }
+            eventMouseover: function(event, jsEvent, view) {
+                $('.fc-day-grid-event').append(
+                    '<div class="edit-delete-btn"><button class="btn"><i class="fas fa-pen-square"></i></button><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?"><i class="fas fa-trash"></i></a></div>'
+                );
+            },
+            eventMouseout: function(event, jsEvent) {
+                $('.edit-delete-btn').remove();
+            },
         });
     })
 });
