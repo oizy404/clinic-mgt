@@ -8,6 +8,19 @@
 @include('shared.admin-header')
 @include('shared.doctor-sidenav')
 
+<style>
+    .edit-delete-btn{
+        background-color: gray;
+        position: absolute;
+        width: 50%;
+        text-align: center;
+    }
+    .edit-delete-btn .btn{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+</style>
 <!-- Jquery Ui Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <div class="appointment-content">
@@ -28,15 +41,15 @@
                 @csrf
                 <div class="form-group">
                     <label for="title">Event Title</label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
+                    <input type="text" class="form-control" name="title" placeholder="Event Title">
                 </div>
                 <div class="form-group">
                     <label for="start">Start Date/Time</label>
-                    <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
+                    <input type="text" class="form-control" name="start" placeholder="Start date & time">
                 </div>
                 <div class="form-group">
                     <label for="end">End Date/Time</label>
-                    <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
+                    <input type="text" class="form-control" name="end" placeholder="End date & time">
                 </div>
                 <div class="form-group">
                     <label for="allDay">All Day</label><br>
@@ -45,11 +58,11 @@
                 </div>
                 <div class="form-group">
                     <label for="color">Background Color</label>
-                    <input type="color" class="form-control" name="color" id="color">
+                    <input type="color" class="form-control" id="color">
                 </div>
                 <div class="form-group">
                     <label for="textColor">Text Color</label>
-                    <input type="color" class="form-control" name="textColor" id="textColor">
+                    <input type="color" class="form-control" id="textColor">
                 </div>
                 <input type="hidden" name="event_id" id="eventId">
                 <div class="form-group">
@@ -100,11 +113,6 @@
     </div>
     <!-- edit/delete dialog end -->
 
-    <div class="event-hover-btn">
-        <button><span><i class="fas fa-trash"></i></span></button>
-        <button><span><i class="fas fa-pen-square"></i></span></button>
-    </div>
-
 <!-- Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- moment js -->
@@ -147,7 +155,6 @@ jQuery(document).ready(function($){
         var calendar = $('#calendar').fullCalendar({ //display page, show all the events
             selectable: true,
             selectHelper: true,
-            // aspectRatio: 2,
             height: 650,
             showNonCurrentDates: false,
             editable: false,
@@ -191,7 +198,7 @@ jQuery(document).ready(function($){
                 $('#eventId').val(event.id);
                 $('#update').html('Update Event');
                 var url="{{url('deleteEvent')}}";
-                $('#deleteEvent').attr('href',url+'/'+event.id)
+                $('#deleteEvent').attr('href',url+'/'+event.id);
                 
                 $('#edit-delete-dialog').dialog({
                     title:'Edit Event',
@@ -200,11 +207,11 @@ jQuery(document).ready(function($){
                     modal:true,
                     show:{effect:'clip', duration:300},
                     hide:{effect:'clip', duration:250}
-                })
+                });
             },
             eventMouseover: function(event, jsEvent, view) {
-                $('.fc-day-grid-event').append(
-                    '<div class="edit-delete-btn"><button class="btn"><i class="fas fa-pen-square"></i></button><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?"><i class="fas fa-trash"></i></a></div>'
+                $(this).append(
+                    '<div class="edit-delete-btn"><button class="btn"><i class="fas fa-pencil-alt"></i></button><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?"><i class="fas fa-trash"></i></a></div>'
                 );
             },
             eventMouseout: function(event, jsEvent) {

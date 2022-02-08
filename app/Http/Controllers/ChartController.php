@@ -32,27 +32,28 @@ class ChartController extends Controller
             'Liquid','Soppositories',
             'Tablet'
         ]);
-        $med_supplies->dataset('My dataset 1', 'doughnut', [
+        $med_supplies->dataset('My dataset 1', 'line', [
             $capsules,$cream,
             $drops,$patches,
             $inhalers,$injections,
             $liquid,$soppositories,
             $tablet
-        ])->options([
-            'backgroundColor' => [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(201, 203, 207)',
-                'rgb(75, 192, 192)',
-                'rgb(221, 165, 83)',
-                'rgb(193, 112, 196)',
-                'rgb(88, 203, 70)',
-            ],
         ]);
-        $med_supplies->displayAxes(false)
-            ->displayLegend(false);
+        // ->options([
+        //     'backgroundColor' => [
+        //         'rgb(255, 99, 132)',
+        //         'rgb(54, 162, 235)',
+        //         'rgb(255, 205, 86)',
+        //         'rgb(75, 192, 192)',
+        //         'rgb(201, 203, 207)',
+        //         'rgb(75, 192, 192)',
+        //         'rgb(221, 165, 83)',
+        //         'rgb(193, 112, 196)',
+        //         'rgb(88, 203, 70)',
+        //     ],
+        // ]);
+        // $med_supplies->displayAxes(false)
+        //     ->displayLegend(true);
             
         // Medical Supplies Inventory Chart end
 

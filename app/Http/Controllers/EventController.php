@@ -109,7 +109,16 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Event::where('id', $request->event_id)->update([ //Update Event
+        //     'title' => $request->title,
+        //     'start' => $request->start,
+        //     'end' => $request->end,
+        //     'allDay' => $request->allDay,
+        //     'color' => $request->color,
+        //     'textColor' => $request->textColor,
+        // ]);
+        // Alert::success('Success','Event Updated Successfully');
+        // return redirect()->back();
     }
 
     /**
