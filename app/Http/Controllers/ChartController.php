@@ -26,19 +26,20 @@ class ChartController extends Controller
         $med_supplies = new SampleChart;
 
         $med_supplies->labels([
-            'Capsules','Crream',
+            'Capsules','Cream',
             'Drops','Implant or Patches',
             'Inhalers','Injections',
             'Liquid','Soppositories',
             'Tablet'
         ]);
-        $med_supplies->dataset('My dataset 1', 'line', [
+        $med_supplies->dataset('Medical Supply Inventory', 'bar', [
             $capsules,$cream,
             $drops,$patches,
             $inhalers,$injections,
             $liquid,$soppositories,
             $tablet
         ]);
+        $med_supplies->dataset('Medical Supply Inventory', 'bar', []);
         // ->options([
         //     'backgroundColor' => [
         //         'rgb(255, 99, 132)',
