@@ -7,23 +7,19 @@
 @section('content')
 @include('shared.admin-header')
 @include('shared.doctor-sidenav')
-
-<<<<<<< HEAD
 <style>
     .edit-delete-btn{
         background-color: gray;
         position: absolute;
-        width: 50%;
-        text-align: center;
+        max-width: 30%;
+        /* text-align: center; */
     }
     .edit-delete-btn .btn{
-        margin-left: 10px;
-        margin-right: 10px;
+        /* margin-left: 10px;
+        margin-right: 10px; */
         font-size: 15px;
     }
 </style>
-=======
->>>>>>> parent of cb08b36 (Update appointments.blade.php)
 <!-- Jquery Ui Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <div class="appointment-content">
@@ -44,15 +40,15 @@
                 @csrf
                 <div class="form-group">
                     <label for="title">Event Title</label>
-                    <input type="text" class="form-control" name="title" placeholder="Event Title">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
                 </div>
                 <div class="form-group">
                     <label for="start">Start Date/Time</label>
-                    <input type="text" class="form-control" name="start" placeholder="Start date & time">
+                    <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
                 </div>
                 <div class="form-group">
                     <label for="end">End Date/Time</label>
-                    <input type="text" class="form-control" name="end" placeholder="End date & time">
+                    <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
                 </div>
                 <div class="form-group">
                     <label for="allDay">All Day</label><br>
@@ -61,15 +57,23 @@
                 </div>
                 <div class="form-group">
                     <label for="color">Background Color</label>
-                    <input type="color" class="form-control" id="color">
+                    <!-- <select name="color" id="color">
+                        <option><input type="color" class="form-control" value="#00ff00" name="color" id="color">BED</option>
+                        <option><input type="color" class="form-control" value="#ffff00" name="color" id="color">JHS</option>
+                        <option><input type="color" class="form-control" value="#0000ff" name="color" id="color">SHS</option>
+                        <option><input type="color" class="form-control" value="#8000ff" name="color" id="color">COLLEGE</option>
+                        <option><input type="color" class="form-control" value="#ff00bf" name="color" id="color">EMPLOYEE</option>
+                    </select> -->
+                    <input type="color" class="form-control" name="color" id="color">
                 </div>
                 <div class="form-group">
                     <label for="textColor">Text Color</label>
-                    <input type="color" class="form-control" id="textColor">
+                    <input type="color" class="form-control" value="#000000" name="textColor" id="textColor">
                 </div>
                 <input type="hidden" name="event_id" id="eventId">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Add Event</button>
+                    <button type="submit" id="action-btn" class="btn btn-success">Add Event</button>
+                    <!-- <a href="" class="btn btn-danger" id="deleteEvent" onclick="return confirm('Are you sure to delete event?')">Delete Event</a> -->
                 </div>
             </form>
         </div>
@@ -77,7 +81,7 @@
     <!-- day click dialog end -->
 
     <!-- edit/delete dialog -->
-    <div id="edit-delete-dialog" style="display:none;">
+    <!-- <div id="edit-delete-dialog" style="display:none;">
         <div id="dialog-body">
             <form action="{{route('eventStore')}}" id="dayClick" method="post">
                 @csrf
@@ -113,7 +117,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
     <!-- edit/delete dialog end -->
 
 <!-- Jquery -->
@@ -154,10 +158,10 @@ jQuery(document).ready(function($){
                 show:{effect:'clip', duration:300},
                 hide:{effect:'clip', duration:250}
             })
-        });
+        })
         var calendar = $('#calendar').fullCalendar({ //display page, show all the events
             selectable: true,
-            selectHelper: true,
+            // aspectRatio: 2,
             height: 650,
             showNonCurrentDates: false,
             editable: false,
@@ -171,6 +175,7 @@ jQuery(document).ready(function($){
             events:"{{route('allEvent')}}", //show all the events
             dayClick:function(date,event,view){ //create event in one click
                 $('#start').val(convert(date));
+                $('#action-btn').html('Add Event');
                 $('#dialog').dialog({
                     title:'Add Event',
                     width:600,
@@ -183,6 +188,7 @@ jQuery(document).ready(function($){
             select:function(start,end){ //dragging to create event
                 $('#start').val(convert(start));
                 $('#end').val(convert(end));
+                $('#action-btn').html('Add Event');
                 $('#dialog').dialog({
                     title:'Add Event',
                     width:600,
@@ -199,34 +205,30 @@ jQuery(document).ready(function($){
                 $('#color').val(event.color);
                 $('#testColor').val(event.testColor);
                 $('#eventId').val(event.id);
-                $('#update').html('Update Event');
                 var url="{{url('deleteEvent')}}";
-                $('#deleteEvent').attr('href',url+'/'+event.id);
+                $('#deleteEvent').attr('href',url+'/'+event.id)
+                $('#action-btn').html('Update Event');
+                // if(event.id){
+                    $('#dialog').dialog({
+                        title:'Edit Event',
+                        width:600,
+                        height:600,
+                        modal:true,
+                        show:{effect:'clip', duration:300},
+                        hide:{effect:'clip', duration:250}
+                    })
+                // }
                 
-                $('#edit-delete-dialog').dialog({
-                    title:'Edit Event',
-                    width:600,
-                    height:600,
-                    modal:true,
-                    show:{effect:'clip', duration:300},
-                    hide:{effect:'clip', duration:250}
-<<<<<<< HEAD
-                });
             },
             eventMouseover: function(event, jsEvent, view) {
                 $(this).append(
-                    '<div class="edit-delete-btn"><button class="btn"><i class="fas fa-pencil-alt"></i></button><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?"><i class="fas fa-trash"></i></a></div>'
+                    '<div class="edit-delete-btn"><a href="" class="btn" id="deleteEvent2" onclick="return confirm("Are you sure to delete event?"><i class="fas fa-trash"></i></a></div>'
                 );
             },
             eventMouseout: function(event, jsEvent) {
                 $('.edit-delete-btn').remove();
-            },
-        });
-=======
-                })
             }
         })
->>>>>>> parent of cb08b36 (Update appointments.blade.php)
     })
 });
 </script>
