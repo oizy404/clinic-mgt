@@ -8,6 +8,7 @@
 @include('shared.admin-header')
 @include('shared.doctor-sidenav')
 
+<<<<<<< HEAD
 <style>
     .edit-delete-btn{
         background-color: gray;
@@ -21,6 +22,8 @@
         font-size: 15px;
     }
 </style>
+=======
+>>>>>>> parent of cb08b36 (Update appointments.blade.php)
 <!-- Jquery Ui Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <div class="appointment-content">
@@ -207,6 +210,7 @@ jQuery(document).ready(function($){
                     modal:true,
                     show:{effect:'clip', duration:300},
                     hide:{effect:'clip', duration:250}
+<<<<<<< HEAD
                 });
             },
             eventMouseover: function(event, jsEvent, view) {
@@ -218,6 +222,11 @@ jQuery(document).ready(function($){
                 $('.edit-delete-btn').remove();
             },
         });
+=======
+                })
+            }
+        })
+>>>>>>> parent of cb08b36 (Update appointments.blade.php)
     })
 });
 </script>
