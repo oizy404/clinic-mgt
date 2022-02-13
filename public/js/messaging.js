@@ -5,7 +5,4 @@ $(document).ready(function(){
     $("#btn-compose-cancel").click(function(){
         $(".message-patient").fadeOut(500);
     });
-    $("#btn-compose-msg").click(function(){
-        $(".message-patient").fadeOut(500);
-    });
 });

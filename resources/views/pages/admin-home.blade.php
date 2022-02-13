@@ -12,16 +12,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" integrity="sha512-HCG6Vbdg4S+6MkKlMJAm5EHJDeTZskUdUMTb8zNcUKoYNDteUQ0Zig30fvD9IXnRv7Y0X4/grKCnNoQ21nF2Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   
 <div class="row">
         {{session('rank')}}
-    <div class="col-md-8 offset-md-2 mt-5">
+    <div class="col-md-3 offset-md-2 mt-5">
         {!! $med_supplies->container() !!}
-
-        {!! $med_supplies->script() !!}
     </div>
-    <div class="col-md-3 mt-5">
+    <div class="col-md-6 mt-5">
+
+    {!! $med_suppliess->container() !!}
     </div>
     <div class="col-md-3 mt-5">
     </div>
         
+
+    {!! $med_supplies->script() !!}
+    {!! $med_suppliess->script() !!}
     </div>
 
 @stop

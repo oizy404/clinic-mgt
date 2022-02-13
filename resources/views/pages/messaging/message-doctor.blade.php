@@ -47,7 +47,7 @@
                         
                     </div>
                     <div class="card-footer">
-                        <form id="Form" action="{{route('compose-doctormsg')}}" method="post">
+                        <form id="Form" action="{{route('compose-doctormsg')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('post')
                             <div class="input-group doctor-compose">
@@ -93,13 +93,27 @@
             .done(function(data){  
                 $.each(data, function(index, value) {
                     if(value.receiver == {{Auth::user()->id}}){
-                        $("#message_box").append(
-                            "<div class='d-flex justify-content-start'><div class='outbox'>"+value.message+"</div></div><br>"
-                        )
+                        if(!value.img_file){
+                            $("#message_box").append(
+                                "<div class='d-flex justify-content-start'><div class='outbox'>"+value.message+"</div></div><br>"
+                            )
+                        }
+                        else{
+                            $("#message_box").append(
+                                "<div class='d-flex justify-content-start'><div class='img-msg'><img src='{{asset('imgfileMessages')}}/"+value.img_file+"' id='image-msg' alt='image msg' style='max-width:150px;'></div></div><br>"
+                            )
+                        }
                     }else if(value.sender == {{Auth::user()->id}}){
-                        $("#message_box").append(
-                            "<div class='d-flex justify-content-end'><div class='outbox bg-primary text-light'>"+value.message+"</div></div><br>"
-                        )
+                        if(!value.img_file){
+                            $("#message_box").append(
+                                "<div class='d-flex justify-content-end'><div class='outbox bg-primary text-light'>"+value.message+"</div></div><br>"
+                            )
+                        }
+                        else{
+                            $("#message_box").append(
+                                "<div class='d-flex justify-content-end'><div class='img-msg'><img src='{{asset('imgfileMessages')}}/"+value.img_file+"' id='image-msg' alt='image msg' style='max-width:150px;'></div></div><br>"
+                            )
+                        }
                     }
                 });
                 window.history.pushState('', 'New Page Title', '/message-doctor/'+id);

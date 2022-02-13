@@ -8,22 +8,38 @@
             <div class="card-body patientmsg_card_body">
                 @foreach($messages as $message)
                     @if(Auth::user()->id == $message->sender)
+                        @if($message->img_file)
+                        <div class="d-flex justify-content-end">
+                            <div class="img-msg">
+                                    <img src="{{asset('imgfileMessages')}}/{{$message->img_file}}" id="image-msg" alt="image msg" style="max-width:150px;">
+                            </div>
+                        </div><br>
+                        @else
                         <div class="d-flex justify-content-end">
                             <div class="outbox">
                                 <p>{{$message->message}}</p>
                             </div>
                         </div><br>
+                        @endif
                     @elseif(Auth::user()->id == $message->receiver)
+                        @if($message->img_file)
+                        <div class="d-flex justify-content-start">
+                            <div class="img-msg">
+                                    <img src="{{asset('imgfileMessages')}}/{{$message->img_file}}" id="image-msg" alt="image msg" style="max-width:150px;">
+                                </div>
+                        </div><br>
+                        @else
                         <div class="d-flex justify-content-start">
                             <div class="inbox">
                                 <p>{{$message->message}}</p>
                             </div>
                         </div><br>  
+                        @endif
                     @endif
                 @endforeach
             </div>
             <div class="card-footer">
-                <form action="{{route('compose-patientmsg')}}" method="post">
+                <form action="{{route('compose-patientmsg')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('post')
                     <div class="input-group patient-compose">

@@ -46,6 +46,15 @@ class MessageController extends Controller
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
+
+        if($request->has('file')){
+
+            $image_file = $request->file('file');
+            $imagefileName = time().'.'.$image_file->extension();
+            $image_file->move(public_path('imgfileMessages'), $imagefileName);
+            $message->img_file = $imagefileName;
+        }
+
         $message->receiver = $request->receiver_id;
         $message->read = 0;
 
@@ -66,9 +75,17 @@ class MessageController extends Controller
         $message = new Message();
         $message->sender = Auth::id();
         $message->message = $request->message;
+
+        if($request->has('file')){
+
+            $image_file = $request->file('file');
+            $imagefileName = time().'.'.$image_file->extension();
+            $image_file->move(public_path('imgfileMessages'), $imagefileName);
+            $message->img_file = $imagefileName;
+        }
+
         $message->read = 1;
         $message->receiver = 2;
-
         $message->save();
 
         return redirect()->back();
