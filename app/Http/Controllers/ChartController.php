@@ -12,14 +12,18 @@ class ChartController extends Controller
 {
     public function medicalSupplyIndex(){
 
-        $quantities = MedicalSupply::orderBy('created_at')->pluck('quantity','created_at');
-        $stocks = MedicalSupply::orderBy('created_at')->pluck('stock','created_at');
+        $quantities = MedicalSupply::orderBy('created_at')->pluck('quantity','med_type_id');
+        $stocks = MedicalSupply::orderBy('created_at')->pluck('stock','med_type_id');
 
         $med_suppliess = new SampleChart;
         $med_suppliess->labels($quantities->keys());
-        $med_suppliess->dataset('Quantity','bar',$quantities->values());
-        $med_suppliess->labels($stocks->keys());
-        $med_suppliess->dataset('Stocks','line',$stocks->values());
+        $med_suppliess->dataset('Quantity','bar',$quantities->values())
+        ->color('rgba(34, 50, 145, 0.7)')
+        ->backgroundColor('rgba(207, 64, 145, 0.6)');
+        // $med_suppliess->labels($stocks->keys());
+        $med_suppliess->dataset('Stocks','line',$stocks->values())
+        ->color('rgba(34, 50, 145, 0.7)')
+        ->backgroundColor('rgba(36, 145, 132, 0.6)');
         
         // Medical Supplies Inventory Chart
         $capsules = MedicalSupply::where('med_type_id',1)->count();

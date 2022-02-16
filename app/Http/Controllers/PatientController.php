@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Imports\DataImportExcel;
 use App\Models\PatientProfile;
-use App\Imports\StudentImport;
 use App\Models\BirthParent;
 use App\Models\Sibling;
 use App\Models\Guardian;
@@ -22,7 +22,7 @@ class PatientController extends Controller
 {
     public function import(Request $request){
 
-        Excel::import(new StudentImport, $request->file);
+        Excel::import(new DataImportExcel, $request->file);
         return back()->with('Records are imported successfully');
     }
 
