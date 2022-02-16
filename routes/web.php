@@ -36,22 +36,15 @@ Route::get('/', function () {
 })->name('front')->middleware('ifLoggedIn');
 
 
-//------------ADMIN---------------------------------------------------------------------
 Route::post("authenticate", [LoginController::class, "login"])->name("login");
-
+//------------ADMIN---------------------------------------------------------------------
 Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
-
-    // Route::get('/admin-home', function () {
-    //     return view('pages.admin-home');
-    // })->name("admin-home");
 
     Route::get('admin-home', [ChartController::class, 'medicalSupplyIndex'])->name("admin-home");
 
 });  
 
 //-------------DOCTOR--------------------------------------------------------------
-Route::post("authenticate", [LoginController::class, "login"])->name("login");
-
 Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     
     Route::get('/appointments', function () {
@@ -73,8 +66,6 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
 });
 
 //--------------SUPERVISOR---------------------------------------------------------
-Route::post("authenticate", [LoginController::class, "login"])->name("login");
-
 Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
 
     Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
@@ -88,7 +79,7 @@ Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () 
     Route::post('update/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
 
 });
-
+//--------------PATIENT---------------------------------------------------------
 Route::post("authenticate-patient", [LoginController::class, "loginPatient"])->name("loginPatient");
 
 Route::middleware(['ifLoggedOut', 'managePatientAccess'])->group(function () {

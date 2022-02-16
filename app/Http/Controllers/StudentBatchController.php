@@ -16,7 +16,7 @@ class StudentBatchController extends Controller
     public function import(Request $request){
 
         Excel::import(new StudentImport, $request->file);
-        echo "<script> alert('Record are fucking imported successfully'); </script>";
+        echo "<script> alert('Records are imported successfully'); </script>";
         return view('pages.student-health-data');
     }
 }

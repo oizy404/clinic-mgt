@@ -23,7 +23,7 @@ class PatientController extends Controller
     public function import(Request $request){
 
         Excel::import(new StudentImport, $request->file);
-        return back()->with('Record are fucking imported successfully');
+        return back()->with('Records are imported successfully');
     }
 
     //STUDENTS PERSONAL INFORMATION

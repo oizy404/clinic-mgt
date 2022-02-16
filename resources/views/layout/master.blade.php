@@ -28,9 +28,17 @@
     <link rel="stylesheet" href="{{asset('css/consultation-record.css')}}">
     <link rel="stylesheet" href="{{asset('css/messaging.css')}}">
     <!-- Fullcalendar css -->
-    <link rel="stylesheet" href="{{asset('css/fullcalendar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fullcalendar.css')}}">    
     
-    
+    <style>
+    html,body{
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    </style>
 </head>
 <body>
 

@@ -12,10 +12,10 @@ class Sibling extends Model
     protected $table ="tbl_siblings";
 
     protected $fillable = [
-        'complete_name','age','sex'
+        'complete_name','age','sex',
     ];
 
     public function patient(){
-        return $this->belongsTo(PatientProfile::class, "patient_id");
+        return $this->belongsTo(PatientProfile::class, 'patient_id');
     }
 }

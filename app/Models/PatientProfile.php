@@ -32,7 +32,7 @@ class PatientProfile extends Model
         return $this->hasOne(Guardian::class);
     }
     public function sibling(){
-        return $this->hasOne(Sibling::class);
+        return $this->hasOne(Sibling::class, 'patient_id');
     }
     public function familyDesease(){
         return $this->hasMany(FamilyDesease::class);
@@ -45,6 +45,10 @@ class PatientProfile extends Model
     }
     public function historyIllness(){
         return $this->hasMany(HistoryIllness::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, "school_id");
     }
     // public function tbl_remark(){
     //     return $this->hasOne(Remark::class);
