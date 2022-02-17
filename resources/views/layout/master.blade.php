@@ -14,8 +14,8 @@
 
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('css/admin-home.css')}}"> -->
-    <link rel="stylesheet" href="{{asset('css/admin-header.css')}}">
-    <link rel="stylesheet" href="{{asset('css/admin-sidenav.css')}}">
+    <link rel="stylesheet" href="{{asset('css/header.css')}}">
+    <link rel="stylesheet" href="{{asset('css/sidenav.css')}}">
     <link rel="stylesheet" href="{{asset('css/health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/add-student-health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/add-personel-health-data.css')}}">

@@ -2,48 +2,42 @@
   <div class="sidebar_menu">
     <div class="inner__sidebar_menu">
       <ul>
+
         <li>
-          <a href="#">
-            <span class="icon">
-              <i class="fas fa-border-all"></i></span>
+          <a href="/admin-home" class="active">
+            <span class="icon"><i class="fas fa-border-all"></i></span>
             <span class="list">Dashboard</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#" class="active">
-            <span class="icon"><i class="fas fa-chart-pie"></i></span>
-            <span class="list">Charts</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-address-book"></i></span>
-            <span class="list">Contact</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-address-card"></i></span>
-            <span class="list">About</span>
-          </a>
-        </li>
-        <li>
-
-          <a href="#">
-            <span class="icon"><i class="fab fa-blogger"></i></span>
-            <span class="list">Blogs</span>
           </a>
         </li>
         
         <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-map-marked-alt"></i></span>
-            <span class="list">Maps</span>
+          <a href="/student-health-data">
+            <span class="icon"><i class="fas fa-book-medical"></i></span>
+            <span class="list">Health Data</span>
           </a>
         </li>
+
+        <li>
+          <a href="student-consultation-record">
+            <span class="icon"><i class="fas fa-file-medical"></i></span>
+            <span class="list">Consultation Record</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/medical-supplies-inventory">
+            <span class="icon"><i class="fas fa-briefcase-medical"></i></span>
+            <span class="list">Medical Supplies</span>
+          </a>
+        </li>
+        <li>
+
+          <a href="/logout">
+            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+            <span class="list">Log Out</span>
+          </a>
+        </li>
+        
       </ul>
       <div class="hamburger">
         <div class="inner_hamburger">

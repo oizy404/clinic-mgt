@@ -12,113 +12,76 @@
         background-color: gray;
         position: absolute;
         max-width: 30%;
-        /* text-align: center; */
     }
     .edit-delete-btn .btn{
-        /* margin-left: 10px;
-        margin-right: 10px; */
         font-size: 15px;
     }
 </style>
+
 <!-- Jquery Ui Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-    <div class="appointment-content">
-        <div class="col-md-9 offset-md-2">
-            <h1>APPOINTMENTS BOOKING</h1>
-            <div class="appointment-container">
-                <div class="add-event">
-                    <button class="btn btn-danger" id="addEventBtn">Add Event</button>
+
+    {{session('rank')}}
+        <div class="appointment-content main-container">
+            <div class="col-md-10 offset-md-1">
+                <h1>APPOINTMENTS BOOKING</h1>
+                <div class="appointment-container">
+                    <div class="add-event">
+                        <button class="btn btn-danger" id="addEventBtn">Add Event</button>
+                    </div>
+                    <div id="calendar"></div>
                 </div>
-                <div id="calendar"></div>
             </div>
         </div>
-    </div>
-    <!-- day click dialog -->
-    <div id="dialog" style="display:none;">
-        <div id="dialog-body">
-            <form action="{{route('eventStore')}}" id="dayClick" method="post">
-                @csrf
-                <div class="form-group">
-                    <label for="title">Event Title</label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
-                </div>
-                <div class="form-group">
-                    <label for="start">Start Date/Time</label>
-                    <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
-                </div>
-                <div class="form-group">
-                    <label for="end">End Date/Time</label>
-                    <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
-                </div>
-                <div class="form-group">
-                    <label for="allDay">All Day</label><br>
-                    <input type="checkbox" value="1" name="allDay" checked>All Day<br>   
-                    <input type="checkbox" value="0" name="Partial">Partial<br>
-                </div>
-                <div class="form-group">
-                    <label for="color">Background Color</label>
-                    <!-- <select name="color" id="color">
-                        <option><input type="color" class="form-control" value="#00ff00" name="color" id="color">BED</option>
-                        <option><input type="color" class="form-control" value="#ffff00" name="color" id="color">JHS</option>
-                        <option><input type="color" class="form-control" value="#0000ff" name="color" id="color">SHS</option>
-                        <option><input type="color" class="form-control" value="#8000ff" name="color" id="color">COLLEGE</option>
-                        <option><input type="color" class="form-control" value="#ff00bf" name="color" id="color">EMPLOYEE</option>
-                    </select> -->
-                    <input type="color" class="form-control" name="color" id="color">
-                </div>
-                <div class="form-group">
-                    <label for="textColor">Text Color</label>
-                    <input type="color" class="form-control" value="#000000" name="textColor" id="textColor">
-                </div>
-                <input type="hidden" name="event_id" id="eventId">
-                <div class="form-group">
-                    <button type="submit" id="action-btn" class="btn btn-success">Add Event</button>
-                    <!-- <a href="" class="btn btn-danger" id="deleteEvent" onclick="return confirm('Are you sure to delete event?')">Delete Event</a> -->
-                </div>
-            </form>
+        <!-- day click dialog -->
+        <div id="dialog" style="display:none;">
+            <div id="dialog-body">
+                <form action="{{route('eventStore')}}" id="dayClick" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="title">Event Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="start">Start Date/Time</label>
+                        <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
+                    </div>
+                    <div class="form-group">
+                        <label for="end">End Date/Time</label>
+                        <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
+                    </div>
+                    <div class="form-group">
+                        <label for="allDay">All Day</label><br>
+                        <input type="checkbox" value="1" name="allDay" checked>All Day<br>   
+                        <input type="checkbox" value="0" name="Partial">Partial<br>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Background Color</label>
+                        <!-- <select name="color" id="color">
+                            <option><input type="color" class="form-control" value="#00ff00" name="color" id="color">BED</option>
+                            <option><input type="color" class="form-control" value="#ffff00" name="color" id="color">JHS</option>
+                            <option><input type="color" class="form-control" value="#0000ff" name="color" id="color">SHS</option>
+                            <option><input type="color" class="form-control" value="#8000ff" name="color" id="color">COLLEGE</option>
+                            <option><input type="color" class="form-control" value="#ff00bf" name="color" id="color">EMPLOYEE</option>
+                        </select> -->
+                        <input type="color" class="form-control" name="color" id="color">
+                    </div>
+                    <div class="form-group">
+                        <label for="textColor">Text Color</label>
+                        <input type="color" class="form-control" value="#000000" name="textColor" id="textColor">
+                    </div>
+                    <input type="hidden" name="event_id" id="eventId">
+                    <div class="form-group">
+                        <button type="submit" id="action-btn" class="btn btn-success">Add Event</button>
+                        <!-- <a href="" class="btn btn-danger" id="deleteEvent" onclick="return confirm('Are you sure to delete event?')">Delete Event</a> -->
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- day click dialog end -->
+        <!-- day click dialog end -->
 
-    <!-- edit/delete dialog -->
-    <!-- <div id="edit-delete-dialog" style="display:none;">
-        <div id="dialog-body">
-            <form action="{{route('eventStore')}}" id="dayClick" method="post">
-                @csrf
-                <div class="form-group">
-                    <label for="title">Event Title</label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
-                </div>
-                <div class="form-group">
-                    <label for="start">Start Date/Time</label>
-                    <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
-                </div>
-                <div class="form-group">
-                    <label for="end">End Date/Time</label>
-                    <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
-                </div>
-                <div class="form-group">
-                    <label for="allDay">All Day</label><br>
-                    <input type="checkbox" value="1" name="allDay" checked>All Day<br>   
-                    <input type="checkbox" value="0" name="Partial">Partial<br>
-                </div>
-                <div class="form-group">
-                    <label for="color">Background Color</label>
-                    <input type="color" class="form-control" name="color" id="color">
-                </div>
-                <div class="form-group">
-                    <label for="textColor">Text Color</label>
-                    <input type="color" class="form-control" name="textColor" id="textColor">
-                </div>
-                <input type="hidden" name="event_id" id="eventId">
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">Update Event</button>
-                    <a href="" class="btn btn-danger" id="deleteEvent" onclick="return confirm('Are you sure to delete event?')">Delete Event</a>
-                </div>
-            </form>
-        </div>
-    </div> -->
-    <!-- edit/delete dialog end -->
+    </div> <!-- closing div connect from admin-sidenav -->
+</div> <!-- closing div connect from admin-header -->
 
 <!-- Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -130,7 +93,11 @@
 <script src="{{asset('js/fullcalendar.js')}}"></script>
 
 <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
-
+<script>
+      $(".hamburger").click(function(){
+        $(".wrapper").toggleClass("active")
+      });
+  </script>
 <script>
 jQuery(document).ready(function($){
     $(document).ready(function(){

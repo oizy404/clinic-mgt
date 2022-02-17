@@ -1,21 +1,47 @@
-<input type="checkbox" id="check">
-<header>
-      <label for="check">
-        <i class="fas fa-bars" id="sidebar_btn"></i>
-      </label>
-</header>
-  <!--sidebar start-->
-  <div class="sidebar">
-    <a href="/appointments" id="sidebarmenu"><i class="fas fa-clinic-medical"></i><span>Dashboard</span></a><br>
+<div class="main_body">  
+  <div class="sidebar_menu">
+    <div class="inner__sidebar_menu">
+      <ul>
 
-    <a href="/student-consultation-record" id="sidebarmenu"><i class="fas fa-file-medical"></i><span>Consultation Record</span></a><br>
+        <li>
+          <a href="/appointments" class="active">
+            <span class="icon"><i class="fas fa-border-all"></i></span>
+            <span class="list">Dashboard</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="student-consultation-record">
+            <span class="icon"><i class="fas fa-file-medical"></i></span>
+            <span class="list">Consultation Record</span>
+          </a>
+        </li>
 
-    <a href="/message-doctor" id="sidebarmenu"><i class="fas fa-envelope"></i><span>Message</span></a><br>
+        <li>
+          <a href="/message-doctor">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <span class="list">Message</span>
+          </a>
+        </li>
+        <li>
 
-    <a href="/logout" id="sidebarmenu"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a><br>
-  </div>
-  <!--sidebar end-->
-   
+          <a href="/logout">
+            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+            <span class="list">Log Out</span>
+          </a>
+        </li>
+        
+      </ul>
+      <div class="hamburger">
+        <div class="inner_hamburger">
+            <span class="arrow">
+                <i class="fas fa-long-arrow-alt-left"></i>
+                <i class="fas fa-long-arrow-alt-right"></i>
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>   
     
     
 

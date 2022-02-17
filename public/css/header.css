@@ -6,6 +6,7 @@
     top: 0;
     background-color: #FFFFFF;
     border-bottom: 0.2px solid rgb(187, 187, 187);
+    z-index: 3;
 }
 .wrapper a{
   text-decoration: none;
@@ -15,7 +16,7 @@
 }
 
 .wrapper .top_navbar .logo{
-    width: 230px;
+    width: 240px;
     height: 100%;
     background: #007bff;
 }
