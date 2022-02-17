@@ -1,0 +1,63 @@
+  .wrapper .top_navbar{
+      width: 100%;
+      height: 65px;
+      display: flex;
+      position: fixed;
+      top: 0;
+      background-color: #FFFFFF;
+      border-bottom: 0.2px solid rgb(187, 187, 187);
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  .wrapper .top_navbar .logo{
+      width: 250px;
+      height: 100%;
+      background: #3421C0;
+      border-bottom: 1px solid #22119d;
+  }
+  
+  .wrapper .top_navbar .logo a{
+      display: block;
+      text-align: center;
+      font-family: 'Montserrat Subrayada', sans-serif;
+        font-size: 20px;
+        color: #fff;
+        padding: 20px 0;
+  }
+  
+  .wrapper .top_navbar .top_menu{
+      width: calc(100% - 250px);
+      height: 100%;
+      background: #fff;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .wrapper .top_navbar .top_menu .home_link a{
+      display: block;
+      background: #3421C0;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 3px;
+  }
+  
+  .wrapper .top_navbar .top_menu .home_link a:hover,
+  .wrapper .top_navbar .right_info .icon_wrap:hover {
+      background: #5343c7;
+  }
+  
+  .wrapper .top_navbar .right_info{
+      display: flex;
+  }
+  
+  .wrapper .top_navbar .right_info .icon_wrap{
+      padding: 8px 15px;
+      border-radius: 3px;
+      background: #3421C0;
+      color: #fff;
+      margin: 0 5px;
+      cursor: pointer;
+  }

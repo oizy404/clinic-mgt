@@ -29,7 +29,10 @@ use App\Model\Message;
 |
 */
 
-Route::get('/test', [test::class, "test"]);
+// Route::get('/test', [test::class, "test"]);
+Route::get('/loginPatient', function () {
+    return view('pages.loginPatient');
+})->name("loginPatient");
 
 Route::get('/', function () {
     return view('pages.front');
