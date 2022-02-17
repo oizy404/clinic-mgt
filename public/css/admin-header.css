@@ -1,6 +1,7 @@
 .admin-navbar{
     z-index: 5;
-    background-color: rgba(var(--d87,255,255,255),1);
+    /* background-color: rgba(var(--d87,255,255,255),1); */
+    background-color: #FFFFFF;
     border-bottom: 0.2px solid rgb(187, 187, 187);
     overflow: hidden;
     position: fixed;

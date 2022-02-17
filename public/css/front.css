@@ -9,16 +9,22 @@
     position: relative;
     align-items: center;
     padding: 20px 25px;
-    width: 400px;
+    width: 350px;
     background: #ffff; 
     border-radius: 4px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3)
+}
+#acdlogo{
+    min-width: 10%;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 10px;
 }
 .switch{
     position: absolute;
     /* display: flex; */
     width: 85%;
-    border-bottom: 1px solid #00d5fc;
+    border-bottom: 1px solid #007bff;
 }
 .switch.active{
     border-bottom: 1px solid #046af6;
@@ -27,36 +33,38 @@
     content: '';
     height: 6px;
     width: 60px;
-    background: #00d5fc;
+    background: #007bff;
     border-radius: 60px 60px 0 0;
     position: absolute;
     bottom: 0;
-    left: 35px;
+    left: 30px;
     transition: 0.3s ease;
 }
 .switch.active:after{
-    left: 260px;
+    left: 230px;
     width: 60px;
     background: #046af6 ;
 }
 .loginn{
     padding: 5px 10px;
-    margin-bottom: 10px;
-    background: linear-gradient(45deg, #00d5fc, #046af6);
+    margin-bottom: 8px;
+    background: #007bff;
     border-radius: 50px;
     float: left;
     /* margin-left: 4px; */
+    font-size: 13px;
     letter-spacing:1px;
     cursor: pointer;
     transition: 0.3s ease;
 }
 .signupp{
     padding: 5px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     /* background: linear-gradient(45deg, #0326f9, #01fcf9); */
     border-radius: 50px;
     float: right;
     /* margin-left: 4px; */
+    font-size: 13px;
     letter-spacing:1px;
     cursor: pointer;
     transition: 0.3s ease;
@@ -92,7 +100,7 @@ label{
 }
 .element input{
     width: 80%;
-    height: 32px;
+    height: 30px;
     border-radius: 4px;
     margin-bottom: 20px;
     /* background: #2a2a2a; */
@@ -103,19 +111,20 @@ label{
 }
 input::placeholder{
     color: #2a2a2a;
-    font-size: 15px;
+    font-size: 13px;
 }
 .element span{
     position: absolute;
-    left: 50px;
-    top: 10px;
+    left: 45px;
+    top: 8px;
     font-size: 15px;
 }
 #btnn1{
     padding: 5px 25px;
-    background: linear-gradient(45deg, #0326f9, #01fcf9);
+    width: 80%;
+    background: #007bff;
     border-radius: 50px;
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
     border: none;
     margin-top: 3px;
@@ -126,9 +135,10 @@ input::placeholder{
 }
 #btnn2{
     padding: 5px 25px;
-    background: linear-gradient(45deg, #0326f9, #01fcf9);
+    width: 80%;
+    background: #007bff;
     border-radius: 50px;
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
     border: none;
     margin-top: 3px;

@@ -25,7 +25,7 @@
     <div class="appointment-content">
         <div class="col-md-9 offset-md-2">
             <h1>APPOINTMENTS BOOKING</h1>
-            <div class="container">
+            <div class="appointment-container">
                 <div class="add-event">
                     <button class="btn btn-danger" id="addEventBtn">Add Event</button>
                 </div>

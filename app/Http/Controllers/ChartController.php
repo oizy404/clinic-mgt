@@ -16,14 +16,14 @@ class ChartController extends Controller
         $stocks = MedicalSupply::orderBy('created_at')->pluck('stock','med_type_id');
 
         $med_suppliess = new SampleChart;
+        $med_suppliess->height(200); 
         $med_suppliess->labels($quantities->keys());
         $med_suppliess->dataset('Quantity','bar',$quantities->values())
-        ->color('rgba(34, 50, 145, 0.7)')
-        ->backgroundColor('rgba(207, 64, 145, 0.6)');
-        // $med_suppliess->labels($stocks->keys());
+            ->color('rgba(34, 50, 145, 0.7)')
+            ->backgroundColor('rgba(207, 64, 145, 0.6)');
         $med_suppliess->dataset('Stocks','line',$stocks->values())
-        ->color('rgba(34, 50, 145, 0.7)')
-        ->backgroundColor('rgba(36, 145, 132, 0.6)');
+            ->color('rgba(34, 50, 145, 0.7)')
+            ->backgroundColor('rgba(36, 145, 132, 0.6)');
         
         // Medical Supplies Inventory Chart
         $capsules = MedicalSupply::where('med_type_id',1)->count();
@@ -38,6 +38,7 @@ class ChartController extends Controller
 
         
         $med_supplies = new SampleChart;
+        $med_supplies->height(200);
         $med_supplies->labels([
             'Capsules','Cream',
             'Drops','Implant or Patches',
@@ -67,7 +68,7 @@ class ChartController extends Controller
             ],
         ]);
         $med_supplies->displayAxes(false)
-            ->displayLegend(true);
+            ->displayLegend(false);
             
         // Medical Supplies Inventory Chart end
 
