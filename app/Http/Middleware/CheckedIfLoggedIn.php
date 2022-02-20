@@ -26,10 +26,10 @@ class CheckedIfLoggedIn
             return redirect()->route("appointments");
         }
         else if(Auth::check() && $rank == "supervisor"){
-            return redirect()->route("medical-supplies-inventory");
+            return redirect()->route("student-health-data");
         }
         else if(Auth::check() && $rank == "patient"){
-            return redirect()->route("student-health-data");
+            return redirect()->route("patient-dashboard");
         }
 
         return $next($request);

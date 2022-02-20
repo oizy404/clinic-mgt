@@ -19,10 +19,10 @@ class ManageAdminAccess
         $rank = $request->session()->get('rank');
 
         if($rank == "doctor"){
-            return redirect()->route("students-consultation-record");
+            return redirect()->route("appointments");
         }
         else if($rank == "supervisor"){
-            return redirect()->route("medical-supplies-inventory");
+            return redirect()->route("student-health-data");
         }
         else if($rank == "patient"){
             return redirect()->route("patient-dashboard");

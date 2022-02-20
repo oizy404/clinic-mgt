@@ -22,10 +22,10 @@ class ManagePatientAccess
             return redirect()->route("admin-home");
         }
         else if($rank == "doctor"){
-            return redirect()->route("student-consultation-record");
+            return redirect()->route("appointments");
         }
         else if($rank == "supervisor"){
-            return redirect()->route("medical-supplies-inventory");
+            return redirect()->route("student-health-data");
         }
         return $next($request);
     }
