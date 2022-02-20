@@ -1,4 +1,4 @@
-.add-student-health-data{
+/* .add-student-health-data{
     padding: 0px;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -10,16 +10,18 @@
     margin-right: auto;
     margin-left: auto;
     overflow-y: scroll;
-}
+} */
 .panel-heading{
     padding: 20px 20px 10px 20px;
     background-color: rgb(245 245 245);
     text-align: center;
+    width: 80%;
 }
 div #create-student-health-data{
     margin-top: -5px;
     padding: 10px 20px 20px 20px;
     background-color: rgb(245 245 245);
+    width: 80%;
 }
 #create-student-health-data p{
     margin-bottom: 0px;

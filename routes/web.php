@@ -72,6 +72,9 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
 Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
 
     Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
+    Route::get('/add-student-health-data', function () {
+        return view('pages.add-student-health-data');
+    })->name("add-student-health-data");
     Route::get('/create-student-health-data', [PatientController::class, "insert"])->name("create-student-health-data");
     Route::post('/student-health-data',[PatientController::class,'import'])->name('student.import');
 

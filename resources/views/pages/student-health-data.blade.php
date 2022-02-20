@@ -5,6 +5,26 @@
 @stop
 
 @section('content')
+<style>
+    .add-data{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:40px; 
+        right:40px;
+        background-color: #0080ff;
+        color: #ffffff;
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;
+        
+    }
+
+    .add-data i{
+        margin-top:22px;
+    }
+</style>
+
 @include('shared.admin-header')
 @include('shared.supervisor-sidenav')
 
@@ -58,19 +78,22 @@
                     </table>
                 </div>  
             </div>
+
+
         </div>
 
-    
+
+        <a href="{{route('add-student-health-data')}}" class="add-data">
+        <i class="fas fa-plus"></i>
+        </a>
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
-
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script>
       $(".hamburger").click(function(){
         $(".wrapper").toggleClass("active")
       });
+      
   </script>
-@include('pages.add-student-health-data')
-@include('pages.batch-student-health-data')
 @stop
 

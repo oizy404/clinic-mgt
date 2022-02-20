@@ -38,6 +38,10 @@ class PatientController extends Controller
                                                                 "vaccines", $vaccines));
     }
 
+    public function index2(){
+        return view("pages.add-student-health-data");
+    }
+
     public function insert(Request $request){
 
         // $tbl_student = Student::find(41);

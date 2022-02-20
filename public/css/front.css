@@ -87,7 +87,7 @@
     margin: auto;
     width: 100%;
 }
-label{
+.outer label{
     display: block;
     margin-bottom: 2px;
     padding: 5px 10px;

@@ -13,7 +13,7 @@
         <li>
           <a href="#">
             <span class="icon"><i class="fas fa-user-plus"></i></span>
-            <span class="list">Create Patient Account</span>
+            <span class="list">Create Account</span>
           </a>
         </li>
 
