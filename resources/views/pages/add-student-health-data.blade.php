@@ -9,84 +9,85 @@
 @include('shared.supervisor-sidenav')
 
         <div class="add-student-health-data main-container">
-            <div class="offset-md-1 role-container"  style="display: none;">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="role">Patient Role</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option selected>-- Select Patient Role --</option>
-                            <option value="employee">Employee</option>
-                            <option value="student">Student</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="role">Grade</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option selected>-- Select Grade --</option>
-                            <option value="Elementary">Elementary</option>
-                            <option value="Junior High School">Junior High School</option>
-                            <option value="Senior High School">Senior High School</option>
-                            <option value="College">College</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="role">Employee hchs</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option selected>-- Select Employee --</option>
-                            <option value="ntp">Non-Teaching Personnel</option>
-                            <option value="tp">Teaching Personnel</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="role">Non-Teaching Personnel</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option selected>-- Select NTP --</option>
-                            <option value="ma">M.A</option>
-                            <option value="admin">Admin</option>
-                            <option value="supervisor">Supervisor</option>
-                            <option value="faculty">Faculty</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="role">Teaching Personnel</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                            <option selected>-- Select Department --</option>
-                            <option value="GHS">GHS</option>
-                            <option value="JHS">JHS</option>
-                            <option value="SHS">SHS</option>
-                            <option value="COLLEGE">COLLEGE</option>
-                            <option value="MWSP">MWSP</option>
-                            <option value="APCSM">APCSM</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
             <div class="offset-md-1 panel-heading mt-3 rounded">
                 <div class="col-md-1">
-                    <a href="#" id="btn-cancel" style="float:left; color: red;"><i class="fas fa-times-circle"></i></a>
+                    <!-- <a href="#" id="btn-cancel" style="float:left; color: red;"><i class="fas fa-times-circle"></i></a> -->
                 </div>
-                <div class="col-md-3 offset-md-9 p-head">
+                <div class="col-md-4 offset-md-8 p-head">
                     <h4 class="mb-0">HEALTH DATA SHEET</h4>
                 </div>
             </div>
             <div class="offset-md-1 rounded" id="create-student-health-data">
                 <form action="{{route('create-student-health-data')}}">
+
+                    <div class="offset-md-1 role-container"  style="display: none;">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="role">Patient Role</label>
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>-- Select Patient Role --</option>
+                                    <option value="employee">Employee</option>
+                                    <option value="student">Student</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="role">Grade</label>
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>-- Select Grade --</option>
+                                    <option value="Elementary">Elementary</option>
+                                    <option value="Junior High School">Junior High School</option>
+                                    <option value="Senior High School">Senior High School</option>
+                                    <option value="College">College</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="role">Employee</label>
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>-- Select --</option>
+                                    <option value="ntp">Non-Teaching Personnel</option>
+                                    <option value="tp">Teaching Personnel</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="role">Non-Teaching Personnel</label>
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>-- Select --</option>
+                                    <option value="ma">M.A</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="supervisor">Supervisor</option>
+                                    <option value="faculty">Faculty</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="role">Teaching Personnel</label>
+                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option selected>-- Select Department --</option>
+                                    <option value="GHS">GHS</option>
+                                    <option value="JHS">JHS</option>
+                                    <option value="SHS">SHS</option>
+                                    <option value="COLLEGE">COLLEGE</option>
+                                    <option value="MWSP">MWSP</option>
+                                    <option value="APCSM">APCSM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false"> -->
                         <!-- <div class="carousel-inner"> -->
@@ -163,7 +164,7 @@
                                                 <input type="text" class="form-control" name="religion" oninput="this.value = this.value.toUpperCase()">
                                             </div>
                                         </div>
-                                        <div class="col">
+                                        <div class="col mb-3">
                                             <div class="form-group input-group-sm">
                                                 <label for="nationality" class=""><b>Nationality</b></label>
                                                 <input type="text" class="form-control" name="nationality" oninput="this.value = this.value.toUpperCase()">
@@ -174,10 +175,11 @@
                                 <!-- end of Student's Persnal Info -->
 
                                 <!-- Start of Family data -->
+                                <h5>FAMILY DATA</h5>
                                 <div class="form-group" id="students-family-data" style="background-color: white;">
                                     <!-- start of Father's info -->
                                     <!-- <h5>FAMILY DATA</h5> -->
-                                    <div class="row mt-5">
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group input-group-sm">
                                                 <label for="parentsComplete_name" class=""><b>Father's Complete Name</b></label>
@@ -249,7 +251,7 @@
                                     </div>
                                     <!-- end of mother's info -->
                                     <!-- start of guardian's info -->
-                                    <div class="row mt-5">
+                                    <div class="row mt-2">
                                         <div class="col-md-9">
                                             <div class="form-group input-group-sm">
                                             <label for="GName" class=""><b>Guardian's Name (<i>If not living with parent/s</i> )</b></label>
@@ -258,7 +260,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group input-group-sm">
-                                                <label for="GRelationship" class=""><b>Relationship to the Guardian</b></label>
+                                                <label for="GRelationship" class=""><b>Relationship</b></label>
                                                 <input type="text" class="form-control" name="GRelationship" oninput="this.value = this.value.toUpperCase()">
                                             </div>
                                         </div>
@@ -299,7 +301,7 @@
                                     </div>
                                     <!-- end of guardian's info -->
                                     <!-- start siblings info -->
-                                    <div class="row mt-5 wrapper">
+                                    <div class="row mt-2 wrapper">
                                         <div class="row mt-2 input-box">
                                             <div class="col-md-8">
                                                 <div class="form-group input-group-sm">

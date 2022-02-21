@@ -18,7 +18,7 @@
         </li>
 
         <li>
-          <a href="/student-health-data">
+          <a href="/add-student-health-data">
             <span class="icon"><i class="fas fa-book-medical"></i></span>
             <span class="list">Health Data</span>
           </a>

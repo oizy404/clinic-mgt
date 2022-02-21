@@ -11,16 +11,20 @@
     margin-left: auto;
     overflow-y: scroll;
 } */
-.panel-heading{
+.panel-heading{   
+    background-color: rgba(var(--d87,255,255,255),1);
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
     padding: 20px 20px 10px 20px;
-    background-color: rgb(245 245 245);
+    /* background-color: rgb(245 245 245); */
     text-align: center;
     width: 80%;
 }
 div #create-student-health-data{
-    margin-top: -5px;
+    background-color: rgba(var(--d87,255,255,255),1);
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    /* margin-top: -5px; */
     padding: 10px 20px 20px 20px;
-    background-color: rgb(245 245 245);
+    /* background-color: rgb(245 245 245); */
     width: 80%;
 }
 #create-student-health-data p{
