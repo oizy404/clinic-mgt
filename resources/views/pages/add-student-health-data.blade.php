@@ -20,21 +20,23 @@
             <div class="offset-md-1 rounded" id="create-student-health-data">
                 <form action="{{route('create-student-health-data')}}">
 
-                    <div class="offset-md-1 role-container"  style="display: none;">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="role">Patient Role</label>
-                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option selected>-- Select Patient Role --</option>
-                                    <option value="employee">Employee</option>
-                                    <option value="student">Student</option>
-                                </select>
+                    <div class="role-container">
+                        <div class="row">
+                            <div class="col-md-2 column1">
+                                <div class="form-group">
+                                    <label for="role">Patient Role</label>
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="rara">
+                                        <option selected>Select</option>
+                                        <option value="employee" id="role-employee">Employee</option>
+                                        <option value="student" id="role-student">Student</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4" id="column2">   
+
                             </div>
                         </div>
-                        <div class="col-md-4">
-
-                        </div>
-                        <div class="col-md-2">
+                        <!-- <div class="col-md-2">
                             <div class="form-group">
                                 <label for="role">Grade</label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -45,22 +47,22 @@
                                     <option value="College">College</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                        </div> -->
+                        <!-- <div class="col-md-4">
 
-                        </div>
-                        <div class="col-md-2">
+                        </div> -->
+                        <!-- <div class="col-md-2">
                             <div class="form-group">
                                 <label for="role">Employee</label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                                     <option selected>-- Select --</option>
-                                    <option value="ntp">Non-Teaching Personnel</option>
-                                    <option value="tp">Teaching Personnel</option>
+                                    <option value="ntp" id="ntp">Non-Teaching Personnel</option>
+                                    <option value="tp" id="teaching-personnel">Teaching Personnel</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-2">
+                        </div> -->
+                        <!-- <div class="col-md-4"></div> -->
+                        <!-- <div class="col-md-2">
                             <div class="form-group">
                                 <label for="role">Non-Teaching Personnel</label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -71,9 +73,9 @@
                                     <option value="faculty">Faculty</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-2">
+                        </div> -->
+                        <!-- <div class="col-md-4"></div> -->
+                        <!-- <div class="col-md-2">
                             <div class="form-group">
                                 <label for="role">Teaching Personnel</label>
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -86,7 +88,7 @@
                                     <option value="APCSM">APCSM</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false"> -->
@@ -575,9 +577,25 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script>
+    $(document).ready(function(){
       $(".hamburger").click(function(){
         $(".wrapper").toggleClass("active")
       });
-      
+
+    //   var grade = '<div class="form-group">'
+    //                 '<label for="role">Grade</label>'
+    //                     '<select class="form-select form-select-sm" aria-label=".form-select-sm example">'
+    //                         '<option selected>-- Select Grade --</option><option value="Elementary">Elementary</option>'
+    //                         '<option value="Junior High School">Junior High School</option>'
+    //                         '<option value="Senior High School">Senior High School</option>'
+    //                         '<option value="College">College</option>'
+    //                     '</select>'
+    //                 '</div>';
+
+      $('#rara').change(function(){
+        $('#column2').append('<div class="form-group"><label for="role">Grade</label><select class="form-select form-select-sm" aria-label=".form-select-sm example"><option selected>-- Select Grade --</option><option value="Elementary">Elementary</option><option value="Junior High School">Junior High School</option><option value="Senior High School">Senior High School</option><option value="College">College</option></select></div>');
+      });
+
+    });
   </script>
 @stop
