@@ -36,31 +36,6 @@
 
                             </div>
                         </div>
-                        <!-- <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="role">Grade</label>
-                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option selected>-- Select Grade --</option>
-                                    <option value="Elementary">Elementary</option>
-                                    <option value="Junior High School">Junior High School</option>
-                                    <option value="Senior High School">Senior High School</option>
-                                    <option value="College">College</option>
-                                </select>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-md-4">
-
-                        </div> -->
-                        <!-- <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="role">Employee</label>
-                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option selected>-- Select --</option>
-                                    <option value="ntp" id="ntp">Non-Teaching Personnel</option>
-                                    <option value="tp" id="teaching-personnel">Teaching Personnel</option>
-                                </select>
-                            </div>
-                        </div> -->
                         <!-- <div class="col-md-4"></div> -->
                         <!-- <div class="col-md-2">
                             <div class="form-group">
@@ -593,7 +568,30 @@
     //                 '</div>';
 
       $('#rara').change(function(){
-        $('#column2').append('<div class="form-group"><label for="role">Grade</label><select class="form-select form-select-sm" aria-label=".form-select-sm example"><option selected>-- Select Grade --</option><option value="Elementary">Elementary</option><option value="Junior High School">Junior High School</option><option value="Senior High School">Senior High School</option><option value="College">College</option></select></div>');
+        if($(this).val() == "student"){
+            $('#column2').append(
+                '<div class="form-group">'+
+                    '<label for="role">Grade</label>'+
+                    '<select class="form-select form-select-sm" aria-label=".form-select-sm example">'+
+                        '<option selected>-- Select Grade --</option>'+
+                        '<option value="Elementary">Elementary</option>'+
+                        '<option value="Junior High School">Junior High School</option>'+
+                        '<option value="Senior High School">Senior High School</option>'+
+                        '<option value="College">College</option>'+
+                    '</select>'+
+                '</div>');
+        }
+        else if($(this).val() == "employee"){
+            $('#column2').append(
+                '<div class="form-group">'+
+                '<label for="role">Employee</label>'+
+                '<select class="form-select form-select-sm" aria-label=".form-select-sm example">'+
+                    '<option selected>-- Select --</option>'+
+                    '<option value="ntp" id="ntp">Non-Teaching Personnel</option>'+
+                    '<option value="tp" id="teaching-personnel">Teaching Personnel</option>'+
+                '</select>'+
+            '</div>');
+        }
       });
 
     });
