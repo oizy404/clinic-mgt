@@ -61,6 +61,10 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     Route::get('/student-consultation-record', function () {
         return view('pages.student-consultation-record');
     })->name("student-consultation-record");
+
+    Route::get('/add-consultation-record', function () {
+        return view('pages.add-consultation-record');
+    })->name("add-consultation-record");
     
     Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
     Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
@@ -71,12 +75,10 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
 //--------------SUPERVISOR---------------------------------------------------------
 Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
 
-    Route::get('/student-health-data', [PatientController::class, "index"])->name("student-health-data");
-    Route::get('/add-student-health-data', function () {
-        return view('pages.add-student-health-data');
-    })->name("add-student-health-data");
-    Route::get('/create-student-health-data', [PatientController::class, "insert"])->name("create-student-health-data");
-    Route::post('/student-health-data',[PatientController::class,'import'])->name('student.import');
+    Route::get('/health-data', [PatientController::class, "index"])->name("health-data");
+    Route::get('/add-health-data', [PatientController::class, "index2"])->name("add-health-data");
+    Route::post('/create-health-data', [PatientController::class, "insert"])->name("create-health-data");
+    Route::post('/health-data',[PatientController::class,'import'])->name('student.import');
 
     Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
     Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
@@ -92,6 +94,7 @@ Route::middleware(['ifLoggedOut', 'managePatientAccess'])->group(function () {
 
     Route::get('/patient-dashboard', [MessageController::class, "patientIndex"])->name("patient-dashboard");
     Route::post('/compose-patientmsg', [MessageController::class, "insertPatientMsg"])->name("compose-patientmsg");
+    
 });
 
 Route::post('/registerPatient', [LoginController::class, "registerPatient"])->name("registerPatient");

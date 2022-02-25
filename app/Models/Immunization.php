@@ -11,7 +11,10 @@ class Immunization extends Model
 
     protected $table ="tbl_immunizations";
 
-    protected $fillable = ['vaccine_name'];
+    protected $fillable = [
+        'vaccine_id',
+        'patient_id'
+    ];
 
     public function vaccine(){
         return $this->belongsTo(Vaccine::class, 'vaccine_id');

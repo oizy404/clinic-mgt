@@ -25,7 +25,7 @@ class ManagePatientAccess
             return redirect()->route("appointments");
         }
         else if($rank == "supervisor"){
-            return redirect()->route("student-health-data");
+            return redirect()->route("health-data");
         }
         return $next($request);
     }

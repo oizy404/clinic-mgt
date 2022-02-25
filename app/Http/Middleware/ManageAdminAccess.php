@@ -22,7 +22,7 @@ class ManageAdminAccess
             return redirect()->route("appointments");
         }
         else if($rank == "supervisor"){
-            return redirect()->route("student-health-data");
+            return redirect()->route("health-data");
         }
         else if($rank == "patient"){
             return redirect()->route("patient-dashboard");

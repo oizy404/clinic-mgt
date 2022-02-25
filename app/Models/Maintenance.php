@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Maintenance extends Model
 {
     use HasFactory;
-    protected $table ="tbl_maintenances";
+    protected $table ="tbl_maintenance";
 
     protected $fillable = [
         'medication_name',

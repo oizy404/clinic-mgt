@@ -4,7 +4,7 @@
       <ul>
 
         <li>
-          <a href="/student-health-data" class="active">
+          <a href="/health-data" class="active">
             <span class="icon"><i class="fas fa-border-all"></i></span>
             <span class="list">Dashboard</span>
           </a>
@@ -18,7 +18,7 @@
         </li>
 
         <li>
-          <a href="/add-student-health-data">
+          <a href="/add-health-data">
             <span class="icon"><i class="fas fa-book-medical"></i></span>
             <span class="list">Health Data</span>
           </a>
@@ -30,13 +30,13 @@
             <span class="list">Medical Supplies</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
 
           <a href="/logout">
             <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
             <span class="list">Log Out</span>
           </a>
-        </li>
+        </li> -->
         
       </ul>
       <div class="hamburger">

@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    STUDENT HEALTH DATA
+    HEALTH DATA
 @stop
 
 @section('content')
@@ -12,14 +12,13 @@
         height:60px;
         bottom:40px; 
         right:40px;
-        background-color: #0080ff;
+        background-color: #006dff;
         color: #ffffff;
         border-radius:50px;
         text-align:center;
         box-shadow: 2px 2px 3px #999;
         
     }
-
     .add-data i{
         margin-top:22px;
     }
@@ -33,8 +32,8 @@
             <div class="hlth-dashboard">
                 <div class="offset-md-1 health-data-addbtn">
                     <div class="col-md-4">
-                        <button class="btn" id="btn-data"><i class="fas fa-plus"></i> Add Health Datum</button><br>
-                        <button class="btn" id="btn-batchdata"><i class="fas fa-plus"></i> Add Batch Health Data</button>
+                        <!-- <button class="btn" id="btn-data"><i class="fas fa-plus"></i> Add Health Datum</button><br>
+                        <button class="btn" id="btn-batchdata"><i class="fas fa-plus"></i> Add Batch Health Data</button> -->
                     </div>    
                     <div class="col-md-4 offset-md-3 hlth-dta">
                         <h3>STUDENT HEALTH DATA</h3>
@@ -83,7 +82,7 @@
         </div>
 
 
-        <a href="{{route('add-student-health-data')}}" class="add-data">
+        <a href="{{route('add-health-data')}}" class="add-data">
         <i class="fas fa-plus"></i>
         </a>
     </div> <!-- closing div connect from admin-sidenav -->

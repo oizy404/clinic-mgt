@@ -29,7 +29,7 @@ class LoginController extends Controller
 				return redirect()->route('appointments');
 			} 
 			if($request->session()->put('rank', $rank)=='supervisor'){// put session data named 'rank'. Which value is either 'supervisor',
-				return redirect()->route('student-health-data');
+				return redirect()->route('health-data');
 			}     
             else{
 				return back()->withErrors([

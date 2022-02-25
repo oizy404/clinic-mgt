@@ -23,13 +23,13 @@
             <span class="list">Message</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
 
           <a href="/logout">
             <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
             <span class="list">Log Out</span>
           </a>
-        </li>
+        </li> -->
         
       </ul>
       <div class="hamburger">

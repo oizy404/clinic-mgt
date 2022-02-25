@@ -12,9 +12,9 @@ use App\Models\Location;
 use App\Models\City;
 use App\Models\Province;
 use App\Models\FamilyDesease;
-use App\Models\Desease;
-use App\Models\Illness;
-use App\Models\Vaccine;
+use App\Models\HistoryIllness;
+use App\Models\Immunization;
+use App\Models\Maintenance;
 
 use Excel;
 
@@ -29,17 +29,11 @@ class PatientController extends Controller
     //STUDENTS PERSONAL INFORMATION
     public function index(){
         $patients = PatientProfile::all();
-        $deseases = Desease::all();
-        $illnesses = Illness::all();
-        $vaccines = Vaccine::all();
-        return view("pages.student-health-data")->with(compact("patients", $patients,
-                                                                "deseases", $deseases,
-                                                                "illnesses", $illnesses,
-                                                                "vaccines", $vaccines));
+        return view("pages.health-data")->with(compact("patients", $patients,));
     }
 
     public function index2(){
-        return view("pages.add-student-health-data");
+        return view("pages.add-health-data");
     }
 
     public function insert(Request $request){
@@ -50,6 +44,7 @@ class PatientController extends Controller
         $patient = new PatientProfile();
         
         $patient->school_id = $request->student_idnumber;
+        $patient->patient_role = $request->role;
         $patient->first_name = $request->first_name;
         $patient->middle_name = $request->middle_name;
         $patient->last_name = $request->last_name;
@@ -60,6 +55,7 @@ class PatientController extends Controller
         $patient->status = $request->status;
         $patient->religion = $request->religion;
         $patient->nationality = $request->nationality;
+        $patient->archived = 0;
         $patient->save();
 
         $parent = new BirthParent();
@@ -111,19 +107,28 @@ class PatientController extends Controller
 
         foreach($request->illnesses as $illness){
             HistoryIllness::create([
-                'desease_id' => $illness,
+                'illness_id' => $illness,
                 'patient_id' => $patient->id,
             ]);
         }
-
-        foreach($request->vaccines as $vaccine){
-            Immunization::create([
-                'desease_id' => $vaccine,
-                'patient_id' => $patient->id,
-            ]);
+        if($patient->patient_role == "Student"){
+            foreach($request->vaccines as $vaccine){
+                Immunization::create([
+                    'vaccine_id' => $vaccine,
+                    'patient_id' => $patient->id,
+                ]);
+            }
+        }
+        elseif($patient->patient_role == "Employee"){
+            $maintenance = new Maintenance();
+            $maintenance->medication_name = $request->medication_name;
+            $maintenance->dosage = $request->dosage;
+            $maintenance->frequency = $request->frequency;
+            $maintenance->patient_id = $patient->id;
+            $maintenance->save();
         }
 
-        return redirect()->route('student-health-data');
+        return redirect()->route('health-data');
     }
     // public function show($id){
         

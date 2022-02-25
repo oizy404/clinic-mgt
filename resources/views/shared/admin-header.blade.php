@@ -3,6 +3,12 @@
         <div class="logo">
             <a href="#">CLINIC MGT. SYSTEM</a>
         </div>
+        <div class="logout-user">
+            <a href="/logout">
+                <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span class="list">Log Out</span>
+            </a>
+        </div>
         <!-- <div class="top_menu">
             <div class="home_link">
                 <a href="#">

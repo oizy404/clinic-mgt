@@ -11,6 +11,11 @@ class HistoryIllness extends Model
 
     protected $table ="tbl_history_illnesses";
 
+    protected $fillable = [
+        'illness_id',
+        'patient_id'
+    ];
+
     public function illness(){
         return $this->belongsTo(Illness::class, "illness_id");
     }
