@@ -12,7 +12,8 @@ class Position extends Model
     protected $table ="tbl_positions";
 
     protected $fillable = [
-        "patient_rank",
+        "personnel_position",
+        "personnel_rank",
         "department_id",
         "health_evaluation_id",
     ];

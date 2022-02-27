@@ -45,7 +45,38 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $record = new HealthEvaluation();
+        $record->patient_id = $request->id;
+        $record->weight = $request->weight;
+        $record->height = $request->height;
+        $record->BMI = $request->bmi;
+        $record->BP = $request->bloodpressure;
+        $record->doctors_note = $request->doctors_note;
+        $record->save();
+
+        if($request->patient_role == "Employee"){
+            $position = new Position();
+            $position->personnel_position = $request->personnel_position;
+            $position->personnel_rank = $request->personnel_rank;
+            $position->department_id = $request->department;
+            $position->health_evaluation_id = $record->id;
+            $position->save();
+        }
+        elseif($request->patient_role == "Student"){
+            $position = new Position();
+            $position->personnel_position = $request->personnel_position;
+            $position->personnel_rank = $request->personnel_rank;
+            $position->department_id = $request->department;
+            $position->health_evaluation_id = $record->id;
+            $position->save();
+    
+            $yearlevel = new YearLevel();
+            $yearlevel->grade_level = $request->grade_level;
+            $yearlevel->department_id = $request->department;
+            $yearlevel->save();
+        }
+        return redirect()->back();
+
     }
 
     /**

@@ -12,7 +12,7 @@ class YearLevel extends Model
     protected $table ="tbl_gradelevels";
 
     protected $fillable = [
-        "gradelevel",
+        "grade_level",
         "department_id",
     ];
 

@@ -20,7 +20,13 @@
     padding: 10px 15px 10px 15px;
     width: 95%;
     margin: auto;
-    text-align: center;
+    /* text-align: center; */
+}
+.acr-heading .p-head h3{
+    float: right;
+}
+.acr-heading .p-head-btn{
+    padding: 0px;
 }
 div #add-consultation-record{
     /* margin-top: -5px;
@@ -33,6 +39,6 @@ div #add-consultation-record{
     width: 95%;
 }
 #btn-add-consultation{
-    background-color: rgb(141, 141, 141);
+    /* background-color: rgb(141, 141, 141); */
     margin-top: 20px;
 }

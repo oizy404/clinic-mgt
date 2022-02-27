@@ -15,10 +15,9 @@ class HealthEvaluation extends Model
         "patient_id",
         "weight",
         "height",
-        "temperature",
         "BMI",
         "BP",
-        "doctors_note_id",
+        "doctors_note",
     ];
 
     public function position(){

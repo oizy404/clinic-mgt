@@ -10,16 +10,16 @@
         <div class="main-container">
             <div class="add-consultation-record">
                 <div class="row acr-heading">
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Search Patient</button>
+                    <div class="col-md-3 p-head-btn">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Search Patient <i class="fas fa-search"></i></button>
                     </div>
-                    <div class="col-md-5 offset-md-5 p-head">
-                        <h4 class="mb-0">CONSULTATION FORM</h4>
+                    <div class="col-md-5 offset-md-4 p-head">
+                        <h3 class="mb-0">CONSULTATION FORM</h3>
                         <!-- <small>STUDENT</small> -->
                     </div>
                 </div>
                 <div class="" id="add-consultation-record">
-                    <form action=" " method="post">
+                    <form action="{{route('store-consultation-record')}}" method="post">
                         @csrf
                         @method('post')
                         <div class="form-group" id="health-evaluation" style="background-color: white;">
@@ -33,11 +33,12 @@
                                         <!-- <a class="btn btn-info ml-2" data-toggle="modal" data-target="#tableModal" href="#"><i data-feather="search"></i> Search</a>   -->
                                         <label for="idnumber" class=""><b>ID Number</b></label>
                                         <input type="text" class="form-control" name="idnumber" id="idnumber">
+                                        <input type="hidden" class="form-control" name="id" id="id">
                                     </div>
                                     <div class="col">
                                         <div class="form-group input-group-sm">
                                             <label for="role"><b>Patient Role</b></label>
-                                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="patient-role">
+                                            <select class="form-select form-select-sm" name="patient_role" aria-label=".form-select-sm example" id="patient_role">
                                                 <option selected>Select</option>
                                                 <option>Employee</option>
                                                 <option>Student</option>
@@ -78,11 +79,11 @@
                                 </div>
                             </div>
                             <div class="form-group mt-2">
-                                <label for="doctorsNotes" class=""><b>Doctor's Notes</b></label>
-                                <textarea class="form-control" name="doctorsNotes" id="doctorsNotes" cols="10" rows="4"></textarea>
+                                <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
+                                <textarea class="form-control" name="doctors_note" id="doctors_note" cols="10" rows="4"></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn" id="btn-add-consultation">Add</button>
+                        <button type="submit" class="btn btn-primary" id="btn-add-consultation">Submit</button>
                     </form>
                 </div>
             </div>
@@ -111,7 +112,7 @@
                                 <tr class="theData">
                                     <td style="display: none">{{$patient->id}}</td>
                                     <td>{{$patient->school_id}}</td>
-                                    <td>{{$patient->first_name}}, {{$patient->last_name}}</td>
+                                    <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
                                     <td>{{$patient->patient_role}}</td>
                                 </tr>
                                 @endforeach
@@ -136,17 +137,20 @@
         });
 
         $('.theData').click(function(){
+            var id =  $(this).find(":first-child").text();
             var school_id =  $(this).find(":first-child").next().text();
             var role = $(this).find(":first-child").next().next().next().text();
             $('#exampleModal').modal('hide');
+            $('#id').val(id);
             $('#idnumber').val(school_id);
-            $('#patient-role').val(role);
+            $('#patient_role').val(role);
+            // alert(id);
 
             if(role == "Student"){
                 $('#column2').append(
-                    '<div class="form-group" id="grade-level">'+
+                    '<div class="form-group" id="department">'+
                         '<label for="role"><b>Grade/Year Level</b></label>'+
-                        '<select class="form-select form-select-sm" aria-label=".form-select-sm example">'+
+                        '<select class="form-select form-select-sm" name="department" id="department-id" aria-label=".form-select-sm example">'+
                             '<option selected>-- Select Grade --</option>'+
                             '<option value="1">Elementary</option>'+
                             '<option value="2">Junior High School</option>'+
@@ -155,6 +159,77 @@
                         '</select>'+
                     '</div>'
                 );
+                $('#department-id').change(function(){
+                    if($(this).val()=="1"){
+                        $('#column2').append(
+                            '<div class="form-group" id="elementary">'+
+                                '<label for="grade_level"><b>Elementary</b></label>'+
+                                '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
+                                    '<option selected>-- Select Grade --</option>'+
+                                    '<option value="Kinder">Kinder</option>'+
+                                    '<option value="Grade 1">Grade 1</option>'+
+                                    '<option value="Grade 2">Grade 2</option>'+
+                                    '<option value="Grade 3">Grade 3</option>'+
+                                    '<option value="Grade 4">Grade 4</option>'+
+                                    '<option value="Grade 5">Grade 5</option>'+
+                                    '<option value="Grade 6">Grade 6</option>'+
+                                '</select>'+
+                            '</div>'
+                        )
+                    $('#juniorhigh').remove();
+                    $('#seniorhigh').remove();
+                    $('#college').remove();
+                    }
+                    else if($(this).val()=="2"){
+                        $('#column2').append(
+                            '<div class="form-group" id="juniorhigh">'+
+                                '<label for="grade_level"><b>Junior High School</b></label>'+
+                                '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
+                                    '<option selected>-- Select Grade --</option>'+
+                                    '<option value="Grade 7">Grade 7</option>'+
+                                    '<option value="Grade 8">Grade 8</option>'+
+                                    '<option value="Grade 9">Grade 9</option>'+
+                                    '<option value="Grade 10">Grade 10</option>'+
+                                '</select>'+
+                            '</div>'
+                        )
+                    $('#elementary').remove();
+                    $('#seniorhigh').remove();
+                    $('#college').remove();
+                    }
+                    else if($(this).val()=="3"){
+                        $('#column2').append(
+                            '<div class="form-group" id="seniorhigh">'+
+                                '<label for="grade_level"><b>Senior High School</b></label>'+
+                                '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
+                                    '<option selected>-- Select Grade --</option>'+
+                                    '<option value="Grade 11">Grade 11</option>'+
+                                    '<option value="Grade 12">Grade 12</option>'+
+                                '</select>'+
+                            '</div>'
+                        )
+                    $('#elementary').remove();
+                    $('#juniorhigh').remove();
+                    $('#college').remove();
+                    }
+                    else if($(this).val()=="4"){
+                        $('#column2').append(
+                            '<div class="form-group" id="college">'+
+                                '<label for="grade_level"><b>College</b></label>'+
+                                '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
+                                    '<option selected>-- Select Year --</option>'+
+                                    '<option value="Year 1">Year 1</option>'+
+                                    '<option value="Year 2">Year 2</option>'+
+                                    '<option value="Year 3">Year 3</option>'+
+                                    '<option value="Year 4">Year 4</option>'+
+                                '</select>'+
+                            '</div>'
+                        )
+                    $('#elementary').remove();
+                    $('#juniorhigh').remove();
+                    $('#seniorhigh').remove();
+                    }
+                });
                 $('#employee').remove();
                 $('#tp').remove();
                 $('#ntp').remove();
@@ -163,19 +238,19 @@
                 $('#column2').append(
                     '<div class="form-group" id="employee">'+
                         '<label for="role"><b>Employee</b></label>'+
-                        '<select class="form-select form-select-sm" aria-label=".form-select-sm example" id="employee-role">'+
+                        '<select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">'+
                             '<option selected>-- Select --</option>'+
-                            '<option value="ntp">Non-Teaching Personnel</option>'+
-                            '<option value="tp">Teaching Personnel</option>'+
+                            '<option value="NTP">Non-Teaching Personnel</option>'+
+                            '<option value="TP">Teaching Personnel</option>'+
                         '</select>'+
                     '</div>'
                 );
                 $('#employee-role').change(function(){
-                    if($(this).val() == "ntp"){
+                    if($(this).val() == "NTP"){
                         $('#column2').append(
                             '<div class="form-group" id="ntp">'+
                                 '<label for="role"><b>Non-Teaching Personnel</b></label>'+
-                                '<select class="form-select form-select-sm" aria-label=".form-select-sm example">'+
+                                '<select class="form-select form-select-sm" name="personnel_rank" aria-label=".form-select-sm example">'+
                                     '<option selected>-- Select --</option>'+
                                     '<option value="ma">M.A</option>'+
                                     '<option value="admin">Admin</option>'+
@@ -186,11 +261,11 @@
                         );
                         $('#tp').remove();
                     }
-                    else if($(this).val() == "tp"){
+                    else if($(this).val() == "TP"){
                         $('#column2').append(
                             '<div class="form-group" id="tp">'+
                                 '<label for="role"><b>Teaching Personnel</b></label>'+
-                                '<select class="form-select form-select-sm" aria-label=".form-select-sm example">'+
+                                '<select class="form-select form-select-sm" name="department" aria-label=".form-select-sm example">'+
                                     '<option selected>-- Select Department --</option>'+
                                     '<option value="1">GHS</option>'+
                                     '<option value="2">JHS</option>'+
@@ -205,7 +280,7 @@
                     }
                 });
                 
-                $('#grade-level').remove();
+                $('#department').remove();
             }
         });
     });

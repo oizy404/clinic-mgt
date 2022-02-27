@@ -59,14 +59,9 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     Route::post('store', [EventController::class, 'store'])->name("eventStore");
     Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
 
-    // Route::get('/consultation-record', function () {
-    //     return view('pages.consultation-record');
-    // })->name("consultation-record");
     Route::get('/consultation-record', [ConsultationController::class, "index"])->name("consultation-record");
-    // Route::get('/add-consultation-record', function () {
-    //     return view('pages.add-consultation-record');
-    // })->name("add-consultation-record");
     Route::get('/add-consultation-record', [ConsultationController::class, "create"])->name("add-consultation-record");
+    Route::post('/store-consultation-record', [ConsultationController::class, "store"])->name("store-consultation-record");
 
     Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
     Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
