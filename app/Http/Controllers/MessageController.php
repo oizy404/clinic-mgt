@@ -31,8 +31,9 @@ class MessageController extends Controller
             ->where('rank','patient')
             ->get()->groupBy('sender');
             
-        return view("pages.messaging.message-doctor")->with( compact("messages", $messages,
-                                                    "users", $users));
+        return view("pages.messaging.message-doctor")->with( compact(
+            "messages", $messages,
+            "users", $users));
     }
     public function doctorMessageShow(Request $request, $id){
         $message = DB::table('tbl_messages')->where('sender',$request->id)
@@ -60,7 +61,7 @@ class MessageController extends Controller
 
         $message->save();
 
-        return redirect()->route('message-doctor');
+        return redirect()->back();
     }
 
     public function patientIndex(){

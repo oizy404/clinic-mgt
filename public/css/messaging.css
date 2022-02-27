@@ -60,20 +60,20 @@
     width: 100%;
     height: 100%;
     margin-top: 5px;
-    position: fixed;
+    /* position: fixed; */
 }
 .doctor-sender{
     padding: 0px;
 }
 .doctor-sender .card{
-    height: 550px;
+    height: 500px;
 }
 .message-doctor{
     padding: 0px;
     /* width: 57%; */
 }
 .doctor-msg .card{
-    height: 550px;
+    height: 500px;
 }
 .doctor-msg h6{
     width: 50%;

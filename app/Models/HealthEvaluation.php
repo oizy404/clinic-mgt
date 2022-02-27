@@ -12,7 +12,7 @@ class HealthEvaluation extends Model
     protected $table ="tbl_health_evaluations";
 
     protected $fillable = [
-        "patient_id",
+        // "patient_id",
         "weight",
         "height",
         "BMI",
@@ -24,6 +24,6 @@ class HealthEvaluation extends Model
         return $this->hasMany(Position::class, "health_evaluation_id");
     }
     public function patient(){
-        return $this->belongsTo(PatientProfile::class, 'patient_id');
+        return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }

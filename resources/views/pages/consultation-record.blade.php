@@ -44,19 +44,25 @@
                             <tr>
                                 <th>ID Number</th>
                                 <th>Name</th>
+                                <th>Role</th>
                                 <th>Date Recorded</th>
                                 <th>Edit</th>
                                 <th>View</th>
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($patients as $patient)
+                            @foreach($patient->records as $record)
                             <tr>
-                                <td>1000804387</td>
-                                <td>Lindsay William</td>
-                                <td>Jan, 02, 2021</td>
+                                <td>{{$patient->school_id}}</td>
+                                <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
+                                <td>{{$patient->patient_role}}</td>
+                                <td>{{$record->created_at}}</td>
                                 <td><i class="far fa-edit"></i></td>
                                 <td><i class="far fa-eye"></i></td>
                             </tr>
+                            @endforeach
+                        @endforeach
                         </tbody>
                         <tfoot>
                             <tr>

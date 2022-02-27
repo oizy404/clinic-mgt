@@ -18,8 +18,10 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        $records = HealthEvaluation::all();
-        return view("pages.consultation-record")->with(compact("records", $records));
+        $patients = PatientProfile::all();
+        return view("pages.consultation-record")->with(compact(
+            "patients", $patients,
+        ));
     }
 
     /**
@@ -30,9 +32,9 @@ class ConsultationController extends Controller
     public function create()
     {
         $patients = PatientProfile::all();
-        $records = HealthEvaluation::all();
+        // $records = HealthEvaluation::all();
         return view("pages.add-consultation-record")->with(compact(
-            "records", $records,
+            // "records", $records,
             "patients", $patients,
         ));
     }
