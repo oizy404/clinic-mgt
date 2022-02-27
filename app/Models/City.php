@@ -16,7 +16,7 @@ class City extends Model
     ];
 
     public function location(){
-        return $this->hasMany(Location::class);
+        return $this->hasMany(Location::class, 'city_id');
     }
     public function province(){
         return $this->belongsTo(Province::class, 'province_id');

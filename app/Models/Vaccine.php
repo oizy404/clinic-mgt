@@ -14,6 +14,6 @@ class Vaccine extends Model
     protected $fillable = ['vaccine_name'];
 
     public function immunization(){
-        return $this->hasMany(Immunization::class);
+        return $this->hasMany(Immunization::class, 'vaccine_id');
     }
 }

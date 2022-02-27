@@ -57,41 +57,6 @@
                                 <td><i class="far fa-edit"></i></td>
                                 <td><i class="far fa-eye"></i></td>
                             </tr>
-                            <tr>
-                                <td>1000804387</td>
-                                <td>Lindsay William</td>
-                                <td>Jan, 02, 2021</td>
-                                <td><i class="far fa-edit"></i></td>
-                                <td><i class="far fa-eye"></i></td>
-                            </tr>
-                            <tr>
-                                <td>1000804387</td>
-                                <td>Lindsay William</td>
-                                <td>Jan, 02, 2021</td>
-                                <td><i class="far fa-edit"></i></td>
-                                <td><i class="far fa-eye"></i></td>
-                            </tr>
-                            <tr>
-                                <td>1000804387</td>
-                                <td>Lindsay William</td>
-                                <td>Jan, 02, 2021</td>
-                                <td><i class="far fa-edit"></i></td>
-                                <td><i class="far fa-eye"></i></td>
-                            </tr>
-                            <tr>
-                                <td>1000804387</td>
-                                <td>Lindsay William</td>
-                                <td>Jan, 02, 2021</td>
-                                <td><i class="far fa-edit"></i></td>
-                                <td><i class="far fa-eye"></i></td>
-                            </tr>
-                            <tr>
-                                <td>1000804387</td>
-                                <td>Lindsay William</td>
-                                <td>Jan, 02, 2021</td>
-                                <td><i class="far fa-edit"></i></td>
-                                <td><i class="far fa-eye"></i></td>
-                            </tr>
                         </tbody>
                         <tfoot>
                             <tr>

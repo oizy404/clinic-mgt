@@ -16,7 +16,7 @@ class Location extends Model
     ];
 
     public function guardian(){
-        return $this->hasOne(Guardian::class);
+        return $this->hasOne(Guardian::class, 'location_id');
     }
     public function city(){
         return $this->belongsTo(Barangay::class, 'city_id');
