@@ -11,6 +11,12 @@ class Position extends Model
     
     protected $table ="tbl_positions";
 
+    protected $fillable = [
+        "patient_rank",
+        "department_id",
+        "health_evaluation_id",
+    ];
+
     public function health_evaluation(){
         return $this->belongsTo(HealthEvaluation::class, "health_evaluation_id");
     }

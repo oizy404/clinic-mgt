@@ -11,6 +11,16 @@ class HealthEvaluation extends Model
 
     protected $table ="tbl_health_evaluations";
 
+    protected $fillable = [
+        "patient_id",
+        "weight",
+        "height",
+        "temperature",
+        "BMI",
+        "BP",
+        "doctors_note_id",
+    ];
+
     public function position(){
         return $this->hasMany(Position::class, "health_evaluation_id");
     }

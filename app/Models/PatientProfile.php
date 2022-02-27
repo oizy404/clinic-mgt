@@ -48,6 +48,9 @@ class PatientProfile extends Model
     public function historyIllness(){
         return $this->hasMany(HistoryIllness::class, 'patient_id');
     }
+    public function health_evaluation(){
+        return $this->hasMany(HealthEvaluation::class, 'health_evaluation_id');
+    }
     // public function user(){
     //     return $this->belongsTo(User::class, "school_id");
     // }

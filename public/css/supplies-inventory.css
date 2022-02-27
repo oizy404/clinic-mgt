@@ -20,3 +20,8 @@
 #btn-item{
     background-color: gray;
 }
+.supplies-inventory-addbtn h3{
+    float: right;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}

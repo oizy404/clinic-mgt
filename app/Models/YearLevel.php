@@ -11,6 +11,11 @@ class YearLevel extends Model
 
     protected $table ="tbl_gradelevels";
 
+    protected $fillable = [
+        "gradelevel",
+        "department_id",
+    ];
+
     public function department(){
         return $this->belongsTo(Department::class, 'department_id');
     }

@@ -3,6 +3,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
 use App\Http\Controllers\MessageController;
@@ -12,11 +13,11 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ChartController;
 use Illuminate\Http\Request;
 
-use App\Model\PatientProfile;
-use App\Model\MedicalSupply;
-use App\Model\MedType;
-use App\Model\User;
-use App\Model\Message;
+// use App\Model\PatientProfile;
+// use App\Model\MedicalSupply;
+// use App\Model\MedType;
+// use App\Model\User;
+// use App\Model\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,14 +59,15 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     Route::post('store', [EventController::class, 'store'])->name("eventStore");
     Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
 
-    Route::get('/student-consultation-record', function () {
-        return view('pages.student-consultation-record');
-    })->name("student-consultation-record");
+    // Route::get('/consultation-record', function () {
+    //     return view('pages.consultation-record');
+    // })->name("consultation-record");
+    Route::get('/consultation-record', [ConsultationController::class, "index"])->name("consultation-record");
+    // Route::get('/add-consultation-record', function () {
+    //     return view('pages.add-consultation-record');
+    // })->name("add-consultation-record");
+    Route::get('/add-consultation-record', [ConsultationController::class, "create"])->name("add-consultation-record");
 
-    Route::get('/add-consultation-record', function () {
-        return view('pages.add-consultation-record');
-    })->name("add-consultation-record");
-    
     Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
     Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
     Route::get('/show-doctormsg/{id}', [MessageController::class, "doctorMessageShow"])->name("show-doctormsg");

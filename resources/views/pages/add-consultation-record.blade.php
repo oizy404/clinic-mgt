@@ -9,11 +9,11 @@
 @include('shared.doctor-sidenav')
         <div class="main-container">
             <div class="add-consultation-record">
-                <div class="acr-heading">
-                    <div class="col-md-1">
-                        <!-- <a href="#" id="btn-cancel" style="float:left; color: red;"><i class="fas fa-times-circle"></i></a> -->
+                <div class="row acr-heading">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Search Patient</button>
                     </div>
-                    <div class="col-md-5 offset-md-7 p-head">
+                    <div class="col-md-5 offset-md-5 p-head">
                         <h4 class="mb-0">CONSULTATION FORM</h4>
                         <!-- <small>STUDENT</small> -->
                     </div>
@@ -30,16 +30,17 @@
                             <div class="row">
                                 <div class="col column1">
                                     <div class="col form-group input-group-sm">
-                                        <label for="student_idnumber" class=""><b>ID Number</b></label>
-                                        <input type="text" class="form-control" name="student_idnumber">
+                                        <!-- <a class="btn btn-info ml-2" data-toggle="modal" data-target="#tableModal" href="#"><i data-feather="search"></i> Search</a>   -->
+                                        <label for="idnumber" class=""><b>ID Number</b></label>
+                                        <input type="text" class="form-control" name="idnumber" id="idnumber">
                                     </div>
                                     <div class="col">
                                         <div class="form-group input-group-sm">
                                             <label for="role"><b>Patient Role</b></label>
                                             <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="patient-role">
                                                 <option selected>Select</option>
-                                                <option value="1">Employee</option>
-                                                <option value="2">Student</option>
+                                                <option>Employee</option>
+                                                <option>Student</option>
                                             </select>
                                         </div>
                                     </div>
@@ -86,6 +87,44 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search Patient</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover table-bordered" style="width:100%" id="health-data">
+                            <thead>
+                                <tr>
+                                    <th style="display:none">ID</th>
+                                    <th class="bg-info text-dark">ID Number</th>
+                                    <th class="bg-info text-dark">Name</th>
+                                    <th class="bg-info text-dark">Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($patients as $patient)
+                                <tr class="theData">
+                                    <td style="display: none">{{$patient->id}}</td>
+                                    <td>{{$patient->school_id}}</td>
+                                    <td>{{$patient->first_name}}, {{$patient->last_name}}</td>
+                                    <td>{{$patient->patient_role}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
 
@@ -96,8 +135,14 @@
             $(".wrapper").toggleClass("active")
         });
 
-        $('#patient-role').change(function(){
-            if($(this).val() == "2"){
+        $('.theData').click(function(){
+            var school_id =  $(this).find(":first-child").next().text();
+            var role = $(this).find(":first-child").next().next().next().text();
+            $('#exampleModal').modal('hide');
+            $('#idnumber').val(school_id);
+            $('#patient-role').val(role);
+
+            if(role == "Student"){
                 $('#column2').append(
                     '<div class="form-group" id="grade-level">'+
                         '<label for="role"><b>Grade/Year Level</b></label>'+
@@ -113,14 +158,8 @@
                 $('#employee').remove();
                 $('#tp').remove();
                 $('#ntp').remove();
-                
-                $(".vaccines-info").show();
-                $('.maintenance').hide();
             }
-            else if($(this).val() == "1"){
-                $(".vaccines-info").hide();
-                $('.maintenance').show();
-
+            else if(role == "Employee"){
                 $('#column2').append(
                     '<div class="form-group" id="employee">'+
                         '<label for="role"><b>Employee</b></label>'+
@@ -131,7 +170,6 @@
                         '</select>'+
                     '</div>'
                 );
-
                 $('#employee-role').change(function(){
                     if($(this).val() == "ntp"){
                         $('#column2').append(
