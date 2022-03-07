@@ -19,7 +19,7 @@ class ConsultationController extends Controller
     public function index()
     {
         $patients = PatientProfile::all();
-        return view("pages.consultation-record")->with(compact(
+        return view("pages.clinic_staff.consultation-record")->with(compact(
             "patients", $patients,
         ));
     }
@@ -33,7 +33,7 @@ class ConsultationController extends Controller
     {
         $patients = PatientProfile::all();
         // $records = HealthEvaluation::all();
-        return view("pages.add-consultation-record")->with(compact(
+        return view("pages.clinic_staff.add-consultation-record")->with(compact(
             // "records", $records,
             "patients", $patients,
         ));

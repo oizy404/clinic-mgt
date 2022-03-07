@@ -72,6 +72,6 @@ class ChartController extends Controller
             
         // Medical Supplies Inventory Chart end
 
-        return view("pages.admin-home")->with("med_supplies", $med_supplies)->with("med_suppliess", $med_suppliess);
+        return view("pages.clinic_staff.admin-home")->with("med_supplies", $med_supplies)->with("med_suppliess", $med_suppliess);
     }
 }

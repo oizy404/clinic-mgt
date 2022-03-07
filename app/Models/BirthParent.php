@@ -11,7 +11,16 @@ class BirthParent extends Model
 
     protected $table ="tbl_parents";
 
+    protected $fillable = [
+        'complete_name',
+        'birthday',
+        'contact_number',
+        'occupation',
+        'employment_address',
+        'patient_id'
+    ];
+
     public function patient(){
-        return $this->belongsTo(PatientProfile::class, "patient_id");
+        return $this->belongsTo(PatientProfile::class, 'patient_id');
     }
 }
