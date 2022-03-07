@@ -297,12 +297,12 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <!-- <div class="form-group  input-group-sm">
+                                        <div class="form-group  input-group-sm">
                                             <label for="desease6" class="">Cancer of the</label><br>
-                                            <textarea class="form-control" id="desease6" name="deseases[]" cols="10" rows="1"></textarea>
+                                            <textarea class="form-control" id="desease6" name="cancer" cols="10" rows="1"></textarea>
                                             <label for="desease7" class="" >Others: Please Specify</label><br>
-                                            <textarea class="form-control" id="desease7" name="deseases[]" cols="10" rows="1"></textarea>
-                                        </div> -->
+                                            <textarea class="form-control" id="desease7" name="otherDesease" cols="10" rows="1"></textarea>
+                                        </div>
                                     </div>
                                 </div><br>
                             <!-- end of desease info -->
@@ -386,7 +386,7 @@
                                     </div>
                                     <small><i><strong>Note: Please attach a photocopy of immnization record if available</strong></i></small><br>
                                     <input type="file" id="img" name="file">
-                                </div>
+                                </div><br>
                                 <!-- start maintenance info -->
                                 <div class="maintenance" style="display:none;">
                                     <div class="form-group med-history-heading">
@@ -480,36 +480,36 @@
                                     <label for="mdhistory23">Seizures (Patol)</label><br>
                                 </div>
                             </div>
-                            <!-- <div class="row mt-2">
+                            <div class="row mt-2">
                                 <div class="col input-group-sm">
                                     <label for="mdhistory23" class=""><b>Allergy: </b></label>
-                                    <input type="text" class="form-control" name="illnesses[]">
+                                    <input type="text" class="form-control" name="allergy">
                                 </div>
                                 <div class="col input-group-sm">
                                     <label for="mdhistory24" class=""><b>Fracture in </b></label>
-                                    <input type="text" class="form-control" name="illnesses[]">
+                                    <input type="text" class="form-control" name="fracture">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col input-group-sm">
                                     <label for="mdhistory25" class=""><b>Operation of the </b></label>
-                                    <input type="text" class="form-control" name="illnesses[]">
+                                    <input type="text" class="form-control" name="operation">
                                 </div>
                                 <div class="col input-group-sm">
                                     <label for="mdhistory26" class=""><b>Hospitalization </b></label>
-                                    <input type="text" class="form-control" name="illnesses[]">
+                                    <input type="text" class="form-control" name="hospitalization">
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col input-group-sm">
                                     <label for="mdhistory27" class=""><b>Behavioral/ Psychological Problems </b></label>
-                                    <input type="text" class="form-control" name="illnesses[]">
+                                    <input type="text" class="form-control" name="behavior">
                                 </div>
                                 <div class="col input-group-sm">
                                     <label for="mdhistory28" class=""><b>Others: Please Specify: </b></label>
-                                    <input type="text" class="form-control" name="illnesses[]">
+                                    <input type="text" class="form-control" name="otherIllness">
                                 </div>
-                            </div> -->
+                            </div>
                             <!-- end of past medical history info -->
                             <small><i><strong>NOTE: - If your child/children has <u>maintenance</u> or is on <u>ongoing medication</u> , it is advised that they bring it all the times.</strong></i></small>
                             <!-- start of remarks -->

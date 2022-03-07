@@ -32,11 +32,11 @@ use Illuminate\Http\Request;
 
 // Route::get('/test', [test::class, "test"]);
 Route::get('/loginPatient', function () {
-    return view('pages.loginPatient');
+    return view('pages.login.loginPatient');
 })->name("loginPatient");
 
 Route::get('/', function () {
-    return view('pages.front');
+    return view('pages.login.front');
 })->name('front')->middleware('ifLoggedIn');
 
 
@@ -52,7 +52,7 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     
     Route::get('/appointments', function () {
-        return view('pages.appointments');
+        return view('pages.clinic_staff.appointments');
     })->name("appointments");
     
     Route::get('index', [EventController::class, 'index'])->name("allEvent");
@@ -75,13 +75,16 @@ Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () 
     Route::get('/health-data', [PatientController::class, "index"])->name("health-data");
     Route::get('/add-health-data', [PatientController::class, "index2"])->name("add-health-data");
     Route::post('/create-health-data', [PatientController::class, "insert"])->name("create-health-data");
+    Route::get('editHealthData/{id}', [PatientController::class, "edit"])->name('edit-health-data');
+    Route::post('updateHealthData/{id}', [PatientController::class, "update"])->name('update-health-data');
+
     Route::post('/health-data',[PatientController::class,'import'])->name('student.import');
 
     Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
     Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
     Route::get('delete/{id}', [MedicalSupplyController::class, "delete"])->name('delete');
-    Route::get('edit/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
-    Route::post('update/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
+    Route::get('editMedicalRecord/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
+    Route::post('updateMedicalRecord/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
 
 });
 //--------------PATIENT---------------------------------------------------------

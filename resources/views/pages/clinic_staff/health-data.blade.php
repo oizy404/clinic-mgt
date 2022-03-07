@@ -59,7 +59,9 @@
                                 <td>{{$patient->first_name}}</td>
                                 <td>{{$patient->last_name}}</td>
                                 <td>{{$patient->created_at}}</td>
-                                <td><center><i class="far fa-edit"></i></center></td>
+                                <td>
+                                    <a href="{{route('edit-health-data', $patient->id)}}" id="btn-record"><center><i class="far fa-edit"></i></center></a>
+                                </td>
                                 <td><center><i class="far fa-eye"></center></i></td>
                                 <td><center><i class="fas fa-trash-alt"></center></i></td>
                             </tr>
