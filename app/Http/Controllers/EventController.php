@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\PatientProfile;
 use App\Models\Event;
 use Alert;
 
@@ -17,6 +18,7 @@ class EventController extends Controller
     public function index()
     {
         $event = Event::latest()->get(); //get the latest data
+        $patients = PatientProfile::all();
         return response()->json($event);
     }
 

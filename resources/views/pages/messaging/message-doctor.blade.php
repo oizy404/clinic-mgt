@@ -130,34 +130,55 @@
         })
     })
 
-    $("#Form").on('btn-compose-msg',function(event) {
+    // $("#Form").on('btn-compose-msg',function(event) {
         
-        event.preventDefault(); // avoid to execute the actual submit of the form.
+    //     event.preventDefault(); // avoid to execute the actual submit of the form.
 
-        let fileups = $('#fileups').val();
-        var message = $("#message").val();
-        var receiver_id = $("#receiver_id").val();
+    //     let fileups = $('#fileups').val();
+    //     var message = $("#message").val();
+    //     var receiver_id = $("#receiver_id").val();
+    //     var actionUrl = form.attr('action');
+
+    //     $.ajax({
+    //         type: "post",
+    //         url: actionUrl,
+    //         data:{
+    //             fileups:fileups,
+    //             message:message,
+    //             receiver_id:receiver_id,
+    //         },
+    //         success: function(data)
+    //         {
+    //             $("#message").val('');
+    //             $("#message_box").append(
+    //                 "<div class='d-flex justify-content-end'><div class='outbox'>"+message+"</div></div><br>"
+    //             )
+                
+    //         }
+    //     });
+        
+        
+
+    // });
+    $("#Form").submit(function(e) {
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var form = $(this);
         var actionUrl = form.attr('action');
-
+        var message = $("#message").val();
         $.ajax({
-            type: "post",
+            type: "POST",
             url: actionUrl,
-            data:{
-                fileups:fileups,
-                message:message,
-                receiver_id:receiver_id,
-            },
+            data: form.serialize(), // serializes the form's elements.
             success: function(data)
             {
                 $("#message").val('');
                 $("#message_box").append(
-                    "<div class='d-flex justify-content-end'><div class='outbox'>"+message+"</div></div><br>"
-                )
-                
+                        "<div class='d-flex justify-content-end'><div class='outbox'>"+message+"</div></div><br>"
+                    )
             }
         });
-        
-        
 
     });
 </script>
