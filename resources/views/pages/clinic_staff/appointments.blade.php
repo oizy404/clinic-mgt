@@ -38,7 +38,6 @@
             <div id="dialog-body">
                 <form action="{{route('eventStore')}}" id="dayClick" method="post">
                     @csrf
-<<<<<<< HEAD
                     <div class="form-group">
                         <input type="hidden" name="archived">
                         <input type="hidden" name="patient_id">
@@ -47,10 +46,8 @@
                     </div>
                     <div class="form-group">
                         <label for="title">Event Title</label>
-=======
                     <div class="form-group input-group-sm">
                         <label for="title"><b>Event Title</b></label>
->>>>>>> 17a21642f6acbd1110840ed1d54b82b9b8043afe
                         <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
                     </div>
                     <div class="form-group input-group-sm">
