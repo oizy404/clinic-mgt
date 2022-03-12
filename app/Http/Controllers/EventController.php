@@ -18,6 +18,7 @@ class EventController extends Controller
     public function index()
     {
         $event = Event::latest()->get(); //get the latest data
+        $patients = PatientProfile::all();
         return response()->json($event);
     }
 

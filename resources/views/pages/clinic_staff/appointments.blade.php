@@ -38,6 +38,7 @@
             <div id="dialog-body">
                 <form action="{{route('eventStore')}}" id="dayClick" method="post">
                     @csrf
+<<<<<<< HEAD
                     <div class="form-group">
                         <input type="hidden" name="archived">
                         <input type="hidden" name="patient_id">
@@ -46,26 +47,35 @@
                     </div>
                     <div class="form-group">
                         <label for="title">Event Title</label>
+=======
+                    <div class="form-group input-group-sm">
+                        <label for="title"><b>Event Title</b></label>
+>>>>>>> 17a21642f6acbd1110840ed1d54b82b9b8043afe
                         <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
                     </div>
-                    <div class="form-group">
-                        <label for="start">Start Date/Time</label>
-                        <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
+                    <div class="form-group input-group-sm">
+                        <label for="patient-name"><b>Patient Name</b></label>
+                        <input type="text" class="form-control" name="patient_name" id="patient-name" placeholder="Patient Name">
+                        <input type="hidden" name="id" value="">
                     </div>
-                    <div class="form-group">
-                        <label for="end">End Date/Time</label>
+                    <div class="form-group input-group-sm">
+                        <label for="start"><b>Start Date/Time</b></label>
+                        <input type="text" class="form-control" name="start" id="st art" placeholder="Start date & time">
+                    </div>
+                    <div class="form-group input-group-sm">
+                        <label for="end"><b>End Date/Time</b></label>
                         <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group input-group-sm">
                         <label for="allDay">All Day</label><br>
                         <input type="checkbox" value="1" name="allDay" checked>All Day<br>   
                         <input type="checkbox" value="0" name="Partial">Partial<br>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group input-group-sm">
                         <label for="color">Background Color</label>
                         <input type="color" class="form-control" name="color" id="color">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group input-group-sm">
                         <label for="textColor">Text Color</label>
                         <input type="color" class="form-control" value="#000000" name="textColor" id="textColor">
                     </div>
