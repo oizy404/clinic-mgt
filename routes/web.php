@@ -51,14 +51,15 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 //-------------DOCTOR--------------------------------------------------------------
 Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     
-    Route::get('/appointments', function () {
-        return view('pages.clinic_staff.appointments');
-    })->name("appointments");
+    // Route::get('/appointments', function () {
+    //     return view('pages.clinic_staff.appointments');
+    // })->name("appointments");
     
     Route::get('index', [EventController::class, 'index'])->name("allEvent");
     Route::get('appointments', [EventController::class, 'index2'])->name("appointments");
     Route::post('store', [EventController::class, 'store'])->name("eventStore");
-    Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
+    // Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
+    Route::get('archive-event/{id}', [EventController::class, "archive"])->name('archive-event');
 
     Route::get('/consultation-record', [ConsultationController::class, "index"])->name("consultation-record");
     Route::get('/add-consultation-record', [ConsultationController::class, "create"])->name("add-consultation-record");

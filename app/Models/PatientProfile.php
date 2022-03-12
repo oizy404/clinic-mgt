@@ -79,6 +79,9 @@ class PatientProfile extends Model
     public function records(){
         return $this->hasMany(HealthEvaluation::class, "patient_id");
     }
+    public function event(){
+        return $this->hasMany(Event::class, "patient_id");
+    }
     // public function user(){
     //     return $this->belongsTo(User::class, "school_id");
     // }

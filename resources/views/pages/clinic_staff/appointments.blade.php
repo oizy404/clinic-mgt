@@ -21,7 +21,7 @@
 <!-- Jquery Ui Css -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
-    {{session('rank')}}
+        {{session('rank')}}
         <div class="appointment-content main-container">
             <div class="col-md-10 offset-md-1">
                 <h1>APPOINTMENTS BOOKING</h1>
@@ -38,22 +38,15 @@
             <div id="dialog-body">
                 <form action="{{route('eventStore')}}" id="dayClick" method="post">
                     @csrf
-                    <div class="form-group">
-                        <input type="hidden" name="archived">
-                        <input type="hidden" name="patient_id">
+                    <div class="form-group input-group-sm">
+                        <!-- <input type="hidden" name="archived"> -->
+                        <input type="hidden" name="patient_id" id="patient_id">
                         <label for="complete-name">Patient Name</label>
-                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" name="complete_name">
+                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" name="complete_name" id="complete_name">
                     </div>
-                    <div class="form-group">
-                        <label for="title">Event Title</label>
                     <div class="form-group input-group-sm">
                         <label for="title"><b>Event Title</b></label>
                         <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
-                    </div>
-                    <div class="form-group input-group-sm">
-                        <label for="patient-name"><b>Patient Name</b></label>
-                        <input type="text" class="form-control" name="patient_name" id="patient-name" placeholder="Patient Name">
-                        <input type="hidden" name="id" value="">
                     </div>
                     <div class="form-group input-group-sm">
                         <label for="start"><b>Start Date/Time</b></label>
@@ -95,13 +88,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <table class="table table-hover table-bordered" style="width:100%" id="health-data"><br>
+                        <table class="table table-hover table-bordered" style="width:100%" id="health-data">
                             <thead>
                                 <tr>
                                     <th style="display:none">ID</th>
-                                    <th class="bg-primary text-dark">ID Number</th>
-                                    <th class="bg-primary text-dark">Name</th>
-                                    <th class="bg-primary text-dark">Role</th>
+                                    <th class="bg-info text-dark">ID Number</th>
+                                    <th class="bg-info text-dark">Name</th>
+                                    <th class="bg-info text-dark">Role</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -109,7 +102,7 @@
                                 <tr class="patientsData">
                                     <td style="display: none">{{$patient->id}}</td>
                                     <td>{{$patient->school_id}}</td>
-                                    <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
+                                    <td>{{$patient->first_name}} {{$patient->last_name}}</td>
                                     <td>{{$patient->patient_role}}</td>
                                 </tr>
                                 @endforeach
@@ -125,7 +118,6 @@
 
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
-
 
 <!-- Jquery min-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -173,8 +165,8 @@ jQuery(document).ready(function($){
         $('#addEventBtn').on('click',function(){
             $('#dialog').dialog({
                 title:'Add Event',
-                width:600,
-                height:550,
+                width:650,
+                height:600,
                 modal:true,
                 show:{effect:'clip', duration:300},
                 hide:{effect:'clip', duration:250}
@@ -182,7 +174,6 @@ jQuery(document).ready(function($){
         })
         var calendar = $('#calendar').fullCalendar({ //display page, show all the events
             selectable: true,
-            // aspectRatio: 2,
             height: 650,
             showNonCurrentDates: false,
             editable: false,
@@ -194,13 +185,13 @@ jQuery(document).ready(function($){
                 right: 'year,month,basicWeek,basicDay'
             },
             events:"{{route('allEvent')}}", //show all the events
-            dayClick:function(date,event,view){ //create event in one click
+            dayClick:function(date,event,view,start){ //create event in one click
                 $('#start').val(convert(date));
                 $('#action-btn').html('Add Event');
                 $('#dialog').dialog({
                     title:'Add Event',
-                    width:600,
-                    height:550,
+                    width:650,
+                    height:600,
                     modal:true,
                     show:{effect:'clip', duration:300},
                     hide:{effect:'clip', duration:250}
@@ -212,8 +203,8 @@ jQuery(document).ready(function($){
                 $('#action-btn').html('Add Event');
                 $('#dialog').dialog({
                     title:'Add Event',
-                    width:600,
-                    height:550,
+                    width:650,
+                    height:600,
                     modal:true,
                     show:{effect:'clip', duration:300},
                     hide:{effect:'clip', duration:250}
@@ -232,8 +223,8 @@ jQuery(document).ready(function($){
                 // if(event.id){
                     $('#dialog').dialog({
                         title:'Edit Event',
-                        width:600,
-                        height:550,
+                        width:650,
+                        height:600,
                         modal:true,
                         show:{effect:'clip', duration:300},
                         hide:{effect:'clip', duration:250}

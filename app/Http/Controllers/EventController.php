@@ -19,7 +19,9 @@ class EventController extends Controller
     {
         $event = Event::latest()->get(); //get the latest data
         $patients = PatientProfile::all();
-        return response()->json($event);
+        if($event->archived == 0){
+            return response()->json($event);
+        }
     }
 
     public function index2(){
@@ -63,27 +65,29 @@ class EventController extends Controller
             }
             else{
                 if(empty($request->event_id)){ //Create Event
-                    Event::create([
-                        'archived' => 0,
-                        'title' => $request->title,
-                        'start' => $request->start,
-                        'end' => $request->end,
-                        'allDay' => $request->allDay,
-                        'color' => $request->color,
-                        'textColor' => $request->textColor,
-                    ]);
+                    $event = new Event();
+                    $event->title = $request->title;
+                    $event->start = $request->start;
+                    $event->end = $request->end;
+                    $event->allDay = $request->allDay;
+                    $event->color = $request->color;
+                    $event->textColor = $request->textColor;
+                    $event->patient_id = $request->patient_id;
+                    $event->archived = 0;
+                    $event->save();
+                    
                     Alert::success('Success','Event Created Successfully');
                     return redirect()->back();
                 }
                 else{
                     Event::where('id', $request->event_id)->update([ //Update Event
-                        'archived' => $request->archived,
                         'title' => $request->title,
                         'start' => $request->start,
                         'end' => $request->end,
                         'allDay' => $request->allDay,
                         'color' => $request->color,
                         'textColor' => $request->textColor,
+                        'patient_id' => $request->patient_id,
                     ]);
                     Alert::success('Success','Event Updated Successfully');
                     return redirect()->back();
@@ -136,12 +140,20 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    // public function destroy($id)
+    // {
+    //     $event = Event::find($id);
+    //     $event->delete(); //delete a column
+    //     Alert::success('Success','Event Deleted Successfully');
+    //     return redirect()->back();
+        
+    // }
+    public function archive($id, Request $request){
         $event = Event::find($id);
-        $event->delete(); //delete a column
+        $event->archived = 1;
+        $event->save();
+
         Alert::success('Success','Event Deleted Successfully');
         return redirect()->back();
-        
     }
 }

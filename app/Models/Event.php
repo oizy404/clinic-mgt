@@ -11,5 +11,17 @@ class Event extends Model
 
     protected $table ="tbl_appointments";
 
-    protected $fillable = ['title','start','end', 'allDay', 'color', 'textColor'];
+    protected $fillable = [
+        'title',
+        'start',
+        'end', 
+        'allDay', 
+        'color', 
+        'textColor',
+        'patient_id'
+    ];
+
+    public function patient(){
+        return $this->belongsTo(PatientProfile::class, "patient_id");
+    }
 }
