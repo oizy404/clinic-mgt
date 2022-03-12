@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group input-group-sm">
                         <label for="start"><b>Start Date/Time</b></label>
-                        <input type="text" class="form-control" name="start" id="st art" placeholder="Start date & time">
+                        <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
                     </div>
                     <div class="form-group input-group-sm">
                         <label for="end"><b>End Date/Time</b></label>
@@ -77,7 +77,52 @@
             </div>
         </div>
         <!-- day click dialog end -->
-
+        <!-- start edit modal -->
+        <div id="dialog2" style="display:none;">
+            <div id="dialog-body">
+                <form action="{{route('eventStore')}}" id="dayClick" method="post">
+                    @csrf
+                    <div class="form-group input-group-sm">
+                        <input type="text" name="patient_id" id="patient_idd" value="">
+                    @foreach($event as $eventt)
+                        <input type="text" name="patientId" id="patientId" value="{{$eventt->patient_id}}">
+                        <label for="complete-name">Patient Name</label>
+                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" value="{{$eventt->patient->first_name}} {{$eventt->patient->last_name}}" id="complete_namee">
+                    @endforeach
+                    </div>
+                    <div class="form-group input-group-sm">
+                        <label for="title"><b>Event Title</b></label>
+                        <input type="text" class="form-control" name="title" id="titlee" placeholder="Event Title">
+                    </div>
+                    <div class="form-group input-group-sm">
+                        <label for="start"><b>Start Date/Time</b></label>
+                        <input type="text" class="form-control" name="start" id="startt" placeholder="Start date & time">
+                    </div>
+                    <div class="form-group input-group-sm">
+                        <label for="end"><b>End Date/Time</b></label>
+                        <input type="text" class="form-control" name="end" id="endd" placeholder="End date & time">
+                    </div>
+                    <div class="form-group input-group-sm">
+                        <label for="allDay">All Day</label><br>
+                        <input type="checkbox" value="1" name="allDay" checked>All Day<br>   
+                        <input type="checkbox" value="0" name="Partial">Partial<br>
+                    </div>
+                    <div class="form-group input-group-sm">
+                        <label for="color">Background Color</label>
+                        <input type="color" class="form-control" name="color" id="colorr">
+                    </div>
+                    <div class="form-group input-group-sm">
+                        <label for="textColor">Text Color</label>
+                        <input type="color" class="form-control" value="#000000" name="textColor" id="textColorr">
+                    </div>
+                    <input type="hidden" name="event_id" id="eventIdd">
+                    <div class="form-group mt-2">
+                        <button type="submit" id="action-btn" class="btn btn-primary">Update Event</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- end edit modal -->
 
         <!-- Modal -->
         <div class="modal fade" id="patientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -185,7 +230,7 @@ jQuery(document).ready(function($){
                 right: 'year,month,basicWeek,basicDay'
             },
             events:"{{route('allEvent')}}", //show all the events
-            dayClick:function(date,event,view,start){ //create event in one click
+            dayClick:function(date,event,view){ //create event in one click
                 $('#start').val(convert(date));
                 $('#action-btn').html('Add Event');
                 $('#dialog').dialog({
@@ -211,17 +256,17 @@ jQuery(document).ready(function($){
                 })
             },
             eventClick:function(event){ //clicking event to UPDATE
-                $('#title').val(event.title);
-                $('#start').val(convert(event.start));
-                $('#end').val(convert(event.end));
-                $('#color').val(event.color);
-                $('#testColor').val(event.testColor);
-                $('#eventId').val(event.id);
+                $('#patient_idd').val(event.patient_id);
+                $('#complete_namee').val();
+                $('#titlee').val(event.title);
+                $('#startt').val(convert(event.start));
+                $('#endd').val(convert(event.end));
+                $('#colorr').val(event.color);
+                $('#testColorr').val(event.testColor);
+                $('#eventIdd').val(event.id);
                 var url="{{url('deleteEvent')}}";
                 $('#deleteEvent').attr('href',url+'/'+event.id)
-                $('#action-btn').html('Update Event');
-                // if(event.id){
-                    $('#dialog').dialog({
+                    $('#dialog2').dialog({
                         title:'Edit Event',
                         width:650,
                         height:600,
@@ -229,7 +274,6 @@ jQuery(document).ready(function($){
                         show:{effect:'clip', duration:300},
                         hide:{effect:'clip', duration:250}
                     })
-                // }
                 
             },
             eventMouseover: function(event, jsEvent, view) {

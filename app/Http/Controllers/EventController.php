@@ -18,16 +18,16 @@ class EventController extends Controller
     public function index()
     {
         $event = Event::latest()->get(); //get the latest data
-        $patients = PatientProfile::all();
-        if($event->archived == 0){
-            return response()->json($event);
-        }
+        
+        return response()->json($event);
     }
 
     public function index2(){
         $patients = PatientProfile::all();
+        $event = Event::all();
         return view("pages.clinic_staff.appointments")->with(compact(
             "patients", $patients,
+            "event", $event,
         ));
     }
 
