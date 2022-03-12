@@ -23,20 +23,19 @@
                     <table id="supplies-inventory" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID Number</th>
                                 <th>Product Name</th>
                                 <th>Product Type</th>
                                 <th>Stock</th>
                                 <th>Expiry Date</th>
-                                <th>Edit</th>
+                                <th>Update</th>
                                 <th>View</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach($med_supplies as $med_supply)
+                            @if($med_supply->archived == 0)
                             <tr>
-                                <td>{{$med_supply->id}}</td>
                                 <td>{{$med_supply->product_name}}</td>
                                 <td>{{$med_supply->med_type->medicine_type}}</td>
                                 <td>{{$med_supply->stock}}</td>
@@ -44,11 +43,14 @@
                                 <td>
                                     <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" id="btn-record"><center><i class="far fa-edit"></i></center></a>
                                 </td>
-                                <td><center><i class="far fa-eye"></i></center></td>
                                 <td>
-                                    <a href="{{route('delete', $med_supply->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
+                                    <center><a href="" ><i class="far fa-eye"></i></a></center>
+                                </td>
+                                <td>
+                                    <a href="{{route('archiveMedical', $med_supply->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                         </tbody>
                         <tfoot>
@@ -68,6 +70,7 @@
             </div>
         </div>
 
+
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
 
@@ -77,5 +80,5 @@
         $(".wrapper").toggleClass("active")
       });
   </script>
-@include('pages.add-medical-supplies')
+@include('pages.clinic_staff.add-medical-supplies')
 @stop

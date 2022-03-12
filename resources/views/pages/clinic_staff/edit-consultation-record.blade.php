@@ -19,21 +19,17 @@
                     </div>
                 </div>
                 <div class="" id="add-consultation-record">
-                    <form action="{{route('store-consultation-record')}}" method="post">
+                    <form action="" method="post">
                         @csrf
                         @method('post')
                         <div class="form-group" id="health-evaluation" style="background-color: white;">
-                            <!-- <div class="col-md-2 form-group">
-                                <label for="idnumber" class=""><b>School ID Number</b></label>
-                                <input type="text" class="form-control" name="idnumber">
-                            </div> -->
                             <div class="row">
                                 <div class="col column1">
                                     <div class="col form-group input-group-sm">
                                         <!-- <a class="btn btn-info ml-2" data-toggle="modal" data-target="#tableModal" href="#"><i data-feather="search"></i> Search</a>   -->
                                         <label for="complete_name" class=""><b>Patient Name</b></label>
-                                        <input type="text" class="form-control" name="complete_name" id="complete_name" data-bs-toggle="modal" data-bs-target="#patientModal">
-                                        <input type="hidden" class="form-control" name="id" id="id">
+                                        <input type="text" class="form-control" name="complete_name" value="{{$record->patient->first_name}} {{$record->patient->last_name}}" id="complete_name" data-bs-toggle="modal" data-bs-target="#patientModal">
+                                        <input type="hidden" class="form-control" name="id" value="{{$record->patient_id}}" id="id">
                                     </div>
                                     <div class="col">
                                         <div class="form-group input-group-sm">
@@ -54,13 +50,13 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="height" class=""><b>Height</b></label>
-                                        <input type="text" class="form-control" name="height">
+                                        <input type="text" class="form-control" name="height" value="{{$record->height}}">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="weight" class=""><b>Weight</b></label>
-                                        <input type="text" class="form-control" name="weight">
+                                        <input type="text" class="form-control" name="weight" value="{{$record->weight}}">
                                     </div>
                                 </div>
                             </div>
@@ -68,22 +64,22 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="bmi" class=""><b>Body Mass Index</b></label>
-                                        <input type="text" class="form-control" name="bmi">
+                                        <input type="text" class="form-control" name="bmi" value="{{$record->BMI}}">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="bloodpressure" class=""><b>Blood Pressure(BP)</b></label>
-                                        <input type="text" class="form-control" name="bloodpressure">
+                                        <input type="text" class="form-control" name="bloodpressure" value="{{$record->BP}}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mt-2">
                                 <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
-                                <textarea class="form-control" name="doctors_note" id="doctors_note" cols="10" rows="4"></textarea>
+                                <textarea class="form-control" name="doctors_note" value="{{$record->doctors_note}}" id="doctors_note" cols="10" rows="4">{{$record->doctors_note}}</textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="btn-add-consultation">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="btn-add-consultation">Update</button>
                     </form>
                 </div>
             </div>

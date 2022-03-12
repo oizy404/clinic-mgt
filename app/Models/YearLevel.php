@@ -19,4 +19,7 @@ class YearLevel extends Model
     public function department(){
         return $this->belongsTo(Department::class, 'department_id');
     }
+    public function position(){
+        return $this->hasMany(Position::class, "department_id");
+    }
 }

@@ -36,7 +36,7 @@
                         <button class="btn" id="btn-batchdata"><i class="fas fa-plus"></i> Add Batch Health Data</button> -->
                     </div>    
                     <div class="col-md-4 offset-md-3 hlth-dta">
-                        <h3>STUDENT HEALTH DATA</h3>
+                        <h3>PATIENT HEALTH DATA</h3>
                     </div>
                 </div>
                 <div class="offset-md-1 health-data">
@@ -45,7 +45,6 @@
                             <tr>
                                 <th>ID Number</th>
                                 <th>Name</th>
-                                <th>Last Name</th>
                                 <th>Date Recorded</th>
                                 <th>Edit</th>
                                 <th>View</th>
@@ -54,17 +53,20 @@
                         </thead>
                         <tbody>
                         @foreach($patients as $patient)
+                            @if($patient->archived == 0)
                             <tr>
                                 <td>{{$patient->school_id}}</td>
-                                <td>{{$patient->first_name}}</td>
-                                <td>{{$patient->last_name}}</td>
+                                <td>{{$patient->first_name}} {{$patient->last_name}}</td>
                                 <td>{{$patient->created_at}}</td>
                                 <td>
                                     <a href="{{route('edit-health-data', $patient->id)}}" id="btn-record"><center><i class="far fa-edit"></i></center></a>
                                 </td>
                                 <td><center><i class="far fa-eye"></center></i></td>
-                                <td><center><i class="fas fa-trash-alt"></center></i></td>
+                                <td>
+                                <a href="{{route('archiveHealthData', $patient->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
+                                </td>
                             </tr>
+                            @endif
                         @endforeach
                         </tbody>
                         <tfoot>

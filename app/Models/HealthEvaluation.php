@@ -12,7 +12,7 @@ class HealthEvaluation extends Model
     protected $table ="tbl_health_evaluations";
 
     protected $fillable = [
-        // "patient_id",
+        "patient_id",
         "weight",
         "height",
         "BMI",

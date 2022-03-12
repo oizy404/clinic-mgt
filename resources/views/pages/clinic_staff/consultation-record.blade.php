@@ -47,21 +47,25 @@
                                 <th>Role</th>
                                 <th>Date Recorded</th>
                                 <th>Edit</th>
+                                <th>Delete</th>
                                 <th>View</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($patients as $patient)
-                            @foreach($patient->records as $record)
+                        @foreach($records as $record)
+                            @if($record->archived == 0)
                             <tr>
-                                <td>{{$patient->school_id}}</td>
-                                <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
-                                <td>{{$patient->patient_role}}</td>
+                                <td>{{$record->patient->school_id}}</td>
+                                <td>{{$record->patient->last_name}}, {{$record->patient->first_name}}</td>
+                                <td>{{$record->patient->patient_role}}</td>
                                 <td>{{$record->created_at}}</td>
-                                <td><i class="far fa-edit"></i></td>
-                                <td><i class="far fa-eye"></i></td>
+                                <td><a href="{{route('edit-consultation-record', $record->id)}}"><i class="far fa-edit"></i></a></td>
+                                <td><a href="{{route('show-consultation-record', $record->id)}}"><i class="far fa-eye"></i></a></td>
+                                <td>
+                                    <a href="{{route('archive-consultation-record', $record->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
+                                </td>
                             </tr>
-                            @endforeach
+                            @endif
                         @endforeach
                         </tbody>
                         <tfoot>

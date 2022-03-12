@@ -29,12 +29,12 @@
                         <input type="text" class="form-control" name="quantity">
                     </div>
                 </div>
-                <!-- <div class="col">
+                <div class="col">
                     <div class="form-group">
                         <label for="stock">Stock</label>
                         <input type="text" class="form-control" name="stock">
                     </div>
-                </div> -->
+                </div>
             </div>
             <div class="row mt-2">
                 <div class="col">

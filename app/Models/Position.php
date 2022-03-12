@@ -24,4 +24,7 @@ class Position extends Model
     public function department(){
         return $this->belongsTo(Department::class, "department_id");
     }
+    public function yearlevel(){
+        return $this->belongsTo(YearLevel::class, "department_id");
+    }
 }

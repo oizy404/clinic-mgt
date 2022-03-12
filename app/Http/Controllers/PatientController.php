@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Imports\DataImportExcel;
 use App\Models\PatientProfile;
-use App\Models\BirthParent;
+use App\Models\ParentModel;
 use App\Models\Sibling;
 use App\Models\Guardian;
 use App\Models\Location;
@@ -65,8 +65,9 @@ class PatientController extends Controller
         $patient->archived = 0;
         $patient->save();
 
-        $parent = new BirthParent();
+        $parent = new ParentModel();
         $parent->complete_name = $request->parentsComplete_name;
+        $parent->relationship = $request->relationship;
         $parent->birthday = $request->parentsBirthday;
         $parent->contact_number = $request->parentsContact_number;
         $parent->occupation = $request->parentsOccupation;
@@ -193,7 +194,7 @@ class PatientController extends Controller
         $patient = PatientProfile::find($id);
 
         return view("pages.clinic_staff.edit-health-data")->with(compact(
-            "patient",$patient,
+            "patient", $patient,
             // "parent",$parent,
             // "province",$province,
             // "city",$city,
@@ -221,8 +222,9 @@ class PatientController extends Controller
         $patient->archived = 0;
         $patient->save();
 
-        $parent = BirthParent::find($id);
+        $parent = ParentModel::find($id);
         $parent->complete_name = $request->parentsComplete_name;
+        $parent->relationship = $request->relationship;
         $parent->birthday = $request->parentsBirthday;
         $parent->contact_number = $request->parentsContact_number;
         $parent->occupation = $request->parentsOccupation;
@@ -339,6 +341,14 @@ class PatientController extends Controller
             $maintenance->save();
         }
 
+        return redirect()->back();
+    }
+
+    public function archive($id, Request $request){
+        $patient = PatientProfile::find($id);
+        $patient->archived = 1;
+        $patient->save();
+        
         return redirect()->back();
     }
     // public function destroy($id){

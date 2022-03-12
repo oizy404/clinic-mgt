@@ -114,8 +114,7 @@
                         <h5>FAMILY DATA</h5>
                         <div class="form-group" id="patients-family-data" style="background-color: white;">
                             <!-- start of Father's info -->
-                        @foreach($patient as $patientt)
-                            @foreach($patientt->parents as $parent)
+                        @foreach($patient->parents as $parent)
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group input-group-sm">
@@ -126,17 +125,16 @@
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsBirthday" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="parentsBirthday" placeholder="MM/DD/YYYY">
+                                        <input type="date" class="form-control" name="parentsBirthday" placeholder="MM/DD/YYYY" value="{{$parent->birthday}}">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsContact_number" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="parentsContact_number">
+                                        <input type="tel" class="form-control" name="parentsContact_number" value="{{$parent->contact_number}}">
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
                         @endforeach
                             <div class="row mt-2">
                                 <div class="col">

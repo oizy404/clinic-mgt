@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\PatientProfile;
 use App\Models\Event;
 use Alert;
 
@@ -18,6 +19,13 @@ class EventController extends Controller
     {
         $event = Event::latest()->get(); //get the latest data
         return response()->json($event);
+    }
+
+    public function index2(){
+        $patients = PatientProfile::all();
+        return view("pages.clinic_staff.appointments")->with(compact(
+            "patients", $patients,
+        ));
     }
 
     /**
@@ -54,12 +62,21 @@ class EventController extends Controller
             }
             else{
                 if(empty($request->event_id)){ //Create Event
-                    Event::create($request->all());
+                    Event::create([
+                        'archived' => 0,
+                        'title' => $request->title,
+                        'start' => $request->start,
+                        'end' => $request->end,
+                        'allDay' => $request->allDay,
+                        'color' => $request->color,
+                        'textColor' => $request->textColor,
+                    ]);
                     Alert::success('Success','Event Created Successfully');
                     return redirect()->back();
                 }
                 else{
                     Event::where('id', $request->event_id)->update([ //Update Event
+                        'archived' => $request->archived,
                         'title' => $request->title,
                         'start' => $request->start,
                         'end' => $request->end,
@@ -109,16 +126,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Event::where('id', $request->event_id)->update([ //Update Event
-        //     'title' => $request->title,
-        //     'start' => $request->start,
-        //     'end' => $request->end,
-        //     'allDay' => $request->allDay,
-        //     'color' => $request->color,
-        //     'textColor' => $request->textColor,
-        // ]);
-        // Alert::success('Success','Event Updated Successfully');
-        // return redirect()->back();
+        
     }
 
     /**

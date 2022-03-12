@@ -26,8 +26,8 @@
             <div class="col-md-10 offset-md-1">
                 <h1>APPOINTMENTS BOOKING</h1>
                 <div class="appointment-container">
-                    <div class="add-event">
-                        <button class="btn btn-danger" id="addEventBtn">Add Event</button>
+                    <div class="add-event mb-3">
+                        <button class="btn btn-primary" id="addEventBtn">Add Event</button>
                     </div>
                     <div id="calendar"></div>
                 </div>
@@ -38,6 +38,12 @@
             <div id="dialog-body">
                 <form action="{{route('eventStore')}}" id="dayClick" method="post">
                     @csrf
+                    <div class="form-group">
+                        <input type="hidden" name="archived">
+                        <input type="hidden" name="patient_id">
+                        <label for="complete-name">Patient Name</label>
+                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" name="complete_name">
+                    </div>
                     <div class="form-group">
                         <label for="title">Event Title</label>
                         <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
@@ -57,13 +63,6 @@
                     </div>
                     <div class="form-group">
                         <label for="color">Background Color</label>
-                        <!-- <select name="color" id="color">
-                            <option><input type="color" class="form-control" value="#00ff00" name="color" id="color">BED</option>
-                            <option><input type="color" class="form-control" value="#ffff00" name="color" id="color">JHS</option>
-                            <option><input type="color" class="form-control" value="#0000ff" name="color" id="color">SHS</option>
-                            <option><input type="color" class="form-control" value="#8000ff" name="color" id="color">COLLEGE</option>
-                            <option><input type="color" class="form-control" value="#ff00bf" name="color" id="color">EMPLOYEE</option>
-                        </select> -->
                         <input type="color" class="form-control" name="color" id="color">
                     </div>
                     <div class="form-group">
@@ -71,19 +70,57 @@
                         <input type="color" class="form-control" value="#000000" name="textColor" id="textColor">
                     </div>
                     <input type="hidden" name="event_id" id="eventId">
-                    <div class="form-group">
-                        <button type="submit" id="action-btn" class="btn btn-success">Add Event</button>
-                        <!-- <a href="" class="btn btn-danger" id="deleteEvent" onclick="return confirm('Are you sure to delete event?')">Delete Event</a> -->
+                    <div class="form-group mt-2">
+                        <button type="submit" id="action-btn" class="btn btn-primary">Add Event</button>
                     </div>
                 </form>
             </div>
         </div>
         <!-- day click dialog end -->
 
+
+        <!-- Modal -->
+        <div class="modal fade" id="patientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search Patient</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover table-bordered" style="width:100%" id="health-data"><br>
+                            <thead>
+                                <tr>
+                                    <th style="display:none">ID</th>
+                                    <th class="bg-primary text-dark">ID Number</th>
+                                    <th class="bg-primary text-dark">Name</th>
+                                    <th class="bg-primary text-dark">Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($patients as $patient)
+                                <tr class="patientsData">
+                                    <td style="display: none">{{$patient->id}}</td>
+                                    <td>{{$patient->school_id}}</td>
+                                    <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
+                                    <td>{{$patient->patient_role}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
 
-<!-- Jquery -->
+
+<!-- Jquery min-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- moment js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -91,16 +128,26 @@
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <!-- Fullcalendar js -->
 <script src="{{asset('js/fullcalendar.js')}}"></script>
-
+<!-- Alert -->
 <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+
 <script>
       $(".hamburger").click(function(){
         $(".wrapper").toggleClass("active")
       });
+      
+      $('.patientsData').click(function(){
+            var patient_id =  $(this).find(":first-child").text();
+            var complete_name = $(this).find(":first-child").next().next().text();
+            $('#patientModal').modal('hide');
+            $('#patient_id').val(patient_id);
+            $('#complete_name').val(complete_name);
+        });
   </script>
 <script>
 jQuery(document).ready(function($){
     $(document).ready(function(){
+
         function convert(str){ //convert date and time
             const d = new Date(str);
             let month = '' + (d.getMonth() + 1);
@@ -120,7 +167,7 @@ jQuery(document).ready(function($){
             $('#dialog').dialog({
                 title:'Add Event',
                 width:600,
-                height:600,
+                height:550,
                 modal:true,
                 show:{effect:'clip', duration:300},
                 hide:{effect:'clip', duration:250}
@@ -146,7 +193,7 @@ jQuery(document).ready(function($){
                 $('#dialog').dialog({
                     title:'Add Event',
                     width:600,
-                    height:600,
+                    height:550,
                     modal:true,
                     show:{effect:'clip', duration:300},
                     hide:{effect:'clip', duration:250}
@@ -159,7 +206,7 @@ jQuery(document).ready(function($){
                 $('#dialog').dialog({
                     title:'Add Event',
                     width:600,
-                    height:600,
+                    height:550,
                     modal:true,
                     show:{effect:'clip', duration:300},
                     hide:{effect:'clip', duration:250}
@@ -179,7 +226,7 @@ jQuery(document).ready(function($){
                     $('#dialog').dialog({
                         title:'Edit Event',
                         width:600,
-                        height:600,
+                        height:550,
                         modal:true,
                         show:{effect:'clip', duration:300},
                         hide:{effect:'clip', duration:250}

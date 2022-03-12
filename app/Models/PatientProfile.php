@@ -28,52 +28,52 @@ class PatientProfile extends Model
     ];
 
     public function parent(){
-        return $this->hasMany(BirthParent::class, 'patient_id');
+        return $this->hasMany(ParentModel::class, "patient_id");
     }
     public function tbl_guardian(){
-        return $this->hasOne(Guardian::class, 'patient_id');
+        return $this->hasOne(Guardian::class, "patient_id");
     }
     public function sibling(){
-        return $this->hasOne(Sibling::class, 'patient_id');
+        return $this->hasMany(Sibling::class, "patient_id");
     }
 
     public function familyDesease(){
-        return $this->hasMany(FamilyDesease::class, 'patient_id');
+        return $this->hasMany(FamilyDesease::class, "patient_id");
     }
     public function cancer(){
-        return $this->hasMany(Cancer::class, 'patient_id');
+        return $this->hasMany(Cancer::class, "patient_id");
     }
     public function otherDesease(){
-        return $this->hasMany(OtherDesease::class, 'patient_id');
+        return $this->hasMany(OtherDesease::class, "patient_id");
     }
 
     public function maintenance(){
-        return $this->hasMany(Maintenance::class, 'patient_id');
+        return $this->hasMany(Maintenance::class, "patient_id");
     }
     public function tbl_immunization(){
-        return $this->hasMany(Immunization::class, 'patient_id');
+        return $this->hasMany(Immunization::class, "patient_id");
     }
 
     public function historyIllness(){
-        return $this->hasMany(HistoryIllness::class, 'patient_id');
+        return $this->hasMany(HistoryIllness::class, "patient_id");
     }
     public function allergy(){
-        return $this->hasMany(Allergy::class, 'patient_id');
+        return $this->hasMany(Allergy::class, "patient_id");
     }
     public function fracture(){
-        return $this->hasMany(Fracture::class, 'patient_id');
+        return $this->hasMany(Fracture::class, "patient_id");
     }
     public function operation(){
-        return $this->hasMany(Operation::class, 'patient_id');
+        return $this->hasMany(Operation::class, "patient_id");
     }
     public function hospitalization(){
-        return $this->hasMany(Hospitalization::class, 'patient_id');
+        return $this->hasMany(Hospitalization::class, "patient_id");
     }
     public function behavior(){
-        return $this->hasMany(BehavioralProblem::class, 'patient_id');
+        return $this->hasMany(BehavioralProblem::class, "patient_id");
     }
     public function otherIllness(){
-        return $this->hasMany(OtherIllness::class, 'patient_id');
+        return $this->hasMany(OtherIllness::class, "patient_id");
     }
 
     public function records(){

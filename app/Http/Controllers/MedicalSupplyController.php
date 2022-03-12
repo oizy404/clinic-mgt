@@ -24,6 +24,7 @@ class MedicalSupplyController extends Controller
         $med_supply->stock = $request->stock;
         $med_supply->expiry_date = $request->expiry_date;
         $med_supply->purchase_date = $request->purchase_date;
+        $med_supply->archived = 0;
 
         $med_supply->save();
 
@@ -56,15 +57,17 @@ class MedicalSupplyController extends Controller
         $med_supply->stock = $request->stock;
         $med_supply->expiry_date = $request->expiry_date;
         $med_supply->purchase_date = $request->purchase_date;
+        $med_supply->archived = 0;
 
         $med_supply->save();
         return redirect()->route('medical-supplies-inventory');
     }
 
-    public function delete($id){
+    public function archive($id, Request $request){
         $med_supply = MedicalSupply::find($id);
-        $med_supply->delete(); //delete a column
-
+        $med_supply->archived = 1;
+        $med_supply->save();
+        
         return redirect()->back();
     }
 }

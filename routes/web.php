@@ -56,12 +56,18 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     })->name("appointments");
     
     Route::get('index', [EventController::class, 'index'])->name("allEvent");
+    Route::get('appointments', [EventController::class, 'index2'])->name("appointments");
     Route::post('store', [EventController::class, 'store'])->name("eventStore");
     Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
 
     Route::get('/consultation-record', [ConsultationController::class, "index"])->name("consultation-record");
     Route::get('/add-consultation-record', [ConsultationController::class, "create"])->name("add-consultation-record");
     Route::post('/store-consultation-record', [ConsultationController::class, "store"])->name("store-consultation-record");
+    Route::get('/show-consultation-record/{id}', [ConsultationController::class, "show"])->name("show-consultation-record");
+    Route::get('/edit-consultation-record/{id}', [ConsultationController::class, "edit"])->name("edit-consultation-record");
+    Route::post('/update-consultation-record/{id}', [ConsultationController::class, "update"])->name("update-consultation-record");
+    Route::get('archive-consultation-record/{id}', [ConsultationController::class, "archive"])->name('archive-consultation-record');
+
 
     Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
     Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
@@ -77,12 +83,13 @@ Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () 
     Route::post('/create-health-data', [PatientController::class, "insert"])->name("create-health-data");
     Route::get('editHealthData/{id}', [PatientController::class, "edit"])->name('edit-health-data');
     Route::post('updateHealthData/{id}', [PatientController::class, "update"])->name('update-health-data');
+    Route::get('archiveHealthData/{id}', [PatientController::class, "archive"])->name('archiveHealthData');
 
     Route::post('/health-data',[PatientController::class,'import'])->name('student.import');
 
     Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
     Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
-    Route::get('delete/{id}', [MedicalSupplyController::class, "delete"])->name('delete');
+    Route::get('archiveMedical/{id}', [MedicalSupplyController::class, "archive"])->name('archiveMedical');
     Route::get('editMedicalRecord/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
     Route::post('updateMedicalRecord/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
 

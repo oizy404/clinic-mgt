@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BirthParent extends Model
+class ParentModel extends Model
 {
     use HasFactory;
 
-    protected $table ="tbl_parents";
+    protected $table ="tblparents";
 
     protected $fillable = [
         'complete_name',
+        'relationship',
         'birthday',
         'contact_number',
         'occupation',
@@ -21,6 +22,6 @@ class BirthParent extends Model
     ];
 
     public function patient(){
-        return $this->belongsTo(PatientProfile::class, 'patient_id');
+        return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }

@@ -18,9 +18,9 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        $patients = PatientProfile::all();
+        $records = HealthEvaluation::all();
         return view("pages.clinic_staff.consultation-record")->with(compact(
-            "patients", $patients,
+            "records", $records,
         ));
     }
 
@@ -32,9 +32,7 @@ class ConsultationController extends Controller
     public function create()
     {
         $patients = PatientProfile::all();
-        // $records = HealthEvaluation::all();
         return view("pages.clinic_staff.add-consultation-record")->with(compact(
-            // "records", $records,
             "patients", $patients,
         ));
     }
@@ -54,6 +52,7 @@ class ConsultationController extends Controller
         $record->BMI = $request->bmi;
         $record->BP = $request->bloodpressure;
         $record->doctors_note = $request->doctors_note;
+        $record->archived = 0;
         $record->save();
 
         if($request->patient_role == "Employee"){
@@ -65,19 +64,21 @@ class ConsultationController extends Controller
             $position->save();
         }
         elseif($request->patient_role == "Student"){
-            $position = new Position();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
-    
             $yearlevel = new YearLevel();
             $yearlevel->grade_level = $request->grade_level;
             $yearlevel->department_id = $request->department;
             $yearlevel->save();
+
+            $position = new Position();
+            $position->personnel_position = $request->personnel_position;
+            $position->personnel_rank = $request->personnel_rank;
+            $position->department_id = $request->department;
+            $position->yearLevel_id = $yearlevel->id;
+            $position->health_evaluation_id = $record->id;
+            $position->save();
+    
         }
-        return redirect()->back();
+        return redirect()->route('consultation-record');
 
     }
 
@@ -89,7 +90,10 @@ class ConsultationController extends Controller
      */
     public function show($id)
     {
-        //
+        $record = HealthEvaluation::find($id);
+        return view("pages.clinic_staff.show-consultation-record")->with(compact(
+            "record", $record,
+        ));
     }
 
     /**
@@ -100,7 +104,12 @@ class ConsultationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $record = HealthEvaluation::find($id);
+        $patients = PatientProfile::all();
+        return view("pages.clinic_staff.edit-consultation-record")->with(compact(
+            "record", $record,
+            "patients", $patients,
+        ));
     }
 
     /**
@@ -112,7 +121,41 @@ class ConsultationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $record = HealthEvaluation::find($id);
+        $record->patient_id = $request->id;
+        $record->weight = $request->weight;
+        $record->height = $request->height;
+        $record->BMI = $request->bmi;
+        $record->BP = $request->bloodpressure;
+        $record->doctors_note = $request->doctors_note;
+        $record->archived = 0;
+        $record->save();
+
+        if($request->patient_role == "Employee"){
+            $position = Position::find($id);
+            $position->personnel_position = $request->personnel_position;
+            $position->personnel_rank = $request->personnel_rank;
+            $position->department_id = $request->department;
+            $position->health_evaluation_id = $record->id;
+            $position->save();
+        }
+        elseif($request->patient_role == "Student"){
+            $yearlevel = YearLevel::find($id);
+            $yearlevel->grade_level = $request->grade_level;
+            $yearlevel->department_id = $request->department;
+            $yearlevel->save();
+
+            $position = Position::find($id);
+            $position->personnel_position = $request->personnel_position;
+            $position->personnel_rank = $request->personnel_rank;
+            $position->department_id = $request->department;
+            $position->yearLevel_id = $yearlevel->id;
+            $position->health_evaluation_id = $record->id;
+            $position->save();
+    
+            
+        }
+        return redirect()->route('consultation-record');
     }
 
     /**
@@ -121,8 +164,15 @@ class ConsultationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    // public function destroy($id)
+    // {
+    //     //
+    // }
+    public function archive($id, Request $request){
+        $record = HealthEvaluation::find($id);
+        $record->archived = 1;
+        $record->save();
+        
+        return redirect()->back();
     }
 }
