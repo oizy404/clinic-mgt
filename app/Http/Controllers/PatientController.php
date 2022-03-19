@@ -66,12 +66,23 @@ class PatientController extends Controller
         $patient->save();
 
         $parent = new ParentModel();
-        $parent->complete_name = $request->parentsComplete_name;
-        $parent->relationship = $request->relationship;
-        $parent->birthday = $request->parentsBirthday;
-        $parent->contact_number = $request->parentsContact_number;
-        $parent->occupation = $request->parentsOccupation;
-        $parent->employment_address = $request->parentsEmployment_address;
+        $parent->complete_name = $request->fatherComplete_name;
+        $parent->relationship = $request->fatherRelationship;
+        $parent->birthday = $request->fatherBirthday;
+        $parent->contact_number = $request->fatherContact_number;
+        $parent->occupation = $request->fatherOccupation;
+        $parent->employment_address = $request->fatherEmployment_address;
+        $parent->patient_id = $patient->id;
+        $parent->save();
+
+        $parent = new ParentModel();
+        $parent->complete_name = $request->motherComplete_name;
+        $parent->relationship = $request->motherRelationship;
+        $parent->birthday = $request->motherBirthday;
+        $parent->contact_number = $request->motherContact_number;
+        $parent->occupation = $request->motherOccupation;
+        $parent->employment_address = $request->motherEmployment_address;
+        
         $parent->patient_id = $patient->id;
         $parent->save();
 
@@ -192,15 +203,10 @@ class PatientController extends Controller
     public function edit($id){
 
         $patient = PatientProfile::find($id);
+        $parent = ParentModel::all();
 
         return view("pages.clinic_staff.edit-health-data")->with(compact(
             "patient", $patient,
-            // "parent",$parent,
-            // "province",$province,
-            // "city",$city,
-            // "location",$location,
-            // "guardian",$sibling,
-            // "sibling",$sibling
         ));
 
     }
@@ -223,12 +229,23 @@ class PatientController extends Controller
         $patient->save();
 
         $parent = ParentModel::find($id);
-        $parent->complete_name = $request->parentsComplete_name;
-        $parent->relationship = $request->relationship;
-        $parent->birthday = $request->parentsBirthday;
-        $parent->contact_number = $request->parentsContact_number;
-        $parent->occupation = $request->parentsOccupation;
-        $parent->employment_address = $request->parentsEmployment_address;
+        $parent->complete_name = $request->fatherComplete_name;
+        $parent->relationship = $request->fatherRelationship;
+        $parent->birthday = $request->fatherBirthday;
+        $parent->contact_number = $request->fatherContact_number;
+        $parent->occupation = $request->fatherOccupation;
+        $parent->employment_address = $request->fatherEmployment_address;
+        $parent->patient_id = $patient->id;
+        $parent->save();
+
+        $parent = ParentModel::find($id);
+        $parent->complete_name = $request->motherComplete_name;
+        $parent->relationship = $request->motherRelationship;
+        $parent->birthday = $request->motherBirthday;
+        $parent->contact_number = $request->motherContact_number;
+        $parent->occupation = $request->motherOccupation;
+        $parent->employment_address = $request->motherEmployment_address;
+        
         $parent->patient_id = $patient->id;
         $parent->save();
 

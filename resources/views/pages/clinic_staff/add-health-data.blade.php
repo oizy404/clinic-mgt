@@ -119,35 +119,35 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group input-group-sm">
-                                        <input type="hidden" name="relationships[]" value="Father">
-                                        <label for="parentsComplete_names" class=""><b>Father's Complete Name</b></label>
-                                        <input type="text" class="form-control" name="parentsComplete_names[]" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="hidden" name="fatherRelationship" value="Father">
+                                        <label for="parentsComplete_name" class=""><b>Father's Complete Name</b></label>
+                                        <input type="text" class="form-control" name="fatherComplete_name" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
-                                        <label for="parentsBirthdays" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="parentsBirthdays[]" placeholder="MM/DD/YYYY">
+                                        <label for="parentsBirthday" class=""><b>Date of Birth</b></label>
+                                        <input type="date" class="form-control" name="fatherBirthday" placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
-                                        <label for="parentsContact_numbers" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="parentsContact_numbers[]">
+                                        <label for="parentsContact_number" class=""><b>Contact Number</b></label>
+                                        <input type="tel" class="form-control" name="fatherContact_number">
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     <div class="form-group input-group-sm">
-                                        <label for="parentsOccupations" class=""><b>Occupation</b></label>
-                                        <input type="text" class="form-control" name="parentsOccupations[]" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsOccupation" class=""><b>Occupation</b></label>
+                                        <input type="text" class="form-control" name="fatherOccupation" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
-                                        <label for="parentsEmployment_addresss" class=""><b>Employment Address</b></label>
-                                        <input type="text" class="form-control" name="parentsEmployment_addresss[]" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsEmployment_address" class=""><b>Employment Address</b></label>
+                                        <input type="text" class="form-control" name="fatherEmployment_address" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
@@ -156,35 +156,35 @@
                             <div class="row mt-2">
                                 <div class="col-md-6">
                                     <div class="form-group input-group-sm">
-                                        <input type="hidden" name="relationships[]" value="Mother">
-                                        <label for="parentsComplete_names" class=""><b>Mother's Name</b></label>
-                                        <input type="text" class="form-control" name="parentsComplete_names[]" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="hidden" name="motherRelationship" value="Mother">
+                                        <label for="parentsComplete_name" class=""><b>Mother's Name</b></label>
+                                        <input type="text" class="form-control" name="motherComplete_name" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="Mbirthdate" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="parentsBirthdays[]" placeholder="MM/DD/YYYY">
+                                        <input type="date" class="form-control" name="motherBirthday" placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
-                                        <label for="parentsContact_numbers" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="parentsContact_numbers[]">
+                                        <label for="parentsContact_number" class=""><b>Contact Number</b></label>
+                                        <input type="tel" class="form-control" name="motherContact_number">
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     <div class="form-group input-group-sm">
-                                        <label for="parentsOccupations" class=""><b>Occupation</b></label>
-                                        <input type="text" class="form-control" name="parentsOccupations[]" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsOccupation" class=""><b>Occupation</b></label>
+                                        <input type="text" class="form-control" name="motherOccupation" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
-                                        <label for="parentsEmployment_addresss" class=""><b>Employment Address</b></label>
-                                        <input type="text" class="form-control" name="parentsEmployment_addresss[]" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="parentsEmployment_address" class=""><b>Employment Address</b></label>
+                                        <input type="text" class="form-control" name="motherEmployment_address" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
