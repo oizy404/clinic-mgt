@@ -6,7 +6,7 @@
 
 @section('content')
 @include('shared.admin-header')
-@include('shared.supervisor-sidenav')
+@include('shared.admin-sidenav')
 
 {{session('rank')}}
         <div class="main-container">
@@ -27,6 +27,7 @@
                                 <th>Product Type</th>
                                 <th>Stock</th>
                                 <th>Expiry Date</th>
+                                <th>Purchase Date</th>
                                 <th>Update</th>
                                 <th>View</th>
                                 <th>Delete</th>
@@ -40,6 +41,7 @@
                                 <td>{{$med_supply->med_type->medicine_type}}</td>
                                 <td>{{$med_supply->stock}}</td>
                                 <td>{{$med_supply->expiry_date}}</td>
+                                <td>{{$med_supply->purchase_date}}</td>
                                 <td>
                                     <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" id="btn-record"><center><i class="far fa-edit"></i></center></a>
                                 </td>

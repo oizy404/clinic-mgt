@@ -46,6 +46,21 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 
     Route::get('admin-home', [ChartController::class, 'medicalSupplyIndex'])->name("admin-home");
 
+    Route::get('/health-data', [PatientController::class, "index"])->name("health-data");
+    Route::get('/add-health-data', [PatientController::class, "index2"])->name("add-health-data");
+    Route::post('/create-health-data', [PatientController::class, "insert"])->name("create-health-data");
+    Route::get('editHealthData/{id}', [PatientController::class, "edit"])->name('edit-health-data');
+    Route::post('updateHealthData/{id}', [PatientController::class, "update"])->name('update-health-data');
+    Route::get('archiveHealthData/{id}', [PatientController::class, "archive"])->name('archiveHealthData');
+
+    Route::post('/health-data',[PatientController::class,'import'])->name('student.import');
+
+    Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
+    Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
+    Route::get('archiveMedical/{id}', [MedicalSupplyController::class, "archive"])->name('archiveMedical');
+    Route::get('editMedicalRecord/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
+    Route::post('updateMedicalRecord/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
+
 });  
 
 //-------------DOCTOR--------------------------------------------------------------
@@ -77,24 +92,24 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
 });
 
 //--------------SUPERVISOR---------------------------------------------------------
-Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
+// Route::middleware(['ifLoggedOut', 'manageSupervisorAccess'])->group(function () {
 
-    Route::get('/health-data', [PatientController::class, "index"])->name("health-data");
-    Route::get('/add-health-data', [PatientController::class, "index2"])->name("add-health-data");
-    Route::post('/create-health-data', [PatientController::class, "insert"])->name("create-health-data");
-    Route::get('editHealthData/{id}', [PatientController::class, "edit"])->name('edit-health-data');
-    Route::post('updateHealthData/{id}', [PatientController::class, "update"])->name('update-health-data');
-    Route::get('archiveHealthData/{id}', [PatientController::class, "archive"])->name('archiveHealthData');
+    // Route::get('/health-data', [PatientController::class, "index"])->name("health-data");
+    // Route::get('/add-health-data', [PatientController::class, "index2"])->name("add-health-data");
+    // Route::post('/create-health-data', [PatientController::class, "insert"])->name("create-health-data");
+    // Route::get('editHealthData/{id}', [PatientController::class, "edit"])->name('edit-health-data');
+    // Route::post('updateHealthData/{id}', [PatientController::class, "update"])->name('update-health-data');
+    // Route::get('archiveHealthData/{id}', [PatientController::class, "archive"])->name('archiveHealthData');
 
-    Route::post('/health-data',[PatientController::class,'import'])->name('student.import');
+    // Route::post('/health-data',[PatientController::class,'import'])->name('student.import');
 
-    Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
-    Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
-    Route::get('archiveMedical/{id}', [MedicalSupplyController::class, "archive"])->name('archiveMedical');
-    Route::get('editMedicalRecord/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
-    Route::post('updateMedicalRecord/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
+    // Route::get('/medical-supplies-inventory', [MedicalSupplyController::class, "index"])->name("medical-supplies-inventory");
+    // Route::post('/add-medical-supply', [MedicalSupplyController::class, "insert"])->name("add-medical-supply");
+    // Route::get('archiveMedical/{id}', [MedicalSupplyController::class, "archive"])->name('archiveMedical');
+    // Route::get('editMedicalRecord/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
+    // Route::post('updateMedicalRecord/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
 
-});
+// });
 //--------------PATIENT---------------------------------------------------------
 Route::post("authenticate-patient", [LoginController::class, "loginPatient"])->name("loginPatient");
 
@@ -115,6 +130,6 @@ Route::get('/logout', function (Request $request) {
 
 
 // Route::get('/test', function(){
-//              $password ="supervisor";
+//              $password ="clinicstaff";
 //              echo Hash::make($password);
 //          });

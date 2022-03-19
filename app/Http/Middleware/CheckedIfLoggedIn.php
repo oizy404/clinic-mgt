@@ -19,15 +19,15 @@ class CheckedIfLoggedIn
     {
         $rank = $request->session()->get('rank');       // gets the value of the sesseion 'rank'
         
-        if(Auth::check() && $rank == "admin"){          // checks if user is logged in and session rank is admin
+        if(Auth::check() && $rank == "clinicstaff"){          // checks if user is logged in and session rank is admin
             return redirect()->route("admin-home");
         }
         else if(Auth::check() && $rank == "doctor"){     // checks if user is logged in and session rank is staff
             return redirect()->route("appointments");
         }
-        else if(Auth::check() && $rank == "supervisor"){
-            return redirect()->route("health-data");
-        }
+        // else if(Auth::check() && $rank == "supervisor"){
+        //     return redirect()->route("health-data");
+        // }
         else if(Auth::check() && $rank == "patient"){
             return redirect()->route("patient-dashboard");
         }

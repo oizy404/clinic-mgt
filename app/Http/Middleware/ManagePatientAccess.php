@@ -18,15 +18,15 @@ class ManagePatientAccess
     {
         $rank = $request->session()->get('rank');
         
-        if($rank == "admin"){
+        if($rank == "clinicstaff"){
             return redirect()->route("admin-home");
         }
         else if($rank == "doctor"){
             return redirect()->route("appointments");
         }
-        else if($rank == "supervisor"){
-            return redirect()->route("health-data");
-        }
+        // else if($rank == "supervisor"){
+        //     return redirect()->route("health-data");
+        // }
         return $next($request);
     }
 }

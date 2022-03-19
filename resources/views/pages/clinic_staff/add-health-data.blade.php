@@ -6,7 +6,7 @@
 
 @section('content')
 @include('shared.admin-header')
-@include('shared.supervisor-sidenav')
+@include('shared.admin-sidenav')
 
         <div class="main-container">
             <div class="add-student-health-data">

@@ -22,15 +22,15 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt($credentials)){
-			if($request->session()->put('rank', $rank)=='admin'){// put session data named 'rank'. Which value is either 'admin',
+			if($request->session()->put('rank', $rank)=='clinicstaff'){// put session data named 'rank'. Which value is either 'admin',
 				return redirect()->route('admin-home');
 			}
 			if($request->session()->put('rank', $rank)=='doctor'){// put session data named 'rank'. Which value is either 'doctor',
 				return redirect()->route('appointments');
 			} 
-			if($request->session()->put('rank', $rank)=='supervisor'){// put session data named 'rank'. Which value is either 'supervisor',
-				return redirect()->route('health-data');
-			}     
+			// if($request->session()->put('rank', $rank)=='supervisor'){// put session data named 'rank'. Which value is either 'supervisor',
+			// 	return redirect()->route('health-data');
+			// }     
             else{
 				return back()->withErrors([
 					"Invalid Login"

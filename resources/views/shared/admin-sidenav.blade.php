@@ -11,7 +11,7 @@
         </li>
         
         <li>
-          <a href="/student-health-data">
+          <a href="/health-data">
             <span class="icon"><i class="fas fa-book-medical"></i></span>
             <span class="list">Health Data</span>
           </a>
@@ -21,6 +21,13 @@
           <a href="student-consultation-record">
             <span class="icon"><i class="fas fa-file-medical"></i></span>
             <span class="list">Consultation Record</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="/message-doctor">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <span class="list">Message</span>
           </a>
         </li>
 

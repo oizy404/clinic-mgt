@@ -22,13 +22,13 @@
                 @method('post')
                 <div id="page">
                     <label for=""><h6><strong>Login Staff</strong></h6></label>
-                    <div class="element">
-                        <input type="text" name="username" placeholder="Username">
-                        <span class="fas fa-user"></span>
+                    <div class="form-group input-group-sm">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <!-- <span class="fas fa-user"></span> -->
                     </div>
-                    <div class="element">
-                        <input type="password" name="password" placeholder="Password">
-                        <span class="fas fa-lock"></span>
+                    <div class="form-group input-group-sm mb-3 mt-3">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <!-- <span class="fas fa-lock"></span> -->
                     </div>
                     <button id="btnn1">Login</button>
                 </div>

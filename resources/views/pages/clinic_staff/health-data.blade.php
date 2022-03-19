@@ -25,7 +25,7 @@
 </style>
 
 @include('shared.admin-header')
-@include('shared.supervisor-sidenav')
+@include('shared.admin-sidenav')
 
         {{session('rank')}}
         <div class="main-container">

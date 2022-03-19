@@ -84,15 +84,13 @@
                     @csrf
                     <div class="form-group input-group-sm">
                         <input type="text" name="patient_id" id="patient_idd" value="">
-                    @foreach($event as $eventt)
-                        <input type="text" name="patientId" id="patientId" value="{{$eventt->patient_id}}">
+                        <input type="text" name="patientId" id="patientId" value="">
                         <label for="complete-name">Patient Name</label>
-                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" value="{{$eventt->patient->first_name}} {{$eventt->patient->last_name}}" id="complete_namee">
-                    @endforeach
+                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" value=" " id="complete_namee">
                     </div>
                     <div class="form-group input-group-sm">
                         <label for="title"><b>Event Title</b></label>
-                        <input type="text" class="form-control" name="title" id="titlee" placeholder="Event Title">
+                        <input type="text" class="form-control" name="title" id="titlee" value="" placeholder="Event Title">
                     </div>
                     <div class="form-group input-group-sm">
                         <label for="start"><b>Start Date/Time</b></label>
