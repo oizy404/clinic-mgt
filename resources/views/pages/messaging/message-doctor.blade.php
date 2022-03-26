@@ -160,26 +160,26 @@
         
 
     // });
-    $("#Form").submit(function(e) {
+    // $("#Form").submit(function(e) {
 
-        e.preventDefault(); // avoid to execute the actual submit of the form.
+    //     e.preventDefault(); // avoid to execute the actual submit of the form.
 
-        var form = $(this);
-        var actionUrl = form.attr('action');
-        var message = $("#message").val();
-        $.ajax({
-            type: "POST",
-            url: actionUrl,
-            data: form.serialize(), // serializes the form's elements.
-            success: function(data)
-            {
-                $("#message").val('');
-                $("#message_box").append(
-                        "<div class='d-flex justify-content-end'><div class='outbox'>"+message+"</div></div><br>"
-                    )
-            }
-        });
+    //     var form = $(this);
+    //     var actionUrl = form.attr('action');
+    //     var message = $("#message").val();
+    //     $.ajax({
+    //         type: "POST",
+    //         url: actionUrl,
+    //         data: form.serialize(), // serializes the form's elements.
+    //         success: function(data)
+    //         {
+    //             $("#message").val('');
+    //             $("#message_box").append(
+    //                     "<div class='d-flex justify-content-end'><div class='outbox'>"+message+"</div></div><br>"
+    //                 )
+    //         }
+    //     });
 
-    });
+    // });
 </script>
 @stop

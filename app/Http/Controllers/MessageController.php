@@ -64,6 +64,39 @@ class MessageController extends Controller
         return redirect()->back();
     }
 
+    public function clinicstaffIndex(){
+
+        $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
+        
+        $users = DB::table('users')
+            ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
+            ->select('users.*','tbl_messages.sender')
+            ->orderBy('tbl_messages.created_at','desc')
+            ->where('rank','patient')
+            ->get()->groupBy('sender');
+            
+        return view("pages.messaging.message-clinicstaff")->with( compact(
+            "users", $users,
+            "messages", $messages));
+    }
+
+    public function clinicstaffMessageShow(){
+        $users = DB::table('users')
+        ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
+        ->select('users.*','tbl_messages.sender')
+        ->orderBy('tbl_messages.created_at','desc')
+        ->where('rank','patient')
+        ->get()->groupBy('sender');
+        
+        $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
+
+        return view("pages.messaging.create-message-clinicstaff")->with("messages", $messages)->with("users", $users);
+    }
+
+    public function insertClinicstaffMsg(){
+
+    }
+
     public function patientIndex(){
         $users = User::all();
         $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();

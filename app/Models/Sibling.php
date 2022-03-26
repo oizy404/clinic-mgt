@@ -16,6 +16,6 @@ class Sibling extends Model
     ];
 
     public function patient(){
-        return $this->belongsTo(PatientProfile::class, 'patient_id');
+        return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }

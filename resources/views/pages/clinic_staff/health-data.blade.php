@@ -39,6 +39,10 @@
                         <h3>PATIENT HEALTH DATA</h3>
                     </div>
                 </div>
+                <div class="offset-md-1 patient-role-btn">
+                    <button class="btn-success" id="pr-btn1">Employee</button>
+                    <button class="btn-primary" id="pr-btn2">Students</button>
+                </div>
                 <div class="offset-md-1 health-data">
                     <table id="health-data" class="table table-hover" style="width:100%">
                         <thead>

@@ -203,7 +203,15 @@ class PatientController extends Controller
     public function edit($id){
 
         $patient = PatientProfile::find($id);
-        $parent = ParentModel::all();
+        // foreach($patient->guardian as $guardiann){
+        //     foreach($guardiann->location as $locationn){
+        //         dd($locationn->city->province_id);
+        //     }
+        // }
+        // foreach($patient->familyDesease as $family_desease){
+        //     dd($family_desease->desease->desease_name);
+        // }
+
 
         return view("pages.clinic_staff.edit-health-data")->with(compact(
             "patient", $patient,

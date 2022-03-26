@@ -12,10 +12,14 @@ class Message extends Model
     protected $table ="tbl_messages";
 
     protected $fillable = [
+        'sender',
         'message',
+        'img_file',
+        'receiver',
+        'read',
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'sender','receiver');
+        return $this->belongsTo(User::class, "sender","receiver");
     }
 }

@@ -14,7 +14,7 @@ class Desease extends Model
     protected $fillable = ['desease_name'];
 
     public function familyDesease(){
-        return $this->hasMany(FamilyDesease::class, 'desease_id');
+        return $this->hasMany(FamilyDesease::class, "desease_id");
     }
 
 }

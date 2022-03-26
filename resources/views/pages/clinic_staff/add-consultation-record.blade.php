@@ -7,30 +7,76 @@
 @section('content')
 @include('shared.admin-header')
 @include('shared.doctor-sidenav')
+<style>
+    .dropdown-check-list {
+        display: inline-block;
+    }
+
+    .dropdown-check-list .anchor {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        padding: 3px 140px 3px 140px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+    }
+
+    .dropdown-check-list .anchor:after {
+        position: absolute;
+        content: "";
+        border-left: 2px solid black;
+        border-top: 2px solid black;
+        padding: 5px;
+        right: 10px;
+        top: 20%;
+        -moz-transform: rotate(-135deg);
+        -ms-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+    }
+    .dropdown-check-list .anchor:active:after {
+        right: 8px;
+        top: 21%;
+    }
+
+    .dropdown-check-list ul.items {
+        padding: 2px;
+        display: none;
+        margin: 0;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+
+    .dropdown-check-list ul.items li {
+        list-style: none;
+    }
+
+    .dropdown-check-list.visible .anchor {
+        color: #0094ff;
+    }
+
+    .dropdown-check-list.visible .items {
+        display: block;
+    }
+</style>
         <div class="main-container">
             <div class="add-consultation-record">
                 <div class="row acr-heading">
                     <div class="col-md-3 p-head-btn">
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Search Patient <i class="fas fa-search"></i></button> -->
                     </div>
                     <div class="col-md-5 offset-md-4 p-head">
                         <h3 class="mb-0">CONSULTATION FORM</h3>
-                        <!-- <small>STUDENT</small> -->
                     </div>
                 </div>
                 <div class="" id="add-consultation-record">
                     <form action="{{route('store-consultation-record')}}" method="post">
                         @csrf
                         @method('post')
-                        <div class="form-group" id="health-evaluation" style="background-color: white;">
-                            <!-- <div class="col-md-2 form-group">
-                                <label for="idnumber" class=""><b>School ID Number</b></label>
-                                <input type="text" class="form-control" name="idnumber">
-                            </div> -->
+                        <div class="form-group" id="health-evaluation" style="background-color: white;"> 
                             <div class="row">
                                 <div class="col column1">
                                     <div class="col form-group input-group-sm">
-                                        <!-- <a class="btn btn-info ml-2" data-toggle="modal" data-target="#tableModal" href="#"><i data-feather="search"></i> Search</a>   -->
                                         <label for="complete_name" class=""><b>Patient Name</b></label>
                                         <input type="text" class="form-control" name="complete_name" id="complete_name" data-bs-toggle="modal" data-bs-target="#patientModal">
                                         <input type="hidden" class="form-control" name="id" id="id">
@@ -50,37 +96,109 @@
 
                                 </div>
                             </div>
-                            <div class="row mt-2">
+                            <div class="row mt-3">
                                 <div class="col">
-                                    <div class="form-group input-group-sm">
-                                        <label for="height" class=""><b>Height</b></label>
-                                        <input type="text" class="form-control" name="height">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="height" class=""><b>Height</b></label>
+                                                <input type="text" class="form-control" name="height">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="weight" class=""><b>Weight</b></label>
+                                                <input type="text" class="form-control" name="weight">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="temperature"><b>Temperature</b></label>
+                                                <input type="text" class="form-control" name="temperature">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="bloodpressure" class=""><b>Blood Pressure(BP)</b></label>
+                                                <input type="text" class="form-control" name="bloodpressure">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="bmi" class=""><b>Body Mass Index</b></label>
+                                                <input type="text" class="form-control" name="bmi">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group input-group-sm">
-                                        <label for="weight" class=""><b>Weight</b></label>
-                                        <input type="text" class="form-control" name="weight">
+                                    <label for="chief-complaints"><b>Chief Complaints</b></label>
+                                    <div class="row" style="border: 1px solid lightgray; border-radius: 2px;">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <input type="checkbox" name="CC[]" value="">
+                                                <label for="cc">Head Ache</label><br>
+                                                <input type="checkbox" name="CC[]" value="">
+                                                <label for="cc">Stomach Ache</label><br>
+                                                <input type="checkbox" name="CC[]" value="">
+                                                <label for="cc">Tooth Ache</label><br>
+                                                <input type="checkbox" name="CC" value="">
+                                                <label for="cc">Dysmenorrhea</label><br>
+                                                <input type="checkbox" name="CC[]" value="">
+                                                <label for="cc">Fever</label><br>
+                                                <input type="checkbox" name="CC[]" value="">
+                                                <label for="cc">Cramps</label><br>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <input type="checkbox" name="CC[]" value="">
+                                                <label for="cc">Diarhea</label><br>
+                                                <input type="checkbox" name="CC[]" value="">
+                                                <label for="cc">Sprain</label>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <div class="form-group input-group-sm">
-                                        <label for="bmi" class=""><b>Body Mass Index</b></label>
-                                        <input type="text" class="form-control" name="bmi">
-                                    </div>
-                                </div>
-                                <div class="col">
+
+                                
+                                
+                            
+                                
+                                <!-- <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="bloodpressure" class=""><b>Blood Pressure(BP)</b></label>
                                         <input type="text" class="form-control" name="bloodpressure">
                                     </div>
-                                </div>
-                            </div>
+                                </div> -->
+                                <!-- <div class="col">
+                                    <div id="list1" class="dropdown-check-list" tabindex="100">
+                                        <label for="chief-complaints"><b>Chief Complaints</b></label><br>
+                                        <span class="anchor">----</span>
+                                        <ul class="items">
+                                            <li><input type="checkbox" />Head Ache</li>
+                                            <li><input type="checkbox" />Stomach Ache</li>
+                                            <li><input type="checkbox" />Fever</li>
+                                            <li><input type="checkbox" />Tooth Ache</li>
+                                            <li><input type="checkbox" />Cramps</li>
+                                            <li><input type="checkbox" />Diarhea </li>
+                                            <li><input type="checkbox" />Sprain</li>
+                                        </ul>
+                                    </div>
+                                </div> -->
                             <div class="form-group mt-2">
                                 <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
                                 <textarea class="form-control" name="doctors_note" id="doctors_note" cols="10" rows="4"></textarea>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="nurse_note" class=""><b>Nurse Notes</b></label>
+                                <textarea class="form-control" name="nurse_note" id="nurse_note" cols="10" rows="4"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="btn-add-consultation">Submit</button>
@@ -131,6 +249,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script>
+
     $(document).ready(function(){
         $(".hamburger").click(function(){
             $(".wrapper").toggleClass("active")

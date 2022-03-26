@@ -114,25 +114,26 @@
                         <h5>FAMILY DATA</h5>
                         <div class="form-group" id="patients-family-data" style="background-color: white;">
                             <!-- start of Father's info -->
-                        @if($patient->parent->relationship == 'Father')
+                    @foreach($patient->parent as $parentt)
+                        @if($parentt->relationship == 'Father')
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group input-group-sm">
-                                        <input type="hidden" name="fatherRelationship" value="{{$patient->parent->relationship}}">
+                                        <input type="hidden" name="fatherRelationship" value="{{$parentt->relationship}}">
                                         <label for="parentsComplete_name" class=""><b>Father's Complete Name</b></label>
-                                        <input type="text" class="form-control" name="fatherComplete_name" value="{{$patient->parent->complete_name}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="fatherComplete_name" value="{{$parentt->complete_name}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsBirthday" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="fatherBirthday" value="{{$patient->parent->birthday}}" placeholder="MM/DD/YYYY">
+                                        <input type="date" class="form-control" name="fatherBirthday" value="{{$parentt->birthday}}" placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsContact_number" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="fatherContact_number" value="{{$patient->parent->contact_number}}">
+                                        <input type="tel" class="form-control" name="fatherContact_number" value="{{$parentt->contact_number}}">
                                     </div>
                                 </div>
                             </div>
@@ -140,37 +141,37 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsOccupation" class=""><b>Occupation</b></label>
-                                        <input type="text" class="form-control" name="fatherOccupation" value="{{$patient->parent->occupation}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="fatherOccupation" value="{{$parentt->occupation}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsEmployment_address" class=""><b>Employment Address</b></label>
-                                        <input type="text" class="form-control" name="fatherEmployment_address" value="{{$patient->parent->employment_address}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="fatherEmployment_address" value="{{$parentt->employment_address}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
                             <!-- end of Father's Info -->
-                        @elseif($patient->parent->relationship == 'Mother')
+                        @elseif($parentt->relationship == 'Mother')
                             <!-- Start of Mother's info -->
                             <div class="row mt-2">
                                 <div class="col-md-6">
                                     <div class="form-group input-group-sm">
-                                        <input type="hidden" name="motherRelationship" value="{{$patient->parent->relationship}}">
+                                        <input type="hidden" name="motherRelationship" value="{{$parentt->relationship}}">
                                         <label for="parentsComplete_name" class=""><b>Mother's Name</b></label>
-                                        <input type="text" class="form-control" name="motherComplete_name" value="{{$patient->parent->complete_name}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="motherComplete_name" value="{{$parentt->complete_name}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="Mbirthdate" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="motherBirthday" value="{{$patient->parent->birthday}}" placeholder="MM/DD/YYYY">
+                                        <input type="date" class="form-control" name="motherBirthday" value="{{$parentt->birthday}}" placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsContact_number" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="motherContact_number" value="{{$patient->parent->contact_number}}">
+                                        <input type="tel" class="form-control" name="motherContact_number" value="{{$parentt->contact_number}}">
                                     </div>
                                 </div>
                             </div>
@@ -178,30 +179,32 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsOccupation" class=""><b>Occupation</b></label>
-                                        <input type="text" class="form-control" name="motherOccupation" value="{{$patient->parent->occupation}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="motherOccupation" value="{{$parentt->occupation}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsEmployment_address" class=""><b>Employment Address</b></label>
-                                        <input type="text" class="form-control" name="motherEmployment_address" value="{{$patient->parent->employment_address}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="motherEmployment_address" value="{{$parentt->employment_address}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
                         @endif
+                    @endforeach
                             <!-- end of mother's info -->
                             <!-- start of guardian's info -->
+                    @foreach($patient->guardian as $guardiann)
                             <div class="row mt-2">
                                 <div class="col-md-9">
                                     <div class="form-group input-group-sm">
                                     <label for="GName" class=""><b>Guardian's Name (<i>If not living with parent/s</i> )</b></label>
-                                    <input type="text" class="form-control" name="GName" oninput="this.value = this.value.toUpperCase()">
+                                    <input type="text" class="form-control" name="GName" value="{{$guardiann->complete_name}}" oninput="this.value = this.value.toUpperCase()">
                                 </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="GRelationship" class=""><b>Relationship</b></label>
-                                        <input type="text" class="form-control" name="GRelationship" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="GRelationship" value="{{$guardiann->relationship}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
@@ -209,13 +212,13 @@
                                 <div class="col-md-9">
                                     <div class="form-group input-group-sm">
                                         <label for="streetAdd" class=""><b>Street Address</b></label>
-                                        <input type="text" class="form-control" name="streetAdd" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="streetAdd" value="{{$guardiann->location->street_address}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="GContactNo" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="GContactNo">
+                                        <input type="tel" class="form-control" name="GContactNo" value="{{$guardiann->contact_number}}">
                                     </div>
                                 </div>
                             </div>
@@ -223,42 +226,44 @@
                                 <div class="col-md-4">
                                     <div class="form-group input-group-sm">
                                         <label for="barangay" class=""><b>Barangay</b></label>
-                                        <input type="text" class="form-control" name="barangay" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="barangay" value="{{$guardiann->location->barangay}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group input-group-sm">
                                         <label for="city" class=""><b>City</b></label>
-                                        <input type="text" class="form-control" name="city" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="city" value="{{$guardiann->location->city->city}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group input-group-sm">
                                         <label for="province" class=""><b>Province</b></label>
-                                        <input type="text" class="form-control" name="province" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="province" value="{{$guardiann->location->city->province->province}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
+                    @endforeach
                             <!-- end of guardian's info -->
                             <!-- start siblings info -->
+                    @foreach($patient->sibling as $siblingg)
                             <div class="row mt-2 wrapper">
                                 <div class="row mt-2 input-box">
                                     <div class="col-md-8">
                                         <div class="form-group input-group-sm">
                                             <label for="siblingComplete_name" class=""><b>Sibling's Complete Name</b></label>
-                                            <input type="text" class="form-control" name="siblingComplete_name" oninput="this.value = this.value.toUpperCase()">
+                                            <input type="text" class="form-control" name="siblingComplete_name" value="{{$siblingg->complete_name}}" oninput="this.value = this.value.toUpperCase()">
                                         </div>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group input-group-sm">
                                             <label for="siblingAge" class=""><b>Age</b></label>
-                                            <input type="number" class="form-control" name="siblingAge">
+                                            <input type="number" class="form-control" name="siblingAge" value="{{$siblingg->age}}">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group input-group-sm">
                                             <label for="siblingSex" class=""><b>Gender</b></label>
-                                            <input type="text" class="form-control" name="siblingSex" oninput="this.value = this.value.toUpperCase()">
+                                            <input type="text" class="form-control" name="siblingSex" value="{{$siblingg->sex}}" oninput="this.value = this.value.toUpperCase()">
                                         </div>
                                     </div>
                                     <div class="col-md-1 mt-4">
@@ -271,6 +276,7 @@
                                     <button type="button" class="btn btn-success add-btn">Add More</button>
                                 </div>
                             </div>
+                    @endforeach
                             <!-- end siblings info -->
                         </div>
                         <!-- End of Family data -->
@@ -285,19 +291,30 @@
                                     <small><i>(Have any members of the family had these illneses?)</i></small>
                                 </div>
                                 <div class="row">
+                                @foreach($patient->familyDesease as $family_desease)
+
                                     <div class="col">
                                         <div class="form-group input-group-sm">
-                                            <input type="checkbox" id="desease1" name="deseases[]" value="1">
+                                            <input type="checkbox" id="desease1" name="deseases[]" value="1" {{($family_desease->desease_id == '1' ? 'checked': '')}}>
                                             <label for="desease1">Diabetes</label><br>
-                                            <input type="checkbox" id="desease2" name="deseases[]" value="2">
+                                           
+
+                                            <input type="checkbox" id="desease2" name="deseases[]" value="2" {{($family_desease->desease_id == '2' ? 'checked': '')}}>
                                             <label for="desease2">Asthma</label><br>
-                                            <input type="checkbox" id="desease3" name="deseases[]" value="3">
+                                            
+
+                                            <input type="checkbox" id="desease3" name="deseases[]" value="3" {{($family_desease->desease_id == '3' ? 'checked': '')}}>
                                             <label for="desease3">Mental Disorder/ Psychological Problem</label><br>
-                                            <input type="checkbox" id="desease4" name="deseases[]" value="4">
+                                            
+                                            <input type="checkbox" id="desease4" name="deseases[]" value="4" {{($family_desease->desease_id == '4' ? 'checked': '')}}>
                                             <label for="desease4">Hypertension or High Blood Pressure</label><br>
-                                            <input type="checkbox" id="desease5" name="deseases[]" value="5">
+                                            
+
+                                            <input type="checkbox" id="desease5" name="deseases[]" value="5" {{($family_desease->desease_id == '5' ? 'checked': '')}}>
                                             <label for="desease5">Tuberculosis</label><br>
+                                            
                                         </div>
+                                    @endforeach
                                     </div>
                                     <div class="col">
                                         <div class="form-group  input-group-sm">

@@ -30,8 +30,8 @@ class PatientProfile extends Model
     public function parent(){
         return $this->hasMany(ParentModel::class, "patient_id");
     }
-    public function tbl_guardian(){
-        return $this->hasOne(Guardian::class, "patient_id");
+    public function guardian(){
+        return $this->hasMany(Guardian::class, "patient_id");
     }
     public function sibling(){
         return $this->hasMany(Sibling::class, "patient_id");

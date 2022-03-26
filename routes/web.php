@@ -61,6 +61,17 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
     Route::get('editMedicalRecord/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
     Route::post('updateMedicalRecord/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
 
+    Route::get('/message-clinicstaff', [MessageController::class, "clinicstaffIndex"])->name("message-clinicstaff");
+    Route::post('/compose-clinicstaffmsg', [MessageController::class, "insertClinicstaffMsg"])->name("compose-clinicstaffmsg");
+    Route::get('/show-clinicstaffmsg/{id}', [MessageController::class, "clinicstaffMessageShow"])->name("show-clinicstaffmsg");
+    Route::get('/create-message-clinicstaff/{id}', [MessageController::class, "clinicstaffMessageShow"])->name("create-message-clinicstaff");
+
+
+    // Route::get('/message-clinicstaff/{{$user->first()->id}}', function () {
+    //     return view('pages.messaging.message-clinicstaff');
+    // })->name("sample");
+    
+
 });  
 
 //-------------DOCTOR--------------------------------------------------------------

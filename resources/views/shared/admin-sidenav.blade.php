@@ -18,14 +18,14 @@
         </li>
 
         <li>
-          <a href="student-consultation-record">
+          <a href="/consultation-record">
             <span class="icon"><i class="fas fa-file-medical"></i></span>
             <span class="list">Consultation Record</span>
           </a>
         </li>
         
         <li>
-          <a href="/message-doctor">
+          <a href="/message-clinicstaff">
             <span class="icon"><i class="fas fa-envelope"></i></span>
             <span class="list">Message</span>
           </a>

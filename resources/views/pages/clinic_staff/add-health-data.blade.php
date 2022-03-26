@@ -34,6 +34,7 @@
                                                 <option selected>Select</option>
                                                 <option value="Employee">Employee</option>
                                                 <option value="Student">Student</option>
+                                                <option value="Visitor">Visitor</option>
                                             </select>
                                         </div>
                                     </div>
@@ -542,7 +543,7 @@
                 $(".vaccines-info").show();
                 $('.maintenance').hide();
             }
-            else if($(this).val() == "Employee"){
+            else if($(this).val() == "Employee" || $(this).val() == "Visitor"){
                 $(".vaccines-info").hide();
                 $('.maintenance').show();
             }

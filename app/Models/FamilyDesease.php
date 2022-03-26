@@ -14,9 +14,9 @@ class FamilyDesease extends Model
     protected $fillable = ['desease_id','patient_id'];
 
     public function desease(){
-        return $this->belongsTo(Desease::class, 'desease_id');
+        return $this->belongsTo(Desease::class, "desease_id");
     }
     public function patient(){
-        return $this->belongsTo(PatientProfile::class, 'patient_id');
+        return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }
