@@ -291,30 +291,21 @@
                                     <small><i>(Have any members of the family had these illneses?)</i></small>
                                 </div>
                                 <div class="row">
-                                @foreach($patient->familyDesease as $family_desease)
-
+                                @foreach($deseases as $desease)
                                     <div class="col">
                                         <div class="form-group input-group-sm">
-                                            <input type="checkbox" id="desease1" name="deseases[]" value="1" {{($family_desease->desease_id == '1' ? 'checked': '')}}>
-                                            <label for="desease1">Diabetes</label><br>
-                                           
-
-                                            <input type="checkbox" id="desease2" name="deseases[]" value="2" {{($family_desease->desease_id == '2' ? 'checked': '')}}>
-                                            <label for="desease2">Asthma</label><br>
-                                            
-
-                                            <input type="checkbox" id="desease3" name="deseases[]" value="3" {{($family_desease->desease_id == '3' ? 'checked': '')}}>
-                                            <label for="desease3">Mental Disorder/ Psychological Problem</label><br>
-                                            
-                                            <input type="checkbox" id="desease4" name="deseases[]" value="4" {{($family_desease->desease_id == '4' ? 'checked': '')}}>
-                                            <label for="desease4">Hypertension or High Blood Pressure</label><br>
-                                            
-
-                                            <input type="checkbox" id="desease5" name="deseases[]" value="5" {{($family_desease->desease_id == '5' ? 'checked': '')}}>
-                                            <label for="desease5">Tuberculosis</label><br>
-                                            
+                                        <input type="checkbox" name="deseases[]" value="{{ $desease->id }}"
+                                            @foreach($patient->familyDesease as $family_desease)
+                                                <?php
+                                                    if( in_array($desease->id, $family_desease->pluck('desease_id')->toArray())){
+                                                        echo 'checked="checked"'; 
+                                                    }
+                                                ?>
+                                            @endforeach
+                                        />
+                                               {{ $desease->desease_name }}
                                         </div>
-                                    @endforeach
+                                @endforeach
                                     </div>
                                     <div class="col">
                                         <div class="form-group  input-group-sm">

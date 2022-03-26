@@ -11,6 +11,7 @@ use App\Models\Guardian;
 use App\Models\Location;
 use App\Models\City;
 use App\Models\Province;
+use App\Models\Desease;
 use App\Models\FamilyDesease;
 use App\Models\Cancer;
 use App\Models\OtherDesease;
@@ -203,6 +204,7 @@ class PatientController extends Controller
     public function edit($id){
 
         $patient = PatientProfile::find($id);
+        $deseases = Desease::all();
         // foreach($patient->guardian as $guardiann){
         //     foreach($guardiann->location as $locationn){
         //         dd($locationn->city->province_id);
@@ -214,7 +216,8 @@ class PatientController extends Controller
 
 
         return view("pages.clinic_staff.edit-health-data")->with(compact(
-            "patient", $patient,
+            "patient",
+            "deseases"
         ));
 
     }
