@@ -14,11 +14,11 @@ class Location extends Model
     protected $fillable = [
         'street_address',
         'barangay',
-        "city_id"
+        'city_id'
     ];
 
     public function guardian(){
-        return $this->hasMany(Guardian::class, "location_id");
+        return $this->hasOne(Guardian::class, "location_id");
     }
     public function city(){
         return $this->belongsTo(City::class, "city_id");

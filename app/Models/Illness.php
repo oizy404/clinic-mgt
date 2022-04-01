@@ -14,6 +14,6 @@ class Illness extends Model
     protected $fillable = ['illness_name'];
 
     public function historyIllness(){
-        return $this->hasMany(HistoryIllness::class, 'illness_id');
+        return $this->hasMany(HistoryIllness::class, "illness_id");
     }
 }

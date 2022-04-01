@@ -50,7 +50,7 @@ class PatientProfile extends Model
     public function maintenance(){
         return $this->hasMany(Maintenance::class, "patient_id");
     }
-    public function tbl_immunization(){
+    public function immunization(){
         return $this->hasMany(Immunization::class, "patient_id");
     }
 

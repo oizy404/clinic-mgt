@@ -209,11 +209,21 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-9">
+                                <div class="col-md-5">
                                     <div class="form-group input-group-sm">
-                                        <label for="streetAdd" class=""><b>Street Address</b></label>
-                                        <input type="text" class="form-control" name="streetAdd" value="{{$guardiann->location->street_address}}" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="provinces" class=""><b>Province</b></label>
+                                        <select name="" class="form-control" id="province">
+                                            <option value="{{$guardiann->location->city->province->id}}">{{$guardiann->location->city->province->province}}</option>
+                                        </select>
                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                        <div class="form-group input-group-sm">
+                                            <label for="city" class=""><b>City</b></label>
+                                            <select name="city" class="form-control" id="city">
+                                                <option value="{{$guardiann->location->city->id}}">{{$guardiann->location->city->city}}</option>
+                                            </select>
+                                        </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
@@ -223,22 +233,16 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="form-group input-group-sm">
                                         <label for="barangay" class=""><b>Barangay</b></label>
                                         <input type="text" class="form-control" name="barangay" value="{{$guardiann->location->barangay}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-7">
                                     <div class="form-group input-group-sm">
-                                        <label for="city" class=""><b>City</b></label>
-                                        <input type="text" class="form-control" name="city" value="{{$guardiann->location->city->city}}" oninput="this.value = this.value.toUpperCase()">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group input-group-sm">
-                                        <label for="province" class=""><b>Province</b></label>
-                                        <input type="text" class="form-control" name="province" value="{{$guardiann->location->city->province->province}}" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="streetAdd" class=""><b>Street Address</b></label>
+                                        <input type="text" class="form-control" name="streetAdd" value="{{$guardiann->location->street_address}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
@@ -319,6 +323,7 @@
                             <!-- end of desease info -->
                             <div class="form-group" id="patients-medic-data2">
                                 <!-- start of immunization info -->
+                            @if($patient->patient_role == "Student")
                                 <div class="vaccines-info">
                                     <div class="form-group vaccine-heading">
                                         <h6><strong>IMMUNIZATION RECORD</strong></h6>
@@ -327,79 +332,39 @@
                                     <div class="row mt-2">
                                         <div class="col">
                                             <h6><strong>NAME OF VACCINE</strong></h6><hr>
+                                            @foreach($vaccines as $vaccine)
+                                                <div class="form-group input-group-sm">
+                                                <input type="checkbox" name="vaccines[]" value="{{$vaccine->id}}"
+                                                    @foreach($patient->immunization as $immunizations)
+                                                        <?php
+                                                            if( in_array($vaccine->id, $immunizations->pluck('vaccine_id')->toArray())){
+                                                                echo 'checked="checked"'; 
+                                                            }
+                                                        ?>
+                                                    @endforeach
+                                                />
+                                                {{ $vaccine->vaccine_name }} <hr>
+                                                </div>
+                                            @endforeach
                                         </div>
                                         <div class="col">
                                             <h6><strong>NAME OF DISEASE</strong></h6><hr>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="vaccine1" name="vaccines[]" value="1">
-                                            <label for="vaccine1">BCG</label><hr>
-                                        </div>
-                                        <div class="col">
-                                            <p>Tuberculosis</p><hr>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="vaccine2" name="vaccines[]" value="2">
-                                            <label for="vaccine2">HEPATITIS B</label><hr>
-                                        </div>
-                                        <div class="col">  
+                                            <p>Tuberculosis</p><hr>  
                                             <p>Hepatitis B</p><hr>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="vaccine3" name="vaccines[]" value="3">
-                                            <label for="vaccine3">PENTAVALENT VACCINE(DPT-HEP BIP)</label><hr>
-                                        </div>
-                                        <div class="col">
-                                            <p>Diptheria (Dipterya), Tetanus (Tetano), Hepatitis B, Pertussis, Pnuemonia (Pulmonya), Meningitis</p><hr>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="vaccine4" name="vaccines[]" value="4">
-                                            <label for="vaccine4">ORAL POLIO VACCINE (OPV)</label><hr>
-                                        </div>
-                                        <div class="col">
+                                            <p>Diptheria, Tetanus, Hepatitis B, Pertussis, Pnuemonia, Meningitis</p><hr>
                                             <p>Polio</p><hr>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="vaccine5" name="vaccines[]" value="5">
-                                            <label for="vaccine5">INACTIVATED POLIO VACCINE (IPV)</label><hr>
-                                        </div>
-                                        <div class="col">
-                                            <p>Polio</p><hr>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="vaccine6" name="vaccines[]" value="6">
-                                            <label for="vaccine6">PNEUMOCOCCAL CONJUGATE VACCINE (PCV)</label><hr>
-                                        </div>
-                                        <div class="col">
+                                            <p>Polio</p> <hr>
                                             <p>Pnuemonia (Pulmonya), Meningitis</p><hr>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="checkbox" id="vaccine7" name="vaccines[]" value="7">
-                                            <label for="vaccine7">MEASLES, MUMPS, RUBELLA (MMR)</label><hr>
-                                        </div>
-                                        <div class="col">
                                             <p>Measles (Tigdas), Mumps (Beke/ Bayuok), Rebella (German Measles)</p><hr>
                                         </div>
                                     </div>
                                     <small><i><strong>Note: Please attach a photocopy of immnization record if available</strong></i></small><br>
                                     <input type="file" id="img" name="file">
                                 </div><br>
+                                <!-- end of immunization info -->
                                 <!-- start maintenance info -->
-                                <div class="maintenance" style="display:none;">
+                            @elseif($patient->patient_role == "Employee" || $patient->patient_role == "Visitor")
+                                <div class="maintenance">
                                     <div class="form-group med-history-heading">
                                         <small><strong>Note: </strong> If you have any <strong><u>maintenance</u></strong> or is on <strong><u>ongoing medication</u></strong></small>
                                         <small>it is advised that you bring it all times.</small>
@@ -427,7 +392,7 @@
                                 <div>
                                 <!-- end maintenance info -->
                             </div>
-                            <!-- end of immunization info -->
+                            @endif
                         </div>
 
                         <!-- start of past medical history info -->
@@ -438,63 +403,83 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-3">
-                                    <input type="checkbox" id="mdhistory1" name="illnesses[]" value="1">
-                                    <label for="mdhistory1">Chickenpox (Hangga)</label><br>
-                                    <input type="checkbox" id="mdhistory2" name="illnesses[]" value="2">
-                                    <label for="mdhistory2">Measles (Tigdas/Tipdas)</label><br>
-                                    <input type="checkbox" id="mdhistory3" name="illnesses[]" value="3">
-                                    <label for="mdhistory3">Mumps (Beke/Bayuok)</label><br>
-                                    <input type="checkbox" id="mdhistory4" name="illnesses[]" value="4">
-                                    <label for="mdhistory4">Dengue Fever</label><br>
-                                    <input type="checkbox" id="mdhistory5" name="illnesses[]" value="5">
-                                    <label for="mdhistory5">Asthma (Hubak/Hika)</label><br>
-                                    <input type="checkbox" id="mdhistory6" name="illnesses[]" value="6">
-                                    <label for="mdhistory6">Pneumonia (Pulmonya)</label><br>
+                                    @foreach($illnesses as $illness)
+                                        @if($illness->id >= 1 && $illness->id <= 6 )
+                                        <div class="form-group input-group-sm">
+                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                <?php
+                                                    if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
+                                                        echo 'checked="checked"'; 
+                                                    }
+                                                ?>
+                                            @endforeach
+                                        />
+                                        {{ $illness->illness_name }}
+                                        </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="checkbox" id="mdhistory7" name="illnesses[]" value="7">
-                                    <label for="mdhistory7">Primary Complex</label><br>
-                                    <input type="checkbox" id="mdhistory8" name="illnesses[]" value="8">
-                                    <label for="mdhistory8">Tuberculosis</label><br>
-                                    <input type="checkbox" id="mdhistory9" name="illnesses[]" value="9">
-                                    <label for="mdhistory9">Hearing Problems</label><br>
-                                    <input type="checkbox" id="mdhistory10" name="illnesses[]" value="10">
-                                    <label for="mdhistory10">Speech Problem</label><br>
-                                    <input type="checkbox" id="mdhistory11" name="illnesses[]" value="11">
-                                    <label for="mdhistory11">Visual Problem</label><br>
-                                    <input type="checkbox" id="mdhistory12" name="illnesses[]" value="12">
-                                    <label for="mdhistory12">Ear Discharge</label><br>
+                                    @foreach($illnesses as $illness)
+                                        @if($illness->id >= 7 && $illness->id <= 12 )
+                                        <div class="form-group input-group-sm">
+                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                <?php
+                                                    if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
+                                                        echo 'checked="checked"'; 
+                                                    }
+                                                ?>
+                                            @endforeach
+                                        />
+                                        {{ $illness->illness_name }}
+                                        </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="checkbox" id="mdhistory13" name="illnesses[]" value="13">
-                                    <label for="mdhistory13">Tonsilitis</label><br>
-                                    <input type="checkbox" id="mdhistory14" name="illnesses[]" value="14">
-                                    <label for="mdhistory14">Anemia</label><br>
-                                    <input type="checkbox" id="mdhistory15" name="mdhistory15" value="15">
-                                    <label for="mdhistory15">G6PD (Glucose-6-phosphate)</label><br>
-                                    <label for="mdhistory15">(dehydrogenase deficiency)</label><br>
-                                    <input type="checkbox" id="mdhistory16" name="illnesses[]" value="16">
-                                    <label for="mdhistory16">Bleeding Problems</label><br>
-                                    <input type="checkbox" id="mdhistory17" name="illnesses[]" value="17">
-                                    <label for="mdhistory17">Urinary Tract Infection (UTI)</label><br>
+                                    @foreach($illnesses as $illness)
+                                        @if($illness->id >= 13 && $illness->id <= 17 )
+                                        <div class="form-group input-group-sm">
+                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                <?php
+                                                    if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
+                                                        echo 'checked="checked"'; 
+                                                    }
+                                                ?>
+                                            @endforeach
+                                        />
+                                        {{ $illness->illness_name }}
+                                        </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="checkbox" id="mdhistory18" name="illnesses[]" value="18">
-                                    <label for="mdhistory19">Kidney Desease</label><br>
-                                    <input type="checkbox" id="mdhistory19" name="illnesses[]" value="19">
-                                    <label for="mdhistory20">Diabetes</label><br>
-                                    <input type="checkbox" id="mdhistory20" name="illnesses[]" value="20">
-                                    <label for="mdhistory21">Recurrent Indigestion</label><br>
-                                    <input type="checkbox" id="mdhistory21" name="illnesses[]" value="21">
-                                    <label for="mdhistory22">Heart or Cardiac Desease</label><br>
-                                    <input type="checkbox" id="mdhistory22" name="illnesses[]" value="22">
-                                    <label for="mdhistory23">Seizures (Patol)</label><br>
+                                    @foreach($illnesses as $illness)
+                                        @if($illness->id >= 18 && $illness->id <= 22 )
+                                        <div class="form-group input-group-sm">
+                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                <?php
+                                                    if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
+                                                        echo 'checked="checked"'; 
+                                                    }
+                                                ?>
+                                            @endforeach
+                                        />
+                                        {{ $illness->illness_name }}
+                                        </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="row mt-2">
+                        @foreach($patient->historyIllness as $history_llness)
                                 <div class="col input-group-sm">
                                     <label for="mdhistory23" class=""><b>Allergy: </b></label>
-                                    <input type="text" class="form-control" name="allergy">
+                                    <input type="text" class="form-control" name="allergy" value="{{}}">
                                 </div>
                                 <div class="col input-group-sm">
                                     <label for="mdhistory24" class=""><b>Fracture in </b></label>
@@ -521,6 +506,7 @@
                                     <input type="text" class="form-control" name="otherIllness">
                                 </div>
                             </div>
+                        @endforeach
                             <!-- end of past medical history info -->
                             <small><i><strong>NOTE: - If your child/children has <u>maintenance</u> or is on <u>ongoing medication</u> , it is advised that they bring it all the times.</strong></i></small>
                             <!-- start of remarks -->
@@ -551,7 +537,7 @@
                 $(".vaccines-info").show();
                 $('.maintenance').hide();
             }
-            else if($(this).val() == "Employee"){
+            else if($(this).val() == "Employee" || $(this).val() == "Visitor"){
                 $(".vaccines-info").hide();
                 $('.maintenance').show();
             }

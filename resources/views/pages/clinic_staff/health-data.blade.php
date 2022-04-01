@@ -40,8 +40,9 @@
                     </div>
                 </div>
                 <div class="offset-md-1 patient-role-btn">
-                    <button class="btn-success" id="pr-btn1">Employee</button>
+                    <button class="btn-success" id="pr-btn1">Employees</button>
                     <button class="btn-primary" id="pr-btn2">Students</button>
+                    <button class="btn-success" id="pr-btn2">Visitors</button>
                 </div>
                 <div class="offset-md-1 health-data">
                     <table id="health-data" class="table table-hover" style="width:100%">
@@ -49,6 +50,7 @@
                             <tr>
                                 <th class="bg-primary text-white">ID Number</th>
                                 <th class="bg-primary text-white">Name</th>
+                                <th class="bg-primary text-white">Patient Role</th>
                                 <th class="bg-primary text-white">Date Recorded</th>
                                 <th class="bg-primary text-white">View</th>
                                 <th class="bg-primary text-white">Update</th>
@@ -61,6 +63,7 @@
                             <tr>
                                 <td>{{$patient->school_id}}</td>
                                 <td>{{$patient->first_name}} {{$patient->last_name}}</td>
+                                <td>{{$patient->patient_role}}</td>
                                 <td>{{$patient->created_at}}</td>
                                 <td><a href="" class="btn btn-success"><center><i class="far fa-eye"></center></a></i></td>
                                 <td>

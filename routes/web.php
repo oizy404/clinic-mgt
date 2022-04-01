@@ -47,7 +47,7 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
     Route::get('admin-home', [ChartController::class, 'medicalSupplyIndex'])->name("admin-home");
 
     Route::get('/health-data', [PatientController::class, "index"])->name("health-data");
-    Route::get('/add-health-data', [PatientController::class, "index2"])->name("add-health-data");
+    Route::get('/add-health-data', [PatientController::class, "create"])->name("add-health-data");
     Route::post('/create-health-data', [PatientController::class, "insert"])->name("create-health-data");
     Route::get('editHealthData/{id}', [PatientController::class, "edit"])->name('edit-health-data');
     Route::post('updateHealthData/{id}', [PatientController::class, "update"])->name('update-health-data');

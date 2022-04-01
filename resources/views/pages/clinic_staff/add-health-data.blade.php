@@ -206,11 +206,29 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-9">
+                                <div class="col-md-5">
                                     <div class="form-group input-group-sm">
-                                        <label for="streetAdd" class=""><b>Street Address</b></label>
-                                        <input type="text" class="form-control" name="streetAdd" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="provinces" class=""><b>Province</b></label>
+                                        <select name="" class="form-control" id="province">
+                                            <option value="">---</option>
+                                            @foreach($provinces as $province)
+                                            <option value="{{$province->id}}">{{$province->province}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                        <div class="form-group input-group-sm">
+                                            <label for="city" class=""><b>City</b></label>
+                                            <select name="city" class="form-control" id="city">
+                                                <option value="">---</option>
+                                                @foreach($provinces as $province)
+                                                    @foreach($province->city as $cities)
+                                                    <option value="{{$cities->id}}">{{$cities->city}}</option>
+                                                    @endforeach
+                                                @endforeach
+                                            </select>
+                                        </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
@@ -220,22 +238,16 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <div class="form-group input-group-sm">
                                         <label for="barangay" class=""><b>Barangay</b></label>
                                         <input type="text" class="form-control" name="barangay" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-7">
                                     <div class="form-group input-group-sm">
-                                        <label for="city" class=""><b>City</b></label>
-                                        <input type="text" class="form-control" name="city" oninput="this.value = this.value.toUpperCase()">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group input-group-sm">
-                                        <label for="province" class=""><b>Province</b></label>
-                                        <input type="text" class="form-control" name="province" oninput="this.value = this.value.toUpperCase()">
+                                        <label for="streetAdd" class=""><b>Street Address</b></label>
+                                        <input type="text" class="form-control" name="streetAdd" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
@@ -521,7 +533,7 @@
                                 <textarea class="form-control" name="SRemarks" id="SRemarks" cols="10" rows="2"></textarea>
                             </div>
                             <!-- end of remarks -->
-                            <button type="submit" class="btn" id="studenthealthdata-btn">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="studenthealthdata-btn">Submit</button>
                         </div>
                         <!-- end of Patients Medical History -->
                     </form>
