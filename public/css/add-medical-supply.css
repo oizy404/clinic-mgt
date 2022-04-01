@@ -11,17 +11,20 @@
     margin-left: auto;
     overflow-y: scroll;
 }
-div #add-medical-supply{
+.add-medical-supply h4{
+    margin: 0;
+}
+/* div #add-medical-supply{
     margin-top: -5px;
     padding: 10px 20px 20px 20px;
     background-color: rgb(245 245 245);
-}
+} */
 #btn-add-item{
-    background-color: rgb(141, 141, 141);
+    /* background-color: rgb(141, 141, 141); */
     margin-top: 20px;
     float: right;
 }
-#btn-item-cancel{
-    background-color: rgb(141, 141, 141);
+#btn_cancel{
+    /* background-color: rgb(141, 141, 141); */
     margin-top: 20px;
 }

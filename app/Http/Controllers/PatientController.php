@@ -205,19 +205,10 @@ class PatientController extends Controller
 
         $patient = PatientProfile::find($id);
         $deseases = Desease::all();
-        // foreach($patient->guardian as $guardiann){
-        //     foreach($guardiann->location as $locationn){
-        //         dd($locationn->city->province_id);
-        //     }
-        // }
-        // foreach($patient->familyDesease as $family_desease){
-        //     dd($family_desease->desease->desease_name);
-        // }
-
 
         return view("pages.clinic_staff.edit-health-data")->with(compact(
-            "patient",
-            "deseases"
+            "patient", $patient,
+            "deseases", $deseases
         ));
 
     }
@@ -239,7 +230,7 @@ class PatientController extends Controller
         $patient->archived = 0;
         $patient->save();
 
-        $parent = ParentModel::find($id);
+        $parent = ParentModel::where('patient_id',$patient->id)->first();
         $parent->complete_name = $request->fatherComplete_name;
         $parent->relationship = $request->fatherRelationship;
         $parent->birthday = $request->fatherBirthday;
@@ -249,34 +240,33 @@ class PatientController extends Controller
         $parent->patient_id = $patient->id;
         $parent->save();
 
-        $parent = ParentModel::find($id);
+        $parent = ParentModel::where('patient_id',$patient->id)->first();
         $parent->complete_name = $request->motherComplete_name;
         $parent->relationship = $request->motherRelationship;
         $parent->birthday = $request->motherBirthday;
         $parent->contact_number = $request->motherContact_number;
         $parent->occupation = $request->motherOccupation;
         $parent->employment_address = $request->motherEmployment_address;
-        
         $parent->patient_id = $patient->id;
         $parent->save();
 
 
-        $province = Province::find($id);
+        $province = Province::find($province->id);
         $province->province = $request->province;
         $province->save();
 
-        $city = City::find($id);
+        $city = City::find($city->id);
         $city->city = $request->city;
         $city->province_id = $province->id;
         $city->save();
 
-        $location = Location::find($id);
+        $location = Location::find($location->id);
         $location->street_address = $request->streetAdd;
         $location->barangay = $request->barangay;
         $location->city_id = $city->id;
         $location->save();
 
-        $guardian = Guardian::find($id);
+        $guardian = Guardian::where('patient_id',$patient->id)->first();
         $guardian->complete_name = $request->GName;
         $guardian->relationship = $request->GRelationship;
         $guardian->contact_number = $request->GContactNo;
@@ -284,7 +274,7 @@ class PatientController extends Controller
         $guardian->patient_id = $patient->id;
         $guardian->save();
 
-        $sibling = Sibling::find($id);
+        $sibling = Sibling::where('patinet_id',$patient->id)->first();
         $sibling->complete_name = $request->siblingComplete_name;
         $sibling->age = $request->siblingAge;
         $sibling->sex = $request->siblingSex;
@@ -292,69 +282,83 @@ class PatientController extends Controller
         $sibling->save();
 
 //////////start Desease data /////////////////////
+        $familyDesease = FamilyDesease::where('patient_id',$patient->id)->get();
+        foreach($familyDesease as $family_desease){
+            $f_desease = FamilyDesease::find($family_desease->id);
+            $f_desease->delete();
+        }
 
         foreach($request->deseases as $desease){
-            FamilyDesease::update([
+            FamilyDesease::create([
                 'desease_id' => $desease,
                 'patient_id' => $patient->id,
             ]);
+            
         }
-        
-        $cancer = Cancer::find($id);
+        $cancer = Cancer::find($cancer->id);
         $cancer->cancer = $request->cancer;
-        $cancer->patient_id = $patient->id;
+        $cancer->familyDesease_id = $family_desease->id;
         $cancer->save();
 
-        $otherDesease = OtherDesease::find($id);
+        $otherDesease = OtherDesease::find($otherDesease_id);
         $otherDesease->other_desease = $request->otherDesease;
-        $otherDesease->patient_id = $patient->id;
+        $otherDesease->familyDesease_id = $family_desease->id;
         $otherDesease->save();
 
 //////////end Desease data /////////////////////
 
 //////////start History Illness data /////////////////////
-
+        $historyIllness = HistoryIllness::where('patient_id',$patient_id)->get();
+        foreach($historyIllness as $history_illness){
+            $h_illness = HistoryIllness::find($history_illness->id);
+            $h_illness->delete();
+        }
         foreach($request->illnesses as $illness){
-            HistoryIllness::update([
+            HistoryIllness::create([
                 'illness_id' => $illness,
                 'patient_id' => $patient->id,
             ]);
         }
-        $allergy = Allergy::find($id);
+        $allergy = Allergy::find($allergy->id);
         $allergy->allergy = $request->allergy;
-        $allergy->patient_id = $patient->id;
+        $allergy->historyIllness_id = $history_illness->id;
         $allergy->save();
 
-        $fracture = Fracture::find($id);
+        $fracture = Fracture::find($fracture->id);
         $fracture->fracture = $request->fracture;
-        $fracture->patient_id = $patient->id;
+        $fracture->historyIllness_id = $history_illness->id;
         $fracture->save();
 
-        $operation = Operation::find($id);
+        $operation = Operation::find($operation->id);
         $operation->operation = $request->operation;
-        $operation->patient_id = $patient->id;
+        $operation->historyIllness_id = $history_illness->id;
         $operation->save();
 
-        $hospitalization = Hospitalization::find($id);
+        $hospitalization = Hospitalization::find($hospitalization->id);
         $hospitalization->hospitalization = $request->hospitalization;
-        $hospitalization->patient_id = $patient->id;
+        $hospitalization->historyIllness_id = $history_illness->id;
         $hospitalization->save();
 
-        $behavior = BehavioralProblem::find($id);
+        $behavior = BehavioralProblem::find($behavior->id);
         $behavior->behavior = $request->behavior;
-        $behavior->patient_id = $patient->id;
+        $behavior->historyIllness_id = $history_illness->id;
         $behavior->save();
 
-        $otherIllness = OtherIllness::find($id);
+        $otherIllness = OtherIllness::find($otherIllness->id);
         $otherIllness->other_illness = $request->otherIllness;
-        $otherIllness->patient_id = $patient->id;
+        $otherIllness->historyIllness_id = $history_illness->id;
         $otherIllness->save();
 
-//////////end History Illness data /////////////////////
+// //////////end History Illness data /////////////////////
 
         if($patient->patient_role == "Student"){
+            $immunizations = Immunization::where('patient_id',$patient_id)->get();
+            foreach($immunizations as $immunization){
+                $immunization_ = Immunization::find($immunization->id);
+                $immunization_->delete();
+            }            
             foreach($request->vaccines as $vaccine){
-                Immunization::update([
+                Immunization::create([
                     'vaccine_id' => $vaccine,
                     'patient_id' => $patient->id,
                 ]);
@@ -369,7 +373,7 @@ class PatientController extends Controller
             $maintenance->save();
         }
 
-        return redirect()->back();
+            return redirect()->route('health-data');
     }
 
     public function archive($id, Request $request){

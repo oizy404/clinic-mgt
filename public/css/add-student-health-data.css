@@ -52,9 +52,9 @@ div #create-student-health-data{
 label{
     font-size: 15px;
 }
-#studenthealthdata-btn{
+/* #studenthealthdata-btn{
     background-color: rgb(141, 141, 141);
-}
+} */
 #patients-medic-data1{
     padding: 5px;
 }

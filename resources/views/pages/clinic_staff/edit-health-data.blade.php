@@ -291,10 +291,10 @@
                                     <small><i>(Have any members of the family had these illneses?)</i></small>
                                 </div>
                                 <div class="row">
-                                @foreach($deseases as $desease)
                                     <div class="col">
+                                    @foreach($deseases as $desease)
                                         <div class="form-group input-group-sm">
-                                        <input type="checkbox" name="deseases[]" value="{{ $desease->id }}"
+                                        <input type="checkbox" name="deseases[]" value="{{$desease->id}}"
                                             @foreach($patient->familyDesease as $family_desease)
                                                 <?php
                                                     if( in_array($desease->id, $family_desease->pluck('desease_id')->toArray())){
@@ -303,9 +303,9 @@
                                                 ?>
                                             @endforeach
                                         />
-                                               {{ $desease->desease_name }}
+                                        {{ $desease->desease_name }}
                                         </div>
-                                @endforeach
+                                    @endforeach
                                     </div>
                                     <div class="col">
                                         <div class="form-group  input-group-sm">

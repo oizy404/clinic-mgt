@@ -5,6 +5,24 @@
 @stop
 
 @section('content')
+<style>
+    .add-data{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:40px; 
+        right:40px;
+        background-color: #006dff;
+        color: #ffffff;
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;
+        
+    }
+    .add-data i{
+        margin-top:22px;
+    }
+</style>
 @include('shared.admin-header')
 @include('shared.admin-sidenav')
 
@@ -13,24 +31,24 @@
             <div class="supplies-inventory-dashboard">
                 <div class="offset-md-1 supplies-inventory-addbtn">
                     <div class="col-md-4">
-                        <button class="btn" id="btn-item"><i class="fas fa-plus"></i> Add Item</button><br>
+                        <!-- <button class="btn" id="btn-item"><i class="fas fa-plus"></i> Add Item</button><br> -->
                     </div>
                     <div class="col-md-7 offset-md-1">
                         <h3>MEDICAL SUPPLIES INVENTORY</h3>
                     </div>    
                 </div>
                 <div class="offset-md-1 supplies-inventory">
-                    <table id="supplies-inventory" class="table table-hover" style="width:100%">
+                    <table id="supplies-inventory" class="table table-border" style="width:100%">
                         <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Product Type</th>
-                                <th>Stock</th>
-                                <th>Expiry Date</th>
-                                <th>Purchase Date</th>
-                                <th>Update</th>
-                                <th>View</th>
-                                <th>Delete</th>
+                            <tr>                            
+                                <th class="bg-primary text-white">Product Name</th>
+                                <th class="bg-primary text-white">Product Type</th>
+                                <th class="bg-primary text-white">Stock</th>
+                                <th class="bg-primary text-white">Expiry Date</th>
+                                <!-- <th>Purchase Date</th> -->
+                                <th class="bg-primary text-white">View</th>
+                                <th class="bg-primary text-white">Update</th>
+                                <th class="bg-primary text-white">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,37 +59,28 @@
                                 <td>{{$med_supply->med_type->medicine_type}}</td>
                                 <td>{{$med_supply->stock}}</td>
                                 <td>{{$med_supply->expiry_date}}</td>
-                                <td>{{$med_supply->purchase_date}}</td>
+                                <!-- <td>{{$med_supply->purchase_date}}</td> -->
                                 <td>
-                                    <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" id="btn-record"><center><i class="far fa-edit"></i></center></a>
+                                    <a href="" class="btn btn-success"><i class="far fa-eye"></i></a>
                                 </td>
                                 <td>
-                                    <center><a href="" ><i class="far fa-eye"></i></a></center>
+                                    <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" class="btn btn-warning" id="btn-edit-inventory"><i class="far fa-edit"></i></a>
                                 </td>
                                 <td>
-                                    <a href="{{route('archiveMedical', $med_supply->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
+                                    <a href="{{route('archiveMedical', $med_supply->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             @endif
                         @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>ID Number</th>
-                                <th>Product Name</th>
-                                <th>Product Type</th>
-                                <th>Stock</th>
-                                <th>Expiry Date</th>
-                                <th>Edit</th>
-                                <th>View</th>
-                                <th>Delete</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>  
             </div>
         </div>
 
+        <a href="#" class="add-data" id="btn-item">
+        <i class="fas fa-plus"></i>
+        </a>
 
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->

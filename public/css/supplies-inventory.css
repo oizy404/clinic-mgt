@@ -17,11 +17,11 @@
     /* margin-top: 83px; */
     display: inline-flex;
 }
-#btn-item{
-    background-color: gray;
-}
 .supplies-inventory-addbtn h3{
     float: right;
     margin-bottom: 0px;
     margin-top: 5px;
+}
+.supplies-inventory a{
+    color: white;
 }

@@ -47,12 +47,12 @@
                     <table id="health-data" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID Number</th>
-                                <th>Name</th>
-                                <th>Date Recorded</th>
-                                <th>Edit</th>
-                                <th>View</th>
-                                <th>Delete</th>
+                                <th class="bg-primary text-white">ID Number</th>
+                                <th class="bg-primary text-white">Name</th>
+                                <th class="bg-primary text-white">Date Recorded</th>
+                                <th class="bg-primary text-white">View</th>
+                                <th class="bg-primary text-white">Update</th>
+                                <th class="bg-primary text-white">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,26 +62,17 @@
                                 <td>{{$patient->school_id}}</td>
                                 <td>{{$patient->first_name}} {{$patient->last_name}}</td>
                                 <td>{{$patient->created_at}}</td>
+                                <td><a href="" class="btn btn-success"><center><i class="far fa-eye"></center></a></i></td>
                                 <td>
-                                    <a href="{{route('edit-health-data', $patient->id)}}" id="btn-record"><center><i class="far fa-edit"></i></center></a>
+                                    <a href="{{route('edit-health-data', $patient->id)}}" class="btn btn-warning" id="btn-edit-healthdata"><center><i class="far fa-edit"></i></center></a>
                                 </td>
-                                <td><center><i class="far fa-eye"></center></i></td>
                                 <td>
-                                <a href="{{route('archiveHealthData', $patient->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
+                                <a href="{{route('archiveHealthData', $patient->id)}}" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
                                 </td>
                             </tr>
                             @endif
                         @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>ID Number</th>
-                                <th>Name</th>
-                                <th>Date Recorded</th>
-                                <th>Edit</th>
-                                <th>View</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>  
             </div>
