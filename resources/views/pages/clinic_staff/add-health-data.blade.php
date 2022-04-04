@@ -529,8 +529,8 @@
                             <small><i><strong>NOTE: - If your child/children has <u>maintenance</u> or is on <u>ongoing medication</u> , it is advised that they bring it all the times.</strong></i></small>
                             <!-- start of remarks -->
                             <div class="form-group  input-group-sm mb-2">
-                                <label for="SRemarks" class=""><b>Other Special Remarks: </b></label>
-                                <textarea class="form-control" name="SRemarks" id="SRemarks" cols="10" rows="2"></textarea>
+                                <label for="remark" class=""><b>Other Special Remarks: </b></label>
+                                <textarea class="form-control" name="remark" id="remark" cols="10" rows="2"></textarea>
                             </div>
                             <!-- end of remarks -->
                             <button type="submit" class="btn btn-primary" id="studenthealthdata-btn">Submit</button>
@@ -560,6 +560,53 @@
                 $('.maintenance').show();
             }
         });
+        
+
+        // allowed maximum input fields
+            var max_input = 5;
+        
+        // initialize the counter for textbox
+        var x = 1;
+
+        // handle click event on Add More button
+        $('.add-btn').click(function (e) {
+        e.preventDefault();
+        if (x < max_input) { // validate the condition
+            x++; // increment the counter
+            $('.wrapper').append(`
+                <div class="input-box row mt-2">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="siblingComplete_name" class=""><b>Sibling's Complete Name</b></label>
+                            <input type="text" class="form-control" name="siblingComplete_name" oninput="this.value = this.value.toUpperCase()">
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label for="siblingAge" class=""><b>Age</b></label>
+                            <input type="text" class="form-control" name="siblingAge">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="siblingSex" class=""><b>Gender</b></label>
+                            <input type="text" class="form-control" name="siblingSex">
+                        </div>
+                    </div>
+                    <div class="col-md-1 mt-4">
+                        <a href="#" class="remove-lnk"><i class="fas fa-times-circle"></i></a>
+                    </div>
+                </div>
+            `); // add input field
+        }
+        });
+
+        // handle click event of the remove link
+        $('.wrapper').on("click", ".remove-lnk", function (e) {
+        e.preventDefault();
+        $(this).closest('.input-box').remove();  // remove input field
+        x--; // decrement the counter
+        })
     });
   </script>
 @stop

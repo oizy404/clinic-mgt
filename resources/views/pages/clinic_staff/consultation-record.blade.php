@@ -68,15 +68,6 @@
                             @endif
                         @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>ID Number</th>
-                                <th>Name</th>
-                                <th>Date Recorded</th>
-                                <th>Edit</th>
-                                <th>View</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>  
             </div>

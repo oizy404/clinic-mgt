@@ -10,8 +10,13 @@ class Operation extends Model
     use HasFactory;
 
     protected $table ="tbl_operations";
+
+    protected $fillable = [
+        'operation',
+        'historyIllness_id'
+    ];
     
-    public function patient(){
-        return $this->belongsTo(PatientProfile::class, "patient_id");
+    public function historyIllness(){
+        return $this->belongsTo(HistoryIllness::class, "historyIllness_id");
     }
 }

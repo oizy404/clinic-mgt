@@ -11,6 +11,11 @@ class Remark extends Model
 
     protected $table ="tbl_remarks";
 
+    protected $fillable = [
+        'remark',
+        'patient_id'
+    ];
+
     public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
     }

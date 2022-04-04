@@ -1,6 +1,7 @@
 .main_body .sidebar_menu{
     position: fixed;
-    top: 64.4px;
+    border-right: 0.2px solid rgb(187, 187, 187);
+    top: 55.4px;
     left: 0;
     background: #0087ff;
     width: 240px;
@@ -39,7 +40,7 @@
 }
 
 .main_body .sidebar_menu ul li a.active{
-  background: #006dff;
+  /* background: #006dff; */
   color: #fff;
 }
 
@@ -101,6 +102,19 @@
 
 .wrapper.active .sidebar_menu ul li a .list{
   display: none;
+}
+
+.wrapper.active #acdLogo{
+  display: none;
+}
+.wrapper.active #acdLogo2{
+  display: block;
+}
+.wrapper.active .logo p{
+  display: block;
+}
+.wrapper.active .top_navbar .logo{
+  background: #006dff;
 }
 
 .wrapper.active .main_body .main-container{

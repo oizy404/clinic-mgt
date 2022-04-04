@@ -40,40 +40,17 @@ class PatientProfile extends Model
     public function familyDesease(){
         return $this->hasMany(FamilyDesease::class, "patient_id");
     }
-    public function cancer(){
-        return $this->hasMany(Cancer::class, "patient_id");
-    }
-    public function otherDesease(){
-        return $this->hasMany(OtherDesease::class, "patient_id");
-    }
 
     public function maintenance(){
         return $this->hasMany(Maintenance::class, "patient_id");
     }
+    
     public function immunization(){
         return $this->hasMany(Immunization::class, "patient_id");
     }
 
     public function historyIllness(){
         return $this->hasMany(HistoryIllness::class, "patient_id");
-    }
-    public function allergy(){
-        return $this->hasMany(Allergy::class, "patient_id");
-    }
-    public function fracture(){
-        return $this->hasMany(Fracture::class, "patient_id");
-    }
-    public function operation(){
-        return $this->hasMany(Operation::class, "patient_id");
-    }
-    public function hospitalization(){
-        return $this->hasMany(Hospitalization::class, "patient_id");
-    }
-    public function behavior(){
-        return $this->hasMany(BehavioralProblem::class, "patient_id");
-    }
-    public function otherIllness(){
-        return $this->hasMany(OtherIllness::class, "patient_id");
     }
 
     public function records(){
@@ -85,7 +62,7 @@ class PatientProfile extends Model
     // public function user(){
     //     return $this->belongsTo(User::class, "school_id");
     // }
-    // public function tbl_remark(){
-    //     return $this->hasOne(Remark::class);
-    // }
+    public function remark(){
+        return $this->hasMany(Remark::class, "patient_id");
+    }
 }

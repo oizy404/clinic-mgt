@@ -26,6 +26,7 @@ use App\Models\OtherIllness;
 use App\Models\Immunization;
 use App\Models\Vaccine;
 use App\Models\Maintenance;
+use App\Models\Remark;
 
 use Excel;
 
@@ -124,12 +125,12 @@ class PatientController extends Controller
         
         $cancer = new Cancer();
         $cancer->cancer = $request->cancer;
-        $cancer->familyDeseases_id = $familyDesease->id;
+        $cancer->familyDesease_id = $familyDesease->id;
         $cancer->save();
 
         $otherDesease = new OtherDesease();
         $otherDesease->other_desease = $request->otherDesease;
-        $otherDesease->familyDeseases_id = $familyDesease->id;
+        $otherDesease->familyDesease_id = $familyDesease->id;
         $otherDesease->save();
 
 //////////end Desease data /////////////////////
@@ -190,6 +191,10 @@ class PatientController extends Controller
             $maintenance->patient_id = $patient->id;
             $maintenance->save();
         }
+        $remark = new Remark();
+        $remark->remark = $request->remark;
+        $remark->patient_id = $patient->id;
+        $remark->save();
 
         return redirect()->route('health-data');
     }
@@ -281,7 +286,7 @@ class PatientController extends Controller
         }
 
         foreach($request->deseases as $desease){
-            FamilyDesease::create([
+            $f_desease = FamilyDesease::create([
                 'desease_id' => $desease,
                 'patient_id' => $patient->id,
             ]);

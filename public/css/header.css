@@ -1,12 +1,12 @@
 .wrapper .top_navbar{
     width: 100%;
-    height: 65px;
+    height: 55px;
     /* display: flex; */
     position: fixed;
     top: 0;
     background-color: #FFFFFF;
     border-bottom: 0.2px solid rgb(187, 187, 187);
-    z-index: 3;
+    z-index: 4;
 }
 .wrapper a{
   text-decoration: none;
@@ -17,26 +17,57 @@
 
 .wrapper .top_navbar .logo{
     width: 240px;
-    height: 100%;
-    background: #006dff;
+    height: 102%;
+    /* background: #006dff; */
+    border-right: 0.2px solid rgb(187, 187, 187);
+    background: #0087ff;
     float: left;
 }
+
+.logo #acdLogo2{
+    display: none;
+    position: absolute;
+    top: 2px;
+    margin-left: 5px;
+    width: 50px;
+    cursor: pointer;
+    z-index: 3;
+}
+.logo p{
+    display: none;
+    position: absolute;
+    top: 20px;
+    margin-left: 60px;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.wrapper .top_navbar .logo #acdLogo{
+    position: absolute;
+    top: 2px;
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 110px;
+    cursor: pointer;
+    z-index: 3;
+}
+
 .wrapper .top_navbar .logout-user{
     padding: 20px 0 15px 0;
     float: right;
     margin-top: auto;
     margin-bottom: auto;
-    /* margin-right: 50px; */
+    font-size: 15px;
     width: 100px;
 }
 
 .wrapper .top_navbar .logo a{
+    font-size: 10px;
     display: block;
     text-align: center;
     font-family: 'Montserrat Subrayada', sans-serif;
     font-size: 20px;
     color: #fff;
-    padding: 20px 0;
 }
 
 /* .wrapper .top_navbar .top_menu{

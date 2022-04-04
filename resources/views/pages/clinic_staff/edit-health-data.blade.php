@@ -312,11 +312,21 @@
                                     @endforeach
                                     </div>
                                     <div class="col">
-                                        <div class="form-group  input-group-sm">
-                                            <label for="desease6" class="">Cancer of the</label><br>
-                                            <textarea class="form-control" id="desease6" name="cancer" cols="10" rows="1"></textarea>
-                                            <label for="desease7" class="" >Others: Please Specify</label><br>
-                                            <textarea class="form-control" id="desease7" name="otherDesease" cols="10" rows="1"></textarea>
+                                        <div class="col input-group-sm">
+                                        @foreach($patient->familyDesease as $family_desease)
+                                            @foreach($family_desease->cancer as $cancers)
+                                            <label for="desease6" class=""><b>Cancer of the</b></label>
+                                            <input type="text" class="form-control" name="cancer" value="{{$cancers->cancer}}">
+                                            @endforeach
+                                        @endforeach
+                                        </div>
+                                        <div class="col input-group-sm">
+                                        @foreach($patient->familyDesease as $family_desease)
+                                            @foreach($family_desease->otherDesease as $other_desease)
+                                            <label for="desease7" class=""><b>Others: Please Specify</b></label>
+                                            <input type="text" class="form-control" name="otherDesease" value="{{$other_desease->other_desease}}">
+                                            @endforeach
+                                        @endforeach
                                         </div>
                                     </div>
                                 </div><br>
@@ -370,24 +380,26 @@
                                         <small>it is advised that you bring it all times.</small>
                                     </div>
                                     <div class="row mt-2 mb-3">
+                                    @foreach($patient->maintenance as $maintenances)
                                         <div class="col">
                                             <div class="form-group input-group-sm">
                                                 <label for="medication_name" class=""><b>Name of Medication</b></label>
-                                                <input type="text" class="form-control" name="medication_name" oninput="this.value = this.value.toUpperCase()">
+                                                <input type="text" class="form-control" name="medication_name" value="{{$maintenances->medication_name}}" oninput="this.value = this.value.toUpperCase()">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group input-group-sm">
                                                 <label for="dosage" class=""><b>Dosage</b></label>
-                                                <input type="text" class="form-control" name="dosage" oninput="this.value = this.value.toUpperCase()">
+                                                <input type="text" class="form-control" name="dosage" value="{{$maintenances->dosage}}" oninput="this.value = this.value.toUpperCase()">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group input-group-sm">
                                                 <label for="frequency" class=""><b>Frequency</b></label>
-                                                <input type="text" class="form-control" name="frequency" oninput="this.value = this.value.toUpperCase()">
+                                                <input type="text" class="form-control" name="frequency" value="{{$maintenances->frequency}}" oninput="this.value = this.value.toUpperCase()">
                                             </div>
                                         </div>
+                                    @endforeach
                                     </div>
                                 <div>
                                 <!-- end maintenance info -->
@@ -476,46 +488,70 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                        @foreach($patient->historyIllness as $history_llness)
                                 <div class="col input-group-sm">
+                                @foreach($patient->historyIllness as $history_illness)
+                                    @foreach($history_illness->allergy as $allergies)
                                     <label for="mdhistory23" class=""><b>Allergy: </b></label>
-                                    <input type="text" class="form-control" name="allergy" value="{{}}">
+                                    <input type="text" class="form-control" name="allergy" value="{{$allergies->allergy}}">
+                                    @endforeach
+                                @endforeach
                                 </div>
                                 <div class="col input-group-sm">
+                                @foreach($patient->historyIllness as $history_illness)
+                                    @foreach($history_illness->fracture as $fractures)
                                     <label for="mdhistory24" class=""><b>Fracture in </b></label>
-                                    <input type="text" class="form-control" name="fracture">
+                                    <input type="text" class="form-control" name="fracture" value="{{$fractures->fracture}}">
+                                    @endforeach
+                                @endforeach
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col input-group-sm">
+                                @foreach($patient->historyIllness as $history_illness)
+                                    @foreach($history_illness->operation as $operations)
                                     <label for="mdhistory25" class=""><b>Operation of the </b></label>
-                                    <input type="text" class="form-control" name="operation">
+                                    <input type="text" class="form-control" name="operation" value="{{$operations->operation}}">
+                                    @endforeach
+                                @endforeach
                                 </div>
                                 <div class="col input-group-sm">
+                                @foreach($patient->historyIllness as $history_illness)
+                                    @foreach($history_illness->hospitalization as $hospitalizations)
                                     <label for="mdhistory26" class=""><b>Hospitalization </b></label>
-                                    <input type="text" class="form-control" name="hospitalization">
+                                    <input type="text" class="form-control" name="hospitalization" value="{{$hospitalizations->hospitalization}}">
+                                    @endforeach
+                                @endforeach
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col input-group-sm">
+                                @foreach($patient->historyIllness as $history_illness)
+                                    @foreach($history_illness->behavior as $behaviors)
                                     <label for="mdhistory27" class=""><b>Behavioral/ Psychological Problems </b></label>
-                                    <input type="text" class="form-control" name="behavior">
+                                    <input type="text" class="form-control" name="behavior" value="{{$behaviors->behavior}}">
+                                    @endforeach
+                                @endforeach
                                 </div>
                                 <div class="col input-group-sm">
+                                @foreach($patient->historyIllness as $history_illness)
+                                    @foreach($history_illness->otherIllness as $other_illness)
                                     <label for="mdhistory28" class=""><b>Others: Please Specify: </b></label>
-                                    <input type="text" class="form-control" name="otherIllness">
+                                    <input type="text" class="form-control" name="otherIllness" value="{{$other_illness->other_illness}}">
+                                    @endforeach
+                                @endforeach
                                 </div>
                             </div>
-                        @endforeach
                             <!-- end of past medical history info -->
                             <small><i><strong>NOTE: - If your child/children has <u>maintenance</u> or is on <u>ongoing medication</u> , it is advised that they bring it all the times.</strong></i></small>
                             <!-- start of remarks -->
                             <div class="form-group  input-group-sm mb-2">
-                                <label for="SRemarks" class=""><b>Other Special Remarks: </b></label>
-                                <textarea class="form-control" name="SRemarks" id="SRemarks" cols="10" rows="2"></textarea>
+                                @foreach($patient->remark as $remarks)
+                                <label for="remark" class=""><b>Other Special Remarks: </b></label>
+                                <textarea class="form-control" name="remark" id="SRemarks" cols="10" rows="2">{{$remarks->remark}}</textarea>
+                                @endforeach
                             </div>
                             <!-- end of remarks -->
-                            <button type="submit" class="btn" id="studenthealthdata-btn">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="studenthealthdata-btn">Submit</button>
                         </div>
                         <!-- end of Patients Medical History -->
                     </form>
@@ -542,6 +578,52 @@
                 $('.maintenance').show();
             }
         });
+
+        // allowed maximum input fields
+            var max_input = 5;
+        
+        // initialize the counter for textbox
+        var x = 1;
+
+        // handle click event on Add More button
+        $('.add-btn').click(function (e) {
+        e.preventDefault();
+        if (x < max_input) { // validate the condition
+            x++; // increment the counter
+            $('.wrapper').append(`
+                <div class="input-box row mt-2">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="siblingComplete_name" class=""><b>Sibling's Complete Name</b></label>
+                            <input type="text" class="form-control" name="siblingComplete_name" oninput="this.value = this.value.toUpperCase()">
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label for="siblingAge" class=""><b>Age</b></label>
+                            <input type="text" class="form-control" name="siblingAge">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="siblingSex" class=""><b>Gender</b></label>
+                            <input type="text" class="form-control" name="siblingSex">
+                        </div>
+                    </div>
+                    <div class="col-md-1 mt-4">
+                        <a href="#" class="remove-lnk"><i class="fas fa-times-circle"></i></a>
+                    </div>
+                </div>
+            `); // add input field
+        }
+        });
+
+        // handle click event of the remove link
+        $('.wrapper').on("click", ".remove-lnk", function (e) {
+        e.preventDefault();
+        $(this).closest('.input-box').remove();  // remove input field
+        x--; // decrement the counter
+        })
     });
   </script>
 @stop

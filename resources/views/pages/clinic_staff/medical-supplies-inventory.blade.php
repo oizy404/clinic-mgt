@@ -38,17 +38,16 @@
                     </div>    
                 </div>
                 <div class="offset-md-1 supplies-inventory">
-                    <table id="supplies-inventory" class="table table-border" style="width:100%">
+                    <table class="table table-hover rounded" id="supplies-inventory">
                         <thead>
                             <tr>                            
                                 <th class="bg-primary text-white">Product Name</th>
                                 <th class="bg-primary text-white">Product Type</th>
-                                <th class="bg-primary text-white">Stock</th>
-                                <th class="bg-primary text-white">Expiry Date</th>
-                                <!-- <th>Purchase Date</th> -->
-                                <th class="bg-primary text-white">View</th>
-                                <th class="bg-primary text-white">Update</th>
-                                <th class="bg-primary text-white">Delete</th>
+                                <th class="bg-primary text-white text-center">Stock</th>
+                                <th class="bg-primary text-white text-center">Expiry Date</th>
+                                <th class="bg-primary text-white text-center">View</th>
+                                <th class="bg-primary text-white text-center">Update</th>
+                                <th class="bg-primary text-white text-center">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,16 +56,15 @@
                             <tr>
                                 <td>{{$med_supply->product_name}}</td>
                                 <td>{{$med_supply->med_type->medicine_type}}</td>
-                                <td>{{$med_supply->stock}}</td>
-                                <td>{{$med_supply->expiry_date}}</td>
-                                <!-- <td>{{$med_supply->purchase_date}}</td> -->
-                                <td>
+                                <td class="text-center">{{$med_supply->stock}}</td>
+                                <td class="text-center">{{$med_supply->expiry_date}}</td>
+                                <td class="text-center">
                                     <a href="" class="btn btn-success"><i class="far fa-eye"></i></a>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" class="btn btn-warning" id="btn-edit-inventory"><i class="far fa-edit"></i></a>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <a href="{{route('archiveMedical', $med_supply->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
@@ -87,9 +85,13 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script>
-      $(".hamburger").click(function(){
-        $(".wrapper").toggleClass("active")
-      });
+    $(document).ready(function() {
+        $(".hamburger").click(function(){
+            $(".wrapper").toggleClass("active")
+        });
+
+        $('#supplies-inventory').DataTable();
+    }); 
   </script>
 @include('pages.clinic_staff.add-medical-supplies')
 @stop

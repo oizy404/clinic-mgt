@@ -1,7 +1,9 @@
 <div class="wrapper">
     <div class="top_navbar">
         <div class="logo">
-            <a href="#">CLINIC MGT. SYSTEM</a>
+            <img src="images/acdLogo.png" alt="acd logo1" class="rounded-circle" id="acdLogo">
+            <p>Clinic Management System</p>
+            <img src="images/acdLogo.png" alt="acd logo2" class="rounded-circle" id="acdLogo2">
         </div>
         <div class="logout-user">
             <a href="/logout">
@@ -9,24 +11,4 @@
                 <span class="list">Log Out</span>
             </a>
         </div>
-        <!-- <div class="top_menu">
-            <div class="home_link">
-                <a href="#">
-                    <span class="icon"><i class="fas fa-home"></i></span>
-                    <span>Home</span>
-                </a>
-            </div>
-            <div class="right_info">
-                <div class="icon_wrap">
-                    <div class="icon">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                </div>
-                <div class="icon_wrap">
-                    <div class="icon">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>

@@ -16,7 +16,16 @@ class FamilyDesease extends Model
     public function desease(){
         return $this->belongsTo(Desease::class, "desease_id");
     }
+
     public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
+    }
+    
+    public function cancer(){
+        return $this->hasMany(Cancer::class, "familyDesease_id");
+    }
+
+    public function otherDesease(){
+        return $this->hasMany(OtherDesease::class, "familyDesease_id");
     }
 }
