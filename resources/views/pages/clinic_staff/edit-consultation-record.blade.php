@@ -22,14 +22,13 @@
                     <form action="" method="post">
                         @csrf
                         @method('post')
-                        <div class="form-group" id="health-evaluation" style="background-color: white;">
+                        <div class="form-group" id="health-evaluation" style="background-color: white;"> 
                             <div class="row">
                                 <div class="col column1">
                                     <div class="col form-group input-group-sm">
-                                        <!-- <a class="btn btn-info ml-2" data-toggle="modal" data-target="#tableModal" href="#"><i data-feather="search"></i> Search</a>   -->
                                         <label for="complete_name" class=""><b>Patient Name</b></label>
-                                        <input type="text" class="form-control" name="complete_name" value="{{$record->patient->first_name}} {{$record->patient->last_name}}" id="complete_name" data-bs-toggle="modal" data-bs-target="#patientModal">
-                                        <input type="hidden" class="form-control" name="id" value="{{$record->patient_id}}" id="id">
+                                        <input type="text" class="form-control" name="complete_name" id="complete_name" data-bs-toggle="modal" data-bs-target="#patientModal">
+                                        <input type="hidden" class="form-control" name="id" id="id">
                                     </div>
                                     <div class="col">
                                         <div class="form-group input-group-sm">
@@ -37,6 +36,7 @@
                                             <select class="form-select form-select-sm" name="patient_role" aria-label=".form-select-sm example" id="patient_role">
                                                 <option selected>---</option>
                                                 <option>Employee</option>
+                                                <option>Visitor</option>
                                                 <option>Student</option>
                                             </select>
                                         </div>
@@ -46,37 +46,92 @@
 
                                 </div>
                             </div>
-                            <div class="row mt-2">
+                            <div class="row mt-3">
                                 <div class="col">
-                                    <div class="form-group input-group-sm">
-                                        <label for="height" class=""><b>Height</b></label>
-                                        <input type="text" class="form-control" name="height" value="{{$record->height}}">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group input-group-sm">
+                                                <label for="height" class=""><b>Height</b></label>
+                                                <input type="text" class="form-control" name="height">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group input-group-sm">
+                                                <label for="weight" class=""><b>Weight</b></label>
+                                                <input type="text" class="form-control" name="weight">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="temperature"><b>Temperature</b></label>
+                                                <input type="text" class="form-control" name="temperature">
+                                            </div>
+                                        </div>          
                                     </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group input-group-sm">
-                                        <label for="weight" class=""><b>Weight</b></label>
-                                        <input type="text" class="form-control" name="weight" value="{{$record->weight}}">
+                                    <div class="row">                              
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="bmi" class=""><b>Body Mass Index</b></label>
+                                                <input type="text" class="form-control" name="bmi">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="bloodpressure" class=""><b>Blood Pressure(BP)</b></label>
+                                                <input type="text" class="form-control" name="bloodpressure">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <div class="form-group input-group-sm">
-                                        <label for="bmi" class=""><b>Body Mass Index</b></label>
-                                        <input type="text" class="form-control" name="bmi" value="{{$record->BMI}}">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group input-group-sm">
-                                        <label for="bloodpressure" class=""><b>Blood Pressure(BP)</b></label>
-                                        <input type="text" class="form-control" name="bloodpressure" value="{{$record->BP}}">
-                                    </div>
-                                </div>
+                            <div class="form-group mt-3">
+                                <label for="chief-complaints"><b>Chief Complaints</b></label>
                             </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="checkbox" name="complaints[]" value="1">
+                                        <label for="complaints">Head Ache</label><br>
+                                        <input type="checkbox" name="complaints[]" value="2">
+                                        <label for="complaints">Stomach Ache</label><br>
+                                        <input type="checkbox" name="complaints[]" value="3">
+                                        <label for="complaints">Tooth Ache</label><br>
+                                        <input type="checkbox" name="complaints[]" value="4">
+                                        <label for="complaints">Difficulty Breathing</label><br>
+                                        <input type="checkbox" name="complaints[]" value="5">
+                                        <label for="complaints">Abdominal Pain</label><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="checkbox" name="complaints[]" value="6">
+                                        <label for="complaints">Fever</label><br>
+                                        <input type="checkbox" name="complaints[]" value="7">
+                                        <label for="complaints">Dizziness</label><br>
+                                        <input type="checkbox" name="complaints[]" value="9">
+                                        <label for="complaints">Diarhea</label><br>
+                                        <input type="checkbox" name="complaints" value="8">
+                                        <label for="complaints">Dysmenorrhea</label><br>
+                                        <input type="checkbox" name="complaints[]" value="10">
+                                        <label for="complaints">Vomiting</label>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group input-group-sm">
+                                        <label for="othercomplaints"><b>Others: Please Specify</b></label>
+                                        <input type="text" class="form-control" name="other_complaint">
+                                    </div>
+                                </div>
+                            </div> 
+                                
                             <div class="form-group mt-2">
                                 <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
-                                <textarea class="form-control" name="doctors_note" value="{{$record->doctors_note}}" id="doctors_note" cols="10" rows="4">{{$record->doctors_note}}</textarea>
+                                <textarea class="form-control" name="doctors_note" id="doctors_note" cols="10" rows="2"></textarea>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="nurse_note" class=""><b>Nurse Notes</b></label>
+                                <textarea class="form-control" name="nurse_note" id="nurse_note" cols="10" rows="2"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="btn-add-consultation">Update</button>

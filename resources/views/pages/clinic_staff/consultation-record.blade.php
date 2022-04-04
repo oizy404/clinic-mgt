@@ -32,7 +32,7 @@
                 <div class="offset-md-1 consultation-record-addbtn">
                     <div class="col-md-4">
                         <!-- <button class="btn" id="btn-record"><i class="fas fa-plus"></i> Add Consultation Datum</button><br> -->
-                        <button class="btn mt-1" id="btn-batchrecord"><i class="fas fa-plus"></i> Add Batch Consultation Record</button>
+                        <button class="btn btn-info mt-1" id="btn-batchrecord"><i class="fas fa-plus"></i> Upload Batch Record</button>
                     </div>    
                     <div class="col-md-5 offset-md-3 consultation-record">
                         <h3>CONSULTATION RECORD</h3>
@@ -42,13 +42,12 @@
                     <table id="consultation-record" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID Number</th>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Date Recorded</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                                <th>View</th>
+                                <th class="bg-primary text-white">ID Number</th>
+                                <th class="bg-primary text-white">Name</th>
+                                <th class="bg-primary text-white">Role</th>
+                                <th class="bg-primary text-white text-center">Print</th>
+                                <th class="bg-primary text-white text-center">Edit</th>
+                                <th class="bg-primary text-white text-center">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,11 +57,10 @@
                                 <td>{{$record->patient->school_id}}</td>
                                 <td>{{$record->patient->last_name}}, {{$record->patient->first_name}}</td>
                                 <td>{{$record->patient->patient_role}}</td>
-                                <td>{{$record->created_at}}</td>
-                                <td><a href="{{route('edit-consultation-record', $record->id)}}"><i class="far fa-edit"></i></a></td>
-                                <td><a href="{{route('show-consultation-record', $record->id)}}"><i class="far fa-eye"></i></a></td>
-                                <td>
-                                    <a href="{{route('archive-consultation-record', $record->id)}}"><center><i class="fas fa-trash-alt"></i></center></a>
+                                <td class="text-center"><a href="{{route('show-consultation-record', $record->id)}}" class="btn btn-warning"><i class="far fa-eye"></i></a></td>
+                                <td class="text-center"><a href="{{route('edit-consultation-record', $record->id)}}" class="btn btn-success"><i class="far fa-edit"></i></a></td>
+                                <td class="text-center">
+                                    <a href="{{route('archive-consultation-record', $record->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             @endif

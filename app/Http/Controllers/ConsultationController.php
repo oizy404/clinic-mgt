@@ -8,6 +8,9 @@ use App\Models\HealthEvaluation;
 use App\Models\Position;
 use App\Models\Department;
 use App\Models\YearLevel;
+use App\Models\ChiefComplaint;
+use App\Models\Complaint;
+use App\Models\OtherComplaint;
 
 class ConsultationController extends Controller
 {
@@ -51,7 +54,9 @@ class ConsultationController extends Controller
         $record->height = $request->height;
         $record->BMI = $request->bmi;
         $record->BP = $request->bloodpressure;
+        $record->temperature = $request->temperature;
         $record->doctors_note = $request->doctors_note;
+        $record->nurse_note = $request->nurse_note;
         $record->archived = 0;
         $record->save();
 
@@ -78,6 +83,19 @@ class ConsultationController extends Controller
             $position->save();
     
         }
+
+        foreach($request->complaints as $complaint){
+            $chiefComplaint = Complaint::create([
+                'chief_complaints_id' => $complaint,
+                'health_evaluation_id' => $record->id,
+            ]);
+        }
+
+        $otherComplaint = new OtherComplaint();
+        $otherComplaint->other_chief_complaint = $request->other_complaint;
+        $otherComplaint->complaints_id = $chiefComplaint->id;
+        $otherComplaint->save();
+
         return redirect()->route('consultation-record');
 
     }

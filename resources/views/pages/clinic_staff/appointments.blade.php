@@ -41,8 +41,8 @@
                     <div class="form-group input-group-sm">
                         <!-- <input type="hidden" name="archived"> -->
                         <input type="hidden" name="patient_id" id="patient_id">
-                        <label for="complete-name">Patient Name</label>
-                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" name="complete_name" id="complete_name">
+                        <!-- <label for="complete-name">Patient Name</label>
+                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" name="complete_name" id="complete_name"> -->
                     </div>
                     <div class="form-group input-group-sm">
                         <label for="title"><b>Event Title</b></label>
@@ -85,8 +85,8 @@
                     <div class="form-group input-group-sm">
                         <input type="text" name="patient_id" id="patient_idd" value="">
                         <input type="text" name="patientId" id="patientId" value="">
-                        <label for="complete-name">Patient Name</label>
-                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" value=" " id="complete_namee">
+                        <!-- <label for="complete-name">Patient Name</label>
+                        <input type="text" class="form-control" value=" " id="complete_namee"> -->
                     </div>
                     <div class="form-group input-group-sm">
                         <label for="title"><b>Event Title</b></label>
@@ -122,47 +122,11 @@
         </div>
         <!-- end edit modal -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="patientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Search Patient</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table table-hover table-bordered" style="width:100%" id="health-data">
-                            <thead>
-                                <tr>
-                                    <th style="display:none">ID</th>
-                                    <th class="bg-info text-dark">ID Number</th>
-                                    <th class="bg-info text-dark">Name</th>
-                                    <th class="bg-info text-dark">Role</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($patients as $patient)
-                                <tr class="patientsData">
-                                    <td style="display: none">{{$patient->id}}</td>
-                                    <td>{{$patient->school_id}}</td>
-                                    <td>{{$patient->first_name}} {{$patient->last_name}}</td>
-                                    <td>{{$patient->patient_role}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
 
-<!-- Jquery min-->
+<!-- Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- moment js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -170,22 +134,14 @@
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <!-- Fullcalendar js -->
 <script src="{{asset('js/fullcalendar.js')}}"></script>
-<!-- Alert -->
+
 <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
 
 <script>
       $(".hamburger").click(function(){
         $(".wrapper").toggleClass("active")
       });
-      
-      $('.patientsData').click(function(){
-            var patient_id =  $(this).find(":first-child").text();
-            var complete_name = $(this).find(":first-child").next().next().text();
-            $('#patientModal').modal('hide');
-            $('#patient_id').val(patient_id);
-            $('#complete_name').val(complete_name);
-        });
-  </script>
+</script>
 <script>
 jQuery(document).ready(function($){
     $(document).ready(function(){
