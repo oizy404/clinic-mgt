@@ -121,3 +121,11 @@
   width: calc(100% - 100px);
   margin-left: 100px;
 }
+
+/* msg-sidenav */
+
+.patient-msgs a{
+  cursor: pointer;
+  text-decoration: none;
+  color: #FFFFFF;
+}

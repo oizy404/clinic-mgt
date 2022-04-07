@@ -25,3 +25,15 @@
 .supplies-inventory a{
     color: white;
 }
+.update-supplies-inventory{
+    width: 80%;
+    margin-top: 10px;
+    
+}
+#btn-edit-item{
+    margin-top: 20px;
+    float: right;
+}
+#btn-item-cancel{
+    margin-top: 20px;
+}

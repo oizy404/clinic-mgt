@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="{{asset('css/batch-student-health-data.css')}}">
     <link rel="stylesheet" href="{{asset('css/supplies-inventory.css')}}">
     <link rel="stylesheet" href="{{asset('css/add-medical-supply.css')}}">
-    <link rel="stylesheet" href="{{asset('css/edit-medical-record.css')}}">
     <link rel="stylesheet" href="{{asset('css/add-consultation-record.css')}}">
     <link rel="stylesheet" href="{{asset('css/consultation-record.css')}}">
     <link rel="stylesheet" href="{{asset('css/messaging.css')}}">
