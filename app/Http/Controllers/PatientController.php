@@ -93,19 +93,19 @@ class PatientController extends Controller
         $parent->patient_id = $patient->id;
         $parent->save();
 
-        $location = new Location();
-        $location->street_address = $request->streetAdd;
-        $location->barangay = $request->barangay;
-        $location->city_id = $request->city;
-        $location->save();
-
         $guardian = new Guardian();
         $guardian->complete_name = $request->GName;
         $guardian->relationship = $request->GRelationship;
         $guardian->contact_number = $request->GContactNo;
-        $guardian->location_id = $location->id;
         $guardian->patient_id = $patient->id;
         $guardian->save();
+
+        $location = new Location();
+        $location->street_address = $request->streetAdd;
+        $location->barangay = $request->barangay;
+        $location->city_id = $request->city;
+        $location->guardian_id = $guardian->id;
+        $location->save();
 
         $sibling = new Sibling();
         $sibling->complete_name = $request->siblingComplete_name;
@@ -115,62 +115,65 @@ class PatientController extends Controller
         $sibling->save();
 
 //////////start Desease data /////////////////////
-
-        foreach($request->deseases as $desease){
-            $familyDesease = FamilyDesease::create([
-                'desease_id' => $desease,
-                'patient_id' => $patient->id,
-            ]);
+        if($request->deseases){
+            foreach($request->deseases as $desease){
+                $familyDesease = FamilyDesease::create([
+                    'desease_id' => $desease,
+                    'patient_id' => $patient->id,
+                ]);
+            }  
         }
         
         $cancer = new Cancer();
         $cancer->cancer = $request->cancer;
-        $cancer->familyDesease_id = $familyDesease->id;
+        $cancer->patient_id = $patient->id;
         $cancer->save();
 
         $otherDesease = new OtherDesease();
         $otherDesease->other_desease = $request->otherDesease;
-        $otherDesease->familyDesease_id = $familyDesease->id;
+        $otherDesease->patient_id = $patient->id;
         $otherDesease->save();
 
 //////////end Desease data /////////////////////
 
 //////////start History Illness data /////////////////////
 
-        foreach($request->illnesses as $illness){
-            $historyIllness = HistoryIllness::create([
-                'illness_id' => $illness,
-                'patient_id' => $patient->id,
-            ]);
+        if($request->illnesses){
+            foreach($request->illnesses as $illness){
+                $historyIllness = HistoryIllness::create([
+                    'illness_id' => $illness,
+                    'patient_id' => $patient->id,
+                ]);
+            }
         }
         $allergy = new Allergy();
         $allergy->allergy = $request->allergy;
-        $allergy->historyIllness_id = $historyIllness->id;
+        $allergy->patient_id = $patient->id;
         $allergy->save();
 
         $fracture = new Fracture();
         $fracture->fracture = $request->fracture;
-        $fracture->historyIllness_id = $historyIllness->id;
+        $fracture->patient_id = $patient->id;
         $fracture->save();
 
         $operation = new Operation();
         $operation->operation = $request->operation;
-        $operation->historyIllness_id = $historyIllness->id;
+        $operation->patient_id = $patient->id;
         $operation->save();
 
         $hospitalization = new Hospitalization();
         $hospitalization->hospitalization = $request->hospitalization;
-        $hospitalization->historyIllness_id = $historyIllness->id;
+        $hospitalization->patient_id = $patient->id;
         $hospitalization->save();
 
         $behavior = new BehavioralProblem();
         $behavior->behavior = $request->behavior;
-        $behavior->historyIllness_id = $historyIllness->id;
+        $behavior->patient_id = $patient->id;
         $behavior->save();
 
         $otherIllness = new OtherIllness();
         $otherIllness->other_illness = $request->otherIllness;
-        $otherIllness->historyIllness_id = $historyIllness->id;
+        $otherIllness->patient_id = $patient->id;
         $otherIllness->save();
 
 //////////end History Illness data /////////////////////
@@ -257,21 +260,21 @@ class PatientController extends Controller
         $parent->patient_id = $patient->id;
         $parent->save();
 
-        $location = Location::find($location->id);
-        $location->street_address = $request->streetAdd;
-        $location->barangay = $request->barangay;
-        $location->city_id = $city->id;
-        $location->save();
-
         $guardian = Guardian::where('patient_id',$patient->id)->first();
         $guardian->complete_name = $request->GName;
         $guardian->relationship = $request->GRelationship;
         $guardian->contact_number = $request->GContactNo;
-        $guardian->location_id = $location->id;
         $guardian->patient_id = $patient->id;
         $guardian->save();
 
-        $sibling = Sibling::where('patinet_id',$patient->id)->first();
+        $location = Location::where('guardian_id',$guardian->id)->first();
+        $location->street_address = $request->streetAdd;
+        $location->barangay = $request->barangay;
+        $location->city_id = $request->city;
+        $location->guardian_id = $guardian->id;
+        $location->save();
+
+        $sibling = Sibling::where('patient_id',$patient->id)->first();
         $sibling->complete_name = $request->siblingComplete_name;
         $sibling->age = $request->siblingAge;
         $sibling->sex = $request->siblingSex;
@@ -292,20 +295,20 @@ class PatientController extends Controller
             ]);
             
         }
-        $cancer = Cancer::find($cancer->id);
+        $cancer = Cancer::where('patient_id',$patient->id)->first();
         $cancer->cancer = $request->cancer;
-        $cancer->familyDesease_id = $family_desease->id;
+        $cancer->patient_id = $patient->id;
         $cancer->save();
 
-        $otherDesease = OtherDesease::find($otherDesease_id);
+        $otherDesease = OtherDesease::where('patient_id',$patient->id)->first();
         $otherDesease->other_desease = $request->otherDesease;
-        $otherDesease->familyDesease_id = $family_desease->id;
+        $otherDesease->patient_id = $patient->id;
         $otherDesease->save();
 
 //////////end Desease data /////////////////////
 
 //////////start History Illness data /////////////////////
-        $historyIllness = HistoryIllness::where('patient_id',$patient_id)->get();
+        $historyIllness = HistoryIllness::where('patient_id',$patient->id)->get();
         foreach($historyIllness as $history_illness){
             $h_illness = HistoryIllness::find($history_illness->id);
             $h_illness->delete();
@@ -316,40 +319,40 @@ class PatientController extends Controller
                 'patient_id' => $patient->id,
             ]);
         }
-        $allergy = Allergy::find($allergy->id);
+        $allergy = Allergy::where('patient_id',$patient->id)->first();
         $allergy->allergy = $request->allergy;
-        $allergy->historyIllness_id = $history_illness->id;
+        $allergy->patient_id = $patient->id;
         $allergy->save();
 
-        $fracture = Fracture::find($fracture->id);
+        $fracture = Fracture::where('patient_id',$patient->id)->first();
         $fracture->fracture = $request->fracture;
-        $fracture->historyIllness_id = $history_illness->id;
+        $fracture->patient_id = $patient->id;
         $fracture->save();
 
-        $operation = Operation::find($operation->id);
+        $operation = Operation::where('patient_id',$patient->id)->first();
         $operation->operation = $request->operation;
-        $operation->historyIllness_id = $history_illness->id;
+        $operation->patient_id = $patient->id;
         $operation->save();
 
-        $hospitalization = Hospitalization::find($hospitalization->id);
+        $hospitalization = Hospitalization::where('patient_id',$patient->id)->first();
         $hospitalization->hospitalization = $request->hospitalization;
-        $hospitalization->historyIllness_id = $history_illness->id;
+        $hospitalization->patient_id = $patient->id;
         $hospitalization->save();
 
-        $behavior = BehavioralProblem::find($behavior->id);
+        $behavior = BehavioralProblem::where('patient_id',$patient->id)->first();
         $behavior->behavior = $request->behavior;
-        $behavior->historyIllness_id = $history_illness->id;
+        $behavior->patient_id = $patient->id;
         $behavior->save();
 
-        $otherIllness = OtherIllness::find($otherIllness->id);
+        $otherIllness = OtherIllness::where('patient_id',$patient->id)->first();
         $otherIllness->other_illness = $request->otherIllness;
-        $otherIllness->historyIllness_id = $history_illness->id;
+        $otherIllness->patient_id = $patient->id;
         $otherIllness->save();
 
 // //////////end History Illness data /////////////////////
 
         if($patient->patient_role == "Student"){
-            $immunizations = Immunization::where('patient_id',$patient_id)->get();
+            $immunizations = Immunization::where('patient_id',$patient->id)->get();
             foreach($immunizations as $immunization){
                 $immunization_ = Immunization::find($immunization->id);
                 $immunization_->delete();
@@ -362,7 +365,7 @@ class PatientController extends Controller
             }
         }
         elseif($patient->patient_role == "Employee"){
-            $maintenance = Maintenance::find($id);
+            $maintenance = Maintenance::where('patient_id',$patient->id)->first();
             $maintenance->medication_name = $request->medication_name;
             $maintenance->dosage = $request->dosage;
             $maintenance->frequency = $request->frequency;

@@ -15,7 +15,6 @@ class Guardian extends Model
         'complete_name',
         'relationship',
         'contact_number',
-        'location_id',
         'patient_id'
     ];
 
@@ -23,6 +22,6 @@ class Guardian extends Model
         return $this->belongsTo(PatientProfile::class, "patient_id");
     }
     public function location(){
-        return $this->belongsTo(Location::class, "location_id");
+        return $this->hasMany(Location::class, "guardian_id");
     }
 }

@@ -12,8 +12,8 @@ class Complaint extends Model
     protected $table ="tbl_complaints";
 
     protected $fillable = [
-        "chief_complaints_id",
-        "health_evaluation_id",
+        'chief_complaints_id',
+        'health_evaluation_id',
     ];
 
     public function chief_complaint(){
@@ -24,7 +24,4 @@ class Complaint extends Model
         return $this->belongsTo(HealthEvaluation::class, "health_evaluation_id");
     }
 
-    public function otherComplaint(){
-        return $this->hasMany(Complaint::class, "complaints_id");
-    }
 }

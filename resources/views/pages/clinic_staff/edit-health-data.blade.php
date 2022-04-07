@@ -194,6 +194,7 @@
                             <!-- end of mother's info -->
                             <!-- start of guardian's info -->
                     @foreach($patient->guardian as $guardiann)
+                        @foreach($guardiann->location as $locations)
                             <div class="row mt-2">
                                 <div class="col-md-9">
                                     <div class="form-group input-group-sm">
@@ -213,7 +214,7 @@
                                     <div class="form-group input-group-sm">
                                         <label for="provinces" class=""><b>Province</b></label>
                                         <select name="" class="form-control" id="province">
-                                            <option value="{{$guardiann->location->city->province->id}}">{{$guardiann->location->city->province->province}}</option>
+                                            <option value="{{$locations->city->province->id}}">{{$locations->city->province->province}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -221,7 +222,7 @@
                                         <div class="form-group input-group-sm">
                                             <label for="city" class=""><b>City</b></label>
                                             <select name="city" class="form-control" id="city">
-                                                <option value="{{$guardiann->location->city->id}}">{{$guardiann->location->city->city}}</option>
+                                                <option value="{{$locations->city->id}}">{{$locations->city->city}}</option>
                                             </select>
                                         </div>
                                 </div>
@@ -236,16 +237,17 @@
                                 <div class="col-md-5">
                                     <div class="form-group input-group-sm">
                                         <label for="barangay" class=""><b>Barangay</b></label>
-                                        <input type="text" class="form-control" name="barangay" value="{{$guardiann->location->barangay}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="barangay" value="{{$locations->barangay}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group input-group-sm">
                                         <label for="streetAdd" class=""><b>Street Address</b></label>
-                                        <input type="text" class="form-control" name="streetAdd" value="{{$guardiann->location->street_address}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="streetAdd" value="{{$locations->street_address}}" oninput="this.value = this.value.toUpperCase()">
                                     </div>
                                 </div>
                             </div>
+                        @endforeach
                     @endforeach
                             <!-- end of guardian's info -->
                             <!-- start siblings info -->
@@ -313,20 +315,16 @@
                                     </div>
                                     <div class="col">
                                         <div class="col input-group-sm">
-                                        @foreach($patient->familyDesease as $family_desease)
-                                            @foreach($family_desease->cancer as $cancers)
+                                            @foreach($patient->cancer as $cancers)
                                             <label for="desease6" class=""><b>Cancer of the</b></label>
                                             <input type="text" class="form-control" name="cancer" value="{{$cancers->cancer}}">
                                             @endforeach
-                                        @endforeach
                                         </div>
                                         <div class="col input-group-sm">
-                                        @foreach($patient->familyDesease as $family_desease)
-                                            @foreach($family_desease->otherDesease as $other_desease)
+                                            @foreach($patient->otherDesease as $other_desease)
                                             <label for="desease7" class=""><b>Others: Please Specify</b></label>
                                             <input type="text" class="form-control" name="otherDesease" value="{{$other_desease->other_desease}}">
                                             @endforeach
-                                        @endforeach
                                         </div>
                                     </div>
                                 </div><br>
@@ -489,56 +487,44 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col input-group-sm">
-                                @foreach($patient->historyIllness as $history_illness)
-                                    @foreach($history_illness->allergy as $allergies)
+                                    @foreach($patient->allergy as $allergies)
                                     <label for="mdhistory23" class=""><b>Allergy: </b></label>
                                     <input type="text" class="form-control" name="allergy" value="{{$allergies->allergy}}">
                                     @endforeach
-                                @endforeach
                                 </div>
                                 <div class="col input-group-sm">
-                                @foreach($patient->historyIllness as $history_illness)
-                                    @foreach($history_illness->fracture as $fractures)
+                                    @foreach($patient->fracture as $fractures)
                                     <label for="mdhistory24" class=""><b>Fracture in </b></label>
                                     <input type="text" class="form-control" name="fracture" value="{{$fractures->fracture}}">
                                     @endforeach
-                                @endforeach
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col input-group-sm">
-                                @foreach($patient->historyIllness as $history_illness)
-                                    @foreach($history_illness->operation as $operations)
+                                    @foreach($patient->operation as $operations)
                                     <label for="mdhistory25" class=""><b>Operation of the </b></label>
                                     <input type="text" class="form-control" name="operation" value="{{$operations->operation}}">
                                     @endforeach
-                                @endforeach
                                 </div>
                                 <div class="col input-group-sm">
-                                @foreach($patient->historyIllness as $history_illness)
-                                    @foreach($history_illness->hospitalization as $hospitalizations)
+                                    @foreach($patient->hospitalization as $hospitalizations)
                                     <label for="mdhistory26" class=""><b>Hospitalization </b></label>
                                     <input type="text" class="form-control" name="hospitalization" value="{{$hospitalizations->hospitalization}}">
                                     @endforeach
-                                @endforeach
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col input-group-sm">
-                                @foreach($patient->historyIllness as $history_illness)
-                                    @foreach($history_illness->behavior as $behaviors)
+                                    @foreach($patient->behavior as $behaviors)
                                     <label for="mdhistory27" class=""><b>Behavioral/ Psychological Problems </b></label>
                                     <input type="text" class="form-control" name="behavior" value="{{$behaviors->behavior}}">
                                     @endforeach
-                                @endforeach
                                 </div>
                                 <div class="col input-group-sm">
-                                @foreach($patient->historyIllness as $history_illness)
-                                    @foreach($history_illness->otherIllness as $other_illness)
+                                    @foreach($patient->otherIllness as $other_illness)
                                     <label for="mdhistory28" class=""><b>Others: Please Specify: </b></label>
                                     <input type="text" class="form-control" name="otherIllness" value="{{$other_illness->other_illness}}">
                                     @endforeach
-                                @endforeach
                                 </div>
                             </div>
                             <!-- end of past medical history info -->

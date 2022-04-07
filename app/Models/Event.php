@@ -13,15 +13,18 @@ class Event extends Model
 
     protected $fillable = [
         'title',
+        'patient_id',
         'start',
         'end', 
-        'allDay', 
         'color', 
         'textColor',
-        'patient_id'
+        'archived'
     ];
 
     public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
+    }
+    public function message(){
+        return $this->hasMany(Message::class, "event_id");
     }
 }

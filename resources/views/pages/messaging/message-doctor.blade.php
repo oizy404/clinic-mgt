@@ -104,23 +104,39 @@
                     if(value.receiver == {{Auth::user()->id}}){
                         if(!value.img_file){
                             $("#message_box").append(
-                                "<div class='d-flex justify-content-start'><div class='outbox'>"+value.message+"</div></div><br>"
+                                "<div class='d-flex justify-content-start'><div class='outbox bg-info'>"+value.message+"</div></div><br>"
                             )
                         }
+                        
                         else{
                             $("#message_box").append(
                                 "<div class='d-flex justify-content-start'><div class='img-msg'><img src='{{asset('imgfileMessages')}}/"+value.img_file+"' id='image-msg' alt='image msg' style='max-width:150px;'></div></div><br>"
                             )
                         }
-                    }else if(value.sender == {{Auth::user()->id}}){
+                    }
+                    else if(value.sender == {{Auth::user()->id}}){
                         if(!value.img_file){
                             $("#message_box").append(
                                 "<div class='d-flex justify-content-end'><div class='outbox bg-primary text-light'>"+value.message+"</div></div><br>"
                             )
                         }
+                        else if(!value.event_id){
+                            $("#message_box").append(
+                            '<div class="d-flex justify-content-start">'+
+                                '<div class="event bg-info">'+
+                                    '<p>'+
+                                        'Good Day! patient <strong> lorem </strong>'+
+                                        'your appointment <strong> ipsum </strong>'+
+                                        'will be on <strong> set </strong> to'+ 
+                                        '<strong> amet </strong> Philippine time.'+
+                                    '</p>'+
+                                '</div>'+
+                            '</div><br>'
+                            )
+                        }
                         else{
                             $("#message_box").append(
-                                "<div class='d-flex justify-content-end'><div class='img-msg'><img src='{{asset('imgfileMessages')}}/"+value.img_file+"' id='image-msg' alt='image msg' style='max-width:150px;'></div></div><br>"
+                                "<div class='d-flex justify-content-end bg-primary'><div class='img-msg'><img src='{{asset('imgfileMessages')}}/"+value.img_file+"' id='image-msg' alt='image msg' style='max-width:150px;'></div></div><br>"
                             )
                         }
                     }
@@ -130,36 +146,36 @@
         })
     })
 
-    // $("#Form").on('btn-compose-msg',function(event) {
+    $("#Form").on('btn-compose-msg',function(event) {
         
-    //     event.preventDefault(); // avoid to execute the actual submit of the form.
+        event.preventDefault(); // avoid to execute the actual submit of the form.
 
-    //     let fileups = $('#fileups').val();
-    //     var message = $("#message").val();
-    //     var receiver_id = $("#receiver_id").val();
-    //     var actionUrl = form.attr('action');
+        let fileups = $('#fileups').val();
+        var message = $("#message").val();
+        var receiver_id = $("#receiver_id").val();
+        var actionUrl = form.attr('action');
 
-    //     $.ajax({
-    //         type: "post",
-    //         url: actionUrl,
-    //         data:{
-    //             fileups:fileups,
-    //             message:message,
-    //             receiver_id:receiver_id,
-    //         },
-    //         success: function(data)
-    //         {
-    //             $("#message").val('');
-    //             $("#message_box").append(
-    //                 "<div class='d-flex justify-content-end'><div class='outbox'>"+message+"</div></div><br>"
-    //             )
+        $.ajax({
+            type: "post",
+            url: actionUrl,
+            data:{
+                fileups:fileups,
+                message:message,
+                receiver_id:receiver_id,
+            },
+            success: function(data)
+            {
+                $("#message").val('');
+                $("#message_box").append(
+                    "<div class='d-flex justify-content-end'><div class='outbox'>"+message+"</div></div><br>"
+                )
                 
-    //         }
-    //     });
+            }
+        });
         
         
 
-    // });
+    });
     // $("#Form").submit(function(e) {
 
     //     e.preventDefault(); // avoid to execute the actual submit of the form.

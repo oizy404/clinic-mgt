@@ -18,7 +18,7 @@
         </li>
 
         <li>
-          <a href="#">
+          <a href="#" class="message-patient-btn">
             <span class="icon"><i class="fas fa-envelope"></i></span>
             <span class="list">Message</span>
           </a>

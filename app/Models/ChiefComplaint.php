@@ -9,10 +9,11 @@ class ChiefComplaint extends Model
 {
     use HasFactory;
 
-    protected $table ="tbl_complaints";
+    protected $table ="tbl_chief_complaints";
 
     protected $fillable = [
-        "chief_complaints",
+        'chief_complaint',
+        
     ];
 
     public function complaint(){

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Message;
+use App\Models\Event;
 
 class MessageController extends Controller
 {
@@ -22,7 +23,7 @@ class MessageController extends Controller
     // }
     public function doctorIndex(){
         
-        $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
+        $messages = Message::orderBy('created_at', 'asc')->get();
         
         $users = DB::table('users')
             ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
@@ -36,7 +37,7 @@ class MessageController extends Controller
             "users", $users));
     }
     public function doctorMessageShow(Request $request, $id){
-        $message = DB::table('tbl_messages')->where('sender',$request->id)
+        $message = Message::where('sender',$request->id)
         ->orWhere('receiver',$request->id)
         ->orderBy('created_at', 'asc')->get();
 
@@ -66,7 +67,7 @@ class MessageController extends Controller
 
     public function clinicstaffIndex(){
 
-        $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
+        $messages = Message::orderBy('created_at', 'asc')->get();
         
         $users = DB::table('users')
             ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
@@ -88,7 +89,7 @@ class MessageController extends Controller
         ->where('rank','patient')
         ->get()->groupBy('sender');
         
-        $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
+        $messages = Message::orderBy('created_at', 'asc')->get();
 
         return view("pages.messaging.create-message-clinicstaff")->with("messages", $messages)->with("users", $users);
     }
@@ -99,7 +100,7 @@ class MessageController extends Controller
 
     public function patientIndex(){
         $users = User::all();
-        $messages = DB::table('tbl_messages')->orderBy('created_at', 'asc')->get();
+        $messages = Message::orderBy('created_at', 'asc')->get();
 
         return view("pages.patient.patient-dashboard")->with("messages", $messages)->with("users", $users);
     }

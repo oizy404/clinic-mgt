@@ -69,16 +69,12 @@ class ConsultationController extends Controller
             $position->save();
         }
         elseif($request->patient_role == "Student"){
-            $yearlevel = new YearLevel();
-            $yearlevel->grade_level = $request->grade_level;
-            $yearlevel->department_id = $request->department;
-            $yearlevel->save();
 
             $position = new Position();
             $position->personnel_position = $request->personnel_position;
             $position->personnel_rank = $request->personnel_rank;
             $position->department_id = $request->department;
-            $position->yearLevel_id = $yearlevel->id;
+            $position->yearLevel_id = $request->grade_level;
             $position->health_evaluation_id = $record->id;
             $position->save();
     
@@ -93,7 +89,7 @@ class ConsultationController extends Controller
 
         $otherComplaint = new OtherComplaint();
         $otherComplaint->other_chief_complaint = $request->other_complaint;
-        $otherComplaint->complaints_id = $chiefComplaint->id;
+        $otherComplaint->health_evaluation_id = $record->id;
         $otherComplaint->save();
 
         return redirect()->route('consultation-record');
@@ -124,9 +120,12 @@ class ConsultationController extends Controller
     {
         $record = HealthEvaluation::find($id);
         $patients = PatientProfile::all();
+        $chief_complaints = ChiefComplaint::all();
+
         return view("pages.clinic_staff.edit-consultation-record")->with(compact(
             "record", $record,
             "patients", $patients,
+            "chief_complaints", $chief_complaints,
         ));
     }
 
@@ -150,7 +149,7 @@ class ConsultationController extends Controller
         $record->save();
 
         if($request->patient_role == "Employee"){
-            $position = Position::find($id);
+            $position = Position::where('health_evaluation_id',$record->id)->first();
             $position->personnel_position = $request->personnel_position;
             $position->personnel_rank = $request->personnel_rank;
             $position->department_id = $request->department;
@@ -158,21 +157,34 @@ class ConsultationController extends Controller
             $position->save();
         }
         elseif($request->patient_role == "Student"){
-            $yearlevel = YearLevel::find($id);
-            $yearlevel->grade_level = $request->grade_level;
-            $yearlevel->department_id = $request->department;
-            $yearlevel->save();
-
-            $position = Position::find($id);
+        
+            $position = Position::where('health_evaluation_id',$record->id)->first();
             $position->personnel_position = $request->personnel_position;
             $position->personnel_rank = $request->personnel_rank;
             $position->department_id = $request->department;
-            $position->yearLevel_id = $yearlevel->id;
+            $position->yearLevel_id = $request->grade_level;
             $position->health_evaluation_id = $record->id;
             $position->save();
-    
-            
         }
+
+        $complaints = Complaint::where('health_evaluation_id',$record->id)->get();
+        foreach($complaints as $complaint){
+            $chiefComplaint = Complaint::find($complaint->id);
+            $chiefComplaint->delete();
+        }
+
+        foreach($request->complaints as $complaint){
+            $chiefComplaint = Complaint::create([
+                'chief_complaints_id' => $complaint,
+                'health_evaluation_id' => $record->id,
+            ]);
+        }
+
+        $otherComplaint = OtherComplaint::where('health_evaluation_id',$record->id)->first();
+        $otherComplaint->other_chief_complaint = $request->other_complaint;
+        $otherComplaint->health_evaluation_id = $record->id;
+        $otherComplaint->save();
+
         return redirect()->route('consultation-record');
     }
 

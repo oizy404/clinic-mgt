@@ -11,9 +11,9 @@ class OtherDesease extends Model
 
     protected $table ="tbl_other_deseases";
 
-    protected $fillable = ['other_desease','familyDesease_id'];
+    protected $fillable = ['other_desease','patient_id'];
 
-    public function familyDesease(){
-        return $this->belongsTo(FamilyDesease::class, "familyDesease_id");
+    public function patient(){
+        return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }

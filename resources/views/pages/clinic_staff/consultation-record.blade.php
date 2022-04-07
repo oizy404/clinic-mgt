@@ -57,8 +57,8 @@
                                 <td>{{$record->patient->school_id}}</td>
                                 <td>{{$record->patient->last_name}}, {{$record->patient->first_name}}</td>
                                 <td>{{$record->patient->patient_role}}</td>
-                                <td class="text-center"><a href="{{route('show-consultation-record', $record->id)}}" class="btn btn-warning"><i class="far fa-eye"></i></a></td>
-                                <td class="text-center"><a href="{{route('edit-consultation-record', $record->id)}}" class="btn btn-success"><i class="far fa-edit"></i></a></td>
+                                <td class="text-center"><a href="{{route('show-consultation-record', $record->id)}}" class="btn btn-success"><i class="far fa-print"></i></a></td>
+                                <td class="text-center"><a href="{{route('edit-consultation-record', $record->id)}}" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
                                 <td class="text-center">
                                     <a href="{{route('archive-consultation-record', $record->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>

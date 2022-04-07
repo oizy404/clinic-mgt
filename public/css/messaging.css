@@ -28,14 +28,18 @@
     padding: 8px ;
     margin: none;
     max-width: 70%;
-    background-color: rgb(209, 209, 209);
     border-radius: 15px;
 }
 .patientmsg_card_body .inbox{
     padding: 8px;
     margin: none;
     max-width: 70%;
-    background-color: rgb(196, 190, 173);
+    border-radius: 15px;
+}
+.patientmsg_card_body .event{
+    padding: 8px;
+    margin: none;
+    max-width: 90%;
     border-radius: 15px;
 }
 .input-file{
@@ -91,13 +95,11 @@
     padding: 8px ;
     margin: none;
     max-width: 70%;
-    background-color: rgb(209, 209, 209);
     border-radius: 15px;
 }
 .doctormsg_card_body .inbox{
     padding: 8px;
     margin: none;
     max-width: 70%;
-    background-color: rgb(196, 190, 173);
     border-radius: 15px;
 }

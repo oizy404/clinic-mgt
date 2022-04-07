@@ -16,7 +16,7 @@
                         </div><br>
                         @else
                         <div class="d-flex justify-content-end">
-                            <div class="outbox">
+                            <div class="outbox bg-primary">
                                 <p>{{$message->message}}</p>
                             </div>
                         </div><br>
@@ -28,9 +28,20 @@
                                     <img src="{{asset('imgfileMessages')}}/{{$message->img_file}}" id="image-msg" alt="image msg" style="max-width:150px;">
                                 </div>
                         </div><br>
+                        @elseif($message->event_id)
+                            <div class="d-flex justify-content-start">
+                                <div class="event bg-info">
+                                    <p>
+                                        Good Day! patient <strong>{{$message->event->patient->first_name}} {{$message->event->patient->last_name}}</strong>
+                                        your appointment <strong>{{$message->event->title}}</strong>
+                                        will be on <strong>{{$message->event->start}}</strong> to 
+                                        <strong>{{$message->event->end}}</strong> Philippine time.
+                                    </p>
+                                </div>
+                            </div><br>
                         @else
                         <div class="d-flex justify-content-start">
-                            <div class="inbox">
+                            <div class="inbox bg-info">
                                 <p>{{$message->message}}</p>
                             </div>
                         </div><br>  

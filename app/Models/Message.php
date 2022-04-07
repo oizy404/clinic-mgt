@@ -15,11 +15,15 @@ class Message extends Model
         'sender',
         'message',
         'img_file',
+        'event_id',
         'receiver',
         'read',
     ];
 
     public function user(){
         return $this->belongsTo(User::class, "sender","receiver");
+    }
+    public function event(){
+        return $this->belongsTo(Event::class, "event_id");
     }
 }

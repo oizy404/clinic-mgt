@@ -159,10 +159,10 @@
                                         <label for="complaints">Fever</label><br>
                                         <input type="checkbox" name="complaints[]" value="7">
                                         <label for="complaints">Dizziness</label><br>
-                                        <input type="checkbox" name="complaints[]" value="9">
-                                        <label for="complaints">Diarhea</label><br>
                                         <input type="checkbox" name="complaints" value="8">
                                         <label for="complaints">Dysmenorrhea</label><br>
+                                        <input type="checkbox" name="complaints[]" value="9">
+                                        <label for="complaints">Diarhea</label><br>
                                         <input type="checkbox" name="complaints[]" value="10">
                                         <label for="complaints">Vomiting</label>
                                         </ul>
@@ -269,13 +269,13 @@
                                 '<label for="grade_level"><b>Elementary</b></label>'+
                                 '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
                                     '<option selected>-- Select Grade --</option>'+
-                                    '<option value="Kinder">Kinder</option>'+
-                                    '<option value="Grade 1">Grade 1</option>'+
-                                    '<option value="Grade 2">Grade 2</option>'+
-                                    '<option value="Grade 3">Grade 3</option>'+
-                                    '<option value="Grade 4">Grade 4</option>'+
-                                    '<option value="Grade 5">Grade 5</option>'+
-                                    '<option value="Grade 6">Grade 6</option>'+
+                                    '<option value="1">Kinder</option>'+
+                                    '<option value="2">Grade 1</option>'+
+                                    '<option value="3">Grade 2</option>'+
+                                    '<option value="4">Grade 3</option>'+
+                                    '<option value="5">Grade 4</option>'+
+                                    '<option value="6">Grade 5</option>'+
+                                    '<option value="7">Grade 6</option>'+
                                 '</select>'+
                             '</div>'
                         )
@@ -289,10 +289,10 @@
                                 '<label for="grade_level"><b>Junior High School</b></label>'+
                                 '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
                                     '<option selected>-- Select Grade --</option>'+
-                                    '<option value="Grade 7">Grade 7</option>'+
-                                    '<option value="Grade 8">Grade 8</option>'+
-                                    '<option value="Grade 9">Grade 9</option>'+
-                                    '<option value="Grade 10">Grade 10</option>'+
+                                    '<option value="8">Grade 7</option>'+
+                                    '<option value="9">Grade 8</option>'+
+                                    '<option value="10">Grade 9</option>'+
+                                    '<option value="11">Grade 10</option>'+
                                 '</select>'+
                             '</div>'
                         )
@@ -306,8 +306,8 @@
                                 '<label for="grade_level"><b>Senior High School</b></label>'+
                                 '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
                                     '<option selected>-- Select Grade --</option>'+
-                                    '<option value="Grade 11">Grade 11</option>'+
-                                    '<option value="Grade 12">Grade 12</option>'+
+                                    '<option value="12">Grade 11</option>'+
+                                    '<option value="13">Grade 12</option>'+
                                 '</select>'+
                             '</div>'
                         )
@@ -321,10 +321,10 @@
                                 '<label for="grade_level"><b>College</b></label>'+
                                 '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
                                     '<option selected>-- Select Year --</option>'+
-                                    '<option value="Year 1">Year 1</option>'+
-                                    '<option value="Year 2">Year 2</option>'+
-                                    '<option value="Year 3">Year 3</option>'+
-                                    '<option value="Year 4">Year 4</option>'+
+                                    '<option value="14">Year 1</option>'+
+                                    '<option value="15">Year 2</option>'+
+                                    '<option value="16">Year 3</option>'+
+                                    '<option value="17">Year 4</option>'+
                                 '</select>'+
                             '</div>'
                         )

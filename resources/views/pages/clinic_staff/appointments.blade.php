@@ -29,7 +29,7 @@
                     <div class="add-event mb-3">
                         <button class="btn btn-primary" id="addEventBtn">Add Event</button>
                     </div>
-                    <div id="calendar"></div>
+                        <div id="calendar"></div>
                 </div>
             </div>
         </div>
@@ -41,8 +41,8 @@
                     <div class="form-group input-group-sm">
                         <!-- <input type="hidden" name="archived"> -->
                         <input type="hidden" name="patient_id" id="patient_id">
-                        <!-- <label for="complete-name">Patient Name</label>
-                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" name="complete_name" id="complete_name"> -->
+                        <label for="complete-name">Patient Name</label>
+                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" name="complete_name" id="complete_name">
                     </div>
                     <div class="form-group input-group-sm">
                         <label for="title"><b>Event Title</b></label>
@@ -57,15 +57,10 @@
                         <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
                     </div>
                     <div class="form-group input-group-sm">
-                        <label for="allDay">All Day</label><br>
-                        <input type="checkbox" value="1" name="allDay" checked>All Day<br>   
-                        <input type="checkbox" value="0" name="Partial">Partial<br>
-                    </div>
-                    <div class="form-group input-group-sm">
                         <label for="color">Background Color</label>
                         <input type="color" class="form-control" name="color" id="color">
                     </div>
-                    <div class="form-group input-group-sm">
+                    <div class="form-group input-group-sm" style="display: none;">
                         <label for="textColor">Text Color</label>
                         <input type="color" class="form-control" value="#000000" name="textColor" id="textColor">
                     </div>
@@ -80,15 +75,14 @@
         <!-- start edit modal -->
         <div id="dialog2" style="display:none;">
             <div id="dialog-body">
-                <form action="{{route('eventStore')}}" id="dayClick" method="post">
+                <form action="{{route('eventStore')}}" id="updateClick" method="post">
                     @csrf
-                    <div class="form-group input-group-sm">
-                        <input type="text" name="patient_id" id="patient_idd" value="">
-                        <input type="text" name="patientId" id="patientId" value="">
-                        <!-- <label for="complete-name">Patient Name</label>
-                        <input type="text" class="form-control" value=" " id="complete_namee"> -->
-                    </div>
-                    <div class="form-group input-group-sm">
+                    <!-- <div class="form-group input-group-sm">
+                        <input type="text" name="patient_idd" id="patient_idd" value="">
+                        <label for="complete-name">Patient Name</label>
+                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" value="" id="complete_namee">
+                    </div> -->
+                    <div class="form-group input-group-sm"> 
                         <label for="title"><b>Event Title</b></label>
                         <input type="text" class="form-control" name="title" id="titlee" value="" placeholder="Event Title">
                     </div>
@@ -101,15 +95,10 @@
                         <input type="text" class="form-control" name="end" id="endd" placeholder="End date & time">
                     </div>
                     <div class="form-group input-group-sm">
-                        <label for="allDay">All Day</label><br>
-                        <input type="checkbox" value="1" name="allDay" checked>All Day<br>   
-                        <input type="checkbox" value="0" name="Partial">Partial<br>
-                    </div>
-                    <div class="form-group input-group-sm">
                         <label for="color">Background Color</label>
                         <input type="color" class="form-control" name="color" id="colorr">
                     </div>
-                    <div class="form-group input-group-sm">
+                    <div class="form-group input-group-sm" style="display: none;">
                         <label for="textColor">Text Color</label>
                         <input type="color" class="form-control" value="#000000" name="textColor" id="textColorr">
                     </div>
@@ -122,11 +111,47 @@
         </div>
         <!-- end edit modal -->
 
+        <!-- Modal -->
+        <div class="modal fade" id="patientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search Patient</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover table-bordered" style="width:100%" id="health-data">
+                            <thead>
+                                <tr>
+                                    <th style="display:none">ID</th>
+                                    <th class="bg-info text-dark">ID Number</th>
+                                    <th class="bg-info text-dark">Name</th>
+                                    <th class="bg-info text-dark">Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($patients as $patient)
+                                <tr class="patientsData">
+                                    <td style="display: none">{{$patient->id}}</td>
+                                    <td>{{$patient->school_id}}</td>
+                                    <td>{{$patient->first_name}} {{$patient->last_name}}</td>
+                                    <td>{{$patient->patient_role}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
 
-<!-- Jquery -->
+<!-- Jquery min-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- moment js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -134,14 +159,22 @@
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <!-- Fullcalendar js -->
 <script src="{{asset('js/fullcalendar.js')}}"></script>
-
+<!-- Alert -->
 <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
 
 <script>
       $(".hamburger").click(function(){
         $(".wrapper").toggleClass("active")
       });
-</script>
+      
+      $('.patientsData').click(function(){
+            var patient_id =  $(this).find(":first-child").text();
+            var complete_name = $(this).find(":first-child").next().next().text();
+            $('#patientModal').modal('hide');
+            $('#patient_id').val(patient_id);
+            $('#complete_name').val(complete_name);
+        });
+  </script>
 <script>
 jQuery(document).ready(function($){
     $(document).ready(function(){
@@ -171,6 +204,7 @@ jQuery(document).ready(function($){
                 hide:{effect:'clip', duration:250}
             })
         })
+
         var calendar = $('#calendar').fullCalendar({ //display page, show all the events
             selectable: true,
             height: 650,
@@ -184,6 +218,7 @@ jQuery(document).ready(function($){
                 right: 'year,month,basicWeek,basicDay'
             },
             events:"{{route('allEvent')}}", //show all the events
+        
             dayClick:function(date,event,view){ //create event in one click
                 $('#start').val(convert(date));
                 $('#action-btn').html('Add Event');
@@ -211,29 +246,32 @@ jQuery(document).ready(function($){
             },
             eventClick:function(event){ //clicking event to UPDATE
                 $('#patient_idd').val(event.patient_id);
-                $('#complete_namee').val();
+                $('#complete_namee').val(event.patient_id.first_name);
                 $('#titlee').val(event.title);
                 $('#startt').val(convert(event.start));
                 $('#endd').val(convert(event.end));
                 $('#colorr').val(event.color);
                 $('#testColorr').val(event.testColor);
                 $('#eventIdd').val(event.id);
-                var url="{{url('deleteEvent')}}";
-                $('#deleteEvent').attr('href',url+'/'+event.id)
-                    $('#dialog2').dialog({
-                        title:'Edit Event',
-                        width:650,
-                        height:600,
-                        modal:true,
-                        show:{effect:'clip', duration:300},
-                        hide:{effect:'clip', duration:250}
-                    })
+                $('#dialog2').dialog({
+                    title:'Edit Event',
+                    width:650,
+                    height:600,
+                    modal:true,
+                    show:{effect:'clip', duration:300},
+                    hide:{effect:'clip', duration:250}
+                });
                 
             },
             eventMouseover: function(event, jsEvent, view) {
                 $(this).append(
-                    '<div class="edit-delete-btn"><a href="" class="btn" id="deleteEvent2" onclick="return confirm("Are you sure to delete event?"><i class="fas fa-trash"></i></a></div>'
+                    '<div class="edit-delete-btn"><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?)"><i class="fas fa-trash"></i></a></div>'
                 );
+                $('#deleteEvent').click(function(){
+                    $('#dialog2').hide();
+                    var url="{{url('archiveEvent')}}";
+                    $('#deleteEvent').attr('href',url+'/'+event.id);
+                });
             },
             eventMouseout: function(event, jsEvent) {
                 $('.edit-delete-btn').remove();

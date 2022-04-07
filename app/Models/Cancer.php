@@ -11,9 +11,9 @@ class Cancer extends Model
 
     protected $table ="tbl_cancers";
 
-    protected $fillable = ['cancer','familyDesease_id'];
+    protected $fillable = ['cancer','patient_id'];
 
-    public function familyDesease(){
-        return $this->belongsTo(FamilyDesease::class, "familyDesease_id");
+    public function patient(){
+        return $this->belongsTo(PatientProfile::class, "patient_id");
     }
 }

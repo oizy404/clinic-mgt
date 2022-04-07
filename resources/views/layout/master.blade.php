@@ -55,7 +55,6 @@
     <!-- <script src="{{asset('js/medical-supply-table.js')}}"></script> -->
     <script src="{{asset('js/add-consultation-record.js')}}"></script>
     <script src="{{asset('js/add-remove-siblingField.js')}}"></script>
-    <script src="{{asset('js/messaging.js')}}"></script>
     
 
 </body>

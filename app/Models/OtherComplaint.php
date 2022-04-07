@@ -13,10 +13,10 @@ class OtherComplaint extends Model
 
     protected $fillable = [
         'other_chief_complaint',
-        'complaints_id'
+        'health_evaluation_id'
     ];
 
-    public function complaint(){
-        return $this->belongsTo(Complaint::class, "complaints_id");
+    public function health_evaluation(){
+        return $this->belongsTo(HealthEvaluation::class, "health_evaluation_id");
     }
 }

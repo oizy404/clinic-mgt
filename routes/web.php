@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 // use App\Model\MedicalSupply;
 // use App\Model\MedType;
 // use App\Model\User;
-// use App\Model\Message;
+use App\Model\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     Route::get('appointments', [EventController::class, 'index2'])->name("appointments");
     Route::post('store', [EventController::class, 'store'])->name("eventStore");
     // Route::get('deleteEvent/{id}', [EventController::class, 'destroy'])->name("deleteEvent");
-    Route::get('archive-event/{id}', [EventController::class, "archive"])->name('archive-event');
+    Route::get('archiveEvent/{id}', [EventController::class, "archive"])->name('archiveEvent');
 
     Route::get('/consultation-record', [ConsultationController::class, "index"])->name("consultation-record");
     Route::get('/add-consultation-record', [ConsultationController::class, "create"])->name("add-consultation-record");
