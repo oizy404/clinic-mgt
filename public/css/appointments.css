@@ -1,0 +1,44 @@
+.appointment{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 4;
+    top: -1px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+}
+.appointment h4{
+    margin: 0;
+}
+.appoint-patient{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 10;
+    top: -1px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: scroll;
+}
+.appoint-patient .card{
+    height: 500px;
+}
+.appoint-patient h4{
+    margin: 0;
+}
+#apt-btn-cancel{
+    float: right;
+}
+#apt-patient-cancel{
+    float: right;
+}
+#apt-update-cancel{
+    float: right;
+}

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('css/add-consultation-record.css')}}">
     <link rel="stylesheet" href="{{asset('css/consultation-record.css')}}">
     <link rel="stylesheet" href="{{asset('css/messaging.css')}}">
+    <link rel="stylesheet" href="{{asset('css/appointments.css')}}">
     <!-- Fullcalendar css -->
     <link rel="stylesheet" href="{{asset('css/fullcalendar.css')}}">    
     

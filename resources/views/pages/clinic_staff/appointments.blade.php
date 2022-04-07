@@ -29,124 +29,11 @@
                     <div class="add-event mb-3">
                         <button class="btn btn-primary" id="addEventBtn">Add Event</button>
                     </div>
-                        <div id="calendar"></div>
+                        <div id="calendar" style="z-index: 1;"></div>
                 </div>
             </div>
         </div>
-        <!-- day click dialog -->
-        <div id="dialog" style="display:none;">
-            <div id="dialog-body">
-                <form action="{{route('eventStore')}}" id="dayClick" method="post">
-                    @csrf
-                    <div class="form-group input-group-sm">
-                        <!-- <input type="hidden" name="archived"> -->
-                        <input type="hidden" name="patient_id" id="patient_id">
-                        <label for="complete-name">Patient Name</label>
-                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" name="complete_name" id="complete_name">
-                    </div>
-                    <div class="form-group input-group-sm">
-                        <label for="title"><b>Event Title</b></label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="Event Title">
-                    </div>
-                    <div class="form-group input-group-sm">
-                        <label for="start"><b>Start Date/Time</b></label>
-                        <input type="text" class="form-control" name="start" id="start" placeholder="Start date & time">
-                    </div>
-                    <div class="form-group input-group-sm">
-                        <label for="end"><b>End Date/Time</b></label>
-                        <input type="text" class="form-control" name="end" id="end" placeholder="End date & time">
-                    </div>
-                    <div class="form-group input-group-sm">
-                        <label for="color">Background Color</label>
-                        <input type="color" class="form-control" name="color" id="color">
-                    </div>
-                    <div class="form-group input-group-sm" style="display: none;">
-                        <label for="textColor">Text Color</label>
-                        <input type="color" class="form-control" value="#000000" name="textColor" id="textColor">
-                    </div>
-                    <input type="hidden" name="event_id" id="eventId">
-                    <div class="form-group mt-2">
-                        <button type="submit" id="action-btn" class="btn btn-primary">Add Event</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- day click dialog end -->
-        <!-- start edit modal -->
-        <div id="dialog2" style="display:none;">
-            <div id="dialog-body">
-                <form action="{{route('eventStore')}}" id="updateClick" method="post">
-                    @csrf
-                    <!-- <div class="form-group input-group-sm">
-                        <input type="text" name="patient_idd" id="patient_idd" value="">
-                        <label for="complete-name">Patient Name</label>
-                        <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" value="" id="complete_namee">
-                    </div> -->
-                    <div class="form-group input-group-sm"> 
-                        <label for="title"><b>Event Title</b></label>
-                        <input type="text" class="form-control" name="title" id="titlee" value="" placeholder="Event Title">
-                    </div>
-                    <div class="form-group input-group-sm">
-                        <label for="start"><b>Start Date/Time</b></label>
-                        <input type="text" class="form-control" name="start" id="startt" placeholder="Start date & time">
-                    </div>
-                    <div class="form-group input-group-sm">
-                        <label for="end"><b>End Date/Time</b></label>
-                        <input type="text" class="form-control" name="end" id="endd" placeholder="End date & time">
-                    </div>
-                    <div class="form-group input-group-sm">
-                        <label for="color">Background Color</label>
-                        <input type="color" class="form-control" name="color" id="colorr">
-                    </div>
-                    <div class="form-group input-group-sm" style="display: none;">
-                        <label for="textColor">Text Color</label>
-                        <input type="color" class="form-control" value="#000000" name="textColor" id="textColorr">
-                    </div>
-                    <input type="hidden" name="event_id" id="eventIdd">
-                    <div class="form-group mt-2">
-                        <button type="submit" id="action-btn" class="btn btn-primary">Update Event</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- end edit modal -->
-
-        <!-- Modal -->
-        <div class="modal fade" id="patientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Search Patient</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table table-hover table-bordered" style="width:100%" id="health-data">
-                            <thead>
-                                <tr>
-                                    <th style="display:none">ID</th>
-                                    <th class="bg-info text-dark">ID Number</th>
-                                    <th class="bg-info text-dark">Name</th>
-                                    <th class="bg-info text-dark">Role</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($patients as $patient)
-                                <tr class="patientsData">
-                                    <td style="display: none">{{$patient->id}}</td>
-                                    <td>{{$patient->school_id}}</td>
-                                    <td>{{$patient->first_name}} {{$patient->last_name}}</td>
-                                    <td>{{$patient->patient_role}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
@@ -167,13 +54,6 @@
         $(".wrapper").toggleClass("active")
       });
       
-      $('.patientsData').click(function(){
-            var patient_id =  $(this).find(":first-child").text();
-            var complete_name = $(this).find(":first-child").next().next().text();
-            $('#patientModal').modal('hide');
-            $('#patient_id').val(patient_id);
-            $('#complete_name').val(complete_name);
-        });
   </script>
 <script>
 jQuery(document).ready(function($){
@@ -195,14 +75,23 @@ jQuery(document).ready(function($){
             return [year,month,day].join('-')+' '+[hour,minutes,seconds].join(':');
         }
         $('#addEventBtn').on('click',function(){
-            $('#dialog').dialog({
-                title:'Add Event',
-                width:650,
-                height:600,
-                modal:true,
-                show:{effect:'clip', duration:300},
-                hide:{effect:'clip', duration:250}
-            })
+            $('#dialog').show();
+            $('#complete_name').click(function(){
+                $('.appoint-patient').show();
+            });
+            $('#apt-btn-cancel').click(function(){
+                $('#dialog').hide();
+            });
+            $('.patientsData').click(function(){
+                var patient_id =  $(this).find(":first-child").text();
+                var complete_name = $(this).find(":first-child").next().next().text();
+                $('.appoint-patient').hide();
+                $('#patient_id').val(patient_id);
+                $('#complete_name').val(complete_name);
+            });
+            $('#apt-patient-cancel').click(function(){
+                $('.appoint-patient').hide();
+            });
         })
 
         var calendar = $('#calendar').fullCalendar({ //display page, show all the events
@@ -222,27 +111,47 @@ jQuery(document).ready(function($){
             dayClick:function(date,event,view){ //create event in one click
                 $('#start').val(convert(date));
                 $('#action-btn').html('Add Event');
-                $('#dialog').dialog({
-                    title:'Add Event',
-                    width:650,
-                    height:600,
-                    modal:true,
-                    show:{effect:'clip', duration:300},
-                    hide:{effect:'clip', duration:250}
-                })
+                $('#dialog').show();
+                $('#complete_name').click(function(){
+                    $('.appoint-patient').show();
+                });
+                $('#apt-btn-cancel').click(function(){
+                    $('#dialog').hide();
+                });
+                $('.patientsData').click(function(){
+                    var patient_id =  $(this).find(":first-child").text();
+                    var complete_name = $(this).find(":first-child").next().next().text();
+                    $('.appoint-patient').hide();
+                    $('#patient_id').val(patient_id);
+                    $('#complete_name').val(complete_name);
+                });
+                $('#apt-patient-cancel').click(function(){
+                    $('.appoint-patient').hide();
+                });
+
             },
             select:function(start,end){ //dragging to create event
                 $('#start').val(convert(start));
                 $('#end').val(convert(end));
                 $('#action-btn').html('Add Event');
-                $('#dialog').dialog({
-                    title:'Add Event',
-                    width:650,
-                    height:600,
-                    modal:true,
-                    show:{effect:'clip', duration:300},
-                    hide:{effect:'clip', duration:250}
-                })
+                $('#dialog').show();
+                $('#complete_name').click(function(){
+                    $('.appoint-patient').show();
+                });
+                $('#apt-btn-cancel').click(function(){
+                    $('#dialog').hide();
+                });
+                $('.patientsData').click(function(){
+                    var patient_id =  $(this).find(":first-child").text();
+                    var complete_name = $(this).find(":first-child").next().next().text();
+                    $('.appoint-patient').hide();
+                    $('#patient_id').val(patient_id);
+                    $('#complete_name').val(complete_name);
+                });
+                $('#apt-patient-cancel').click(function(){
+                    $('.appoint-patient').hide();
+                });
+
             },
             eventClick:function(event){ //clicking event to UPDATE
                 $('#patient_idd').val(event.patient_id);
@@ -253,13 +162,22 @@ jQuery(document).ready(function($){
                 $('#colorr').val(event.color);
                 $('#testColorr').val(event.testColor);
                 $('#eventIdd').val(event.id);
-                $('#dialog2').dialog({
-                    title:'Edit Event',
-                    width:650,
-                    height:600,
-                    modal:true,
-                    show:{effect:'clip', duration:300},
-                    hide:{effect:'clip', duration:250}
+                $('#dialog2').show();
+                $('#complete_name').click(function(){
+                    $('.appoint-patient').show();
+                });
+                $('#apt-update-cancel').click(function(){
+                    $('#dialog2').hide();
+                });
+                $('.patientsData').click(function(){
+                    var patient_id =  $(this).find(":first-child").text();
+                    var complete_name = $(this).find(":first-child").next().next().text();
+                    $('.appoint-patient').hide();
+                    $('#patient_id').val(patient_id);
+                    $('#complete_name').val(complete_name);
+                });
+                $('#apt-patient-cancel').click(function(){
+                    $('.appoint-patient').hide();
                 });
                 
             },
@@ -280,5 +198,9 @@ jQuery(document).ready(function($){
     })
 });
 </script>
+@include('pages.clinic_staff.add-appointment')
+@include('pages.clinic_staff.edit-appointment')
+@include('pages.clinic_staff.appoint-patient')
+
 @include('vendor.sweetalert.alert')
 @stop

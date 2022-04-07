@@ -91,7 +91,7 @@ class MessageController extends Controller
         
         $messages = Message::orderBy('created_at', 'asc')->get();
 
-        return view("pages.messaging.create-message-clinicstaff")->with("messages", $messages)->with("users", $users);
+        return view("pages.messaging.message-clinicstaff")->with("messages", $messages)->with("users", $users);
     }
 
     public function insertClinicstaffMsg(){

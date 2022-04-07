@@ -1,10 +1,5 @@
 <div class="add-medical-supply">
-    <div class="panel-heading col-md-6 offset-md-3 mt-3 rounded">
-        <div class="col-md-4 offset-md-8 p-head">
-            <h5 class="mb-0">Add Medical Item</h5>
-        </div>
-    </div>
-    <div class="col-md-6 offset-md-3 rounded" id="add-medical-supply">
+    <div class="col-md-6 offset-md-3 mt-5 rounded" id="add-medical-supply">
         <div class="card">
             <div class="card-header bg-info">
                 <h4>Medical Supplies Inventory</h4>
