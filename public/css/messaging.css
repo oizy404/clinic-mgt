@@ -56,28 +56,28 @@
     border: none;
 }
 
+
+
 /* message-doctor css */
-.user{
-    cursor: pointer;
-}
 .doctor-inbox{
-    width: 100%;
+    width: 81%;
     height: 100%;
     margin-top: 5px;
-    /* position: fixed; */
+    position: fixed;
 }
 .doctor-sender{
     padding: 0px;
 }
 .doctor-sender .card{
-    height: 500px;
+    height: 610px;
+    border: none;
 }
 .message-doctor{
     padding: 0px;
-    /* width: 57%; */
 }
 .doctor-msg .card{
-    height: 500px;
+    height: 610px;
+    border: none;
 }
 .doctor-msg h6{
     width: 50%;
@@ -85,7 +85,7 @@
 }
 .doctormsg_card_body{
     overflow-y: scroll;
-    border-right: none;
+    border: none;
 }
 .doctormsg_card_body p{
     margin: 0;
@@ -103,3 +103,66 @@
     max-width: 70%;
     border-radius: 15px;
 }
+.doctormsg_card_body .event{
+    padding: 8px;
+    margin: none;
+    max-width: 70%;
+    border-radius: 15px;
+}
+
+
+
+/* message-doctor css */
+.clinicstaff-inbox{
+    max-width: 98.9%;
+    /* height: 50%; */
+    padding-top: 5px;
+    /* position: fixed; */
+}
+.clinicstaff-sender{
+    padding: 0px;
+}
+.clinicstaff-sender .card{
+    height: 600px;
+    border: none;
+}
+.message-clinicstaff{
+    padding: 0px;
+}
+.clinicstaff-msg .card{
+    height: 610px;
+    border: none;
+}
+.clinicstaff-msg h6{
+    width: 50%;
+    float: left;
+}
+.clinicstaffmsg_card_body{
+    overflow-y: scroll;
+    border: none;
+}
+.clinicstaffmsg_card_body p{
+    margin: 0;
+    font-size: 15px;
+}
+.clinicstaffmsg_card_body .outbox{
+    padding: 8px ;
+    margin: none;
+    max-width: 70%;
+    border-radius: 15px;
+}
+.clinicstaffmsg_card_body .inbox{
+    padding: 8px;
+    margin: none;
+    max-width: 70%;
+    border-radius: 15px;
+}
+.clinicstaffmsg_card_body .event{
+    padding: 8px;
+    margin: none;
+    max-width: 70%;
+    border-radius: 15px;
+}
+/* .clinicstaff-inbox .card-footer{
+    background-color: rgba(16, 111, 226, 0.85);
+} */

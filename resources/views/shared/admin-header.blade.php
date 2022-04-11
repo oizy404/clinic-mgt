@@ -12,6 +12,13 @@
             </a>
         </div>
         <div class="message-icon">
-            
+            <a href="/message-clinicstaff">
+                <i class="fal fa-comment-alt-medical"></i>
+            </a>
+        </div>
+        <div class="notif-icon">
+            <a href="#">
+                <i class="fal fa-bell-on"></i>
+            </a>
         </div>
     </div>

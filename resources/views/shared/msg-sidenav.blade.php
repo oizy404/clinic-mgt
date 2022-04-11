@@ -5,15 +5,23 @@
 
         <div class="patient-msgs">
             <table>
-                <tbody>
-                    @foreach($users as $user)
+                <thead>
                     <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($users as $user)
+                    @if($user->first()->id == Auth::id())
+                    @else
+                    <tr>
+                        <td style="display:none;">{{$user->first()->id}}</td>
                         <td>
-
-                            <a href="">{{$user->username}}</a>
+                            <a href="{{route('clinicstaffViewCreate', $user->first()->id)}}">{{$user->first()->username}}</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @endif
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -28,8 +36,3 @@
       </div>
     </div>
   </div>   
-    
-    
-
-
-

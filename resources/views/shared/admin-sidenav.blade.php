@@ -24,12 +24,12 @@
           </a>
         </li>
         
-        <li>
+        <!-- <li>
           <a href="/message-clinicstaff">
             <span class="icon"><i class="fas fa-envelope"></i></span>
             <span class="list">Message</span>
           </a>
-        </li>
+        </li> -->
 
         <li>
           <a href="/medical-supplies-inventory">

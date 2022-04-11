@@ -80,23 +80,66 @@ class MessageController extends Controller
             "users", $users,
             "messages", $messages));
     }
-
-    public function clinicstaffMessageShow(){
-        $users = DB::table('users')
-        ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
-        ->select('users.*','tbl_messages.sender')
-        ->orderBy('tbl_messages.created_at','desc')
-        ->where('rank','patient')
-        ->get()->groupBy('sender');
-        
+    
+    public function clinicstaffViewCreate($id){
         $messages = Message::orderBy('created_at', 'asc')->get();
-
-        return view("pages.messaging.message-clinicstaff")->with("messages", $messages)->with("users", $users);
+        
+        $users = DB::table('users')
+            ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
+            ->select('users.*','tbl_messages.sender')
+            ->orderBy('tbl_messages.created_at','desc')
+            ->where('rank','patient')
+            ->get()->groupBy('sender');
+        $patientusers = User::all();
+            return view("pages.messaging.msg-clinicstaff-viewcreate")->with( compact(
+                "id",
+                "users", $users,
+                "messages", $messages,
+                "patientusers", $patientusers
+            ));
     }
 
-    public function insertClinicstaffMsg(){
+    public function insertClinicstaffMsg(Request $request, $id){
+        $message = new Message();
+        $message->sender = Auth::id();
+        $message->message = $request->message;
 
+        if($request->has('file')){
+
+            $image_file = $request->file('file');
+            $imagefileName = time().'.'.$image_file->extension();
+            $image_file->move(public_path('imgfileMessages'), $imagefileName);
+            $message->img_file = $imagefileName;
+        }
+
+        $message->receiver = $id;
+        $message->read = 0;
+
+        $message->save();
+
+        return redirect()->back();
     }
+
+
+    public function patient_msg($id){
+        $messages = Message::orderBy('created_at', 'asc')->where('sender', $id)->get();
+        
+        $users = DB::table('users')
+            ->join('tbl_messages', 'users.id', '=', 'tbl_messages.sender')
+            ->select('users.*','tbl_messages.sender')
+            ->orderBy('tbl_messages.created_at','desc')
+            ->where('rank','patient')
+            ->get()->groupBy('sender');
+            
+        return view("pages.messaging.message-clinicstaff-receivedMsg")->with( compact(
+            "users", $users,
+            "messages", $messages));
+    }
+
+
+
+
+
 
     public function patientIndex(){
         $users = User::all();

@@ -49,3 +49,8 @@ class User extends Authenticatable
     //     return $this->hasMany(PatientProfile::class, "school_id");
     // }
 }
+
+// class User extends Model
+// {
+    
+// }

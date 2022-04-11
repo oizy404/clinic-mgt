@@ -30,10 +30,10 @@
     
     <style>
     html,body{
-        padding: 0;
+        /* padding: 0;
         margin: 0;
         width: 100%;
-        height: 100%;
+        height: 100%; */
         font-family: Arial, Helvetica, sans-serif;
     }
     </style>
@@ -52,7 +52,6 @@
     <script src="{{asset('js/batch-health-data.js')}}"></script>
     <script src="{{asset('js/add-medical-supply.js')}}"></script>
     <script src="{{asset('js/edit-medical-record.js')}}"></script>
-    <!-- <script src="{{asset('js/medical-supply-table.js')}}"></script> -->
     <script src="{{asset('js/add-consultation-record.js')}}"></script>
     <script src="{{asset('js/add-remove-siblingField.js')}}"></script>
     

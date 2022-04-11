@@ -62,10 +62,8 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
     Route::post('updateMedicalRecord/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
 
     Route::get('/message-clinicstaff', [MessageController::class, "clinicstaffIndex"])->name("message-clinicstaff");
-    Route::post('/compose-clinicstaffmsg', [MessageController::class, "insertClinicstaffMsg"])->name("compose-clinicstaffmsg");
-    Route::get('/show-clinicstaffmsg/{id}', [MessageController::class, "clinicstaffMessageShow"])->name("show-clinicstaffmsg");
-    Route::get('/create-message-clinicstaff/{id}', [MessageController::class, "clinicstaffMessageShow"])->name("create-message-clinicstaff");
-
+    Route::get('/clinicstaffViewCreate/{id}', [MessageController::class, "clinicstaffViewCreate"])->name("clinicstaffViewCreate");
+    Route::post('/insertClinicstaffMsg/{id}', [MessageController::class, "insertClinicstaffMsg"])->name("insertClinicstaffMsg");
 
     // Route::get('/message-clinicstaff/{{$user->first()->id}}', function () {
     //     return view('pages.messaging.message-clinicstaff');
