@@ -5,8 +5,8 @@
 @stop
 
 @section('content')
-@include('shared.admin-header')
-@include('shared.admin-sidenav') 
+@include('shared.doctor-header')
+@include('shared.doctor-sidenav') 
  
     <div class="doctor-dashboard">
         {{session('rank')}}

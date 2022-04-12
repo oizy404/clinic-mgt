@@ -5,8 +5,8 @@
 @stop
 
 @section('content')
-@include('shared.clnicstaff-header')
-@include('shared.msg-sidenav')
+@include('shared.doctor-header')
+@include('shared.doctor-msg-sidenav')
 <style>
     #msg_wrapper .dataTable{
         border: none;
@@ -28,14 +28,14 @@
     }
 </style>
         <div class="main-container">
-            <div class="clinicstaff-inbox" id="clinicstaff-inbox">
+            <div class="doctor-inbox" id="doctor-inbox">
                 <div class="row">
-                    <div class="col-md-9 message-clinicstaff">
-                        <div class="clinicstaff-msg">
+                    <div class="col-md-9 message-doctor">
+                        <div class="doctor-msg">
 
                             <!-- reply message -->
                             
-                            <div class="card" id="clinicstaff-msg" >
+                            <div class="card" id="doctor-msg" >
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col">
@@ -51,7 +51,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body clinicstaffmsg_card_body">
+                                <div class="card-body doctormsg_card_body">
                                     @foreach($messages as $message)
                                     @if($message->receiver == $id || $message->sender == $id)
                                         @if($message->receiver == Auth::user()->id || $message->receiver == 2)
@@ -82,10 +82,10 @@
                                     @endforeach
                                 </div>
                                 <div class="card-footer">
-                                    <form id="Form" action="{{route('insertClinicstaffMsg', $id)}}" method="post" enctype="multipart/form-data">
+                                    <form id="Form" action="{{route('insertDoctorMsg', $id)}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         @method('post')
-                                        <div class="input-group clinicstaff-compose">
+                                        <div class="input-group doctor-compose">
                                             <div class="input-group-append file-ups">
                                                 <label for="fileups">
                                                     <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
@@ -155,7 +155,7 @@
                                                         ?>
                                                         <td>
                                                             <img src="{{ Avatar::create($fullname)->toBase64()}}" class="patient-avatar" alt="patient-avatar">
-                                                            <a href="{{route('clinicstaffViewCreate', $patientuser->id)}}">{{$patient->first_name}} {{$patient->last_name}}</a>
+                                                            <a href="{{route('doctorViewCreate', $patientuser->id)}}">{{$patient->first_name}} {{$patient->last_name}}</a>
                                                         </td>
                                                     </tr>
                                                     @endif
@@ -185,17 +185,6 @@
             $(".usersender-info").hide();
             $("#search-sender").hide();
         })
-        // $(".theData").click(function(){
-        //     var id =  $(this).find(":first-child").text();
-        //     var complete_name =  $(this).find(":first-child").next().text();
-        //     $('#search-sender').val(complete_name);
-
-        //     $("#create-msg").show();
-        //     $("#clinicstaff-msg").hide();
-        //     $(".user-receiver").hide();
-        //     $(".usersender-info").show();
-        // })
-
     });
 </script>
 @stop

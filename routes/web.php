@@ -65,9 +65,6 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
     Route::get('/clinicstaffViewCreate/{id}', [MessageController::class, "clinicstaffViewCreate"])->name("clinicstaffViewCreate");
     Route::post('/insertClinicstaffMsg/{id}', [MessageController::class, "insertClinicstaffMsg"])->name("insertClinicstaffMsg");
 
-    // Route::get('/message-clinicstaff/{{$user->first()->id}}', function () {
-    //     return view('pages.messaging.message-clinicstaff');
-    // })->name("sample");
     
 
 });  
@@ -94,9 +91,12 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     Route::get('archive-consultation-record/{id}', [ConsultationController::class, "archive"])->name('archive-consultation-record');
 
 
+    // Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
+    // Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
+    // Route::get('/show-doctormsg/{id}', [MessageController::class, "doctorMessageShow"])->name("show-doctormsg");
     Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
-    Route::post('/compose-doctormsg', [MessageController::class, "insertDoctorMsg"])->name("compose-doctormsg");
-    Route::get('/show-doctormsg/{id}', [MessageController::class, "doctorMessageShow"])->name("show-doctormsg");
+    Route::get('/doctorViewCreate/{id}', [MessageController::class, "doctorViewCreate"])->name("doctorViewCreate");
+    Route::post('/insertDoctorMsg/{id}', [MessageController::class, "insertDoctorMsg"])->name("insertDoctorMsg");
 
 });
 

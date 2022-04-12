@@ -1,13 +1,13 @@
 @extends('layout.master')
 
 @section('title')
-    Admin Home
+    Clinic Staff Dashboard
 @stop
 
 @section('content')
 
-@include('shared.admin-header')
-@include('shared.admin-sidenav') 
+@include('shared.clinicstaff-header')
+@include('shared.clinicstaff-sidenav') 
 <style>
     #medical-inventory{
         padding: 5px;

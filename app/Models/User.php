@@ -45,9 +45,9 @@ class User extends Authenticatable
     public function message(){
         return $this->hasMany(Message::class, "sender","receiver");
     }
-    // public function patient(){
-    //     return $this->hasMany(PatientProfile::class, "school_id");
-    // }
+    public function patient(){
+        return $this->hasMany(PatientProfile::class, "school_id");
+    }
 }
 
 // class User extends Model

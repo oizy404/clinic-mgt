@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    CONSULTATION RECORD
+    Consultation Record
 @stop
 
 @section('content')
@@ -23,7 +23,7 @@
         margin-top:22px;
     }
 </style>
-@include('shared.admin-header')
+@include('shared.doctor-header')
 @include('shared.doctor-sidenav')
 
         {{session('rank')}}

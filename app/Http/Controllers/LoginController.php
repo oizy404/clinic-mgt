@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\PatientProfile;
 
 class LoginController extends Controller
 {
     public function login(Request $request){
         $credentials = $request->only('username', 'password');
         $users = DB::table('users')->where('username', $request->username)->get("rank"); // gets data from table users where username match
-
         $rank;
 
         foreach($users as $user){
@@ -27,10 +27,7 @@ class LoginController extends Controller
 			}
 			if($request->session()->put('rank', $rank)=='doctor'){// put session data named 'rank'. Which value is either 'doctor',
 				return redirect()->route('appointments');
-			} 
-			// if($request->session()->put('rank', $rank)=='supervisor'){// put session data named 'rank'. Which value is either 'supervisor',
-			// 	return redirect()->route('health-data');
-			// }     
+			}     
             else{
 				return back()->withErrors([
 					"Invalid Login"
@@ -44,17 +41,12 @@ class LoginController extends Controller
     }
 	public function loginPatient(Request $request){
 		$credentials = $request->only('username', 'password');
-		$users = DB::table('users')->where('username', $request->username)->get("rank");
-
-		$rank;
+		if(Auth::attempt($credentials)){
+			if(Auth::user()->rank == 'patient'){
+				return redirect()->route('patient-dashboard');
+			}
+		}
 		
-		foreach($users as $user){
-		    $rank = $user->rank;
-		}
-		if (Auth::attempt($credentials)) {
-		    $request->session()->put('rank', $rank);
-		    return redirect()->route('patient-dashboard');
-		}
 
 	    return back()->withErrors([
 	        "Invalid Login"

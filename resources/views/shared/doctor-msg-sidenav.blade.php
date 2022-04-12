@@ -24,7 +24,7 @@
                                 ?>
                                 <td>
                                     <img src="{{ Avatar::create($fullname)->toBase64()}}" class="patient-avatar" alt="patient-avatar">
-                                    <a href="{{route('clinicstaffViewCreate', $user->first()->id)}}">{{$patient->first_name}} {{$patient->last_name}}</a>
+                                    <a href="{{route('doctorViewCreate', $user->first()->id)}}">{{$patient->first_name}} {{$patient->last_name}}</a>
                                 </td>
                                 
                             </tr>

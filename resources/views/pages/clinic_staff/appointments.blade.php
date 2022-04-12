@@ -1,11 +1,11 @@
 @extends('layout.master')
 
 @section('title')
-    APPOINTMENT BOOKING
+    Appointment Booking
 @stop
 
 @section('content')
-@include('shared.admin-header')
+@include('shared.doctor-header')
 @include('shared.doctor-sidenav')
 <style>
     .edit-delete-btn{
@@ -95,6 +95,7 @@ jQuery(document).ready(function($){
         })
 
         var calendar = $('#calendar').fullCalendar({ //display page, show all the events
+            // themeSystem: 'bootstrap5',
             selectable: true,
             height: 650,
             showNonCurrentDates: false,
@@ -107,7 +108,7 @@ jQuery(document).ready(function($){
                 right: 'year,month,basicWeek,basicDay'
             },
             events:"{{route('allEvent')}}", //show all the events
-        
+            backgroundColor: '#ff0000',        
             dayClick:function(date,event,view){ //create event in one click
                 $('#start').val(convert(date));
                 $('#action-btn').html('Add Event');

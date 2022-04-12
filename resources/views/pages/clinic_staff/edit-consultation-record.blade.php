@@ -1,11 +1,11 @@
 @extends('layout.master')
 
 @section('title')
-    ADD CONSULTATION RECORD
+    Edit Consultaion Record
 @stop
 
 @section('content')
-@include('shared.admin-header')
+@include('shared.doctor-header')
 @include('shared.doctor-sidenav')
 <style>
     .dropdown-check-list {

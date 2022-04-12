@@ -1,12 +1,12 @@
 @extends('layout.master')
 
 @section('title')
-    ADD HEALTH DATA
+    Add Health Data
 @stop
 
 @section('content')
-@include('shared.admin-header')
-@include('shared.admin-sidenav')
+@include('shared.clinicstaff-header')
+@include('shared.clinicstaff-sidenav')
 
         <div class="main-container">
             <div class="add-student-health-data">

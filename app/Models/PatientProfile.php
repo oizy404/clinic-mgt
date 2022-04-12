@@ -27,6 +27,10 @@ class PatientProfile extends Model
         'archived',
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class, "user_id");
+    }
+
     public function parent(){
         return $this->hasMany(ParentModel::class, "patient_id");
     }

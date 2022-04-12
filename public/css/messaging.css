@@ -145,24 +145,34 @@
     margin: 0;
     font-size: 15px;
 }
-.clinicstaffmsg_card_body .outbox{
+.clinicstaffmsg_card_body .inbox{
     padding: 8px ;
     margin: none;
     max-width: 70%;
-    border-radius: 15px;
+    border-radius: 15px 15px 15px 0px;
 }
-.clinicstaffmsg_card_body .inbox{
+.clinicstaffmsg_card_body .outbox{
     padding: 8px;
     margin: none;
     max-width: 70%;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 15px;
 }
 .clinicstaffmsg_card_body .event{
     padding: 8px;
     margin: none;
     max-width: 70%;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 15px;
 }
-/* .clinicstaff-inbox .card-footer{
-    background-color: rgba(16, 111, 226, 0.85);
+.clinicstaff-inbox .col-md-3{
+    padding: 0px;
+}
+.patientinfo-avatar img{
+    margin-bottom: 5px;
+}
+/* .user-receiver .theData td{
+    padding-top: 0px;
+    padding-bottom: 0px;
 } */
+.user-receiver .theData a{
+    color: black;
+}

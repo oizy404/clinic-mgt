@@ -1,13 +1,13 @@
 @extends('layout.master')
 
 @section('title')
-    MEDICAL SUPPLIES INVENTORY
+    Edit Medical Product
 @stop
 
 @section('content')
 
-@include('shared.admin-header')
-@include('shared.admin-sidenav')
+@include('shared.clinicstaff-header')
+@include('shared.clinicstaff-sidenav')
 
 {{session('rank')}}
         <div class="main-container">

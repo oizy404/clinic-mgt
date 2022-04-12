@@ -5,9 +5,9 @@
 @stop
 
 @section('content')
-@include('shared.admin-header')
-@include('shared.patient-sidenav') 
 {{session('rank')}}
+@include('shared.patient-header')
+@include('shared.patient-sidenav') 
     <div class="patient-dashboard main-container">
 
     </div>

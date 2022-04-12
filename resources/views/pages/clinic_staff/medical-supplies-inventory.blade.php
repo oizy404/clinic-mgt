@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    MEDICAL SUPPLIES INVENTORY
+    ACD Medical Supplies Inventory
 @stop
 
 @section('content')
@@ -23,8 +23,8 @@
         margin-top:22px;
     }
 </style>
-@include('shared.admin-header')
-@include('shared.admin-sidenav')
+@include('shared.clinicstaff-header')
+@include('shared.clinicstaff-sidenav')
 
 {{session('rank')}}
         <div class="main-container">

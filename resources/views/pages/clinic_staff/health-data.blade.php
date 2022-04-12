@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    HEALTH DATA
+    Patients Health Data
 @stop
 
 @section('content')
@@ -24,8 +24,8 @@
     }
 </style>
 
-@include('shared.admin-header')
-@include('shared.admin-sidenav')
+@include('shared.clinicstaff-header')
+@include('shared.clinicstaff-sidenav')
 
         {{session('rank')}}
         <div class="main-container">

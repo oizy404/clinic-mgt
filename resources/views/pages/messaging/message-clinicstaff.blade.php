@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-@include('shared.admin-header')
+@include('shared.clinicstaff-header')
 @include('shared.msg-sidenav')
 
         <div class="main-container">
@@ -17,6 +17,7 @@
                                 <div class="card-body clinicstaffmsg_card_body">
                                     <h1>You don't have a message selected</h1>
                                     <p>Choose one from your existing messages, or start a new one.</p>
+                                    <a href="#" class="btn btn-primary">Create New Message</a>
                                 </div>
                             </div>
                         </div>
