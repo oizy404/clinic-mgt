@@ -5,15 +5,17 @@
 @stop
 
 @section('content')
-@include('shared.admin-header')
-@include('shared.doctor-sidenav')
         <div class="main-container">
             <div class="add-consultation-record">
-                <div class="row acr-heading">
+                <div class="row">
                     <div class="col-md-3 p-head-btn">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Search Patient <i class="fas fa-search"></i></button> -->
                     </div>
-                    <div class="col-md-5 offset-md-4 p-head">
+                <div class="acdheader">
+                    <img src="/images/acdheader.jpg" style="width: 100%;">
+                </div>
+                <div class="hds-heading">
+                    <div class="col-md-4 offset-md-8 p-head">
                         <h3 class="mb-0">CONSULTATION FORM</h3>
                         <!-- <small>STUDENT</small> -->
                     </div>
@@ -23,7 +25,7 @@
                             <div class="row">
                                 <div class="col-md-3 form-group input-group-sm">
                                     <label for=""><b>Consultation Date</b></label>
-                                    <input type="text" class="form-control" value="{{$record->created_at}}">
+                                    <input type="text" class="form-control" value="{{$record->created_at}}" readonly="readonly">
                                 </div>
                             </div>
                             <div class="row" style="padding-bottom: 10px;">
@@ -31,7 +33,7 @@
                                     <div class="col form-group input-group-sm">
                                         <!-- <a class="btn btn-info ml-2" data-toggle="modal" data-target="#tableModal" href="#"><i data-feather="search"></i> Search</a>   -->
                                         <label for="complete_name" class=""><b>Patient Name</b></label>
-                                        <input type="text" class="form-control" name="complete_name" value="{{$record->patient->first_name}} {{$record->patient->last_name}}" id="complete_name" data-bs-toggle="modal" data-bs-target="#patientModal">
+                                        <input type="text" class="form-control" name="complete_name" value="{{$record->patient->first_name}} {{$record->patient->last_name}}" id="complete_name" data-bs-toggle="modal" data-bs-target="#patientModal"readonly="readonly">
                                         <input type="hidden" class="form-control" name="id" value="{{$record->patient_id}}" id="id">
                                     </div>
                                     <div class="col">
@@ -47,7 +49,7 @@
                                     @if($record->patient->patient_role == 'Student')
                                         <div class="form-group" id="department">
                                             <label for="role"><b>Grade/Year Level</b></label>
-                                            <select class="form-select form-select-sm" name="department" id="department-id" aria-label=".form-select-sm example">
+                                            <select class="form-select form-select-sm" readonly="readonly" name="department" id="department-id" aria-label=".form-select-sm example" readonly="readonly">
                                                 @foreach($record->position as $positionn)
                                                     <option>{{$positionn->department->department}}</option>
                                                 @endforeach
@@ -56,28 +58,28 @@
                                         @if($positionn->department_id == '1')
                                             <div class="form-group" id="elementary">
                                                 <label for="grade_level"><b>Elementary</b></label>
-                                                <select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">
+                                                <select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example"readonly="readonly">
                                                         <option selected>{{$positionn->yearlevel->grade_level}}</option>
                                                 </select>
                                             </div>  
                                         @elseif($positionn->department_id == '2')
                                             <div class="form-group" id="juniorhigh">
                                                 <label for="grade_level"><b>Junior High School</b></label>
-                                                <select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">
+                                                <select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example"readonly="readonly">
                                                 <option selected>{{$positionn->yearlevel->grade_level}}</option>
                                                 </select>
                                             </div>
                                         @elseif($positionn->department_id == '3')
                                             <div class="form-group" id="seniorhigh">
                                                 <label for="grade_level"><b>Senior High School</b></label>
-                                                <select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">
+                                                <select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example"readonly="readonly">
                                                     <option selected>{{$positionn->yearlevel->grade_level}}</option>
                                                 </select>
                                             </div>
                                         @elseif($positionn->department_id == '4')
                                         <div class="form-group" id="college">
                                             <label for="grade_level"><b>College</b></label>
-                                            <select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">
+                                            <select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example"readonly="readonly">
                                                 <option selected>{{$positionn->yearlevel->grade_level}}</option>
                                             </select>
                                         </div>
@@ -86,21 +88,21 @@
                                         @foreach($record->position as $positionn)
                                             <div class="form-group" id="employee">
                                                 <label for="role"><b>Employee</b></label>
-                                                <select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">
+                                                <select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role"readonly="readonly">
                                                     <option selected>{{$positionn->personnel_position}}</option>
                                                 </select>
                                             </div>
                                             @if($positionn->personnel_position == 'NTP')
                                             <div class="form-group" id="ntp">
                                                 <label for="role"><b>Non-Teaching Personnel</b></label>
-                                                <select class="form-select form-select-sm" name="personnel_rank" aria-label=".form-select-sm example">
+                                                <select class="form-select form-select-sm" name="personnel_rank" aria-label=".form-select-sm example"readonly="readonly">
                                                     <option selected>{{$positionn->personnel_rank}}</option>
                                                 </select>
                                             </div>
                                             @elseif($positionn->personnel_position == 'TP')
                                             <div class="form-group" id="tp">
                                                 <label for="role"><b>Teaching Personnel</b></label>
-                                                <select class="form-select form-select-sm" name="department" aria-label=".form-select-sm example">
+                                                <select class="form-select form-select-sm" name="department" aria-label=".form-select-sm example"readonly="readonly">
                                                     <option selected>{{$positionn->department->department}}</option>
                                                 </select>
                                             </div>
@@ -113,25 +115,25 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
-                                        <textarea class="form-control" name="doctors_note" value="{{$record->doctors_note}}" id="doctors_note" cols="5" rows="7">{{$record->doctors_note}}</textarea>
+                                        <textarea class="form-control" name="doctors_note" value="{{$record->doctors_note}}" id="doctors_note" cols="5" rows="7" readonly="readonly">{{$record->doctors_note}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="height" class=""><b>Height</b></label>
-                                        <input type="text" class="form-control" name="height" value="{{$record->height}}">
+                                        <input type="text" class="form-control" name="height" value="{{$record->height}}"readonly="readonly">
                                     </div>
                                     <div class="form-group input-group-sm">
                                         <label for="weight" class=""><b>Weight</b></label>
-                                        <input type="text" class="form-control" name="weight" value="{{$record->weight}}">
+                                        <input type="text" class="form-control" name="weight" value="{{$record->weight}}"readonly="readonly">
                                     </div>
                                     <div class="form-group input-group-sm">
                                         <label for="bmi" class=""><b>Body Mass Index</b></label>
-                                        <input type="text" class="form-control" name="bmi" value="{{$record->BMI}}">
+                                        <input type="text" class="form-control" name="bmi" value="{{$record->BMI}}"readonly="readonly">
                                     </div>
                                     <div class="form-group input-group-sm">
                                         <label for="bloodpressure" class=""><b>Blood Pressure(BP)</b></label>
-                                        <input type="text" class="form-control" name="bloodpressure" value="{{$record->BP}}">
+                                        <input type="text" class="form-control" name="bloodpressure" value="{{$record->BP}}"readonly="readonly">
                                     </div>
                                 </div>
                             </div>

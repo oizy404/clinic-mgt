@@ -105,10 +105,16 @@ class ConsultationController extends Controller
     public function show($id)
     {
         $record = HealthEvaluation::find($id);
+        $patients = PatientProfile::all();
+        $chief_complaints = ChiefComplaint::all();
+
         return view("pages.clinic_staff.show-consultation-record")->with(compact(
             "record", $record,
+            "patients", $patients,
+            "chief_complaints", $chief_complaints,
         ));
     }
+
 
     /**
      * Show the form for editing the specified resource.

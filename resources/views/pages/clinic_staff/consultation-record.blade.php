@@ -53,7 +53,7 @@
                         <tbody>
                         @foreach($records as $record)
                             @if($record->archived == 0)
-                            <tr>
+                            <tr class="theRecord" data-href="{{route('show-consultation-record', $record->id)}}">
                                 <td>{{$record->patient->school_id}}</td>
                                 <td>{{$record->patient->last_name}}, {{$record->patient->first_name}}</td>
                                 <td>{{$record->patient->patient_role}}</td>
@@ -80,6 +80,10 @@
       $(".hamburger").click(function(){
         $(".wrapper").toggleClass("active")
       });
+
+      $('.theRecord').click(function(){
+            window.location = $(this).data("href");
+        });
       
   </script>
 @stop

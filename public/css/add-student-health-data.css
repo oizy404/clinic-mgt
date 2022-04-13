@@ -1,6 +1,13 @@
 .add-health-data{
     padding-top: 30px;
 }
+.acdheader{
+    margin: auto;
+    width: 95%;
+    border-top: 1px solid rgba(var(--b6a,219,219,219),1);
+    border-left: 1px solid rgba(var(--b6a,219,219,219),1);
+    border-right: 1px solid rgba(var(--b6a,219,219,219),1);
+}
 .hds-heading{
     background-color: rgb(226, 226, 226);
     border-top: 1px solid rgba(var(--b6a,219,219,219),1);

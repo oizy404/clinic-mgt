@@ -1,21 +1,27 @@
 @extends('layout.master')
 
 @section('title')
-    Edit Health Data
+    View Health Data
 @stop
 
 @section('content')
-@include('shared.clinicstaff-header')
-@include('shared.clinicstaff-sidenav')
 
         <div class="main-container">
-            <div class="add-student-health-data">
+            <div class="print-health-data">
+                <div class="print-link mb-3 mt-5">
+                    <div class="col-md-1 offset-md-11">
+                        <a href="#" class="btn btn-success" id="print-health-data"><i class="far fa-print"></i></a>
+                    </div>
+                </div>
+                <div class="acdheader">
+                    <img src="/images/acdheader.jpg" style="width: 100%;">
+                </div>
                 <div class="hds-heading">
                     <div class="col-md-4 offset-md-8 p-head">
                         <h4 class="mb-0">HEALTH DATA SHEET</h4>
                     </div>
                 </div>
-                <div class="" id="create-student-health-data">
+                <div class="" id="create-health-data">
                     <form action="{{route('update-health-data', $patient->id)}}" method="post">
                         @csrf
                         @method('post')
@@ -24,16 +30,14 @@
                             <h5>PATIENT PROFILE</h5>
                                 <div class="row">
                                     <div class="col-md-3 form-group input-group-sm">
-                                        <label for="student_idnumber" class=""><b>ID Number</b></label>
-                                        <input type="text" class="form-control" name="student_idnumber" value="{{$patient->school_id}}">
+                                        <label for="idnumber" class=""><b>ID Number</b></label>
+                                        <input type="text" class="form-control" name="idnumber" value="{{$patient->school_id}}" readonly="readonly">
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group input-group-sm">
                                             <label for="role"><b>Patient Role</b></label>
                                             <select class="form-select form-select-sm" name="role" aria-label=".form-select-sm example" id="patient-role">
-                                                <option value="{{$patient->patient_role}}">{{$patient->patient_role}}</option>
-                                                <!-- <option value="{{$patient->patient_role}}">Employee</option>
-                                                <option value="{{$patient->patient_role}}">Student</option> -->
+                                                <option value="{{$patient->patient_role}}"readonly="readonly">{{$patient->patient_role}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -42,13 +46,13 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="first_name" class=""><b>First Name</b></label>
-                                        <input type="text" class="form-control" name="first_name" value="{{$patient->first_name}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="first_name" value="{{$patient->first_name}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="middle_name" class=""><b>Middle Name</b></label>
-                                        <input type="text" class="form-control" name="middle_name" value="{{$patient->middle_name}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="middle_name" value="{{$patient->middle_name}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -56,19 +60,19 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="last_name" class=""><b>Last Name</b></label>
-                                        <input type="text" class="form-control" name="last_name" value="{{$patient->last_name}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="last_name" value="{{$patient->last_name}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="birthday" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="birthday" value="{{$patient->birthday}}">
+                                        <input type="date" class="form-control" name="birthday" value="{{$patient->birthday}}"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="sex" class=""><b>Sex</b></label>
-                                        <select name="sex" class="form-control" id="sex">
+                                        <select name="sex" class="form-control" readonly="readonly"id="sex">
                                             <option value="{{$patient->sex}}">{{$patient->sex}}</option>
                                         </select>
                                     </div>
@@ -78,19 +82,19 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="address" class=""><b>Complete Address</b></label>
-                                        <input type="text" class="form-control" name="address" value="{{$patient->address}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="address" value="{{$patient->address}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="contact_number" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="contact_number" value="{{$patient->contact_number}}">
+                                        <input type="tel" class="form-control" name="contact_number" value="{{$patient->contact_number}}"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="status" class=""><b>Civil Status</b></label>
-                                        <input type="text" class="form-control" name="status" value="{{$patient->status}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="status" value="{{$patient->status}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -98,13 +102,13 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="religion" class=""><b>Religion</b></label>
-                                        <input type="text" class="form-control" name="religion" value="{{$patient->religion}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="religion" value="{{$patient->religion}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col mb-3">
                                     <div class="form-group input-group-sm">
                                         <label for="nationality" class=""><b>Nationality</b></label>
-                                        <input type="text" class="form-control" name="nationality" value="{{$patient->nationality}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="nationality" value="{{$patient->nationality}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -121,19 +125,19 @@
                                     <div class="form-group input-group-sm">
                                         <input type="hidden" name="fatherRelationship" value="{{$parentt->relationship}}">
                                         <label for="parentsComplete_name" class=""><b>Father's Complete Name</b></label>
-                                        <input type="text" class="form-control" name="fatherComplete_name" value="{{$parentt->complete_name}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="fatherComplete_name" value="{{$parentt->complete_name}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsBirthday" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="fatherBirthday" value="{{$parentt->birthday}}" placeholder="MM/DD/YYYY">
+                                        <input type="date" class="form-control" name="fatherBirthday" value="{{$parentt->birthday}}" readonly="readonly"placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsContact_number" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="fatherContact_number" value="{{$parentt->contact_number}}">
+                                        <input type="tel" class="form-control" name="fatherContact_number" value="{{$parentt->contact_number}}"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -141,13 +145,13 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsOccupation" class=""><b>Occupation</b></label>
-                                        <input type="text" class="form-control" name="fatherOccupation" value="{{$parentt->occupation}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="fatherOccupation" value="{{$parentt->occupation}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsEmployment_address" class=""><b>Employment Address</b></label>
-                                        <input type="text" class="form-control" name="fatherEmployment_address" value="{{$parentt->employment_address}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="fatherEmployment_address" value="{{$parentt->employment_address}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -159,19 +163,19 @@
                                     <div class="form-group input-group-sm">
                                         <input type="hidden" name="motherRelationship" value="{{$parentt->relationship}}">
                                         <label for="parentsComplete_name" class=""><b>Mother's Name</b></label>
-                                        <input type="text" class="form-control" name="motherComplete_name" value="{{$parentt->complete_name}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="motherComplete_name" value="{{$parentt->complete_name}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="Mbirthdate" class=""><b>Date of Birth</b></label>
-                                        <input type="date" class="form-control" name="motherBirthday" value="{{$parentt->birthday}}" placeholder="MM/DD/YYYY">
+                                        <input type="date" class="form-control" name="motherBirthday" value="{{$parentt->birthday}}" readonly="readonly" placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsContact_number" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="motherContact_number" value="{{$parentt->contact_number}}">
+                                        <input type="tel" class="form-control" name="motherContact_number" value="{{$parentt->contact_number}}"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -179,13 +183,13 @@
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsOccupation" class=""><b>Occupation</b></label>
-                                        <input type="text" class="form-control" name="motherOccupation" value="{{$parentt->occupation}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="motherOccupation" value="{{$parentt->occupation}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group input-group-sm">
                                         <label for="parentsEmployment_address" class=""><b>Employment Address</b></label>
-                                        <input type="text" class="form-control" name="motherEmployment_address" value="{{$parentt->employment_address}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="motherEmployment_address" value="{{$parentt->employment_address}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -199,13 +203,13 @@
                                 <div class="col-md-9">
                                     <div class="form-group input-group-sm">
                                     <label for="GName" class=""><b>Guardian's Name (<i>If not living with parent/s</i> )</b></label>
-                                    <input type="text" class="form-control" name="GName" value="{{$guardiann->complete_name}}" oninput="this.value = this.value.toUpperCase()">
+                                    <input type="text" class="form-control" name="GName" value="{{$guardiann->complete_name}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                 </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="GRelationship" class=""><b>Relationship</b></label>
-                                        <input type="text" class="form-control" name="GRelationship" value="{{$guardiann->relationship}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="GRelationship" value="{{$guardiann->relationship}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +217,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group input-group-sm">
                                         <label for="provinces" class=""><b>Province</b></label>
-                                        <select name="" class="form-control" id="province">
+                                        <select name="" class="form-control" readonly="readonly"id="province">
                                             <option value="{{$locations->city->province->id}}">{{$locations->city->province->province}}</option>
                                         </select>
                                     </div>
@@ -221,7 +225,7 @@
                                 <div class="col-md-4">
                                         <div class="form-group input-group-sm">
                                             <label for="city" class=""><b>City</b></label>
-                                            <select name="city" class="form-control" id="city">
+                                            <select name="city" class="form-control" readonly="readonly"id="city">
                                                 <option value="{{$locations->city->id}}">{{$locations->city->city}}</option>
                                             </select>
                                         </div>
@@ -229,7 +233,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group input-group-sm">
                                         <label for="GContactNo" class=""><b>Contact Number</b></label>
-                                        <input type="tel" class="form-control" name="GContactNo" value="{{$guardiann->contact_number}}">
+                                        <input type="tel" class="form-control" name="GContactNo" value="{{$guardiann->contact_number}}"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -237,13 +241,13 @@
                                 <div class="col-md-5">
                                     <div class="form-group input-group-sm">
                                         <label for="barangay" class=""><b>Barangay</b></label>
-                                        <input type="text" class="form-control" name="barangay" value="{{$locations->barangay}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="barangay" value="{{$locations->barangay}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group input-group-sm">
                                         <label for="streetAdd" class=""><b>Street Address</b></label>
-                                        <input type="text" class="form-control" name="streetAdd" value="{{$locations->street_address}}" oninput="this.value = this.value.toUpperCase()">
+                                        <input type="text" class="form-control" name="streetAdd" value="{{$locations->street_address}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                     </div>
                                 </div>
                             </div>
@@ -257,31 +261,25 @@
                                     <div class="col-md-8">
                                         <div class="form-group input-group-sm">
                                             <label for="siblingComplete_name" class=""><b>Sibling's Complete Name</b></label>
-                                            <input type="text" class="form-control" name="siblingComplete_name" value="{{$siblingg->complete_name}}" oninput="this.value = this.value.toUpperCase()">
+                                            <input type="text" class="form-control" name="siblingComplete_name" value="{{$siblingg->complete_name}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                         </div>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group input-group-sm">
                                             <label for="siblingAge" class=""><b>Age</b></label>
-                                            <input type="number" class="form-control" name="siblingAge" value="{{$siblingg->age}}">
+                                            <input type="number" class="form-control" name="siblingAge" value="{{$siblingg->age}}"readonly="readonly">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group input-group-sm">
                                             <label for="siblingSex" class=""><b>Gender</b></label>
-                                            <input type="text" class="form-control" name="siblingSex" value="{{$siblingg->sex}}" oninput="this.value = this.value.toUpperCase()">
+                                            <input type="text" class="form-control" name="siblingSex" value="{{$siblingg->sex}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                         </div>
                                     </div>
-                                    <div class="col-md-1 mt-4">
-                                        <a href="#" class="remove-lnk"><i class="fas fa-times-circle"></i></a>
-                                    </div>
+                                    
                                 </div>
                             </div>
-                            <div class="row mt-2">
-                                <div class="form-group input-group-sm">
-                                    <button type="button" class="btn btn-success add-btn">Add More</button>
-                                </div>
-                            </div>
+                            
                     @endforeach
                             <!-- end siblings info -->
                         </div>
@@ -300,7 +298,7 @@
                                     <div class="col">
                                     @foreach($deseases as $desease)
                                         <div class="form-group input-group-sm">
-                                        <input type="checkbox" name="deseases[]" value="{{$desease->id}}"
+                                        <input type="checkbox" name="deseases[]" value="{{$desease->id}}" onclick="return false"
                                             @foreach($patient->familyDesease as $family_desease)
                                                 <?php
                                                     if( in_array($desease->id, $family_desease->pluck('desease_id')->toArray())){
@@ -317,13 +315,13 @@
                                         <div class="col input-group-sm">
                                             @foreach($patient->cancer as $cancers)
                                             <label for="desease6" class=""><b>Cancer of the</b></label>
-                                            <input type="text" class="form-control" name="cancer" value="{{$cancers->cancer}}">
+                                            <input type="text" class="form-control" name="cancer" value="{{$cancers->cancer}}"readonly="readonly">
                                             @endforeach
                                         </div>
                                         <div class="col input-group-sm">
                                             @foreach($patient->otherDesease as $other_desease)
                                             <label for="desease7" class=""><b>Others: Please Specify</b></label>
-                                            <input type="text" class="form-control" name="otherDesease" value="{{$other_desease->other_desease}}">
+                                            <input type="text" class="form-control" name="otherDesease" value="{{$other_desease->other_desease}}"readonly="readonly">
                                             @endforeach
                                         </div>
                                     </div>
@@ -382,19 +380,19 @@
                                         <div class="col">
                                             <div class="form-group input-group-sm">
                                                 <label for="medication_name" class=""><b>Name of Medication</b></label>
-                                                <input type="text" class="form-control" name="medication_name" value="{{$maintenances->medication_name}}" oninput="this.value = this.value.toUpperCase()">
+                                                <input type="text" class="form-control" name="medication_name" value="{{$maintenances->medication_name}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group input-group-sm">
                                                 <label for="dosage" class=""><b>Dosage</b></label>
-                                                <input type="text" class="form-control" name="dosage" value="{{$maintenances->dosage}}" oninput="this.value = this.value.toUpperCase()">
+                                                <input type="text" class="form-control" name="dosage" value="{{$maintenances->dosage}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group input-group-sm">
                                                 <label for="frequency" class=""><b>Frequency</b></label>
-                                                <input type="text" class="form-control" name="frequency" value="{{$maintenances->frequency}}" oninput="this.value = this.value.toUpperCase()">
+                                                <input type="text" class="form-control" name="frequency" value="{{$maintenances->frequency}}" oninput="this.value = this.value.toUpperCase()"readonly="readonly">
                                             </div>
                                         </div>
                                     @endforeach
@@ -416,7 +414,7 @@
                                     @foreach($illnesses as $illness)
                                         @if($illness->id >= 1 && $illness->id <= 6 )
                                         <div class="form-group input-group-sm">
-                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}" onclick="return false"
                                             @foreach($patient->historyIllness as $history_illness)
                                                 <?php
                                                     if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
@@ -489,13 +487,13 @@
                                 <div class="col input-group-sm">
                                     @foreach($patient->allergy as $allergies)
                                     <label for="mdhistory23" class=""><b>Allergy: </b></label>
-                                    <input type="text" class="form-control" name="allergy" value="{{$allergies->allergy}}">
+                                    <input type="text" class="form-control" name="allergy" value="{{$allergies->allergy}}"readonly="readonly">
                                     @endforeach
                                 </div>
                                 <div class="col input-group-sm">
                                     @foreach($patient->fracture as $fractures)
                                     <label for="mdhistory24" class=""><b>Fracture in </b></label>
-                                    <input type="text" class="form-control" name="fracture" value="{{$fractures->fracture}}">
+                                    <input type="text" class="form-control" name="fracture" value="{{$fractures->fracture}}"readonly="readonly">
                                     @endforeach
                                 </div>
                             </div>
@@ -503,13 +501,13 @@
                                 <div class="col input-group-sm">
                                     @foreach($patient->operation as $operations)
                                     <label for="mdhistory25" class=""><b>Operation of the </b></label>
-                                    <input type="text" class="form-control" name="operation" value="{{$operations->operation}}">
+                                    <input type="text" class="form-control" name="operation" value="{{$operations->operation}}"readonly="readonly">
                                     @endforeach
                                 </div>
                                 <div class="col input-group-sm">
                                     @foreach($patient->hospitalization as $hospitalizations)
                                     <label for="mdhistory26" class=""><b>Hospitalization </b></label>
-                                    <input type="text" class="form-control" name="hospitalization" value="{{$hospitalizations->hospitalization}}">
+                                    <input type="text" class="form-control" name="hospitalization" value="{{$hospitalizations->hospitalization}}"readonly="readonly">
                                     @endforeach
                                 </div>
                             </div>
@@ -517,13 +515,13 @@
                                 <div class="col input-group-sm">
                                     @foreach($patient->behavior as $behaviors)
                                     <label for="mdhistory27" class=""><b>Behavioral/ Psychological Problems </b></label>
-                                    <input type="text" class="form-control" name="behavior" value="{{$behaviors->behavior}}">
+                                    <input type="text" class="form-control" name="behavior" value="{{$behaviors->behavior}}"readonly="readonly">
                                     @endforeach
                                 </div>
                                 <div class="col input-group-sm">
                                     @foreach($patient->otherIllness as $other_illness)
                                     <label for="mdhistory28" class=""><b>Others: Please Specify: </b></label>
-                                    <input type="text" class="form-control" name="otherIllness" value="{{$other_illness->other_illness}}">
+                                    <input type="text" class="form-control" name="otherIllness" value="{{$other_illness->other_illness}}"readonly="readonly">
                                     @endforeach
                                 </div>
                             </div>
@@ -537,7 +535,6 @@
                                 @endforeach
                             </div>
                             <!-- end of remarks -->
-                            <button type="submit" class="btn btn-primary" id="studenthealthdata-btn">Submit</button>
                         </div>
                         <!-- end of Patients Medical History -->
                     </form>
@@ -548,11 +545,10 @@
 </div> <!-- closing div connect from admin-header -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  <script>
-    $(document).ready(function(){
-        $(".hamburger").click(function(){
-            $(".wrapper").toggleClass("active")
-        });
-    });
-  </script>
+<script>
+    $('#print-health-data').click(function(){
+        $('#print-health-data').hide();
+        window.print();
+    })
+</script>
 @stop

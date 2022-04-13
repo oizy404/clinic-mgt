@@ -9,13 +9,13 @@
 @include('shared.clinicstaff-sidenav')
 
         <div class="main-container">
-            <div class="add-student-health-data">
+            <div class="add-health-data">
                 <div class="hds-heading">
                     <div class="col-md-4 offset-md-8 p-head">
                         <h4 class="mb-0">HEALTH DATA SHEET</h4>
                     </div>
                 </div>
-                <div class="" id="create-student-health-data">
+                <div class="" id="create-health-data">
                     <form action="{{route('update-health-data', $patient->id)}}" method="post">
                         @csrf
                         @method('post')
@@ -24,8 +24,8 @@
                             <h5>PATIENT PROFILE</h5>
                                 <div class="row">
                                     <div class="col-md-3 form-group input-group-sm">
-                                        <label for="student_idnumber" class=""><b>ID Number</b></label>
-                                        <input type="text" class="form-control" name="student_idnumber" value="{{$patient->school_id}}">
+                                        <label for="idnumber" class=""><b>ID Number</b></label>
+                                        <input type="text" class="form-control" name="idnumber" value="{{$patient->school_id}}">
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group input-group-sm">
