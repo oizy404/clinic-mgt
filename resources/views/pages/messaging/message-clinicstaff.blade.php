@@ -1,12 +1,10 @@
-@extends('layout.master')
+@extends('layout.clinicstaff-master')
 
 @section('title')
     Clinic Staff Message
 @stop
 
 @section('content')
-@include('shared.clinicstaff-header')
-@include('shared.msg-sidenav')
 
         <div class="main-container">
             <div class="clinicstaff-inbox" id="clinicstaff-inbox">

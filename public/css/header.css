@@ -18,7 +18,6 @@
 .wrapper .top_navbar .logo{
     width: 240px;
     height: 102%;
-    /* background: #006dff; */
     border-right: 0.2px solid rgb(187, 187, 187);
     background: #0087ff;
     float: left;
@@ -61,47 +60,53 @@
     width: 100px;
 }
 
-.wrapper .top_navbar .logo a{
+/* .wrapper .top_navbar .logo a{
     font-size: 10px;
     display: block;
     text-align: center;
     font-family: 'Montserrat Subrayada', sans-serif;
     font-size: 20px;
     color: #fff;
-}
-
-/* .wrapper .top_navbar .top_menu{
-    width: calc(100% - 250px);
-    height: 100%;
-    background: #fff;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.wrapper .top_navbar .top_menu .home_link a{
-    display: block;
-    background: #007bff;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 3px;
-}
-
-.wrapper .top_navbar .top_menu .home_link a:hover,
-.wrapper .top_navbar .right_info .icon_wrap:hover {
-    background: #005bff;
-}
-
-.wrapper .top_navbar .right_info{
-    display: flex;
-}
-
-.wrapper .top_navbar .right_info .icon_wrap{
-    padding: 8px 15px;
-    border-radius: 3px;
-    background: #007bff;
-    color: #fff;
-    margin: 0 5px;
-    cursor: pointer;
 } */
+.clinicstaff-avatar{
+    position: sticky;
+    display: inline-block;
+    margin-left: 35px;
+}
+#nurse-icon{
+  cursor: pointer;
+  
+}
+.avatar-content {
+    margin-top: 5px;
+    margin-left: -50px;
+    display: none;
+    background-color: white;
+    min-width: 100px;
+    border-radius: 3;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+.avatar-content a {
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    color: black;
+}
+.avatar-content a:hover {
+	border-radius: 3%;
+}
+.header-icons{
+    font-size: 25px;
+    display: inline-flex;
+    margin-top: 8px;
+    color: #0087ff;
+}
+.message-icon , .notif-icon{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.clinicstaff-avatar:hover .avatar-content {display: block;}
+
+.clinicstaff-avatar:hover #nurse-icon {background-color: none;}

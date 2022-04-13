@@ -39,6 +39,9 @@
     </style>
 </head>
 <body>
+    
+    @include('shared.doctor-header')
+    @include('shared.doctor-msg-sidenav')
 
     @yield('content')
     <script src="{{asset('js/jquery.min.js')}}"></script>

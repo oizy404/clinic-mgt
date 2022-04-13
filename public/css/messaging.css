@@ -50,6 +50,7 @@
 }
 .type_msg{
     max-height: 20px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
 }
 .attach_btn{
     background: none;
@@ -140,34 +141,43 @@
 .clinicstaffmsg_card_body{
     overflow-y: scroll;
     border: none;
+    background-color: rgba(0,0,0,.03);
 }
 .clinicstaffmsg_card_body p{
     margin: 0;
     font-size: 15px;
 }
 .clinicstaffmsg_card_body .inbox{
+    background-color: #FFFFFF;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
     padding: 8px ;
     margin: none;
     max-width: 70%;
     border-radius: 15px 15px 15px 0px;
 }
 .clinicstaffmsg_card_body .outbox{
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
     padding: 8px;
     margin: none;
     max-width: 70%;
     border-radius: 15px 15px 0px 15px;
 }
 .clinicstaffmsg_card_body .event{
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
     padding: 8px;
     margin: none;
     max-width: 70%;
     border-radius: 15px 15px 0px 15px;
 }
+.clinicstaffmsg_card_body #image-msg{
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
 .clinicstaff-inbox .col-md-3{
     padding: 0px;
 }
 .patientinfo-avatar img{
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 /* .user-receiver .theData td{
     padding-top: 0px;
@@ -175,4 +185,63 @@
 } */
 .user-receiver .theData a{
     color: black;
+}
+.usersender-info{
+    background-color: rgba(0,0,0,.03);
+}
+.user-receiver{
+    background-color: transparent;
+    border: none;
+}
+.user-receiver .card-body{
+    background-color: transparent;
+    border: none;
+}
+.user-receiver .card-body table , tbody, tr , td{
+    background-color: #0087ff;;
+    border: none;
+}
+
+
+#search-sender{
+    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
+
+
+/* config datatable */
+
+#msg_wrapper .dataTable{
+    border: none;
+}
+#msg_wrapper .dataTables_length{
+    display: none;
+}
+#msg_wrapper .dataTables_filter label{
+    width: 100%;
+    text-align: left;
+    padding-left: 18px;
+    color: white;
+}
+#msg_wrapper .dataTables_filter input{
+    margin-bottom: 5px;
+}
+
+#msg_wrapper .dataTables_info{
+    display: none;
+    border: none;
+}
+#msg_wrapper .dataTables_paginate{
+    display: none;
+    border: none;
+}
+#msg_wrapper .dataTable td{
+    padding: 3px 3px 3px 20px;
+    font-size: 14px;
+}
+.user-receiver hr{
+    margin: 5px 0px 0px 0px;
+    color: rgb(249, 246, 246);
+  }
+#msg_wrapper .dataTable a{
+    font-size: 14px;
 }

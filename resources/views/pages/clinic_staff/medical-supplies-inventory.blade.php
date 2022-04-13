@@ -89,8 +89,6 @@
         $(".hamburger").click(function(){
             $(".wrapper").toggleClass("active")
         });
-
-        $('#supplies-inventory').DataTable();
     }); 
   </script>
 @include('pages.clinic_staff.add-medical-supplies')

@@ -23,13 +23,6 @@
             <span class="list">Consultation Record</span>
           </a>
         </li>
-        
-        <!-- <li>
-          <a href="/message-clinicstaff">
-            <span class="icon"><i class="fas fa-envelope"></i></span>
-            <span class="list">Message</span>
-          </a>
-        </li> -->
 
         <li>
           <a href="/medical-supplies-inventory">
@@ -37,13 +30,6 @@
             <span class="list">Medical Supplies</span>
           </a>
         </li>
-        <!-- <li>
-
-          <a href="/logout">
-            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-            <span class="list">Log Out</span>
-          </a>
-        </li> -->
         
       </ul>
       <div class="hamburger">

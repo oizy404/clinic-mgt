@@ -1,32 +1,10 @@
-@extends('layout.master')
+@extends('layout.clinicstaff-master')
 
 @section('title')
     Clinic Staff Message
 @stop
 
 @section('content')
-@include('shared.clnicstaff-header')
-@include('shared.msg-sidenav')
-<style>
-    #msg_wrapper .dataTable{
-        border: none;
-    }
-    #msg_wrapper .dataTables_length{
-        display: none;
-    }
-    #msg_wrapper .dataTables_filter label{
-        width: 260px;
-        margin-bottom: 5px;
-    }
-    #msg_wrapper .dataTables_info{
-        display: none;
-        border: none;
-    }
-    #msg_wrapper .dataTables_paginate{
-        display: none;
-        border: none;
-    }
-</style>
         <div class="main-container">
             <div class="clinicstaff-inbox" id="clinicstaff-inbox">
                 <div class="row">
@@ -44,9 +22,15 @@
                                             </div>
                                         </div>
                                         <div class="col-md-1">
-                                            <div class="form-group">
-                                                <i class="fal fa-archive"></i>
+                                            <div class="form-group mt-2">
+                                                <span>
                                                 <i class="far fa-ellipsis-v" style="float: right;"></i>
+                                                <select>
+                                                    <option></option>
+                                                    <option><a href="">Delete</a></option>
+                                                    <option><a href="">Done</a></option>
+                                                </select>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -56,16 +40,16 @@
                                     @if($message->receiver == $id || $message->sender == $id)
                                         @if($message->receiver == Auth::user()->id || $message->receiver == 2)
                                                 @if(!$message->img_file)
-                                                    <div class='d-flex justify-content-start'><div class='inbox bg-info'>{{$message->message}}</div></div><br>
+                                                    <div class='d-flex justify-content-start'><div class='inbox bg-white'>{{$message->message}}</div></div><br>
                                                 @else
                                                     <div class='d-flex justify-content-start'><div class='img-msg'><img src="{{asset('imgfileMessages')}}/{{$message->img_file}}" id='image-msg' alt='image msg' style='max-width:150px;'></div></div><br>
                                                 @endif
                                         @elseif($message->sender == Auth::user()->id || $message->sender == 2)
                                             @if($message->message)
-                                                <div class='d-flex justify-content-end'><div class='outbox bg-primary text-light'>{{$message->message}}</div></div><br>
+                                                <div class='d-flex justify-content-end'><div class='outbox bg-info'>{{$message->message}}</div></div><br>
                                             @elseif($message->event_id)
                                                 <div class="d-flex justify-content-end">
-                                                    <div class="event bg-primary text-light">
+                                                    <div class="event bg-info">
                                                         <p>
                                                             Good Day! patient <strong>{{$message->event->patient->first_name}} {{$message->event->patient->last_name}}</strong>
                                                             your appointment <strong>{{$message->event->title}}</strong>
@@ -116,7 +100,7 @@
                                         ?>
                                             <div class="card-body">
                                                 <div class="patientinfo-avatar">
-                                                    <center><img src="{{ Avatar::create($fullname)->toBase64()}}" alt="patient-avatar"></center>
+                                                    <center><img src="{{ Avatar::create($fullname)->toBase64()}}" alt="patient-avatar" class="rounded-circle"></center>
                                                 </div>
                                                 <div class="sender-profile text-center">
                                                     <strong>{{$patient->first_name}} {{$patient->last_name}}</strong>
@@ -134,38 +118,7 @@
                                 @endforeach
                             @endforeach
                         </div>
-                        <div class="card user-receiver" style="display:none;">
-                            <div class="card-body">
-                                <table class="" style="width:100%" id="msg">
-                                    <thead>
-                                        <tr>
-                                            <th style="display:none">ID</th>
-                                            <th style="display:none">User Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($patientusers as $patientuser)
-                                            @foreach($patients as $patient)
-                                                @if($patientuser->username == $patient->school_id)
-                                                    @if($patientuser->id != 1 && $patientuser->id != 2)
-                                                    <tr class="theData">
-                                                        <td style="display: none">{{$patientuser->id}}</td>
-                                                        <?php 
-                                                            $fullname = $patient->first_name." ".$patient->last_name;
-                                                        ?>
-                                                        <td>
-                                                            <img src="{{ Avatar::create($fullname)->toBase64()}}" class="patient-avatar" alt="patient-avatar">
-                                                            <a href="{{route('clinicstaffViewCreate', $patientuser->id)}}">{{$patient->first_name}} {{$patient->last_name}}</a>
-                                                        </td>
-                                                    </tr>
-                                                    @endif
-                                                @endif
-                                            @endforeach
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -173,7 +126,10 @@
 
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
-
+<script>
+    var clinicstaffmsg_card_body = document.querySelector('.clinicstaffmsg_card_body');
+    clinicstaffmsg_card_body.scrollTop = clinicstaffmsg_card_body.scrollHeight - clinicstaffmsg_card_body.clientHeight;
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function(){
@@ -182,20 +138,10 @@
         });
         $("#search-sender").click(function(){
             $(".user-receiver").show();
-            $(".usersender-info").hide();
+            $(".patient-msgs").hide();
             $("#search-sender").hide();
         })
-        // $(".theData").click(function(){
-        //     var id =  $(this).find(":first-child").text();
-        //     var complete_name =  $(this).find(":first-child").next().text();
-        //     $('#search-sender').val(complete_name);
-
-        //     $("#create-msg").show();
-        //     $("#clinicstaff-msg").hide();
-        //     $(".user-receiver").hide();
-        //     $(".usersender-info").show();
-        // })
-
+        
     });
 </script>
 @stop

@@ -9,6 +9,7 @@
 
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/font-awesome-icons.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/front.css')}}">
     <link rel="stylesheet" href="{{asset('css/datatables.css')}}">
 

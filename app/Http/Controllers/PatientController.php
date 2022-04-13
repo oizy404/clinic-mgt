@@ -58,7 +58,7 @@ class PatientController extends Controller
         // dd($tbl_student->tbl_sibling());
         // dd($request->all());
         $patient = new PatientProfile();
-        $patient->school_id = $request->student_idnumber;
+        $patient->school_id = $request->idnumber;
         $patient->patient_role = $request->role;
         $patient->first_name = $request->first_name;
         $patient->middle_name = $request->middle_name;
@@ -225,7 +225,7 @@ class PatientController extends Controller
     public function update(Request $request, $id){
 
         $patient = PatientProfile::find($id);
-        $patient->school_id = $request->student_idnumber;
+        $patient->school_id = $request->idnumber;
         $patient->patient_role = $request->role;
         $patient->first_name = $request->first_name;
         $patient->middle_name = $request->middle_name;
@@ -374,6 +374,25 @@ class PatientController extends Controller
         }
 
             return redirect()->route('health-data');
+    }
+    
+    public function show($id){
+
+        $patient = PatientProfile::find($id);
+        $deseases = Desease::all();
+        $vaccines = Vaccine::all();
+        $illnesses = Illness::all();
+
+
+
+        return view("pages.clinic_staff.show-health-data")->with(compact(
+            "patient", $patient,
+            // "provinces", $provinces,
+            "deseases", $deseases,
+            "vaccines", $vaccines,
+            "illnesses", $illnesses,
+        ));
+
     }
 
     public function archive($id, Request $request){

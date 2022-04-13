@@ -1,12 +1,10 @@
-@extends('layout.master')
+@extends('layout.doctor-master')
 
 @section('title')
     Doctor Message
 @stop
 
 @section('content')
-@include('shared.doctor-header')
-@include('shared.doctor-msg-sidenav')
 
         <div class="main-container">
             <div class="doctor-inbox" id="doctor-inbox">

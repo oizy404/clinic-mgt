@@ -128,6 +128,14 @@
   cursor: pointer;
   text-decoration: none;
   color: #FFFFFF;
+  font-size: 14px;
+}
+.patient-msgs td{
+  padding: 3px 3px 3px 20px;
+}
+.patient-msgs hr{
+  margin: 5px 0px 0px 0px;
+  color: rgb(249, 246, 246);
 }
 .patient-avatar{
   width: 35px;

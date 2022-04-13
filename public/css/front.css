@@ -83,7 +83,11 @@
     margin: auto;
     transition: 0.2s ease-in-out;
 }
-#page{
+#page1{
+    margin: auto;
+    width: 100%;
+}
+#page2{
     margin: auto;
     width: 100%;
 }

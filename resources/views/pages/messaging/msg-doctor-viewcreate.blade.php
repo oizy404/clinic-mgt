@@ -1,12 +1,10 @@
-@extends('layout.master')
+@extends('layout.doctor-master')
 
 @section('title')
     Clinic Staff Message
 @stop
 
 @section('content')
-@include('shared.doctor-header')
-@include('shared.doctor-msg-sidenav')
 <style>
     #msg_wrapper .dataTable{
         border: none;

@@ -51,24 +51,21 @@
                                 <th class="bg-primary text-white">ID Number</th>
                                 <th class="bg-primary text-white">Name</th>
                                 <th class="bg-primary text-white">Patient Role</th>
-                                <th class="bg-primary text-white text-center">Print</th>
-                                <th class="bg-primary text-white text-center">Update</th>
-                                <th class="bg-primary text-white text-center">Delete</th>
+                                <th class="bg-primary text-white text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach($patients as $patient)
                             @if($patient->archived == 0)
-                            <tr>
+                            <tr class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">
                                 <td class="text-center">{{$patient->school_id}}</td>
                                 <td>{{$patient->first_name}} {{$patient->last_name}}</td>
                                 <td>{{$patient->patient_role}}</td>
-                                <td class="text-center"><a href="" class="btn btn-success"><center><i class="far fa-print"></center></a></i></td>
+                                <!-- <td class="text-center"><a href="" class="btn btn-success"><center><i class="far fa-print"></center></a></i></td> -->
                                 <td class="text-center">
                                     <a href="{{route('edit-health-data', $patient->id)}}" class="btn btn-warning" id="btn-edit-healthdata"><center><i class="far fa-edit"></i></center></a>
-                                </td>
-                                <td class="text-center">
-                                <a href="{{route('archiveHealthData', $patient->id)}}" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
+                            
+                                    <a href="{{route('archiveHealthData', $patient->id)}}" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
                                 </td>
                             </tr>
                             @endif
@@ -89,9 +86,15 @@
 </div> <!-- closing div connect from admin-header -->
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script>
-      $(".hamburger").click(function(){
-        $(".wrapper").toggleClass("active")
-      });
+    $(document).ready(function(){
+        $(".hamburger").click(function(){
+            $(".wrapper").toggleClass("active")
+        });
+
+        $('.theHealthData').click(function(){
+            window.location = $(this).data("href");
+        });
+    });
       
   </script>
 @stop

@@ -1,4 +1,4 @@
-.add-student-health-data{
+.add-health-data{
     padding-top: 30px;
 }
 .hds-heading{
@@ -12,21 +12,21 @@
     margin: auto;
     text-align: center;
 }
-div #create-student-health-data{
+div #create-health-data{
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     margin: 0;
     padding: 10px 20px 20px 20px;
     margin: auto;
     width: 95%;
 }
-#create-student-health-data p{
+#create-health-data p{
     margin-bottom: 0px;
 }
-#create-student-health-data h5{
+#create-health-data h5{
     padding: 3px;
     border-bottom: 3px solid rgba(var(--b6a,219,219,219),1);
 }
-#create-student-health-data h6{
+#create-health-data h6{
     margin-bottom: 0px;
 }
 .heredo-heading{
@@ -69,4 +69,11 @@ label{
 }
 #patients-medic-data1 hr{
     margin: 0px;
+}
+
+.show-health-data{
+    padding-top: 25px;
+}
+.show-health-data #print{
+    font-size: 20px;
 }
