@@ -55,7 +55,7 @@
                                         <?php 
                                             $fullname = $patient->first_name." ".$patient->last_name;
                                         ?>
-                                        <td>
+                                        <td style="background-color: #0087ff;">
                                             <a href="{{route('clinicstaffViewCreate', $patientuser->id)}}" class="text-white"><img src="{{ Avatar::create($fullname)->toBase64()}}" class="patient-avatar" alt="patient-avatar"> {{$patient->first_name}} {{$patient->last_name}}</a>
                                             <hr>
                                         </td>

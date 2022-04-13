@@ -23,14 +23,7 @@
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group mt-2">
-                                                <span>
                                                 <i class="far fa-ellipsis-v" style="float: right;"></i>
-                                                <select>
-                                                    <option></option>
-                                                    <option><a href="">Delete</a></option>
-                                                    <option><a href="">Done</a></option>
-                                                </select>
-                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -46,10 +39,10 @@
                                                 @endif
                                         @elseif($message->sender == Auth::user()->id || $message->sender == 2)
                                             @if($message->message)
-                                                <div class='d-flex justify-content-end'><div class='outbox bg-info'>{{$message->message}}</div></div><br>
+                                                <div class='d-flex justify-content-end'><div class='outbox bg-primary text-white'>{{$message->message}}</div></div><br>
                                             @elseif($message->event_id)
                                                 <div class="d-flex justify-content-end">
-                                                    <div class="event bg-info">
+                                                    <div class="event bg-primary text-white">
                                                         <p>
                                                             Good Day! patient <strong>{{$message->event->patient->first_name}} {{$message->event->patient->last_name}}</strong>
                                                             your appointment <strong>{{$message->event->title}}</strong>

@@ -172,6 +172,10 @@
 .clinicstaffmsg_card_body #image-msg{
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
+.clinicstaffmsg_card_body .no-msg{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
 .clinicstaff-inbox .col-md-3{
     padding: 0px;
 }
@@ -197,8 +201,7 @@
     background-color: transparent;
     border: none;
 }
-.user-receiver .card-body table , tbody, tr , td{
-    background-color: #0087ff;;
+.user-receiver .card-body #msg table ,tbody,tr,td{
     border: none;
 }
 
@@ -224,6 +227,7 @@
 }
 #msg_wrapper .dataTables_filter input{
     margin-bottom: 5px;
+    background-color: #FFFFFF;
 }
 
 #msg_wrapper .dataTables_info{

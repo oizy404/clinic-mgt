@@ -1,13 +1,10 @@
-@extends('layout.master')
+@extends('layout.clinicstaff-master1')
 
 @section('title')
     Edit Medical Product
 @stop
 
 @section('content')
-
-@include('shared.clinicstaff-header')
-@include('shared.clinicstaff-sidenav')
 
 {{session('rank')}}
         <div class="main-container">

@@ -19,7 +19,7 @@
 }
 
 .main_body .sidebar_menu ul li a{
-  color: #FFFFFF;
+  color: #ececec;
   font-size: 15px;
   padding: 15px 35px;
   display: block;
@@ -36,12 +36,12 @@
 
 .main_body .sidebar_menu ul li a:hover{
   background: #006dff;
-  color: #fff;
+  color: #ececec;
 }
 
 .main_body .sidebar_menu ul li a.active{
   /* background: #006dff; */
-  color: #fff;
+  color: #ececec;
 }
 
 .main_body .sidebar_menu .hamburger{
@@ -127,7 +127,7 @@
 .patient-msgs a{
   cursor: pointer;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ececec;
   font-size: 14px;
 }
 .patient-msgs td{

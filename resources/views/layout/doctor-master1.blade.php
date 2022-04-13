@@ -41,9 +41,8 @@
 </head>
 <body>
 
-    
-    @include('shared.clinicstaff-header')
-    @include('shared.clinicstaff-sidenav')
+    @include('shared.doctor-header')
+    @include('shared.doctor-sidenav')
     
     @yield('content')
     <script src="{{asset('js/jquery.min.js')}}"></script>

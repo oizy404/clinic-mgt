@@ -7,31 +7,24 @@
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col-md-1">
+            <div class="col-md-1 header-icons" style="padding: 0px; color: #ececec;">
                 <div class="message-icon">
-                    <a href="/message-clinicstaff">
+                    <a href="/message-doctor">
                         <i class="fal fa-comment-alt-medical"></i>
                     </a>
                 </div>
-            </div>
-            <div class="col-md-1">
                 <div class="notif-icon">
                     <a href="#">
-                        <i class="far fa-bell"></i>
+                        <i class="fal fa-bell"></i>
                     </a>
                 </div>
             </div>
-            <div class="col-md-1">
-                <div class="logout-user">
-                    <a href="/logout">
-                        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-                        <span class="list">Log Out</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-1">
-                <div class="clinicstaff-avatar">
-                    <img src="/images/doctor-icon.png" alt="doctor-icon" class="rounded-circle" style="width: 45px; border: 1px solid blue;">
+            <div class="col-md-1" style="padding: 0px;">
+                <div class="clinicstaff-avatar mt-1">
+                    <img src="/images/doctor-icon.png" alt="doctor-icon" id="doctor-icon" class="rounded-circle">
+                    <div class="avatar-content">
+                        <a href="/logout">Log Out</a>
+                    </div>
                 </div>
             </div>
         </div>

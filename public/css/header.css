@@ -37,7 +37,7 @@
     position: absolute;
     top: 20px;
     margin-left: 60px;
-    color: #FFFFFF;
+    color: #ececec;
     font-size: 14px;
 }
 
@@ -74,9 +74,15 @@
     margin-left: 35px;
 }
 #nurse-icon{
-  cursor: pointer;
-  
+    cursor: pointer;
+    width: 45px;
+    border: 1px solid #0087ff;
 }
+#doctor-icon{
+    cursor: pointer;
+    width: 45px;
+    border: 1px solid #0087ff;
+  }
 .avatar-content {
     margin-top: 5px;
     margin-left: -50px;
@@ -97,10 +103,12 @@
 	border-radius: 3%;
 }
 .header-icons{
-    font-size: 25px;
+    font-size: 18px;
     display: inline-flex;
-    margin-top: 8px;
-    color: #0087ff;
+    margin-top: 15px;
+}
+.header-icons i{
+    color: #3f3f3f; 
 }
 .message-icon , .notif-icon{
     margin-left: 15px;

@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col-md-1 header-icons" style="padding: 0px;">
+            <div class="col-md-1 header-icons" style="padding: 0px; color: #ececec;">
                 <div class="message-icon">
                     <a href="/message-clinicstaff">
                         <i class="fal fa-comment-alt-medical"></i>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-1" style="padding: 0px;">
                 <div class="clinicstaff-avatar mt-1">
-                    <img src="/images/nurse-icon.png" alt="nurse-icon" id="nurse-icon" class="rounded-circle" style="width: 45px; border: 1px solid blue;">
+                    <img src="/images/nurse-icon.png" alt="nurse-icon" id="nurse-icon" class="rounded-circle">
                     <div class="avatar-content">
                         <a href="/logout">Log Out</a>
                     </div>

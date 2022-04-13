@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.doctor-master1')
 
 @section('title')
     Doctor Dashboard

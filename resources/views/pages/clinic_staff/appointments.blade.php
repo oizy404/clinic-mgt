@@ -1,12 +1,10 @@
-@extends('layout.master')
+@extends('layout.doctor-master1')
 
 @section('title')
     Appointment Booking
 @stop
 
 @section('content')
-@include('shared.doctor-header')
-@include('shared.doctor-sidenav')
 <style>
     .edit-delete-btn{
         background-color: gray;
@@ -22,14 +20,35 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
         {{session('rank')}}
-        <div class="appointment-content main-container">
-            <div class="col-md-10 offset-md-1">
-                <h1>APPOINTMENTS BOOKING</h1>
+        <div class="row appointment-content main-container">
+            <div class="col-md-8">
+                <!-- <h1>APPOINTMENTS BOOKING</h1> -->
                 <div class="appointment-container">
-                    <div class="add-event mb-3">
-                        <button class="btn btn-primary" id="addEventBtn">Add Event</button>
+                    <div id="calendar" style="z-index: 1;"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="add-event mb-3">
+                    <i class="fal fa-plus"></i> <a href="#" id="addEventBtn">&nbsp New Event</a>
+                    <div class="form-group" id="eventList">
+                        <div class="form-group">
+                            <table class="table table-hover" id="appointments">
+                                <thead>
+                                    <tr>
+                                        <th>Event</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($event as $eventt)
+                                        <tr>
+                                            <td>{{$eventt->title}}</td>
+                                            <td>{{$eventt->patient->first_name}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                        <div id="calendar" style="z-index: 1;"></div>
                 </div>
             </div>
         </div>

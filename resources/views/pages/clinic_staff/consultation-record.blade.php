@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.doctor-master1')
 
 @section('title')
     Consultation Record
@@ -23,9 +23,6 @@
         margin-top:22px;
     }
 </style>
-@include('shared.doctor-header')
-@include('shared.doctor-sidenav')
-
         {{session('rank')}}
         <div class="main-container">
             <div class="consultation-record-dashboard">

@@ -17,12 +17,6 @@
           </a>
         </li>
 
-        <li>
-          <a href="/message-doctor">
-            <span class="icon"><i class="fas fa-envelope"></i></span>
-            <span class="list">Message</span>
-          </a>
-        </li>
         <!-- <li>
 
           <a href="/logout">

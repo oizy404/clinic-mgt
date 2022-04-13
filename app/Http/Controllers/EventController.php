@@ -29,11 +29,11 @@ class EventController extends Controller
     public function index2(){
         $patients = PatientProfile::all();
         $event = Event::where('archived',0)->get();
-        return view("pages.clinic_staff.appointments")->with(compact(
-            "patients", $patients,
-            "event", $event,
-        ));   
-        
+        // return view("pages.clinic_staff.appointments")->with(compact(
+        //     "patients", $patients,
+        //     "event", $event,
+        // ));   
+        return view('pages.clinic_staff.appointments', compact('patients','event'));
     }
 
     /**

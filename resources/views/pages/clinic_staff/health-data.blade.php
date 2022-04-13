@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.clinicstaff-master1')
 
 @section('title')
     Patients Health Data
@@ -24,9 +24,6 @@
     }
 </style>
 
-@include('shared.clinicstaff-header')
-@include('shared.clinicstaff-sidenav')
-
         {{session('rank')}}
         <div class="main-container">
             <div class="hlth-dashboard">
@@ -51,7 +48,7 @@
                                 <th class="bg-primary text-white">ID Number</th>
                                 <th class="bg-primary text-white">Name</th>
                                 <th class="bg-primary text-white">Patient Role</th>
-                                <th class="bg-primary text-white text-center">Action</th>
+                                <th class="bg-primary text-white text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1,12 +1,10 @@
-@extends('layout.master')
+@extends('layout.clinicstaff-master1')
 
 @section('title')
     Edit Health Data
 @stop
 
 @section('content')
-@include('shared.clinicstaff-header')
-@include('shared.clinicstaff-sidenav')
 
         <div class="main-container">
             <div class="add-health-data">

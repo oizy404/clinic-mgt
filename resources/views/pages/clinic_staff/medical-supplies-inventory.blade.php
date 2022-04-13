@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.clinicstaff-master1')
 
 @section('title')
     ACD Medical Supplies Inventory
@@ -23,8 +23,6 @@
         margin-top:22px;
     }
 </style>
-@include('shared.clinicstaff-header')
-@include('shared.clinicstaff-sidenav')
 
 {{session('rank')}}
         <div class="main-container">
@@ -45,9 +43,7 @@
                                 <th class="bg-primary text-white">Product Type</th>
                                 <th class="bg-primary text-white text-center">Stock</th>
                                 <th class="bg-primary text-white text-center">Expiry Date</th>
-                                <th class="bg-primary text-white text-center">View</th>
-                                <th class="bg-primary text-white text-center">Update</th>
-                                <th class="bg-primary text-white text-center">Delete</th>
+                                <th class="bg-primary text-white text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,12 +55,8 @@
                                 <td class="text-center">{{$med_supply->stock}}</td>
                                 <td class="text-center">{{$med_supply->expiry_date}}</td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-success"><i class="far fa-eye"></i></a>
-                                </td>
-                                <td class="text-center">
                                     <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" class="btn btn-warning" id="btn-edit-inventory"><i class="far fa-edit"></i></a>
-                                </td>
-                                <td class="text-center">
+                                
                                     <a href="{{route('archiveMedical', $med_supply->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>

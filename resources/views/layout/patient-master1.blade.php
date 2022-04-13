@@ -41,10 +41,6 @@
 </head>
 <body>
 
-    
-    @include('shared.clinicstaff-header')
-    @include('shared.clinicstaff-sidenav')
-    
     @yield('content')
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>

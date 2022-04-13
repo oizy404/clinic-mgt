@@ -22,8 +22,8 @@
     margin-bottom: 0px;
     margin-top: 5px;
 }
-.supplies-inventory a{
-    color: white;
+.supplies-inventory i{
+    color: #3f3f3f; 
 }
 .update-supplies-inventory{
     width: 80%;
