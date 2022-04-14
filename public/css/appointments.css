@@ -11,12 +11,15 @@
     margin-left: auto;
     overflow-y: scroll;
 }
+#lisEvents{
+    border-left: 0.1px solid rgb(232, 232, 232);
+}
 .appointment h4{
     margin: 0;
 }
 .add-event a{
     text-decoration: none;
-    font-size: 18px;
+    font-size: 23px;
     text-align: center;
     margin: auto;
     color: #3f3f3f; 
@@ -52,4 +55,18 @@
 }
 #apt-update-cancel{
     float: right;
+}
+
+#appointments_length{
+    display: none;
+}
+#appointments_filter{
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+}
+#appointments_paginate a{
+    font-size: 11px;
+    padding: 5px;
+    margin-top: 5px;
 }

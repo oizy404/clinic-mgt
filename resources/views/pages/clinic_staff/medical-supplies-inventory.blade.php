@@ -42,7 +42,7 @@
                                 <th class="bg-primary text-white">Product Name</th>
                                 <th class="bg-primary text-white">Product Type</th>
                                 <th class="bg-primary text-white text-center">Stock</th>
-                                <th class="bg-primary text-white text-center">Expiry Date</th>
+                                <th class="bg-primary text-white">Expiry Date</th>
                                 <th class="bg-primary text-white text-center">Actions</th>
                             </tr>
                         </thead>
@@ -53,11 +53,11 @@
                                 <td>{{$med_supply->product_name}}</td>
                                 <td>{{$med_supply->med_type->medicine_type}}</td>
                                 <td class="text-center">{{$med_supply->stock}}</td>
-                                <td class="text-center">{{$med_supply->expiry_date}}</td>
+                                <td class="">{{date('F d, Y', strtotime($med_supply->expiry_date))}}</td>
                                 <td class="text-center">
                                     <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" class="btn btn-warning" id="btn-edit-inventory"><i class="far fa-edit"></i></a>
                                 
-                                    <a href="{{route('archiveMedical', $med_supply->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{route('archiveMedical', $med_supply->id)}}" onclick="confirmArchive()" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             @endif
@@ -81,7 +81,16 @@
         $(".hamburger").click(function(){
             $(".wrapper").toggleClass("active")
         });
-    }); 
+    });
+    function confirmArchive(){
+            var result = confirm("Confirm to archive product.");
+            if (result != true) {
+                event.preventDefault();
+                returnToPreviousPage();
+                return false;
+            }
+            return true;
+        } 
   </script>
 @include('pages.clinic_staff.add-medical-supplies')
 @stop

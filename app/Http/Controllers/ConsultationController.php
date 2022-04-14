@@ -21,7 +21,7 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        $records = HealthEvaluation::all();
+        $records = HealthEvaluation::all()->groupBy('patient_id');
         return view("pages.clinic_staff.consultation-record")->with(compact(
             "records", $records,
         ));
@@ -102,16 +102,29 @@ class ConsultationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function printAll($patient_id)
     {
-        $record = HealthEvaluation::find($id);
-        $patients = PatientProfile::all();
+        $records = HealthEvaluation::where('patient_id', $patient_id)->get();
         $chief_complaints = ChiefComplaint::all();
 
-        return view("pages.clinic_staff.show-consultation-record")->with(compact(
-            "record", $record,
-            "patients", $patients,
+
+        return view("pages.clinic_staff.printAll-health-eval")->with(compact(
+            "records", $records,
             "chief_complaints", $chief_complaints,
+
+        ));
+    }
+
+    public function print($id)
+    {
+        $record = HealthEvaluation::find($id);
+        $chief_complaints = ChiefComplaint::all();
+
+
+        return view("pages.clinic_staff.print-health-eval")->with(compact(
+            "record", $record,
+            "chief_complaints", $chief_complaints,
+
         ));
     }
 
@@ -122,14 +135,15 @@ class ConsultationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($patient_id)
     {
-        $record = HealthEvaluation::find($id);
+        $records = HealthEvaluation::where('patient_id', $patient_id)->get();
         $patients = PatientProfile::all();
         $chief_complaints = ChiefComplaint::all();
 
-        return view("pages.clinic_staff.edit-consultation-record")->with(compact(
-            "record", $record,
+        return view("pages.clinic_staff.show-consultation-record")->with(compact(
+            "patient_id",
+            "records", $records,
             "patients", $patients,
             "chief_complaints", $chief_complaints,
         ));
@@ -208,6 +222,16 @@ class ConsultationController extends Controller
         $record = HealthEvaluation::find($id);
         $record->archived = 1;
         $record->save();
+        
+        return redirect()->back();
+    }
+    public function archiveAll($patient_id, Request $request){
+        $records = HealthEvaluation::where('patient_id', $patient_id)->get();
+        foreach($records as $record){
+            $record->archived = 1;
+            $record->save();
+
+        }
         
         return redirect()->back();
     }

@@ -21,8 +21,10 @@ class Event extends Model
         'archived'
     ];
 
+
     public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
+        
     }
     public function message(){
         return $this->hasMany(Message::class, "event_id");

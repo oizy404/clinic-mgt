@@ -81,10 +81,12 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     Route::get('/consultation-record', [ConsultationController::class, "index"])->name("consultation-record");
     Route::get('/add-consultation-record', [ConsultationController::class, "create"])->name("add-consultation-record");
     Route::post('/store-consultation-record', [ConsultationController::class, "store"])->name("store-consultation-record");
+    Route::get('/printAll-consultation-record/{id}', [ConsultationController::class, "printAll"])->name("printAll-consultation-record");
+    Route::get('/print-health-eval/{id}', [ConsultationController::class, "print"])->name("print-health-eval");
     Route::get('/show-consultation-record/{id}', [ConsultationController::class, "show"])->name("show-consultation-record");
-    Route::get('/edit-consultation-record/{id}', [ConsultationController::class, "edit"])->name("edit-consultation-record");
     Route::post('/update-consultation-record/{id}', [ConsultationController::class, "update"])->name("update-consultation-record");
     Route::get('archive-consultation-record/{id}', [ConsultationController::class, "archive"])->name('archive-consultation-record');
+    Route::get('archiveAll-consultation-record/{id}', [ConsultationController::class, "archiveAll"])->name('archiveAll-consultation-record');
 
     Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
     Route::get('/doctorViewCreate/{id}', [MessageController::class, "doctorViewCreate"])->name("doctorViewCreate");

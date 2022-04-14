@@ -42,22 +42,19 @@
                                 <th class="bg-primary text-white">ID Number</th>
                                 <th class="bg-primary text-white">Name</th>
                                 <th class="bg-primary text-white">Role</th>
-                                <th class="bg-primary text-white text-center">Print</th>
-                                <th class="bg-primary text-white text-center">Edit</th>
-                                <th class="bg-primary text-white text-center">Delete</th>
+                                <th class="bg-primary text-white text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach($records as $record)
-                            @if($record->archived == 0)
-                            <tr class="theRecord" data-href="{{route('show-consultation-record', $record->id)}}">
-                                <td>{{$record->patient->school_id}}</td>
-                                <td>{{$record->patient->last_name}}, {{$record->patient->first_name}}</td>
-                                <td>{{$record->patient->patient_role}}</td>
-                                <td class="text-center"><a href="{{route('show-consultation-record', $record->id)}}" class="btn btn-success"><i class="far fa-print"></i></a></td>
-                                <td class="text-center"><a href="{{route('edit-consultation-record', $record->id)}}" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
+                            @if($record->first()->archived == 0)
+                            <tr class="theRecord" data-href="">
+                                <td>{{$record->first()->patient->school_id}}</td>
+                                <td>{{$record->first()->patient->last_name}}, {{$record->first()->patient->first_name}}</td>
+                                <td>{{$record->first()->patient->patient_role}}</td>
                                 <td class="text-center">
-                                    <a href="{{route('archive-consultation-record', $record->id)}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{route('show-consultation-record', $record->first()->patient_id)}}" class="btn btn-warning"><i class="fa fa-eye"></i></a>
+                                    <a href="{{route('archiveAll-consultation-record', $record->first()->patient_id)}}" onclick="confirmArchive()" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @endif
@@ -74,13 +71,23 @@
 </div> <!-- closing div connect from admin-header -->
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <script>
-      $(".hamburger").click(function(){
-        $(".wrapper").toggleClass("active")
-      });
+        $(".hamburger").click(function(){
+            $(".wrapper").toggleClass("active")
+        });
 
-      $('.theRecord').click(function(){
+        $('.theRecord').click(function(){
             window.location = $(this).data("href");
         });
+
+        function confirmArchive(){
+            var result = confirm("Confirm to archive All Health Evaluation Records.");
+            if (result != true) {
+                event.preventDefault();
+                returnToPreviousPage();
+                return false;
+            }
+            return true;
+        }
       
   </script>
 @stop

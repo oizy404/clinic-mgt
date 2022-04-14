@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="print.css" type="text/css" media="print" />
 
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -33,15 +34,11 @@
         width: 100%;
         height: 100%; */
         font-family: Arial, Helvetica, sans-serif;
-        
     }
     </style>
 </head>
 <body>
 
-    @include('shared.doctor-header')
-    @include('shared.doctor-sidenav')
-    
     @yield('content')
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>

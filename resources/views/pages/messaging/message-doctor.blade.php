@@ -13,9 +13,11 @@
                         <div class="doctor-msg">
                             <div class="card" id="unselect-msg" >
                                 <div class="card-body doctormsg_card_body">
-                                    <h1>You don't have a message selected</h1>
-                                    <p>Choose one from your existing messages, or start a new one.</p>
-                                    <a href="#" class="btn btn-primary">Create New Message</a>
+                                    <div class="col-md-8 offset-md-2 no-msg">
+                                        <h1>You don't have a message selected</h1>
+                                        <p>Choose one from your existing messages, or start a new one.</p>
+                                        <a href="#" class="btn btn-primary mt-3">New Message</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -34,7 +34,7 @@
         margin: 0;
         width: 100%;
         height: 100%; */
-        font-family: Arial, Helvetica, sans-serif;
+        /* font-family: Arial, Helvetica, sans-serif; */
     }
     </style>
 </head>

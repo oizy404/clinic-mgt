@@ -30,13 +30,15 @@ class MessageController extends Controller
             ->orderBy('tbl_messages.created_at','desc')
             ->where('rank','patient')
             ->get()->groupBy('receiver');
+        $patientusers = User::all();
 
         $patients = PatientProfile::all();
         
         return view("pages.messaging.message-doctor")->with( compact(
             "users", $users,
             "messages", $messages,
-            "patients", $patients
+            "patients", $patients,
+            "patientusers", $patientusers
         ));
     }
     

@@ -62,7 +62,7 @@
                                 <td class="text-center">
                                     <a href="{{route('edit-health-data', $patient->id)}}" class="btn btn-warning" id="btn-edit-healthdata"><center><i class="far fa-edit"></i></center></a>
                             
-                                    <a href="{{route('archiveHealthData', $patient->id)}}" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
+                                    <a href="{{route('archiveHealthData', $patient->id)}}" onclick="confirmArchive()" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
                                 </td>
                             </tr>
                             @endif
@@ -91,8 +91,17 @@
         $('.theHealthData').click(function(){
             window.location = $(this).data("href");
         });
+
     });
-      
+        function confirmArchive(){
+            var result = confirm("Confirm to archive All Health Evaluation Records.");
+            if (result != true) {
+                event.preventDefault();
+                returnToPreviousPage();
+                return false;
+            }
+            return true;
+        }
   </script>
 @stop
 

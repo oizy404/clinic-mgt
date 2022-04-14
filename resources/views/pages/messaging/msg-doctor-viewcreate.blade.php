@@ -5,26 +5,6 @@
 @stop
 
 @section('content')
-<style>
-    #msg_wrapper .dataTable{
-        border: none;
-    }
-    #msg_wrapper .dataTables_length{
-        display: none;
-    }
-    #msg_wrapper .dataTables_filter label{
-        width: 260px;
-        margin-bottom: 5px;
-    }
-    #msg_wrapper .dataTables_info{
-        display: none;
-        border: none;
-    }
-    #msg_wrapper .dataTables_paginate{
-        display: none;
-        border: none;
-    }
-</style>
         <div class="main-container">
             <div class="doctor-inbox" id="doctor-inbox">
                 <div class="row">
@@ -114,7 +94,7 @@
                                         ?>
                                             <div class="card-body">
                                                 <div class="patientinfo-avatar">
-                                                    <center><img src="{{ Avatar::create($fullname)->toBase64()}}" alt="patient-avatar"></center>
+                                                    <center><img src="{{ Avatar::create($fullname)->toBase64()}}" alt="patient-avatar" class="rounded-circle"></center>
                                                 </div>
                                                 <div class="sender-profile text-center">
                                                     <strong>{{$patient->first_name}} {{$patient->last_name}}</strong>
@@ -132,38 +112,7 @@
                                 @endforeach
                             @endforeach
                         </div>
-                        <div class="card user-receiver" style="display:none;">
-                            <div class="card-body">
-                                <table class="" style="width:100%" id="msg">
-                                    <thead>
-                                        <tr>
-                                            <th style="display:none">ID</th>
-                                            <th style="display:none">User Name</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($patientusers as $patientuser)
-                                            @foreach($patients as $patient)
-                                                @if($patientuser->username == $patient->school_id)
-                                                    @if($patientuser->id != 1 && $patientuser->id != 2)
-                                                    <tr class="theData">
-                                                        <td style="display: none">{{$patientuser->id}}</td>
-                                                        <?php 
-                                                            $fullname = $patient->first_name." ".$patient->last_name;
-                                                        ?>
-                                                        <td>
-                                                            <img src="{{ Avatar::create($fullname)->toBase64()}}" class="patient-avatar" alt="patient-avatar">
-                                                            <a href="{{route('doctorViewCreate', $patientuser->id)}}">{{$patient->first_name}} {{$patient->last_name}}</a>
-                                                        </td>
-                                                    </tr>
-                                                    @endif
-                                                @endif
-                                            @endforeach
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -180,7 +129,7 @@
         });
         $("#search-sender").click(function(){
             $(".user-receiver").show();
-            $(".usersender-info").hide();
+            $(".patient-msgs").hide();
             $("#search-sender").hide();
         })
     });

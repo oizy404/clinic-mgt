@@ -10,7 +10,7 @@
             <div class="print-health-data">
                 <div class="print-link mb-3 mt-5">
                     <div class="col-md-1 offset-md-11">
-                        <a href="#" class="btn btn-success" id="print-health-data"><i class="far fa-print"></i></a>
+                        <a href="#" class="btn btn-success" id="print-health-data"><i class="fa fa-print"></i></a>
                     </div>
                 </div>
                 <div class="acdheader">

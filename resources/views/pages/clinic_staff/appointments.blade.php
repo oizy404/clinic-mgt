@@ -27,23 +27,29 @@
                     <div id="calendar" style="z-index: 1;"></div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" id="lisEvents">
                 <div class="add-event mb-3">
-                    <i class="fal fa-plus"></i> <a href="#" id="addEventBtn">&nbsp New Event</a>
+                    <i class="fa fa-plus"></i> <a href="#" id="addEventBtn">&nbsp New Event</a>
                     <div class="form-group" id="eventList">
                         <div class="form-group">
                             <table class="table table-hover" id="appointments">
                                 <thead>
                                     <tr>
-                                        <th>Event</th>
+                                        <th class="" style="background-color: rgba(0,0,0,.03);">Event</th>
+                                        <th style="background-color: rgba(0,0,0,.03);">Patient</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($event as $eventt)
-                                        <tr>
-                                            <td>{{$eventt->title}}</td>
-                                            <td>{{$eventt->patient->first_name}}</td>
+                                    <?php
+                
+                                    ?>
+                                    @foreach($listEvent as $listEventt)
+                                        @if($listEventt->archived == 0)
+                                        <tr class="theEvents">
+                                            <td>{{$listEventt->title}}</td>
+                                            <td>{{$listEventt->patient->first_name}}</td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
@@ -111,12 +117,20 @@ jQuery(document).ready(function($){
             $('#apt-patient-cancel').click(function(){
                 $('.appoint-patient').hide();
             });
+            
+        })
+        
+        $('.theEvents').click(function(){
+            $('#theEvents').show();
+            $('#apt-view-back').click(function(){
+                $('#theEvents').hide();
+            });
         })
 
         var calendar = $('#calendar').fullCalendar({ //display page, show all the events
             // themeSystem: 'bootstrap5',
             selectable: true,
-            height: 650,
+            height: 590,
             showNonCurrentDates: false,
             editable: false,
             defaultView: 'month',
@@ -205,7 +219,7 @@ jQuery(document).ready(function($){
                 $(this).append(
                     '<div class="edit-delete-btn"><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?)"><i class="fas fa-trash"></i></a></div>'
                 );
-                $('#deleteEvent').click(function(){
+                $('.deleteEvent').click(function(){
                     $('#dialog2').hide();
                     var url="{{url('archiveEvent')}}";
                     $('#deleteEvent').attr('href',url+'/'+event.id);
@@ -221,6 +235,7 @@ jQuery(document).ready(function($){
 @include('pages.clinic_staff.add-appointment')
 @include('pages.clinic_staff.edit-appointment')
 @include('pages.clinic_staff.appoint-patient')
+@include('pages.clinic_staff.show-appointment')
 
 @include('vendor.sweetalert.alert')
 @stop

@@ -73,6 +73,11 @@
     display: inline-block;
     margin-left: 35px;
 }
+.doctor-avatar{
+    position: sticky;
+    display: inline-block;
+    margin-left: 35px;
+}
 #nurse-icon{
     cursor: pointer;
     width: 45px;
@@ -118,3 +123,7 @@
 .clinicstaff-avatar:hover .avatar-content {display: block;}
 
 .clinicstaff-avatar:hover #nurse-icon {background-color: none;}
+
+.doctor-avatar:hover .avatar-content {display: block;}
+
+.doctor-avatar:hover #nurse-icon {background-color: none;}
