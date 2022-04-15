@@ -31,9 +31,9 @@ use App\Model\Event;
 */
 
 // Route::get('/test', [test::class, "test"]);
-// Route::get('/loginPatient', function () {
-//     return view('pages.login.loginPatient');
-// })->name("loginPatient");
+Route::get('/loginPatient', function () {
+    return view('pages.login.loginPatient');
+})->name("loginPatient");
 
 Route::get('/', function () {
     return view('pages.login.front');
@@ -44,7 +44,7 @@ Route::post("authenticate", [LoginController::class, "login"])->name("login");
 //------------ADMIN---------------------------------------------------------------------
 Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 
-    Route::get('admin-home', [ChartController::class, 'medicalSupplyIndex'])->name("admin-home");
+    Route::get('clinicstaff-dashboard', [ChartController::class, 'medicalSupplyIndex'])->name("clinicstaff-dashboard");
 
     Route::get('/health-data', [PatientController::class, "index"])->name("health-data");
     Route::get('/add-health-data', [PatientController::class, "create"])->name("add-health-data");
@@ -72,6 +72,9 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
 
 //-------------DOCTOR--------------------------------------------------------------
 Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
+    // Route::get('/doctor-dashboard', function () {
+    //     return view('pages.clinic_staff.doctor-dashboard');
+    // })->name("doctor-dashboard");
     
     Route::get('index', [EventController::class, 'index'])->name("allEvent");
     Route::get('appointments', [EventController::class, 'index2'])->name("appointments");

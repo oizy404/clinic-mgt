@@ -92,5 +92,5 @@
             return true;
         } 
   </script>
-@include('pages.clinic_staff.add-medical-supplies')
+@include('pages.clinic_staff.medical-inventory.add-medical-supplies')
 @stop

@@ -41,22 +41,19 @@ class PatientController extends Controller
     //STUDENTS PERSONAL INFORMATION
     public function index(){
         $patients = PatientProfile::all();
-        return view("pages.clinic_staff.health-data")->with(compact("patients", $patients,));
+        return view("pages.clinic_staff.health-data.health-data")->with(compact("patients", $patients,));
     }
 
     public function create(){
         $patients = PatientProfile::all();
         $provinces = Province::all();
-        return view("pages.clinic_staff.add-health-data")->with(compact(
+        return view("pages.clinic_staff.health-data.add-health-data")->with(compact(
             "patients",$patients,
             "provinces",$provinces));
     }
 
     public function insert(Request $request){
 
-        // $tbl_student = Student::find(41);
-        // dd($tbl_student->tbl_sibling());
-        // dd($request->all());
         $patient = new PatientProfile();
         $patient->school_id = $request->idnumber;
         $patient->patient_role = $request->role;
@@ -211,11 +208,8 @@ class PatientController extends Controller
         $vaccines = Vaccine::all();
         $illnesses = Illness::all();
 
-
-
-        return view("pages.clinic_staff.edit-health-data")->with(compact(
+        return view("pages.clinic_staff.health-data.edit-health-data")->with(compact(
             "patient", $patient,
-            // "provinces", $provinces,
             "deseases", $deseases,
             "vaccines", $vaccines,
             "illnesses", $illnesses,
@@ -383,11 +377,8 @@ class PatientController extends Controller
         $vaccines = Vaccine::all();
         $illnesses = Illness::all();
 
-
-
-        return view("pages.clinic_staff.show-health-data")->with(compact(
+        return view("pages.clinic_staff.health-data.show-health-data")->with(compact(
             "patient", $patient,
-            // "provinces", $provinces,
             "deseases", $deseases,
             "vaccines", $vaccines,
             "illnesses", $illnesses,
@@ -402,11 +393,4 @@ class PatientController extends Controller
         
         return redirect()->back();
     }
-    // public function destroy($id){
-
-    // }
-
-    // public function importForm(){
-    //     return view('pages.student-health-data');
-    // }
 }

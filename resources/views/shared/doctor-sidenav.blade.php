@@ -3,10 +3,17 @@
     <div class="inner__sidebar_menu">
       <ul>
 
-        <li>
-          <a href="/appointments" class="active">
+        <!-- <li>
+          <a href="/doctor-dashboard" class="active">
             <span class="icon"><i class="fas fa-border-all"></i></span>
             <span class="list">Dashboard</span>
+          </a>
+        </li> -->
+
+        <li>
+          <a href="/appointments" class="active">
+            <span class="icon"><i class="fa fa-calendar-check"></i></span>
+            <span class="list">Appointments</span>
           </a>
         </li>
         

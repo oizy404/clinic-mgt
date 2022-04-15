@@ -30,34 +30,15 @@ class EventController extends Controller
         $patients = PatientProfile::all();
         $event = Event::where('archived',0)->get();
         $listEvent = Event::all();
-
-        // return view("pages.clinic_staff.appointments")->with(compact(
-        //     "patients", $patients,
-        //     "event", $event,
-        // ));   
-        return view('pages.clinic_staff.appointments', compact(
+  
+        return view('pages.clinic_staff.appoint-event.appointments', compact(
             'patients',
             'event',
             'listEvent'
         ));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         try{

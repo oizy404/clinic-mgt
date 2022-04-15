@@ -54,10 +54,10 @@
                         <tbody>
                         @foreach($patients as $patient)
                             @if($patient->archived == 0)
-                            <tr class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">
-                                <td class="text-center">{{$patient->school_id}}</td>
-                                <td>{{$patient->first_name}} {{$patient->last_name}}</td>
-                                <td>{{$patient->patient_role}}</td>
+                            <tr>
+                                <td class="theHealthData text-center" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->school_id}}</td>
+                                <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->first_name}} {{$patient->last_name}}</td>
+                                <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->patient_role}}</td>
                                 <!-- <td class="text-center"><a href="" class="btn btn-success"><center><i class="far fa-print"></center></a></i></td> -->
                                 <td class="text-center">
                                     <a href="{{route('edit-health-data', $patient->id)}}" class="btn btn-warning" id="btn-edit-healthdata"><center><i class="far fa-edit"></i></center></a>

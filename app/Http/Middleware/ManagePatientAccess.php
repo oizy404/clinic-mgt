@@ -19,7 +19,7 @@ class ManagePatientAccess
         $rank = $request->session()->get('rank');
         
         if($rank == "clinicstaff"){
-            return redirect()->route("admin-home");
+            return redirect()->route("clinicstaff-dashboard");
         }
         else if($rank == "doctor"){
             return redirect()->route("appointments");

@@ -213,29 +213,49 @@ jQuery(document).ready(function($){
                 $('#apt-patient-cancel').click(function(){
                     $('.appoint-patient').hide();
                 });
-                
-            },
-            eventMouseover: function(event, jsEvent, view) {
-                $(this).append(
-                    '<div class="edit-delete-btn"><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?)"><i class="fas fa-trash"></i></a></div>'
-                );
-                $('.deleteEvent').click(function(){
-                    $('#dialog2').hide();
-                    var url="{{url('archiveEvent')}}";
-                    $('#deleteEvent').attr('href',url+'/'+event.id);
+                var url="{{url('archiveEvent')}}";
+                $('#deleteEvent').click(function(){
+                    var result = confirm("Confirm to archive this event.");
+                    if (result != true) {
+                        event.preventDefault();
+                        returnToPreviousPage();
+                        return false;
+                    }
+                        return true;
+                        $('#deleteEvent').attr('href',url+'/'+event.id)
+
                 });
             },
-            eventMouseout: function(event, jsEvent) {
-                $('.edit-delete-btn').remove();
-            }
+            // eventMouseover: function(event, jsEvent, view) {
+            //     $(this).append(
+            //         '<div class="edit-delete-btn"><a href="" class="btn" id="deleteEvent" onclick="return confirm("Are you sure to delete event?)"><i class="fas fa-trash"></i></a></div>'
+            //     );
+            //     $('#deleteEvent').click(function(){
+            //         var url="{{url('archiveEvent')}}";
+            //         $('#deleteEvent').attr('href',url+'/'+event.id);
+            //         $('#dialog2').hide();
+            //     });
+            // },
+            // eventMouseout: function(event, jsEvent) {
+            //     $('.edit-delete-btn').remove();
+            // }
         })
-    })
+    });
+    function confirmArchive(){
+        var result = confirm("Confirm to archive this event.");
+        if (result != true) {
+            event.preventDefault();
+            returnToPreviousPage();
+            return false;
+        }
+        return true;
+    }
 });
 </script>
-@include('pages.clinic_staff.add-appointment')
-@include('pages.clinic_staff.edit-appointment')
-@include('pages.clinic_staff.appoint-patient')
-@include('pages.clinic_staff.show-appointment')
+@include('pages.clinic_staff.appoint-event.add-appointment')
+@include('pages.clinic_staff.appoint-event.edit-appointment')
+@include('pages.clinic_staff.appoint-event.appoint-patient')
+@include('pages.clinic_staff.appoint-event.show-appointment')
 
 @include('vendor.sweetalert.alert')
 @stop

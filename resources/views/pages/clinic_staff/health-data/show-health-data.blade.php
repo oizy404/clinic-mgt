@@ -8,17 +8,19 @@
 
         <div class="main-container">
             <div class="print-health-data">
-                <div class="print-link mb-3 mt-5">
+            <div class="print-link mb-3 mt-5">
                     <div class="col-md-1 offset-md-11">
                         <a href="#" class="btn btn-success" id="print-health-data"><i class="fa fa-print"></i></a>
                     </div>
                 </div>
-                <div class="acdheader">
-                    <img src="/images/acdheader.jpg" style="width: 100%;">
-                </div>
-                <div class="hds-heading">
-                    <div class="col-md-4 offset-md-8 p-head">
-                        <h4 class="mb-0">HEALTH DATA SHEET</h4>
+                <div class="row print-acr-heading">
+                    <div class="col-md-8">
+                        <img src="/images/acdheader.jpg" style="width: 100%;">
+                    </div>
+                    <div class="col-md-4 p-head">
+                        <div id="acr-heading">
+                            <h3 class="mb-0" style="text-align: center;">HEALTH INFORMATION</h3>
+                        </div>
                     </div>
                 </div>
                 <div class="" id="create-health-data">

@@ -12,7 +12,7 @@ class MedicalSupplyController extends Controller
         $med_supplies = MedicalSupply::all();
         $med_types = MedType::all();
         
-        return view("pages.clinic_staff.medical-supplies-inventory")->with("med_supplies", $med_supplies)->with("med_types", $med_types);
+        return view("pages.clinic_staff.medical-inventory.medical-supplies-inventory")->with("med_supplies", $med_supplies)->with("med_types", $med_types);
     }
     
     public function insert(Request $request){
@@ -40,13 +40,7 @@ class MedicalSupplyController extends Controller
         $med_supply = MedicalSupply::find($id);
         $med_types = MedType::all();
 
-        return view("pages.clinic_staff.edit-medical-record")->with("med_supply", $med_supply)->with("med_types", $med_types);
-        // return view ('pages.associate.clients.clients_list')
-        // ->with( compact('modes',$modes,
-        //                 'corporates',$corporates,
-        //                 'taxForms',$taxForms,
-                        
-        // ));
+        return view("pages.clinic_staff.medical-inventory.edit-medical-record")->with("med_supply", $med_supply)->with("med_types", $med_types);
     }
 
     public function update(Request $request, $id){

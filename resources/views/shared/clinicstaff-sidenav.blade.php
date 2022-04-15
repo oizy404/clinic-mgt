@@ -4,7 +4,7 @@
       <ul>
 
         <li>
-          <a href="/admin-home" class="active">
+          <a href="/clinicstaff-dashboard" class="active">
             <span class="icon"><i class="fas fa-border-all"></i></span>
             <span class="list">Dashboard</span>
           </a>

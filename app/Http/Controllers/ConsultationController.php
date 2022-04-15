@@ -14,38 +14,23 @@ use App\Models\OtherComplaint;
 
 class ConsultationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $records = HealthEvaluation::all()->groupBy('patient_id');
-        return view("pages.clinic_staff.consultation-record")->with(compact(
+        return view("pages.clinic_staff.health-eval.consultation-record")->with(compact(
             "records", $records,
         ));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $patients = PatientProfile::all();
-        return view("pages.clinic_staff.add-consultation-record")->with(compact(
+        return view("pages.clinic_staff.health-eval.add-consultation-record")->with(compact(
             "patients", $patients,
         ));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $record = new HealthEvaluation();
@@ -96,52 +81,13 @@ class ConsultationController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function printAll($patient_id)
-    {
-        $records = HealthEvaluation::where('patient_id', $patient_id)->get();
-        $chief_complaints = ChiefComplaint::all();
-
-
-        return view("pages.clinic_staff.printAll-health-eval")->with(compact(
-            "records", $records,
-            "chief_complaints", $chief_complaints,
-
-        ));
-    }
-
-    public function print($id)
-    {
-        $record = HealthEvaluation::find($id);
-        $chief_complaints = ChiefComplaint::all();
-
-
-        return view("pages.clinic_staff.print-health-eval")->with(compact(
-            "record", $record,
-            "chief_complaints", $chief_complaints,
-
-        ));
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($patient_id)
     {
         $records = HealthEvaluation::where('patient_id', $patient_id)->get();
         $patients = PatientProfile::all();
         $chief_complaints = ChiefComplaint::all();
 
-        return view("pages.clinic_staff.show-consultation-record")->with(compact(
+        return view("pages.clinic_staff.health-eval.show-consultation-record")->with(compact(
             "patient_id",
             "records", $records,
             "patients", $patients,
@@ -149,13 +95,6 @@ class ConsultationController extends Controller
         ));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $record = HealthEvaluation::find($id);
@@ -208,16 +147,30 @@ class ConsultationController extends Controller
         return redirect()->route('consultation-record');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    public function printAll($patient_id)
+    {
+        $records = HealthEvaluation::where('patient_id', $patient_id)->get();
+        $chief_complaints = ChiefComplaint::all();
+
+        return view("pages.clinic_staff.health-eval.printAll-health-eval")->with(compact(
+            "records", $records,
+            "chief_complaints", $chief_complaints,
+
+        ));
+    }
+
+    public function print($id)
+    {
+        $record = HealthEvaluation::find($id);
+        $chief_complaints = ChiefComplaint::all();
+
+        return view("pages.clinic_staff.health-eval.print-health-eval")->with(compact(
+            "record", $record,
+            "chief_complaints", $chief_complaints,
+
+        ));
+    }
+
     public function archive($id, Request $request){
         $record = HealthEvaluation::find($id);
         $record->archived = 1;
@@ -225,12 +178,13 @@ class ConsultationController extends Controller
         
         return redirect()->back();
     }
+
     public function archiveAll($patient_id, Request $request){
         $records = HealthEvaluation::where('patient_id', $patient_id)->get();
+
         foreach($records as $record){
             $record->archived = 1;
             $record->save();
-
         }
         
         return redirect()->back();

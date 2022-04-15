@@ -1,21 +1,21 @@
 <div class="wrapper">
     <div class="top_navbar">
         <div class="logo">
-            <a href="/admin-home" class="acdLogo"><img src="/images/acdLogo.png" alt="acd logo1" class="rounded-circle" id="acdLogo"></a>
+            <a href="/clinicstaff-dashboard" class="acdLogo"><img src="/images/acdLogo.png" alt="acd logo1" class="rounded-circle" id="acdLogo"></a>
             <p>Clinic Management System</p>
-            <a href="/admin-home"><img src="/images/acdLogo.png" alt="acd logo2" class="rounded-circle" id="acdLogo2"></a>
+            <a href="/clinicstaff-dashboard"><img src="/images/acdLogo.png" alt="acd logo2" class="rounded-circle" id="acdLogo2"></a>
         </div>
         <div class="row">
             <div class="col"></div>
             <div class="col-md-1 header-icons" style="padding: 0px; color: #ececec;">
                 <div class="message-icon">
                     <a href="/message-clinicstaff">
-                        <i class="fal fa-comment-alt-medical"></i>
+                        <i class="fa fa-comments"></i>
                     </a>
                 </div>
                 <div class="notif-icon">
                     <a href="#">
-                        <i class="fal fa-bell"></i>
+                        <i class="fa fa-bell"></i>
                     </a>
                 </div>
             </div>

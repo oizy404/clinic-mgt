@@ -3,10 +3,13 @@
     <div class="col-md-6 offset-md-3 mt-5">
         <div class="card">
             <div class="card-header bg-info">
-                <h4>Update Appointment</h4>
+                <div class="row">
+                    <div class="col"><h4>Update Appointment</h4></div>
+                    <div class="col-md-1"><button type="button" id="apt-update-cancel" style="color:red;background-color: transparent; border:none;"><i class="fa fa-circle-xmark"></i></button></div>
+                </div>
             </div>
             <div class="card-body">
-                <div id="dialog-body">
+                <!-- <div id="dialog-body"> -->
                     <form action="{{route('eventStore')}}" id="updateClick" method="post">
                         @csrf
                         <!-- <div class="form-group input-group-sm">
@@ -37,8 +40,10 @@
                         <input type="hidden" name="event_id" id="eventIdd">
                         <div class="form-group mt-2">
                             <button type="submit" id="action-btn" class="btn btn-primary">Update</button>
-                            <button type="button" class="btn btn-danger" id="apt-update-cancel">Cancel</button>
-                        </div>
+                        
+                            <a href="" class="btn btn-danger" id="deleteEvent" style="float: right;">Delete</a>
+                            </div>
+                        <!-- </div> -->
                     </form>
                 </div>
             </div>

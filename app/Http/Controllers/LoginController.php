@@ -23,7 +23,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)){
 			if($request->session()->put('rank', $rank)=='clinicstaff'){// put session data named 'rank'. Which value is either 'admin',
-				return redirect()->route('admin-home');
+				return redirect()->route('clinicstaff-dashboard');
 			}
 			if($request->session()->put('rank', $rank)=='doctor'){// put session data named 'rank'. Which value is either 'doctor',
 				return redirect()->route('appointments');
