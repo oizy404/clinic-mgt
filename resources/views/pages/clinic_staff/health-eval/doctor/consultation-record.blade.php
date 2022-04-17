@@ -53,8 +53,8 @@
                                 <td>{{$record->first()->patient->last_name}}, {{$record->first()->patient->first_name}}</td>
                                 <td>{{$record->first()->patient->patient_role}}</td>
                                 <td class="text-center">
-                                    <a href="{{route('show-consultation-record', $record->first()->patient_id)}}" class="btn btn-warning"><i class="fa fa-eye"></i></a>
-                                    <a href="{{route('archiveAll-consultation-record', $record->first()->patient_id)}}" onclick="confirmArchive()" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="{{route('doctor/show/consultation-record', $record->first()->patient_id)}}" class="btn btn-warning"><i class="fa fa-eye"></i></a>
+                                    <a href="{{route('doctor/archiveAll/consultation-record', $record->first()->patient_id)}}" onclick="confirmArchive()" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @endif
@@ -64,7 +64,7 @@
                 </div>  
             </div>
         </div>
-        <a href="{{route('add-consultation-record')}}" class="add-data">
+        <a href="{{route('doctor/add/consultation-record')}}" class="add-data">
             <i class="fas fa-plus"></i>
         </a>
     </div> <!-- closing div connect from admin-sidenav -->

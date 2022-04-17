@@ -4,4 +4,6 @@ $(document).ready( function () {
     $('#msg').DataTable();
     $('#supplies-inventory').DataTable();
     $('#appointments').DataTable();
+    $('#userTable').DataTable();
+
 } );

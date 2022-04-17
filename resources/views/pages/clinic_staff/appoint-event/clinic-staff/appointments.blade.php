@@ -1,4 +1,4 @@
-@extends('layout.doctor-master1')
+@extends('layout.clinicstaff-master1')
 
 @section('title')
     Appointment Booking
@@ -21,13 +21,13 @@
 
         {{session('rank')}}
         <div class="row appointment-content main-container">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <!-- <h1>APPOINTMENTS BOOKING</h1> -->
                 <div class="appointment-container">
                     <div id="calendar" style="z-index: 1;"></div>
                 </div>
             </div>
-            <div class="col-md-4" id="lisEvents">
+            <div class="col-md-5" id="lisEvents">
                 <div class="add-event mb-3">
                     <i class="fa fa-plus"></i> <a href="#" id="addEventBtn">&nbsp New Event</a>
                     <div class="form-group" id="eventList">
@@ -37,6 +37,7 @@
                                     <tr>
                                         <th class="" style="background-color: rgba(0,0,0,.03);">Event</th>
                                         <th style="background-color: rgba(0,0,0,.03);">Patient</th>
+                                        <th style="background-color: rgba(0,0,0,.03);">Start Date/Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +48,12 @@
                                         @if($listEventt->archived == 0)
                                         <tr class="theEvents">
                                             <td>{{$listEventt->title}}</td>
-                                            <td>{{$listEventt->patient->first_name}}</td>
+                                            @if($listEventt->patient_id)
+                                                <td>{{$listEventt->patient->first_name}} {{$listEventt->patient->last_name}}</td>
+                                            @elseif($listEventt->patient_id == null)
+                                                <td><small>N/A</small></td>
+                                            @endif
+                                            <td>{{date('F j, Y, g:i a', strtotime($listEventt->start))}}</td>
                                         </tr>
                                         @endif
                                     @endforeach
@@ -140,7 +146,7 @@ jQuery(document).ready(function($){
                 center: 'title',
                 right: 'year,month,basicWeek,basicDay'
             },
-            events:"{{route('allEvent')}}", //show all the events
+            events:"{{route('allEvents')}}", //show all the events
             backgroundColor: '#ff0000',        
             dayClick:function(date,event,view){ //create event in one click
                 $('#start').val(convert(date));
@@ -221,9 +227,8 @@ jQuery(document).ready(function($){
                         returnToPreviousPage();
                         return false;
                     }
+                        $('#deleteEvent').attr('href',url+'/'+event.id);
                         return true;
-                        $('#deleteEvent').attr('href',url+'/'+event.id)
-
                 });
             },
             // eventMouseover: function(event, jsEvent, view) {
@@ -252,10 +257,10 @@ jQuery(document).ready(function($){
     }
 });
 </script>
-@include('pages.clinic_staff.appoint-event.add-appointment')
-@include('pages.clinic_staff.appoint-event.edit-appointment')
-@include('pages.clinic_staff.appoint-event.appoint-patient')
-@include('pages.clinic_staff.appoint-event.show-appointment')
+@include('pages.clinic_staff.appoint-event.clinic-staff.add-appointment')
+@include('pages.clinic_staff.appoint-event.clinic-staff.edit-appointment')
+@include('pages.clinic_staff.appoint-event.clinic-staff.appoint-patient')
+@include('pages.clinic_staff.appoint-event.clinic-staff.show-appointment')
 
 @include('vendor.sweetalert.alert')
 @stop

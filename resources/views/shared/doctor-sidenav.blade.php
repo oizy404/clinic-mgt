@@ -11,14 +11,14 @@
         </li> -->
 
         <li>
-          <a href="/appointments" class="active">
+          <a href="appointments" class="active">
             <span class="icon"><i class="fa fa-calendar-check"></i></span>
             <span class="list">Appointments</span>
           </a>
         </li>
         
         <li>
-          <a href="/consultation-record">
+          <a href="/doctor/consultation-record">
             <span class="icon"><i class="fas fa-file-medical"></i></span>
             <span class="list">Consultation Record</span>
           </a>

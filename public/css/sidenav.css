@@ -120,6 +120,7 @@
 .wrapper.active .main_body .main-container{
   width: calc(100% - 100px);
   margin-left: 100px;
+  background-color: rgba(var(--d87,255,255,255),1);
 }
 
 /* msg-sidenav */

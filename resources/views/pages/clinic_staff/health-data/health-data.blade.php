@@ -26,8 +26,8 @@
 
         {{session('rank')}}
         <div class="main-container">
-            <div class="hlth-dashboard">
-                <div class="offset-md-1 health-data-addbtn">
+            <div class="row hlth-dashboard">
+                <div class="col-md-11 health-data-addbtn">
                     <div class="col-md-4">
                         <!-- <button class="btn" id="btn-data"><i class="fas fa-plus"></i> Add Health Datum</button><br>
                         <button class="btn" id="btn-batchdata"><i class="fas fa-plus"></i> Add Batch Health Data</button> -->
@@ -41,7 +41,7 @@
                     <button class="btn-primary" id="pr-btn2">Students</button>
                     <button class="btn-success" id="pr-btn2">Visitors</button>
                 </div> -->
-                <div class="offset-md-1 health-data">
+                <div class="col-md-11 health-data mt-4">
                     <table id="health-data" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>

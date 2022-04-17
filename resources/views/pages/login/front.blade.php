@@ -17,6 +17,7 @@
             <div class="form-group mt-3 mb-1">
                 <img src="images/acdLogo.png" alt="acd logo" class="rounded-circle" id="acdLogo"><br>
             </div>
+                {!! Toastr::message() !!}
             <div id="form">
                 <form action="{{route('login')}}" method="post" id="page1">
                     @csrf

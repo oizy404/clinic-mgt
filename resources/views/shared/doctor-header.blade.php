@@ -1,9 +1,9 @@
 <div class="wrapper">
     <div class="top_navbar">
         <div class="logo">
-            <a href="/doctor-dashboard" class="acdLogo"><img src="/images/acdLogo.png" alt="acd logo1" class="rounded-circle" id="acdLogo"></a>
+            <a href="/appointments" class="acdLogo"><img src="/images/acdLogo.png" alt="acd logo1" class="rounded-circle" id="acdLogo"></a>
             <p>Clinic Management System</p>
-            <a href="/doctor-dashboard"><img src="/images/acdLogo.png" alt="acd logo2" class="rounded-circle" id="acdLogo2"></a>
+            <a href="/appointments"><img src="/images/acdLogo.png" alt="acd logo2" class="rounded-circle" id="acdLogo2"></a>
         </div>
         <div class="row">
             <div class="col"></div>

@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Manila',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,7 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
+        Brian2694\Toastr\ToastrServiceProvider::class,
 
 
         /*
@@ -236,6 +237,7 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Charts' => ConsoleTVs\Charts\Charts::class,
         'Avatar' => Laravolt\Avatar\Facade::class,
+        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
 
     ],
 

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- smg toasttr -->
+    <link rel="stylesheet" href="http://cdn/bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdn/bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn/bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">

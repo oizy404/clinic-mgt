@@ -26,8 +26,8 @@
 
 {{session('rank')}}
         <div class="main-container">
-            <div class="supplies-inventory-dashboard">
-                <div class="offset-md-1 supplies-inventory-addbtn">
+            <div class="row supplies-inventory-dashboard">
+                <div class="col-md-11 supplies-inventory-addbtn">
                     <div class="col-md-4">
                         <!-- <button class="btn" id="btn-item"><i class="fas fa-plus"></i> Add Item</button><br> -->
                     </div>
@@ -35,7 +35,7 @@
                         <h3>MEDICAL SUPPLIES INVENTORY</h3>
                     </div>    
                 </div>
-                <div class="offset-md-1 supplies-inventory">
+                <div class="col-md-11 supplies-inventory mt-4">
                     <table class="table table-hover rounded" id="supplies-inventory">
                         <thead>
                             <tr>                            

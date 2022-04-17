@@ -9,6 +9,13 @@
             <span class="list">Dashboard</span>
           </a>
         </li>
+
+        <li>
+          <a href="/patientLogs-page" class="active">
+            <span class="icon"><i class="fa fa-users"></i></span>
+            <span class="list">User Control</span>
+          </a>
+        </li>
         
         <li>
           <a href="/health-data">
@@ -18,7 +25,7 @@
         </li>
 
         <li>
-          <a href="/consultation-record">
+          <a href="/clinicstaff/consultation-record">
             <span class="icon"><i class="fas fa-file-medical"></i></span>
             <span class="list">Consultation Record</span>
           </a>
@@ -28,6 +35,13 @@
           <a href="/medical-supplies-inventory">
             <span class="icon"><i class="fas fa-briefcase-medical"></i></span>
             <span class="list">Medical Supplies</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/clinicstaff/appointments" class="active">
+            <span class="icon"><i class="fa fa-calendar-check"></i></span>
+            <span class="list">Appointments</span>
           </a>
         </li>
         

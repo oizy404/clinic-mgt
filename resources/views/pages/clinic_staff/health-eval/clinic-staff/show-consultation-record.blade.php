@@ -1,4 +1,4 @@
-@extends('layout.doctor-master1')
+@extends('layout.clinicstaff-master1')
 
 @section('title')
     Edit Consultaion Record
@@ -62,7 +62,7 @@
     <div class="main-container">
         <div class="print-healtheval-data">
             <div class="col-md-2 offset-md-10 mb-4">
-                <a href="{{route('show-consultation-record', $patient_id)}}" id="print-healtheval-data"><i class="fa fa-print"></i>&nbsp Print All Record</i></a>
+                <a href="{{route('clinicstaff/show/consultation-record', $patient_id)}}" id="print-healtheval-data"><i class="fa fa-print"></i>&nbsp Print All Record</i></a>
             </div>
         </div>
         @foreach($records as $record)

@@ -1,4 +1,4 @@
-@extends('layout.doctor-master1')
+@extends('layout.clinicstaff-master1')
 
 @section('title')
     Add Consultaion Record
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="" id="add-consultation-record">
-                    <form action="{{route('store-consultation-record')}}" method="post">
+                    <form action="{{route('clinicstaff/store/consultation-record')}}" method="post">
                         @csrf
                         @method('post')
                         <div class="form-group" id="health-evaluation" style="background-color: white;"> 
