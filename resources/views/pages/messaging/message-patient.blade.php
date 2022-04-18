@@ -2,8 +2,10 @@
     <!-- <div class="patient-msg mt-5"> -->
         <div class="card">
             <div class="card-header patientmsg-cardheader">
-                <h6>CLINIC PERSONEL</h6>
-                <a href="#" id="btn-compose-cancel" style="float:right; color: red;"><i class="fas fa-times-circle"></i></a>
+                <div class="row">
+                    <div class="col"><h6>CLINIC PERSONEL</h6></div>
+                    <div class="col-md-1"><a href="#" id="btn-compose-cancel" style="float:right; color: red;"><i class="fas fa-times-circle"></i></a></div>
+                </div>
             </div>
             <div class="card-body patientmsg_card_body">
                 @foreach($messages as $message)

@@ -7,30 +7,8 @@
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col-md-1">
-                <div class="message-icon">
-                    <a href="/message-clinicstaff">
-                        <i class="fal fa-comment-alt-medical"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-1">
-                <div class="notif-icon">
-                    <a href="#">
-                        <i class="far fa-bell"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-1">
-                <div class="logout-user">
-                    <a href="/logout">
-                        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-                        <span class="list">Log Out</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-1">
-                <div class="patientuser-avatar">
+            <div class="col-md-1" style="padding: 0px;">
+                <div class="patientuser-avatar mt-2">
                     <?php
                         use App\Models\PatientProfile;
                         $patients = PatientProfile::all();
@@ -42,9 +20,12 @@
                                 <?php
                                     $fullname = $patient->first_name." ".$patient->last_name;
                                 ?>
-                                <center><img src="{{Avatar::create($fullname)->toBase64()}}" alt="patientuser-avatar" style="width: 40px;"></center>
+                                <center><img src="{{Avatar::create($fullname)->toBase64()}}" alt="patientuser-avatar" id="patientuser-icon" style="width: 40px;"></center>
                             @endif
                     @endforeach
+                    <div class="avatar-content">
+                        <a href="/logout">Log Out</a>
+                    </div>
                 </div>
             </div>
         </div>
