@@ -32,13 +32,13 @@
                                 <div class="card-body doctormsg_card_body">
                                     @foreach($messages as $message)
                                     @if($message->receiver == $id || $message->sender == $id)
-                                        @if($message->receiver == Auth::user()->id || $message->receiver == 2)
+                                        @if($message->receiver == Auth::user()->id || $message->receiver == 1)
                                                 @if(!$message->img_file)
                                                     <div class='d-flex justify-content-start'><div class='inbox bg-info'>{{$message->message}}</div></div><br>
                                                 @else
                                                     <div class='d-flex justify-content-start'><div class='img-msg'><img src="{{asset('imgfileMessages')}}/{{$message->img_file}}" id='image-msg' alt='image msg' style='max-width:150px;'></div></div><br>
                                                 @endif
-                                        @elseif($message->sender == Auth::user()->id || $message->sender == 2)
+                                        @elseif($message->sender == Auth::user()->id || $message->sender == 1)
                                             @if($message->message)
                                                 <div class='d-flex justify-content-end'><div class='outbox bg-primary text-light'>{{$message->message}}</div></div><br>
                                             @elseif($message->event_id)

@@ -62,7 +62,7 @@
     <div class="main-container">
         <div class="print-healtheval-data">
             <div class="col-md-2 offset-md-10 mb-4">
-                <a href="{{route('doctor/show/consultation-record', $patient_id)}}" id="print-healtheval-data"><i class="fa fa-print"></i>&nbsp Print All Record</i></a>
+                <a href="{{route('doctor/printAll/consultation-record', $patient_id)}}" id="print-healtheval-data"><i class="fa fa-print"></i>&nbsp Print All Record</i></a>
             </div>
         </div>
         @foreach($records as $record)
@@ -280,12 +280,12 @@
             </div>
             <div class="col-md-1 con-rec-printOne">
                 <div class="form-group">
-                    <a href="{{route('print-health-eval', $record->id)}}" class="btn btn-success" id="con-rec-printOne"><i class="fa fa-print"></i></a>
+                    <a href="{{route('doctor/print/health-eval', $record->id)}}" class="btn btn-success" id="con-rec-printOne"><i class="fa fa-print"></i></a>
                 </div>
             </div>
             <div class="col-md-1">
                 <div class="form-group">
-                    <a href="{{route('archive-consultation-record', $record->id)}}" onclick="confirmArchive()" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
+                    <a href="{{route('doctor/archive/   consultation-record', $record->id)}}" onclick="confirmArchive()" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
                 </div>
             </div>
         </div>

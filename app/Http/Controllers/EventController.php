@@ -27,7 +27,7 @@ class EventController extends Controller
         $event = Event::where('archived',0)->get();
         $listEvent = Event::all();
   
-        return view('pages.clinic_staff.appoint-event.appointments', compact(
+        return view('pages.clinic_staff.appoint-event.doctor.appointments', compact(
             'patients',
             'event',
             'listEvent'
@@ -73,12 +73,14 @@ class EventController extends Controller
                         $event->patient_id = $request->patient_id;
                         $event->archived = 0;
                         $event->save();
-    
+
                         $msg = new Message();
                         $msg->sender = Auth::id();
                         $msg->event_id = $event->id;
-                        $msg->receiver = 5;
+                        $msg->receiver = $request->user_id;
                         $msg->read = 0;
+
+                        // dd($msg);
                         $msg->save();
 
                         Alert::success('Success','Event Created Successfully');
@@ -180,7 +182,7 @@ class EventController extends Controller
                         $msg = new Message();
                         $msg->sender = Auth::id();
                         $msg->event_id = $event->id;
-                        $msg->receiver = 5;
+                        $msg->receiver = $request->user_id;
                         $msg->read = 0;
                         $msg->save();
 

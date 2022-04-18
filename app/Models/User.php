@@ -46,7 +46,7 @@ class User extends Authenticatable
         return $this->hasMany( \App\Models\Message::class, "sender","receiver");
     }
     public function patient(){
-        return $this->hasMany(\App\Models\PatientProfile::class, "school_id");
+        return $this->hasMany(\App\Models\PatientProfile::class, "user_id");
     }
 }
 

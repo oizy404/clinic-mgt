@@ -18,7 +18,7 @@
                         @foreach ($patients as $patient)
                         <tr class="patientsData">
                             <td style="display: none">{{$patient->id}}</td>
-                            <td>{{$patient->school_id}}</td>
+                            <td>{{$patient->user_id}}</td>
                             <td>{{$patient->first_name}} {{$patient->last_name}}</td>
                             <td>{{$patient->patient_role}}</td>
                         </tr>

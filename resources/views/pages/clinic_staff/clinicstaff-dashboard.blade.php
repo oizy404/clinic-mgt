@@ -53,6 +53,18 @@
                     </div>
                 </div>
             </div>
+            <div class="row cc mb-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            {!! $chief_compt->container() !!}
+                        </div>
+                        <div class="card-footer">
+                            Chief Complaints Chart
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row" id="inventory">
                 <div class="col-md-4">
                     <div class="card">
@@ -79,6 +91,7 @@
                 {!! $patient->script() !!}
                 {!! $med_suppliesReleased->script() !!}
                 {!! $med_suppliess->script() !!}
+                {!! $chief_compt->script() !!}
             </div>
         </div>
         

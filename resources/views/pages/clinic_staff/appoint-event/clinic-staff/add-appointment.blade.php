@@ -10,7 +10,7 @@
                     <form action="{{route('clinicstaff/eventStore2')}}" id="dayClick" method="post">
                         @csrf
                         <div class="form-group input-group-sm">
-                            <!-- <input type="hidden" name="archived"> -->
+                            <input type="hidden" name="user_id" id="user_id">
                             <input type="hidden" name="patient_id" id="patient_id">
                             <label for="complete-name">Patient Name</label>
                             <input type="text" class="form-control" name="complete_name" id="complete_name">

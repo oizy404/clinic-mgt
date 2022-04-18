@@ -8,6 +8,7 @@ use App\Models\Department;
 use App\Models\YearLevel;
 use App\Models\MedicalSupply;
 use App\Models\MedType;
+use App\Models\Complaint;
 
 use App\Charts\SampleChart;
 use Illuminate\Support\Facades\DB;
@@ -98,6 +99,44 @@ class ChartController extends Controller
             ]);
             $patient->displayAxes(false)
                 ->displayLegend(false);
+
+
+        //Chief Complaints
+        $countCC = DB::table('tbl_chief_complaints')
+            ->join('tbl_complaints', 'tbl_chief_complaints.id', '=', 'tbl_complaints.chief_complaints_id')
+            ->select('tbl_chief_complaints.*','tbl_complaints.chief_complaints_id')
+            ->orderBy('tbl_complaints.created_at','asc')
+            ->pluck('chief_complaint');
+
+        $head_ache = Complaint::where('chief_complaints_id', 1)->count();
+        $stomach_ache = Complaint::where('chief_complaints_id', 2)->count();
+        $tooth_ache = Complaint::where('chief_complaints_id', 3)->count();
+        $difficulty_breathing = Complaint::where('chief_complaints_id', 4)->count();
+        $abdominal_pain = Complaint::where('chief_complaints_id', 5)->count();
+        $fever = Complaint::where('chief_complaints_id', 6)->count();
+        $dizziness = Complaint::where('chief_complaints_id', 7)->count();
+        $dysmenorrhea = Complaint::where('chief_complaints_id', 8)->count();
+        $diarhea = Complaint::where('chief_complaints_id', 9)->count();
+        $vomiting  = Complaint::where('chief_complaints_id', 10)->count();
+
+        $chief_compt = new SampleChart;
+        $chief_compt->height(200); 
+        $chief_compt->labels($countCC);
+
+        $chief_compt->dataset('Chief Complaint','bar',[
+            $head_ache,
+            $stomach_ache,
+            $tooth_ache,
+            $difficulty_breathing,
+            $abdominal_pain,
+            $fever,
+            $dizziness,
+            $dysmenorrhea,
+            $diarhea,
+            $vomiting,
+        ])
+            ->color('rgba(34, 50, 145, 0.7)')
+            ->backgroundColor('rgba(207, 64, 145, 0.6)');
 
 
         // Medical Supplies Inventory Chart
@@ -198,6 +237,7 @@ class ChartController extends Controller
             "patient",
             "med_suppliesReleased",
             "med_suppliess",
+            "chief_compt",
         ));
     }
 }

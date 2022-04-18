@@ -12,6 +12,7 @@ class PatientProfile extends Model
     protected $table ="tbl_patient_profiles";
 
     protected $fillable = [
+        'user_id',
         'school_id',
         'patient_role',
         'first_name',

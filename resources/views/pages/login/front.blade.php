@@ -3,10 +3,13 @@
 @section('title')
     ACD CLINIC
 @stop
-<style>
 
-</style>
+
 @section('content')
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
 <div class="front-container">
     <div class="container">
         <div class="switch">
@@ -17,7 +20,7 @@
             <div class="form-group mt-3 mb-1">
                 <img src="images/acdLogo.png" alt="acd logo" class="rounded-circle" id="acdLogo"><br>
             </div>
-                {!! Toastr::message() !!}
+            {!! Toastr::message() !!}
             <div id="form">
                 <form action="{{route('login')}}" method="post" id="page1">
                     @csrf
@@ -54,4 +57,8 @@
         </div>
     </div>
 </div>
+
+<script>
+    
+</script>
 @stop

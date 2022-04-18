@@ -52,7 +52,8 @@ class LoginController extends Controller
 			}
         }
 
-		Toastr::error('Incorrect Username or Password','Invalid Login');
+		Toastr::error('Incorrect Username or Password!','Error');
+		
 		return redirect()->back();
     }
 }

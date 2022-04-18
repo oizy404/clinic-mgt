@@ -44,13 +44,15 @@ class MedicalSupplyController extends Controller
     }
 
     public function update(Request $request, $id){
+
         $med_supply = MedicalSupply::find($id);
+        $medStocks = MedicalSupply::where('id', $id)->value('stock');
+        $pieces = $request->quantity;
+
         $med_supply->product_name = $request->product_name;
         $med_supply->med_type_id = $request->medicine_type;
-        $med_supply->quantity = $request->quantity;
-        $med_supply->stock = $request->stock;
-        $med_supply->expiry_date = $request->expiry_date;
-        $med_supply->purchase_date = $request->purchase_date;
+        $stock = $medStocks - $pieces;
+        $med_supply->stock = $stock;
         $med_supply->archived = 0;
 
         $med_supply->save();

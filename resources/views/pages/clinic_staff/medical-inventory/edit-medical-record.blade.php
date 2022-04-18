@@ -8,8 +8,8 @@
 
 {{session('rank')}}
         <div class="main-container">
-            <div class="supplies-inventory-dashboard">
-                <div class="offset-md-1 supplies-inventory-addbtn">
+            <div class="row supplies-inventory-dashboard">
+                <div class="col-md-11 supplies-inventory-addbtn">
                     <div class="col-md-4">
                         <!-- <button class="btn" id="btn-item"><i class="fas fa-plus"></i> Add Item</button><br> -->
                     </div>
@@ -17,7 +17,7 @@
                         <h3>MEDICAL SUPPLIES INVENTORY</h3>
                     </div>    
                 </div>
-                <div class="offset-md-1 update-supplies-inventory">
+                <div class="col-md-11 update-supplies-inventory mt-4" style="margin: auto;">
                     <div class="card">
                         <div class="card-header">
                             <h5>Update Product</h5>
@@ -43,28 +43,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="quantity">Quantity</label>
-                                            <input type="text" class="form-control" name="quantity" value="{{$med_supply->quantity}}">
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="stock">Stock</label>
-                                            <input type="text" class="form-control" name="stock" value="{{$med_supply->stock}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="expiry_date">Expiry Date</label>
-                                            <input type="date" class="form-control" name="expiry_date" value="{{$med_supply->expiry_date}}">
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="purchase_date">Purchase Date</label>
-                                            <input type="date" class="form-control" name="purchase_date" value="{{$med_supply->purchase_date}}">
+                                            <label for="quantity">Quantity/Pieces</label>
+                                            <input type="text" class="form-control" name="quantity">
                                         </div>
                                     </div>
                                 </div>
@@ -90,5 +70,4 @@
         $('#supplies-inventory').DataTable();
     }); 
   </script>
-@include('pages.clinic_staff.add-medical-supplies')
 @stop

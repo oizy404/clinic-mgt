@@ -160,9 +160,11 @@ jQuery(document).ready(function($){
                 });
                 $('.patientsData').click(function(){
                     var patient_id =  $(this).find(":first-child").text();
+                    var user_id = $(this).find(":first-child").next().text();
                     var complete_name = $(this).find(":first-child").next().next().text();
                     $('.appoint-patient').hide();
                     $('#patient_id').val(patient_id);
+                    $('#user_id').val(user_id);
                     $('#complete_name').val(complete_name);
                 });
                 $('#apt-patient-cancel').click(function(){

@@ -48,7 +48,11 @@
                                         @if($listEventt->archived == 0)
                                         <tr class="theEvents">
                                             <td>{{$listEventt->title}}</td>
-                                            <td>{{$listEventt->patient->first_name}} {{$listEventt->patient->last_name}}</td>
+                                            @if($listEventt->patient_id)
+                                                <td>{{$listEventt->patient->first_name}} {{$listEventt->patient->last_name}}</td>
+                                            @elseif($listEventt->patient_id == null)
+                                                <td><small>N/A</small></td>
+                                            @endif                                            
                                             <td>{{date('F j, Y, g:i a', strtotime($listEventt->start))}}</td>
                                         </tr>
                                         @endif
@@ -111,8 +115,10 @@ jQuery(document).ready(function($){
             });
             $('.patientsData').click(function(){
                 var patient_id =  $(this).find(":first-child").text();
-                var complete_name = $(this).find(":first-child").next().next().text();
+                var user_id =  $(this).find(":first-child").next().text();
+                var complete_name = $(this).find(":first-child").next().next().next().text();
                 $('.appoint-patient').hide();
+                $('#user_id').val(user_id);
                 $('#patient_id').val(patient_id);
                 $('#complete_name').val(complete_name);
             });
@@ -156,9 +162,11 @@ jQuery(document).ready(function($){
                 });
                 $('.patientsData').click(function(){
                     var patient_id =  $(this).find(":first-child").text();
+                    var user_id = $(this).find(":first-child").next().text();
                     var complete_name = $(this).find(":first-child").next().next().text();
                     $('.appoint-patient').hide();
                     $('#patient_id').val(patient_id);
+                    $('#user_id').val(user_id);
                     $('#complete_name').val(complete_name);
                 });
                 $('#apt-patient-cancel').click(function(){

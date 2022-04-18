@@ -8,16 +8,16 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-md-1 header-icons" style="padding: 0px; color: #ececec;">
-                <div class="message-icon">
+                <div class="message-icon" style="margin-left: 60px;">
                     <a href="/message-clinicstaff">
                         <i class="fa fa-comments"></i>
                     </a>
                 </div>
-                <div class="notif-icon">
+                <!-- <div class="notif-icon">
                     <a href="#">
                         <i class="fa fa-bell"></i>
                     </a>
-                </div>
+                </div> -->
             </div>
             <div class="col-md-1" style="padding: 0px;">
                 <div class="clinicstaff-avatar mt-1">

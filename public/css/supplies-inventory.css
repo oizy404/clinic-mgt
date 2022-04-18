@@ -23,11 +23,11 @@
 .supplies-inventory i{
     color: #3f3f3f; 
 }
-.update-supplies-inventory{
+/* .update-supplies-inventory{
     width: 80%;
     margin-top: 10px;
     
-}
+} */
 #btn-edit-item{
     margin-top: 20px;
     float: right;
