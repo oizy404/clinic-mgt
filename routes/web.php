@@ -62,6 +62,9 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
     Route::post('updateHealthData/{id}', [PatientController::class, "update"])->name('update-health-data');
     Route::get('showHealthData/{id}', [PatientController::class, "show"])->name('show-health-data');
     Route::get('archiveHealthData/{id}', [PatientController::class, "archive"])->name('archiveHealthData');
+    Route::get('/archived-health-data', [PatientController::class, "archiveView"])->name("archived-health-data");
+    Route::get('/delete-health-data/{id}', [PatientController::class, "delete"])->name("delete-health-data");
+    Route::get('restoreHealthData/{id}', [PatientController::class, "restore"])->name('restoreHealthData');
 
     Route::post('/health-data',[PatientController::class,'import'])->name('student.import');
 
@@ -87,9 +90,19 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
     Route::get('edit-user-details/{id}', [UserManagementController::class, "edit"])->name("edit-user-details");
     Route::post('update-user-details/{id}', [UserManagementController::class, "update"])->name("update-user-details");
 
-    Route::post('/user-accounts',[PatientController::class,'import'])->name('user.import');
+    Route::post('/user-accounts',[UserManagementController::class,'import'])->name('user.import');
 
     Route::get('/activity/login/logout', [UserManagementController::class, "activityLogInLogOut"])->name("/activity/login/logout");
+    Route::get('/print/activity-logs', [UserManagementController::class, "print"])->name("print/activity-logs");
+
+    
+    // Route for view/blade file.
+    // Route::get('importExportView', [ExcelController::class, 'importExportView'])->name('importExportView');
+    // Route for export/download tabledata to .csv, .xls or .xlsx
+    Route::get('exportExcel/{type}', [UserManagementController::class, 'exportExcel'])->name('exportExcel');
+    // Route for import excel data to database.
+    // Route::post('importExcel', [ExcelController::class, 'importExcel'])->name('importExcel');
+
 
     Route::get('clinicstaff/index', [EventController::class, 'clinicstaffIndex'])->name("allEvents");
     Route::get('/clinicstaff/appointments', [EventController::class, 'clinicstaffIndex2'])->name("clinicstaff/appointments");

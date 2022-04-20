@@ -50,7 +50,7 @@
                     <div class="col-md-11" style="margin: auto;">
                         <div class="row">
                             <div class="col-md-2">
-                                <i class="fa fa-box-archive"></i> <a href="">Archived</a>
+                                <i class="fa fa-box-archive"></i> <a href="{{route('archived-health-data')}}">Archived</a>
                             </div>
                             <div class="col-md-3">
                                 <i class="fa fa-plus"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#uploadHealthData"> Upload Batch User</a>

@@ -3,7 +3,18 @@
 @section('title')
     View Health Data
 @stop
+<style>
+    @media print {
+        .main-container {
+            break-inside: avoid;
+        }
+    }
+    @media print {
+    .main-container { display: block; } /* this is key */
 
+    .print-health-data { page-break-inside: avoid; }
+    }
+</style>
 @section('content')
 
         <div class="main-container">

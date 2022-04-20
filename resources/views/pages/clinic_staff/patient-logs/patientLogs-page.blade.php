@@ -49,7 +49,7 @@
                 <div class="col-md-11" style="margin: auto;">
                     <div class="row">
                         <div class="col-md-3">
-                            <i class="fa fa-users"></i> <a href="{{route('/activity/login/logout')}}" > User Activity Logs</a>
+                            <i class="fa fa-users"></i> <a href="{{route('/activity/login/logout')}}"> User Activity Logs</a>
                         </div>
                         <div class="col-md-3">
                             <i class="fa fa-plus"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#uploadUserAccount"> Upload Batch User</a>
@@ -80,15 +80,6 @@
                                         <td>{{$activityLog->email}}</td>
                                         <td>{{$activityLog->phone_number}}</td>
                                         <td >{{$activityLog->rank}}</td>
-                                        <!-- @if($activityLog->status == null)
-                                            <td class="text-center">
-                                                <small class="rounded bg-warning" style="padding: 3px 12px;">N/A</small>
-                                            </td>
-                                        @elseif($activityLog->status == true)
-                                            <td class="text-center">
-                                                <small class="rounded bg-success" style="padding: 3px 6px;">{{$activityLog->status}}</small>
-                                            </td>
-                                        @endif -->
                                         <td class="text-center">
                                             <a href="{{route('edit-user-details', $activityLog->id)}}" class="rounded bg-success text-dark" style="padding: 3px 10px;">Update</a>
                                             <a href="" class="rounded bg-danger text-dark" style="padding: 3px 10px;">Delete</a>

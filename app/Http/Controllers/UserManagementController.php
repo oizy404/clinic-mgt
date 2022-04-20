@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use App\Imports\DataImportExcel;
+use App\Imports\MultipleUserImport;
+use App\Exports\ActivityLogsExport;
 use App\Models\userActivityLog;
 use App\Models\ActivityLog;
 use App\Models\User;
 
+use Excel;
 use Carbon\Carbon;
 
 class UserManagementController extends Controller
@@ -83,5 +85,10 @@ class UserManagementController extends Controller
         return view('pages.clinic_staff.patient-logs.user-activity-logs', compact(
             'activityLogs',
         ));
+    }
+
+    public function exportExcel($type) 
+    {
+        return \Excel::download(new ActivityLogsExport, 'user-activity-logs.'.$type);
     }
 }

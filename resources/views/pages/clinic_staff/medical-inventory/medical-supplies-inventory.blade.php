@@ -35,16 +35,6 @@
 
 {{session('rank')}}
         <div class="main-container">
-            <!-- <div class="row supplies-inventory-dashboard"> -->
-                <!-- <div class="col-md-11 supplies-inventory-addbtn">
-                    <div class="col-md-4">
-                        <button class="btn" id="btn-item"><i class="fas fa-plus"></i> Add Item</button><br>
-                    </div>
-                    <div class="col-md-7 offset-md-1">
-                        <h3>MEDICAL SUPPLIES INVENTORY</h3>
-                    </div>    
-                </div> -->
-
                 <div class="row mb-1" id="med-header">
                     <div class="col-md-11" style="margin: auto; padding: 0px;">
                         <div class="col-md-5">
@@ -57,13 +47,10 @@
                 <div class="row mb-4" id="med-subhead">
                     <div class="col-md-11" style="margin: auto;">
                         <div class="row">
-                            <div class="col-md-2">
-                                <i class="fa fa-box-archive"></i> <a href="">Archived</a>
-                            </div>
                             <div class="col-md-3">
                                 <i class="fa fa-plus"></i> <a href="{{route('released-medical-supplies')}}">Released Medical Supplies</a>
                             </div>
-                            <div class="col-md-4"></div> 
+                            <div class="col"></div> 
                         </div>
                     </div>
                 </div>

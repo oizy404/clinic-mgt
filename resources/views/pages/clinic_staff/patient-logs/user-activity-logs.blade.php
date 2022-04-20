@@ -17,6 +17,14 @@
         color: #1067d8;
         font-size: 20px;
     }
+    .export-logs{
+        cursor:pointer;
+        position: sticky;
+        display: inline-block;
+    }
+    .export-content{display:none; z-index: 5;}
+    .export-logs:hover .export-content {display: block;}
+
 </style>
         {{session('rank')}}
         <div class="main-container">
@@ -33,7 +41,7 @@
                 <div class="col-md-11" style="margin: auto;">
                     <div class="row">
                         <div class="col-md-3">
-                            <i class="fa fa-print"></i> <a href="" > Print Activity Logs</a>
+                            <i class="fa fa-download"></i><a href="{{ route('exportExcel', 'csv') }}"> Export Activity Logs</a>
                         </div>
                         <div class="col-md-3">
                         </div>
@@ -41,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="z-index: 1;">
                 <div class="col-md-11 userTable" style="margin: auto;">
                     <div class="card">
                         <div class="card-body">

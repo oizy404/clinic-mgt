@@ -43,6 +43,7 @@ class PatientController extends Controller
     //STUDENTS PERSONAL INFORMATION
     public function index(){
         $patients = PatientProfile::all();
+        
         return view("pages.clinic_staff.health-data.health-data")->with(compact("patients", $patients,));
     }
 
@@ -413,9 +414,30 @@ class PatientController extends Controller
 
     }
 
-    public function archive($id, Request $request){
+    public function archiveView(){
+        $patients = PatientProfile::all();
+        
+        return view("pages.clinic_staff.health-data.archived-health-data")->with(compact("patients", $patients,));
+    }
+
+    public function archive($id){
         $patient = PatientProfile::find($id);
         $patient->archived = 1;
+        $patient->save();
+        
+        return redirect()->back();
+    }
+
+    public function delete($id){
+        $patient = PatientProfile::find($id);
+        $patient->delete(); //delete a column
+
+        return redirect()->back();
+    }
+
+    public function restore($id){
+        $patient = PatientProfile::find($id);
+        $patient->archived = 0;
         $patient->save();
         
         return redirect()->back();
