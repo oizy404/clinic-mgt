@@ -52,7 +52,7 @@
                             <i class="fa fa-users"></i> <a href="{{route('/activity/login/logout')}}" > User Activity Logs</a>
                         </div>
                         <div class="col-md-3">
-                            <i class="fa fa-plus"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#newUserAccount"> Upload Batch User</a>
+                            <i class="fa fa-plus"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#uploadUserAccount"> Upload Batch User</a>
                         </div>
                         <div class="col-md-4"></div> 
                     </div>
@@ -69,7 +69,7 @@
                                         <th class="bg-primary text-white">Email</th>
                                         <th class="bg-primary text-white">Phone Number</th>
                                         <th class="bg-primary text-white">Role</th>
-                                        <th class="bg-primary text-white text-center">Status</th>
+                                        <!-- <th class="bg-primary text-white text-center">Status</th> -->
                                         <th class="bg-primary text-white text-center">Modify User</th>
                                     </tr>
                                 </thead>
@@ -80,7 +80,7 @@
                                         <td>{{$activityLog->email}}</td>
                                         <td>{{$activityLog->phone_number}}</td>
                                         <td >{{$activityLog->rank}}</td>
-                                        @if($activityLog->status == null)
+                                        <!-- @if($activityLog->status == null)
                                             <td class="text-center">
                                                 <small class="rounded bg-warning" style="padding: 3px 12px;">N/A</small>
                                             </td>
@@ -88,7 +88,7 @@
                                             <td class="text-center">
                                                 <small class="rounded bg-success" style="padding: 3px 6px;">{{$activityLog->status}}</small>
                                             </td>
-                                        @endif
+                                        @endif -->
                                         <td class="text-center">
                                             <a href="{{route('edit-user-details', $activityLog->id)}}" class="rounded bg-success text-dark" style="padding: 3px 10px;">Update</a>
                                             <a href="" class="rounded bg-danger text-dark" style="padding: 3px 10px;">Delete</a>
@@ -125,11 +125,36 @@
                             </div>
                             <div class="form-group input-group-sm">
                                 <label for="password"><strong>Password</strong></label>
-                                <input type="text" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload User Modal -->
+        <div class="modal fade" id="uploadUserAccount" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-info">
+                        <h5 class="modal-title" id="exampleModalLabel">Upload Batch User Account</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{route('user.import')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('post')
+                        <div class="modal-body">
+                            <div class="form-group input-group-sm">
+                                <label for="file">Choose CSV File</label>
+                                <input type="file" id="img" name="file" class="form-control"><br>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Upload</button>
                         </div>
                     </form>
                 </div>

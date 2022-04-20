@@ -1,0 +1,3 @@
+school_id,patient_role,first_name,middle_name,last_name,birthday,sex,address,contact_number,status,religion,nationality,complete_name,age,sex
+1000808497,Student,sample,sample,sample,7/3/2005,male,sample,123,single,sample,sample,sample,12,f
+1000808498,Student,sample,sample,sample,7/4/2005,male,sample,124,single,sample,sample,sample,12,m

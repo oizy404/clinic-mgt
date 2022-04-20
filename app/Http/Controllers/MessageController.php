@@ -77,7 +77,7 @@ class MessageController extends Controller
         }
 
         $message->receiver = $id;
-        $message->read = 0;
+        $message->readmsg = 0;
         $message->save();
 
         return redirect()->back();
@@ -104,11 +104,34 @@ class MessageController extends Controller
             "users", $users,
             "messages", $messages,
             "patientusers", $patientusers,
-            "patients", $patients
+            "patients", $patients,
+        ));
+    }
+
+    public function clinicstaffCreateNew(){
+        $messages = Message::orderBy('created_at', 'asc')->get();
+        
+        $users = DB::table('users')
+            ->join('tbl_messages', 'users.id', '=', 'tbl_messages.receiver')
+            ->select('users.*','tbl_messages.receiver')
+            ->orderBy('tbl_messages.created_at','desc')
+            ->where('rank','patient')
+            ->get()->groupBy('receiver');
+        $patientusers = User::all();
+        $patients = PatientProfile::all();
+
+        return view("pages.messaging.msg-clinicstaff-createnewmsg", compact(
+            "users", $users,
+            "messages", $messages,
+            "patientusers", $patientusers,
+            "patients", $patients,
         ));
     }
     
     public function clinicstaffViewCreate($id){
+        // dd($id);
+        $messageRead = Message::where('sender',$id)->update(['readmsg' => 1]);
+
         $messages = Message::orderBy('created_at', 'asc')->get();
         $users = DB::table('users')
             ->join('tbl_messages', 'users.id', '=', 'tbl_messages.receiver')
@@ -142,7 +165,7 @@ class MessageController extends Controller
         }
 
         $message->receiver = $id;
-        $message->read = 0;
+        $message->readmsg = 0;
 
         $message->save();
 
@@ -151,33 +174,7 @@ class MessageController extends Controller
 
 
 
-    public function patientIndex(){
-        $users = User::all();
-        $messages = Message::orderBy('created_at', 'asc')->get();
-
-        return view("pages.patient.patient-dashboard")->with("messages", $messages)->with("users", $users);
-    }
-
-    public function insertPatientMsg(Request $request){
-
-        $message = new Message();
-        $message->sender = Auth::id();
-        $message->message = $request->message;
-
-        if($request->has('file')){
-
-            $image_file = $request->file('file');
-            $imagefileName = time().'.'.$image_file->extension();
-            $image_file->move(public_path('imgfileMessages'), $imagefileName);
-            $message->img_file = $imagefileName;
-        }
-
-        $message->read = 0;
-        $message->receiver = 2;
-        $message->save();
-
-        return redirect()->back();
-    }
+    
 
     public function delete($id){
         

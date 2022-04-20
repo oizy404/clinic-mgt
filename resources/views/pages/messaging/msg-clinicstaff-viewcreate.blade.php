@@ -23,7 +23,7 @@
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group mt-2">
-                                                <i class="far fa-ellipsis-v" style="float: right;"></i>
+                                                <i class="fa fa-ellipsis-vertical" style="float: right;"></i>
                                             </div>
                                         </div>
                                     </div>

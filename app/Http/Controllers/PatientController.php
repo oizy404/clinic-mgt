@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Imports\DataImportExcel;
 use App\Models\PatientProfile;
+use App\Models\User;
 use App\Models\ParentModel;
 use App\Models\Sibling;
 use App\Models\Guardian;
@@ -54,21 +56,46 @@ class PatientController extends Controller
 
     public function insert(Request $request){
 
-        $patient = new PatientProfile();
-        $patient->school_id = $request->idnumber;
-        $patient->patient_role = $request->role;
-        $patient->first_name = $request->first_name;
-        $patient->middle_name = $request->middle_name;
-        $patient->last_name = $request->last_name;
-        $patient->birthday = $request->birthday;
-        $patient->sex = $request->sex;
-        $patient->address = $request->address;
-        $patient->contact_number = $request->contact_number;
-        $patient->status = $request->status;
-        $patient->religion = $request->religion;
-        $patient->nationality = $request->nationality;
-        $patient->archived = 0;
-        $patient->save();
+        $users = DB::table('users')->where('username', $request->idnumber)->value('id');
+
+            if($users == true){            
+
+                $patient = new PatientProfile();
+                $patient->user_id = $users;
+                $patient->school_id = $request->idnumber;
+                $patient->patient_role = $request->role;
+                $patient->first_name = $request->first_name;
+                $patient->middle_name = $request->middle_name;
+                $patient->last_name = $request->last_name;
+                $patient->birthday = $request->birthday;
+                $patient->sex = $request->sex;
+                $patient->address = $request->address;
+                $patient->contact_number = $request->contact_number;
+                $patient->status = $request->status;
+                $patient->religion = $request->religion;
+                $patient->nationality = $request->nationality;
+                $patient->archived = 0;
+                // dd($patient);
+                $patient->save();
+            }
+            else{
+                $patient = new PatientProfile();
+                $patient->school_id = $request->idnumber;
+                $patient->patient_role = $request->role;
+                $patient->first_name = $request->first_name;
+                $patient->middle_name = $request->middle_name;
+                $patient->last_name = $request->last_name;
+                $patient->birthday = $request->birthday;
+                $patient->sex = $request->sex;
+                $patient->address = $request->address;
+                $patient->contact_number = $request->contact_number;
+                $patient->status = $request->status;
+                $patient->religion = $request->religion;
+                $patient->nationality = $request->nationality;
+                $patient->archived = 0;
+                // dd($patient);
+                $patient->save();
+            }
 
         $parent = new ParentModel();
         $parent->complete_name = $request->fatherComplete_name;
@@ -183,7 +210,7 @@ class PatientController extends Controller
                 ]);
             }
         }
-        elseif($patient->patient_role == "Employee"){
+        elseif($patient->patient_role == "Employee" || $patient->patient_role == "Visitor"){
             $maintenance = new Maintenance();
             $maintenance->medication_name = $request->medication_name;
             $maintenance->dosage = $request->dosage;
@@ -358,7 +385,7 @@ class PatientController extends Controller
                 ]);
             }
         }
-        elseif($patient->patient_role == "Employee"){
+        elseif($patient->patient_role == "Employee" || $patient->patient_role == "Visitor"){
             $maintenance = Maintenance::where('patient_id',$patient->id)->first();
             $maintenance->medication_name = $request->medication_name;
             $maintenance->dosage = $request->dosage;

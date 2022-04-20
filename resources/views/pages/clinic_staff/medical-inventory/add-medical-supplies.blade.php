@@ -17,12 +17,37 @@
                             <div class="form-group input-group-sm">
                                 <label for="medicine_type"><strong>Medicine Type</strong></label>
                                 <select name="medicine_type" class="form-control" id="medicine_type">
-                                    @foreach($med_types as $med_type)
-                                    <option value="{{$med_type->id}}">{{$med_type->medicine_type}}</option>
-                                    @endforeach
+                                    <option value="">---</option>
+                                    <option value="1">Capsules</option>
+                                    <option value="2">Cream</option>
+                                    <option value="3">Drops</option>
+                                    <option value="4">Implant or Patches</option>
+                                    <option value="5">Injections</option>
+                                    <option value="6">Inhalers</option>
+                                    <option value="7">Liquid</option>
+                                    <option value="8">Soppositories</option>
+                                    <option value="9">Tablet</option>
                                 </select>
                             </div>
                         </div>
+                        <div class="col">
+                            <div class="form-group input-group-sm">
+                                <label for="packaging_type"><strong>Pharmaceutical Packaging Type</strong></label>
+                                <select name="packaging_type" class="form-control" id="packaging_type">
+                                    <option value="">---</option>
+                                    <option value="1">Bottles</option>
+                                    <option value="2">Vials</option>
+                                    <option value="3">Blister packs</option>
+                                    <option value="4">Sachets</option>
+                                    <option value="5">Syringes</option>
+                                    <option value="6">Ampoules</option>
+                                    <option value="7">Cartons</option>
+                                    <option value="8">Boxes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col">
                             <div class="form-group input-group-sm">
                                 <label for="quantity"><strong>Quantity</strong></label>

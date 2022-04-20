@@ -7,10 +7,21 @@
         </div>
         <div class="row">
             <div class="col"></div>
-            <div class="col-md-1 header-icons" style="padding: 0px; color: #ececec;">
-                <div class="message-icon" style="margin-left: 60px;">
+            <div class="col-md-1" style="padding: 0px; color: #ececec;">
+                <div class="" style="margin-left: 60px;">
+                    <!-- <small class="bg-danger rounded-circle" style="padding: 2px 5px; font-size: 10px; float:right;">
+                        
+                        2
+                    </small> -->
                     <a href="/message-clinicstaff">
-                        <i class="fa fa-comments"></i>
+                        <i class="fa fa-message mt-4"></i>
+                        <span class="sec counter counter-lg" id="dot">
+                            <?php
+                                $msgCount = DB::table('tbl_messages')->where('readmsg', 0)
+                                ->orWhere('sender', !1)->orWhere('sender', !2)->count();
+                            ?>
+                            2
+                        </span>&nbsp;&nbsp;
                     </a>
                 </div>
                 <!-- <div class="notif-icon">

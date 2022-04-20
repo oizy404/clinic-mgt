@@ -11,7 +11,7 @@
         </li> -->
 
         <li>
-          <a href="appointments" class="active">
+          <a href="{{route('appointments')}}" class="active">
             <span class="icon"><i class="fa fa-calendar-check"></i></span>
             <span class="list">Appointments</span>
           </a>

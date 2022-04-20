@@ -17,7 +17,7 @@ class Message extends Model
         'img_file',
         'event_id',
         'receiver',
-        'read',
+        'readmsg',
     ];
 
     public function user(){

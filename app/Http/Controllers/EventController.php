@@ -129,7 +129,7 @@ class EventController extends Controller
 
     public function clinicstaffIndex2(){
         $patients = PatientProfile::all();
-        $event = Event::where('archived',0)->get();
+        $event = Event::where('archived', 0)->get();
         $listEvent = Event::all();
   
         return view('pages.clinic_staff.appoint-event.clinic-staff.appointments', compact(

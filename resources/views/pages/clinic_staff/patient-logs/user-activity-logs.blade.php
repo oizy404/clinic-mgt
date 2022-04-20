@@ -5,16 +5,40 @@
 @stop
 
 @section('content')
-
+<style>
+    
+    #act-header hr{
+        margin-top: 0px;
+    }
+    #act-subhead a{
+        color: #0266ea;
+    }
+    #act-subhead i{
+        color: #1067d8;
+        font-size: 20px;
+    }
+</style>
         {{session('rank')}}
         <div class="main-container">
-            <div class="row mb-3" id="act-logs">
+            <div class="row mb-3" id="act-header">
                 <div class="col-md-11" style="margin: auto;">
                     <div class="col-md-5">
                         <h5>User Activity Logs</h5>
                     </div>
                     <div class="col-md-6"></div>  
                     <hr style="margin-top: 0px;">
+                </div>
+            </div>
+            <div class="row mb-4" id="act-subhead">
+                <div class="col-md-11" style="margin: auto;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <i class="fa fa-print"></i> <a href="" > Print Activity Logs</a>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-4"></div> 
+                    </div>
                 </div>
             </div>
             <div class="row">

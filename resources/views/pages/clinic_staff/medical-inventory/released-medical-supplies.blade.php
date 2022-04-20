@@ -1,7 +1,7 @@
 @extends('layout.clinicstaff-master1')
 
 @section('title')
-    ACD Medical Supplies Inventory
+    Released Medical Supplies
 @stop
 
 @section('content')
@@ -35,20 +35,10 @@
 
 {{session('rank')}}
         <div class="main-container">
-            <!-- <div class="row supplies-inventory-dashboard"> -->
-                <!-- <div class="col-md-11 supplies-inventory-addbtn">
-                    <div class="col-md-4">
-                        <button class="btn" id="btn-item"><i class="fas fa-plus"></i> Add Item</button><br>
-                    </div>
-                    <div class="col-md-7 offset-md-1">
-                        <h3>MEDICAL SUPPLIES INVENTORY</h3>
-                    </div>    
-                </div> -->
-
                 <div class="row mb-1" id="med-header">
                     <div class="col-md-11" style="margin: auto; padding: 0px;">
                         <div class="col-md-5">
-                            <h5>MEDICAL SUPPLIES INVENTORY</h5>
+                            <h5>RELEASED MEDICAL SUPPLIES</h5>
                         </div>
                         <div class="col-md-6"></div>  
                         <hr>
@@ -58,12 +48,8 @@
                     <div class="col-md-11" style="margin: auto;">
                         <div class="row">
                             <div class="col-md-2">
-                                <i class="fa fa-box-archive"></i> <a href="">Archived</a>
+                                <i class="fa fa-print"></i> <a href="">Print All</a>
                             </div>
-                            <div class="col-md-3">
-                                <i class="fa fa-plus"></i> <a href="{{route('released-medical-supplies')}}">Released Medical Supplies</a>
-                            </div>
-                            <div class="col-md-4"></div> 
                         </div>
                     </div>
                 </div>
@@ -75,8 +61,9 @@
                                 <th class="bg-primary text-white">Product Name</th>
                                 <th class="bg-primary text-white">Product Type</th>
                                 <th class="bg-primary text-white">Packaging Type</th>
-                                <th class="bg-primary text-white text-center">Stock</th>
-                                <th class="bg-primary text-white">Expiry Date</th>
+                                <th class="bg-primary text-white text-center">Quantity</th>
+                                <th class="bg-primary text-white">Receiver Name</th>
+                                <th class="bg-primary text-white">Released Date</th>
                                 <th class="bg-primary text-white text-center">Actions</th>
                             </tr>
                         </thead>
@@ -87,13 +74,12 @@
                                 <td>{{$med_supply->product_name}}</td>
                                 <td>{{$med_supply->med_type->medicine_type}}</td>
                                 <td>{{$med_supply->packaging_type->packaging_type}}</td>
-                                <td class="text-center">{{$med_supply->stock}}</td>
-                                <td class="">{{date('F d, Y', strtotime($med_supply->expiry_date))}}</td>
-                                <td class="text-center">
-                                    <a href="{{route('edit-medical-record', $med_supply->id, $med_types)}}" class="btn btn-warning" id="btn-edit-inventory"><i class="far fa-edit"></i></a>
-                                
-                                    <a href="{{route('archiveMedical', $med_supply->id)}}" onclick="confirmArchive()" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                </td>
+                            @foreach($med_supply->med_release as $med_released)
+                                <td class="text-center">{{$med_released->quantity}}</td>
+                                <td>{{$med_released->receiver_name}}</td>
+                                <td class="">{{$med_released->released_date}}</td>
+                            @endforeach
+                                <td class="text-center"><a href="" class="bg-danger rounded text-white" style="padding: 2px 5px;">Delete</a></td>
                             </tr>
                             @endif
                         @endforeach

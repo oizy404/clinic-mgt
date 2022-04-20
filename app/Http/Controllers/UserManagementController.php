@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use App\Imports\DataImportExcel;
 use App\Models\userActivityLog;
 use App\Models\ActivityLog;
 use App\Models\User;
@@ -14,6 +15,13 @@ use Carbon\Carbon;
 
 class UserManagementController extends Controller
 {
+
+    public function import(Request $request){
+
+        Excel::import(new MultipleUserImport, $request->file);
+        return back()->with('Records are imported successfully');
+    }
+
     public function index(){                    //display all users
         $activityLogs = User::all();
 
@@ -34,7 +42,7 @@ class UserManagementController extends Controller
         $password = $request->password;
         $activityLog->password = Hash::make($password);
         $activityLog->rank = 'patient';
-        $activityLog->archived = 0;
+        $activityLog->archived = 1;
         $activityLog->date_time = $todayDate;
 
         $activityLog->save();

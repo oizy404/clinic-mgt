@@ -12,11 +12,11 @@
                 <!-- <div id="dialog-body"> -->
                     <form action="{{route('clinicstaff/eventStore2')}}" id="updateClick" method="post">
                         @csrf
-                        <!-- <div class="form-group input-group-sm">
-                            <input type="text" name="patient_idd" id="patient_idd" value="">
-                            <label for="complete-name">Patient Name</label>
-                            <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" value="" id="complete_namee">
-                        </div> -->
+                        <div class="form-group input-group-sm">
+                            <input type="hidden" name="patient_idd" id="patient_idd" value="">
+                            <!-- <label for="complete-name">Patient Name</label>
+                            <input type="text" class="form-control" data-bs-toggle="modal" data-bs-target="#patientModal" value="" id="complete_namee"> -->
+                        </div>
                         <div class="form-group input-group-sm"> 
                             <label for="title"><b>Event Title</b></label>
                             <input type="text" class="form-control" name="title" id="titlee" value="" placeholder="Event Title">

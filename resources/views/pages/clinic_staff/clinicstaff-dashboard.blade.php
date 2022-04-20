@@ -14,6 +14,9 @@
         background-color: #FFFFFF;
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     }
+    #graphs h5{
+        margin-bottom: 0px;
+    }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" integrity="sha512-HCG6Vbdg4S+6MkKlMJAm5EHJDeTZskUdUMTb8zNcUKoYNDteUQ0Zig30fvD9IXnRv7Y0X4/grKCnNoQ21nF2Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   
 
@@ -23,32 +26,32 @@
                 <div class="col-md-7">
                     <div class="col mb-3">
                         <div class="card">
+                            <div class="card-header bg-white">
+                                <h5>Patient School Department Chart</h5>
+                            </div>
                             <div class="card-body">
                                 {!! $patientDept->container() !!}
-                            </div>
-                            <div class="card-footer">
-                                Patient School Department Chart
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card">
+                            <div class="card-header bg-white">
+                                <h5>Patient School Year Level Chart</h5>
+                            </div>
                             <div class="card-body">
                                 {!! $patientGrade->container() !!}
-                            </div>
-                            <div class="card-footer">
-                                Patient School Year Level Chart
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="card">
+                        <div class="card-header bg-white">
+                            <h5>Patient Chart</h5>
+                        </div>
                         <div class="card-body">
                             {!! $patient->container() !!}
-                        </div>
-                        <div class="card-footer">
-                            Patient Chart
                         </div>
                     </div>
                 </div>
@@ -56,11 +59,11 @@
             <div class="row cc mb-4">
                 <div class="col">
                     <div class="card">
+                        <div class="card-header bg-white">
+                            <h5>Chief Complaints Chart</h5>
+                        </div>
                         <div class="card-body">
                             {!! $chief_compt->container() !!}
-                        </div>
-                        <div class="card-footer">
-                            Chief Complaints Chart
                         </div>
                     </div>
                 </div>
@@ -68,21 +71,21 @@
             <div class="row" id="inventory">
                 <div class="col-md-4">
                     <div class="card">
+                        <div class="card-header bg-white">
+                            <h5>Remaining Medical Products Chart</h5>
+                        </div>
                         <div class="card-body">
                             {!! $med_suppliesReleased->container() !!}
-                        </div>
-                        <div class="card-footer">
-                            Released Medical Products Chart
                         </div>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card">
+                        <div class="card-header bg-white">
+                            <h5>Medical Products Quantity and Stocks Chart</h5>
+                        </div>
                         <div class="card-body">
                             {!! $med_suppliess->container() !!}
-                        </div>
-                        <div class="card-footer">
-                            Medical Products Quantity and Stocks Chart
                         </div>
                     </div>
                 </div>

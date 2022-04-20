@@ -115,8 +115,8 @@
 }
 .header-icons{
     font-size: 18px;
-    display: inline-flex;
-    margin-top: 15px;
+    /* display: inline-flex; */
+    /* margin-top: 15px; */
 }
 .header-icons i{
     color: #1067d8;

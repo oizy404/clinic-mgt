@@ -147,7 +147,7 @@ class ChartController extends Controller
             ->orderBy('tbl_medical_supplies.created_at','asc')
             ->pluck('medicine_type');
         $quantities = MedicalSupply::orderBy('created_at')->pluck('quantity');
-        $stocks = MedicalSupply::orderBy('created_at')->pluck('stock','med_type_id');
+        $stocks = MedicalSupply::orderBy('created_at')->pluck('stock');
 
         $med_suppliess = new SampleChart;
         $med_suppliess->height(200); 

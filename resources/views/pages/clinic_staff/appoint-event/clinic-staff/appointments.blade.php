@@ -30,6 +30,7 @@
             <div class="col-md-5" id="lisEvents">
                 <div class="add-event mb-3">
                     <i class="fa fa-plus"></i> <a href="#" id="addEventBtn">&nbsp New Event</a>
+                    <!-- <i class="fa fa-box-archive"></i> <a href="">Archived</a> -->
                     <div class="form-group" id="eventList">
                         <div class="form-group">
                             <table class="table table-hover" id="appointments">
@@ -55,6 +56,8 @@
                                             @endif
                                             <td>{{date('F j, Y, g:i a', strtotime($listEventt->start))}}</td>
                                         </tr>
+                                        @else
+                                        
                                         @endif
                                     @endforeach
                                 </tbody>
@@ -197,7 +200,7 @@ jQuery(document).ready(function($){
             },
             eventClick:function(event){ //clicking event to UPDATE
                 $('#patient_idd').val(event.patient_id);
-                $('#complete_namee').val(event.patient_id.first_name);
+                // $('#complete_namee').val(event.patient_id.first_name);
                 $('#titlee').val(event.title);
                 $('#startt').val(convert(event.start));
                 $('#endd').val(convert(event.end));
@@ -221,7 +224,7 @@ jQuery(document).ready(function($){
                 $('#apt-patient-cancel').click(function(){
                     $('.appoint-patient').hide();
                 });
-                var url="{{url('archiveEvent')}}";
+                var url="{{url('clinicstaff/archiveEvent2')}}";
                 $('#deleteEvent').click(function(){
                     var result = confirm("Confirm to archive this event.");
                     if (result != true) {
@@ -262,7 +265,6 @@ jQuery(document).ready(function($){
 @include('pages.clinic_staff.appoint-event.clinic-staff.add-appointment')
 @include('pages.clinic_staff.appoint-event.clinic-staff.edit-appointment')
 @include('pages.clinic_staff.appoint-event.clinic-staff.appoint-patient')
-@include('pages.clinic_staff.appoint-event.clinic-staff.show-appointment')
 
 @include('vendor.sweetalert.alert')
 @stop

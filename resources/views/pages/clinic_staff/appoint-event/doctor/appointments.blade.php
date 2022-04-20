@@ -55,6 +55,7 @@
                                             @endif                                            
                                             <td>{{date('F j, Y, g:i a', strtotime($listEventt->start))}}</td>
                                         </tr>
+                                        @else
                                         @endif
                                     @endforeach
                                 </tbody>
@@ -199,7 +200,7 @@ jQuery(document).ready(function($){
             },
             eventClick:function(event){ //clicking event to UPDATE
                 $('#patient_idd').val(event.patient_id);
-                $('#complete_namee').val(event.patient_id.first_name);
+                // $('#complete_namee').val(event.patient_id.first_name);
                 $('#titlee').val(event.title);
                 $('#startt').val(convert(event.start));
                 $('#endd').val(convert(event.end));
@@ -264,7 +265,6 @@ jQuery(document).ready(function($){
 @include('pages.clinic_staff.appoint-event.doctor.add-appointment')
 @include('pages.clinic_staff.appoint-event.doctor.edit-appointment')
 @include('pages.clinic_staff.appoint-event.doctor.appoint-patient')
-@include('pages.clinic_staff.appoint-event.doctor.show-appointment')
 
 @include('vendor.sweetalert.alert')
 @stop

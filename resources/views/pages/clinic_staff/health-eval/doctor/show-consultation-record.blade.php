@@ -285,7 +285,7 @@
             </div>
             <div class="col-md-1">
                 <div class="form-group">
-                    <a href="{{route('doctor/archive/   consultation-record', $record->id)}}" onclick="confirmArchive()" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
+                    <a href="{{route('doctor/archive/consultation-record', $record->id)}}" onclick="confirmArchive()" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
                 </div>
             </div>
         </div>

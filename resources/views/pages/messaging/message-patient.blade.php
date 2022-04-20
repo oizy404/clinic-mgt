@@ -1,4 +1,4 @@
-<div class="message-patient">
+<div class="message-patient" style="z-index: 5">
     <!-- <div class="patient-msg mt-5"> -->
         <div class="card">
             <div class="card-header patientmsg-cardheader">

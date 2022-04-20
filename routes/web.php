@@ -3,6 +3,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientUserController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\StudentBatchController;
 use App\Http\Controllers\MedicalSupplyController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\ArchivedController;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
@@ -78,11 +80,14 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
     Route::get('archiveMedical/{id}', [MedicalSupplyController::class, "archive"])->name('archiveMedical');
     Route::get('editMedicalRecord/{id}', [MedicalSupplyController::class, "edit"])->name('edit-medical-record');
     Route::post('updateMedicalRecord/{id}', [MedicalSupplyController::class, "update"])->name('update-medical-record');
+    Route::get('/released-medical-supplies', [MedicalSupplyController::class, "releasedMedsView"])->name("released-medical-supplies");
 
     Route::get('/patientLogs-page', [UserManagementController::class, "index"])->name("patientLogs-page");
     Route::post("create/account", [UserManagementController::class, "insert"])->name("create/account");
     Route::get('edit-user-details/{id}', [UserManagementController::class, "edit"])->name("edit-user-details");
     Route::post('update-user-details/{id}', [UserManagementController::class, "update"])->name("update-user-details");
+
+    Route::post('/user-accounts',[PatientController::class,'import'])->name('user.import');
 
     Route::get('/activity/login/logout', [UserManagementController::class, "activityLogInLogOut"])->name("/activity/login/logout");
 
@@ -92,6 +97,7 @@ Route::middleware(['ifLoggedOut', 'manageAdminAccess'])->group(function () {
     Route::get('clinicstaff/archiveEvent2/{id}', [EventController::class, "archive2"])->name('clinicstaff/archiveEvent2');
 
     Route::get('/message-clinicstaff', [MessageController::class, "clinicstaffIndex"])->name("message-clinicstaff");
+    Route::get('/message-clinicstaff-new', [MessageController::class, "clinicstaffCreateNew"])->name("message-clinicstaff-new");
     Route::get('/clinicstaffViewCreate/{id}', [MessageController::class, "clinicstaffViewCreate"])->name("clinicstaffViewCreate");
     Route::post('/insertClinicstaffMsg/{id}', [MessageController::class, "insertClinicstaffMsg"])->name("insertClinicstaffMsg");
 
@@ -131,8 +137,11 @@ Route::post("authenticate-patient", [LoginController::class, "loginPatient"])->n
 
 Route::middleware(['ifLoggedOut', 'managePatientAccess'])->group(function () {
 
-    Route::get('/patient-dashboard', [MessageController::class, "patientIndex"])->name("patient-dashboard");
-    Route::post('/compose-patientmsg', [MessageController::class, "insertPatientMsg"])->name("compose-patientmsg");
+    Route::get('/patient-dashboard', [PatientUserController::class, "index"])->name("patient-dashboard");
+    Route::get('viewHealthData', [PatientUserController::class, "patientView"])->name('view-health-data');
+    Route::get('edit-healthdata/{id}', [PatientUserController::class, "patientEdit"])->name('edit-healthData');
+    Route::post('update-healthdata/{id}', [PatientUserController::class, "patientUpdate"])->name('update-healthdata');
+    Route::post('/compose-patientmsg', [PatientUserController::class, "insertPatientMsg"])->name("compose-patientmsg");
     
 });
 
@@ -161,7 +170,7 @@ Route::get('/logout', function (Request $request) {
 });
 
 
-// Route::get('/test', function(){
-//              $password ="clinicstaff";
-//              echo Hash::make($password);
-//          });
+Route::get('/test', function(){
+             $password ="doctor";
+             echo Hash::make($password);
+         });

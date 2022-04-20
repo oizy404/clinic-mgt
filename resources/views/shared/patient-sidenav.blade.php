@@ -11,7 +11,7 @@
         </li>
 
         <li>
-          <a href="#">
+          <a href="{{route('view-health-data')}}">
             <span class="icon"><i class="fas fa-book-medical"></i></span>
             <span class="list">Health Data</span>
           </a>

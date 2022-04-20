@@ -14,6 +14,6 @@ class MedType extends Model
     protected $fillable = ['medicine_type'];
 
     public function med_supply(){
-        return $this->hasMany(MedicalSupply::class, 'med_type_id');
+        return $this->hasMany(MedicalSupply::class, "med_type_id");
     }
 }

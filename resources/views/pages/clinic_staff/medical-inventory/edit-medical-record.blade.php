@@ -8,43 +8,52 @@
 
 {{session('rank')}}
         <div class="main-container">
-            <div class="row supplies-inventory-dashboard">
-                <div class="col-md-11 supplies-inventory-addbtn">
-                    <div class="col-md-4">
-                        <!-- <button class="btn" id="btn-item"><i class="fas fa-plus"></i> Add Item</button><br> -->
+            <div class="row mb-1" id="med-header">
+                <div class="col-md-11" style="margin: auto; padding: 0px;">
+                    <div class="col-md-5">
+                        <h5>MEDICAL SUPPLIES INVENTORY</h5>
                     </div>
-                    <div class="col-md-7 offset-md-1">
-                        <h3>MEDICAL SUPPLIES INVENTORY</h3>
-                    </div>    
+                    <div class="col-md-6"></div>  
+                    <hr>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-md-11 update-supplies-inventory mt-4" style="margin: auto;">
                     <div class="card">
-                        <div class="card-header">
-                            <h5>Update Product</h5>
+                        <div class="card-header bg-info text-dark">
+                            <h5 class="mb-0">Update Product</h5>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('update-medical-record', $med_supply->id, $med_types)}}" method="post">
+                            <form action="{{route('update-medical-record', $med_supply->id)}}" method="post">
                                 @csrf
                                 @method('post')
-                                <div class="form-group">
-                                    <label for="product_name">Product Name</label>
-                                    <input type="text" class="form-control" name="product_name" value="{{$med_supply->product_name}}">
-                                </div>
-                                <div class="row mt-2">
+                                <div class="row">
                                     <div class="col">
-                                        <div class="form-group">
-                                            <label for="medicine_type">Medicine Type</label>
-                                            <select name="medicine_type" class="form-control" id="medicine_type">
-                                                @foreach($med_types as $med_type)
-                                                <option value="{{$med_type->id}}">{{$med_type->medicine_type}}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="form-group input-group-sm">
+                                            <label for="product_name"><b>Product Name</b></label>
+                                            <input type="text" class="form-control" name="product_name" value="{{$med_supply->product_name}}">
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group">
-                                            <label for="quantity">Quantity/Pieces</label>
+                                        <div class="form-group input-group-sm">
+                                            <label for="medicine_type"><b>Medicine Type</b></label>
+                                            <select name="medicine_type" class="form-control" id="medicine_type">
+                                                <option value="{{$med_supply->med_type->id}}">{{$med_supply->med_type->medicine_type}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <div class="form-group input-group-sm">
+                                            <label for="quantity"><b>Quantity/Pieces</b></label>
                                             <input type="text" class="form-control" name="quantity">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group input-group-sm">
+                                            <label for="reciever_name"><b>Reciever Name</b></label>
+                                            <input type="text" class="form-control" name="reciever_name">
                                         </div>
                                     </div>
                                 </div>

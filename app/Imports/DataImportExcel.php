@@ -20,6 +20,7 @@ class DataImportExcel implements ToCollection,WithHeadingRow
         {
             $patient = PatientProfile::create([
                 'school_id' => $row['school_id'],
+                'patient_role' => $row['patient_role'],
                 'first_name' => $row['first_name'],
                 'middle_name' => $row['middle_name'],
                 'last_name' => $row['last_name'],
@@ -29,6 +30,7 @@ class DataImportExcel implements ToCollection,WithHeadingRow
                 'status' => $row['status'],
                 'religion' => $row['religion'],
                 'nationality' => $row['nationality'],
+                'archived' == 0,
             ]);
             $patient->sibling()->create([
                 'complete_name' => $row['complete_name'],

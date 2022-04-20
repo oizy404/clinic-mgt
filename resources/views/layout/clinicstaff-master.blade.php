@@ -34,6 +34,24 @@
         height: 100%; */
         /* font-family: Arial, Helvetica, sans-serif; */
     }
+    #dot {
+        padding: -0px 6px;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        color: white;
+    }
+
+    .sec{
+        position: relative;
+        right: -15px;
+        top:-20px;
+        font-size: 11px;
+    }
+
+    .counter.counter-lg {
+        top: -35px !important;
+    }
     </style>
 </head>
 <body>

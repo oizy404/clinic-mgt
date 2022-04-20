@@ -22,20 +22,52 @@
     .add-data i{
         margin-top:22px;
     }
+    #evaldash-header hr{
+        margin-top: 0px;
+    }
+    #evaldash-subhead a{
+        color: #0266ea;
+    }
+    #evaldash-subhead i{
+        color: #1067d8;
+        font-size: 22px;
+    }
 </style>
         {{session('rank')}}
         <div class="main-container">
-            <div class="consultation-record-dashboard">
-                <div class="offset-md-1 consultation-record-addbtn">
+            <!-- <div class="row consultation-record-dashboard"> -->
+                <!-- <div class="col-md-11 consultation-record-addbtn">
                     <div class="col-md-4">
-                        <!-- <button class="btn" id="btn-record"><i class="fas fa-plus"></i> Add Consultation Datum</button><br> -->
+                        <button class="btn" id="btn-record"><i class="fas fa-plus"></i> Add Consultation Datum</button><br>
                         <button class="btn btn-info mt-1" id="btn-batchrecord"><i class="fas fa-plus"></i> Upload Batch Record</button>
                     </div>    
-                    <div class="col-md-5 offset-md-3 consultation-record">
+                    <div class="col"></div>
+                    <div class="col-md-5 consultation-record">
                         <h3>CONSULTATION RECORD</h3>
                     </div>
+                </div> -->
+
+                <div class="row mb-1" id="evaldash-header">
+                    <div class="col-md-11" style="margin: auto; padding: 0px;">
+                        <div class="col-md-5">
+                            <h5>CONSULTATION RECORD</h5>
+                        </div>
+                        <div class="col-md-6"></div>  
+                        <hr>
+                    </div>
                 </div>
-                <div class="offset-md-1 consultation-records">
+                <div class="row mb-4" id="evaldash-subhead">
+                    <div class="col-md-11" style="margin: auto;">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <i class="fa fa-box-archive"></i> <a href="">Archived</a>
+                            </div>
+                            <div class="col-md-4"></div> 
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-11 consultation-records">
                     <table id="consultation-record" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
@@ -62,11 +94,14 @@
                         </tbody>
                     </table>
                 </div>  
+            <!-- </div> -->
             </div>
         </div>
+
         <a href="{{route('doctor/add/consultation-record')}}" class="add-data">
             <i class="fas fa-plus"></i>
         </a>
+
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

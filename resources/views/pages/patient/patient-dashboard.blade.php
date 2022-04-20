@@ -13,7 +13,6 @@
     </div>
 
 
-@include('pages.messaging.message-patient')   
 
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->
@@ -35,4 +34,6 @@
         });
 
   </script>
+
+@include('pages.messaging.message-patient')   
 @stop
