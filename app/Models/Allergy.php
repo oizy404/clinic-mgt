@@ -13,10 +13,15 @@ class Allergy extends Model
 
     protected $fillable = [
         'allergy',
-        'patient_id'
+        'patient_id',
+        'visitor_id',
     ];
 
     public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
+    }
+
+    public function visitor(){
+        return $this->belongsTo(Visitor::class, "visitor_id");
     }
 }

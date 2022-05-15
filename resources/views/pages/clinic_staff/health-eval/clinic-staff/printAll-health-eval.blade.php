@@ -1,7 +1,7 @@
 @extends('layout.print-master')
 
 @section('title')
-    Show Consultaion Record
+    Print All Consultaion Record
 @stop
 
 @section('content')
@@ -145,22 +145,28 @@
                                         @endforeach
                                     @elseif($record->patient->patient_role == "Employee")
                                         @foreach($record->position as $positions)
-                                            <div class="form-group" id="employee">
-                                                <label for="role"><b>Employee</b></label>
-                                                <select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">
-                                                    <option value="{{$positions->personnel_position}}" readonly="readonly">{{$positions->personnel_position}}</option>
-                                                </select>
-                                            </div>
-                                            @if($positions->personnel_position == "NTP")
+                                            @if($record->patient->employee_status == "NTP")
+                                                <div class="form-group" id="employee">
+                                                    <label for="role"><b>Employee Status</b></label>
+                                                    <select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">
+                                                        <option>Non-Teaching Personnel</option>
+                                                    </select>
+                                                </div>
                                                 <div class="form-group" id="ntp">
                                                     <label for="role"><b>Non-Teaching Personnel</b></label>
                                                     <select class="form-select form-select-sm" name="personnel_rank" aria-label=".form-select-sm example">
                                                         <option value="{{$positions->personnel_rank}}" readonly="readonly">{{$positions->personnel_rank}}</option>
                                                     </select>
                                                 </div>
-                                            @elseif($positions->personnel_position == "TP")
+                                            @elseif($record->patient->employee_status == "TP")
+                                                <div class="form-group" id="employee">
+                                                    <label for="role"><b>Employee Status</b></label>
+                                                    <select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">
+                                                        <option>Teaching Personnel</option>
+                                                    </select>
+                                                </div>
                                                 <div class="form-group" id="tp">
-                                                    <label for="role"><b>Teaching Personnel</b></label>
+                                                    <label for="role"><b>Teaching Department</b></label>
                                                     <select class="form-select form-select-sm" name="department" aria-label=".form-select-sm example">
                                                         <option value="{{$positions->department_id}}" readonly="readonly">{{$positions->department->department}}</option>
                                                     </select>
@@ -215,41 +221,62 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    @foreach($chief_complaints as $chief_complaint)
-                                        @if($chief_complaint->id >=1 && $chief_complaint->id <= 5)
-                                        <div class="form-group input-group-sm">
-                                            <input type="checkbox" name="complaints[]" value="{{$chief_complaint->id}}" onclick="return false"
-                                                @foreach($record->complaint as $complaints)
-                                                    <?php
-                                                        if( in_array($chief_complaint->id, $complaints->pluck('chief_complaints_id')->toArray())){
-                                                            echo 'checked="checked"'; 
-                                                        }
-                                                    ?>
-                                                @endforeach
-                                            >
-                                            {{ $chief_complaint->chief_complaint }}
-                                        </div>
-                                        @endif
-                                    @endforeach
+                                    <div class="form-group">
+                                        <input type="checkbox" name="complaints[]" value="1" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 1 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Head Ache<br>
+                                        <input type="checkbox" name="complaints[]" value="2" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 2 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Stomach Ache<br>
+                                        <input type="checkbox" name="complaints[]" value="3" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 3 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Tooth Ache<br>
+                                        <input type="checkbox" name="complaints[]" value="4" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 4 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Difficulty Breathing<br>
+                                        <input type="checkbox" name="complaints[]" value="5" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 5 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Abdominal Pain<br>
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        @foreach($chief_complaints as $chief_complaint)
-                                            @if($chief_complaint->id >= 6 && $chief_complaint->id <= 10)
-                                            <div class="form-group input-group-sm">
-                                                <input type="checkbox" name="complaints[]" value="{{$chief_complaint->id}}" onclick="return false"
-                                                    @foreach($record->complaint as $complaints)
-                                                        <?php
-                                                            if( in_array($chief_complaint->id, $complaints->pluck('chief_complaints_id')->toArray())){
-                                                                echo 'checked="checked"'; 
-                                                            }
-                                                        ?>
-                                                    @endforeach
-                                                >
-                                                {{ $chief_complaint->chief_complaint }}
-                                            </div>
-                                            @endif
-                                        @endforeach
+                                        <input type="checkbox" name="complaints[]" value="6" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 6 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Fever<br>
+                                        <input type="checkbox" name="complaints[]" value="7" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 7 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Dizziness<br>
+                                        <input type="checkbox" name="complaints" value="8" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 8 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Dysmenorrhea<br>
+                                        <input type="checkbox" name="complaints[]" value="9" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 9 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Diarhea<br>
+                                        <input type="checkbox" name="complaints[]" value="10" onclick="return false"
+                                            @foreach($record->complaint as $complaints)
+                                                {{ ($complaints->chief_complaints_id == 10 ? ' checked' : '') }}
+                                            @endforeach
+                                            > Vomiting
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -262,14 +289,39 @@
                                 </div>
                             </div> 
                             <hr>
-                            <div class="form-group mt-2">
-                                <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
-                                <textarea class="form-control" name="doctors_note" id="doctors_note" cols="10" rows="2" readonly="readonly">{{$record->doctors_note}}</textarea>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mt-2">
+                                        <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
+                                        <textarea class="form-control" name="doctors_note" id="doctors_note" cols="10" rows="2" readonly="readonly">{{$record->doctors_note}}</textarea>
+                                    </div>
+                                    <div class="form-group input-group-sm mt-2">
+                                        <label for="doctors_name"><b>Doctor's Complete Name</b></label>
+                                        <input type="text" name="doctors_name" class="form-control" value="{{$record->doctors_name}}" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mt-2">
+                                        <label for="nurse_note" class=""><b>Nurse Notes</b></label>
+                                        <textarea class="form-control" name="nurse_note" id="nurse_note" cols="10" rows="2" readonly="readonly">{{$record->nurse_note}}</textarea>
+                                    </div>
+                                    <div class="form-group input-group-sm mt-2">
+                                        <label for="nurse_name"><b>Nurse Complete Name</b></label>
+                                        <input type="text" name="nurse_name" class="form-control" value="{{$record->nurse_name}}" readonly="readonly">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group mt-2">
-                                <label for="nurse_note" class=""><b>Nurse Notes</b></label>
-                                <textarea class="form-control" name="nurse_note" id="nurse_note" cols="10" rows="2" readonly="readonly">{{$record->nurse_note}}</textarea>
-                            </div>
+                            @if($record->followupCheckup)
+                                <div class="form-group input-group-sm mt-2">
+                                    <label for=""><b>Follow Up Check Up Schedule</b></label>
+                                    <input type="date" name="nextCheckup" class="form-control" value="{{$record->followupCheckup}}" readonly="readonly">
+                                </div>
+                            @else
+                                <div class="form-group input-group-sm mt-2">
+                                    <label for=""><b>Follow Up Check Up Schedule</b></label>
+                                    <input type="text" name="nextCheckup" class="form-control" value="N/A" readonly="readonly">
+                                </div>
+                            @endif
                         </div>
                 </div>
             </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\PatientProfile;
+use App\Models\Visitor;
 use App\Models\HealthEvaluation;
 use App\Models\Position;
 use App\Models\Department;
@@ -12,64 +14,88 @@ use App\Models\ChiefComplaint;
 use App\Models\Complaint;
 use App\Models\OtherComplaint;
 
+use Carbon\Carbon;
+
+
 class ConsultationController extends Controller
 {
     
     public function index()
     {
-        $records = HealthEvaluation::all()->groupBy('patient_id');
-        return view("pages.clinic_staff.health-eval.doctor.consultation-record")->with(compact(
-            "records", $records,
+        $patients = PatientProfile::all();
+        $visitors = Visitor::all();
+
+        $patientsRecords = DB::table('tbl_patient_profiles')
+            ->join('tbl_health_evaluations', 'tbl_patient_profiles.id', '=', 'tbl_health_evaluations.patient_id')
+            ->select('tbl_patient_profiles.*','tbl_health_evaluations.patient_id')
+            ->orderBy('tbl_health_evaluations.created_at','asc')
+            ->get()->groupBy('patient_id');
+            
+        $visitorsRecords = DB::table('tbl_visitors')
+            ->join('tbl_health_evaluations', 'tbl_visitors.id', '=', 'tbl_health_evaluations.visitor_id')
+            ->select('tbl_visitors.*','tbl_health_evaluations.visitor_id')
+            ->orderBy('tbl_health_evaluations.created_at','asc')
+            ->where('patient_role','Visitor')
+            ->get()->groupBy('visitor_id');
+
+        return view("pages.clinic_staff.health-eval.doctor.consultation-record", compact(
+            "patients",
+            "visitors",
+            "patientsRecords",
+            "visitorsRecords"
         ));
     }
 
     public function create()
     {
         $patients = PatientProfile::all();
-        return view("pages.clinic_staff.health-eval.doctor.add-consultation-record")->with(compact(
-            "patients", $patients,
+        $visitors = Visitor::all();
+
+        return view("pages.clinic_staff.health-eval.doctor.add-consultation-record", compact(
+            "patients",
+            "visitors",
         ));
     }
 
     public function store(Request $request)
     {
+        $dt = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
         $record = new HealthEvaluation();
         $record->patient_id = $request->id;
+        $record->visitor_id = $request->visitorId;
         $record->weight = $request->weight;
         $record->height = $request->height;
-        $record->BMI = $request->bmi;
+
+        $bmi = $request->weight / ($request->height * $request->height);
+        $record->BMI = $bmi;
+
         $record->BP = $request->bloodpressure;
         $record->temperature = $request->temperature;
         $record->doctors_note = $request->doctors_note;
+        $record->doctors_name = $request->doctors_name;
         $record->nurse_note = $request->nurse_note;
+        $record->nurse_name = $request->nurse_name;
+        $record->followupCheckup = $request->nextCheckup;
+        $record->eval_date = $todayDate;
         $record->archived = 0;
         $record->save();
 
-        if($request->patient_role == "Employee"){
-            $position = new Position();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
-        }
-        elseif($request->patient_role == "Student"){
-
-            $position = new Position();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->yearLevel_id = $request->grade_level;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
+        $position = new Position();
+        $position->personnel_rank = $request->personnel_rank;
+        $position->department_id = $request->department;
+        $position->yearLevel_id = $request->grade_level;
+        $position->health_evaluation_id = $record->id;
+        $position->save();
     
-        }
-
-        foreach($request->complaints as $complaint){
-            $chiefComplaint = Complaint::create([
-                'chief_complaints_id' => $complaint,
-                'health_evaluation_id' => $record->id,
-            ]);
+        if($request->complaints){
+            foreach($request->complaints as $complaint){
+                $chiefComplaint = Complaint::create([
+                    'chief_complaints_id' => $complaint,
+                    'health_evaluation_id' => $record->id,
+                ]);
+            }
         }
 
         $otherComplaint = new OtherComplaint();
@@ -95,48 +121,91 @@ class ConsultationController extends Controller
         ));
     }
 
+    
+    public function showVisitor($visitor_id)
+    {
+        $records = HealthEvaluation::where('visitor_id', $visitor_id)->get();
+        $patients = PatientProfile::all();
+        $chief_complaints = ChiefComplaint::all();
+
+        return view("pages.clinic_staff.health-eval.doctor.visitor.show-consultation-record")->with(compact(
+            "visitor_id",
+            "records", $records,
+            "patients", $patients,
+            "chief_complaints", $chief_complaints,
+        ));
+    }
+
+    public function edit($id){
+        $record = HealthEvaluation::find($id);
+        $patients = PatientProfile::all();
+        $visitors = Visitor::all();
+
+        return view("pages.clinic_staff.health-eval.doctor.edit-consultation-record", compact(
+            "record",
+            "patients",
+            "visitors",
+
+        ));
+    }
+
+    public function editVisitor($id){
+        $record = HealthEvaluation::find($id);
+        $patients = PatientProfile::all();
+        $visitors = Visitor::all();
+
+        return view("pages.clinic_staff.health-eval.doctor.visitor.edit-consultation-record", compact(
+            "record",
+            "patients",
+            "visitors",
+
+        ));
+    }
     public function update(Request $request, $id)
     {
+        $dt = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
         $record = HealthEvaluation::find($id);
-        $record->patient_id = $request->id;
+
+        // $record->patient_id = $request->id;
         $record->weight = $request->weight;
         $record->height = $request->height;
-        $record->BMI = $request->bmi;
+
+        $bmi = $request->weight / ($request->height * $request->height);
+        $record->BMI = $bmi;
+
         $record->BP = $request->bloodpressure;
+        $record->temperature = $request->temperature;
         $record->doctors_note = $request->doctors_note;
+        $record->doctors_name = $request->doctors_name;
+        $record->nurse_note = $request->nurse_note;
+        $record->nurse_name = $request->nurse_name;
+        $record->followupCheckup = $request->nextCheckup;
+        $record->eval_date = $todayDate;
         $record->archived = 0;
         $record->save();
 
-        if($request->patient_role == "Employee"){
-            $position = Position::where('health_evaluation_id',$record->id)->first();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
-        }
-        elseif($request->patient_role == "Student"){
-        
-            $position = Position::where('health_evaluation_id',$record->id)->first();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->yearLevel_id = $request->grade_level;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
+        $position = Position::where('health_evaluation_id',$record->id)->first();
+        $position->personnel_rank = $request->personnel_rank;
+        $position->department_id = $request->department;
+        $position->yearLevel_id = $request->grade_level;
+        $position->health_evaluation_id = $record->id;
+        $position->save();
+    
+        $chiefComplaints = Complaint::where('health_evaluation_id',$record->id)->get();
+        foreach($chiefComplaints as $chiefComplaint){
+            $CC = Complaint::find($chiefComplaint->id);
+            $CC->delete();
         }
 
-        $complaints = Complaint::where('health_evaluation_id',$record->id)->get();
-        foreach($complaints as $complaint){
-            $chiefComplaint = Complaint::find($complaint->id);
-            $chiefComplaint->delete();
-        }
-
-        foreach($request->complaints as $complaint){
-            $chiefComplaint = Complaint::create([
-                'chief_complaints_id' => $complaint,
-                'health_evaluation_id' => $record->id,
-            ]);
+        if($request->complaints){
+            foreach($request->complaints as $complaint){
+                $chiefComplaint = Complaint::create([
+                    'chief_complaints_id' => $complaint,
+                    'health_evaluation_id' => $record->id,
+                ]);
+            }
         }
 
         $otherComplaint = OtherComplaint::where('health_evaluation_id',$record->id)->first();
@@ -153,6 +222,19 @@ class ConsultationController extends Controller
         $chief_complaints = ChiefComplaint::all();
 
         return view("pages.clinic_staff.health-eval.doctor.printAll-health-eval")->with(compact(
+            "records", $records,
+            "chief_complaints", $chief_complaints,
+
+        ));
+    }
+
+    
+    public function printVisitorAll($visitor_id)
+    {
+        $records = HealthEvaluation::where('visitor_id', $visitor_id)->get();
+        $chief_complaints = ChiefComplaint::all();
+
+        return view("pages.clinic_staff.health-eval.doctor.visitor.printAll-health-eval")->with(compact(
             "records", $records,
             "chief_complaints", $chief_complaints,
 
@@ -192,62 +274,88 @@ class ConsultationController extends Controller
 
     // End Doctor //////////////////////////////////////////////////////////////////////////
 
+
+
     // Start Clinic Staff /////////////////////////////////////////////////////////////////////
     public function index2()
     {
-        $records = HealthEvaluation::all()->groupBy('patient_id');
-        return view("pages.clinic_staff.health-eval.clinic-staff.consultation-record")->with(compact(
-            "records", $records,
+        $patients = PatientProfile::all();
+        $visitors = Visitor::all();
+
+        $patientsRecords = DB::table('tbl_patient_profiles')
+            ->join('tbl_health_evaluations', 'tbl_patient_profiles.id', '=', 'tbl_health_evaluations.patient_id')
+            ->select('tbl_patient_profiles.*','tbl_health_evaluations.patient_id')
+            ->orderBy('tbl_health_evaluations.created_at','asc')
+            ->get()->groupBy('patient_id');
+            
+        // $records = HealthEvaluation::all()->groupBy('patient_id');
+        // dd($records);
+        $visitorsRecords = DB::table('tbl_visitors')
+            ->join('tbl_health_evaluations', 'tbl_visitors.id', '=', 'tbl_health_evaluations.visitor_id')
+            ->select('tbl_visitors.*','tbl_health_evaluations.visitor_id')
+            ->orderBy('tbl_health_evaluations.created_at','asc')
+            ->where('patient_role','Visitor')
+            ->get()->groupBy('visitor_id');
+
+        return view("pages.clinic_staff.health-eval.clinic-staff.consultation-record", compact(
+            "patients",
+            "visitors",
+            "patientsRecords",
+            "visitorsRecords"
         ));
     }
 
     public function create2()
     {
         $patients = PatientProfile::all();
-        return view("pages.clinic_staff.health-eval.clinic-staff.add-consultation-record")->with(compact(
-            "patients", $patients,
+        $visitors = Visitor::all();
+
+        return view("pages.clinic_staff.health-eval.clinic-staff.add-consultation-record", compact(
+            "patients",
+            "visitors",
         ));
     }
 
     public function store2(Request $request)
     {
+        
+        $dt = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
         $record = new HealthEvaluation();
         $record->patient_id = $request->id;
+        $record->visitor_id = $request->visitorId;
         $record->weight = $request->weight;
         $record->height = $request->height;
-        $record->BMI = $request->bmi;
+
+        $bmi = $request->weight / ($request->height * $request->height);
+        $record->BMI = $bmi;
+
         $record->BP = $request->bloodpressure;
         $record->temperature = $request->temperature;
         $record->doctors_note = $request->doctors_note;
+        $record->doctors_name = $request->doctors_name;
         $record->nurse_note = $request->nurse_note;
+        $record->nurse_name = $request->nurse_name;
+        $record->followupCheckup = $request->nextCheckup;
+        $record->eval_date = $todayDate;
         $record->archived = 0;
         $record->save();
 
-        if($request->patient_role == "Employee"){
-            $position = new Position();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
-        }
-        elseif($request->patient_role == "Student"){
-
-            $position = new Position();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->yearLevel_id = $request->grade_level;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
+        $position = new Position();
+        $position->personnel_rank = $request->personnel_rank;
+        $position->department_id = $request->department;
+        $position->yearLevel_id = $request->grade_level;
+        $position->health_evaluation_id = $record->id;
+        $position->save();
     
-        }
-
-        foreach($request->complaints as $complaint){
-            $chiefComplaint = Complaint::create([
-                'chief_complaints_id' => $complaint,
-                'health_evaluation_id' => $record->id,
-            ]);
+        if($request->complaints){
+            foreach($request->complaints as $complaint){
+                $chiefComplaint = Complaint::create([
+                    'chief_complaints_id' => $complaint,
+                    'health_evaluation_id' => $record->id,
+                ]);
+            }
         }
 
         $otherComplaint = new OtherComplaint();
@@ -272,55 +380,98 @@ class ConsultationController extends Controller
             "chief_complaints", $chief_complaints,
         ));
     }
+    public function showVisitor2($visitor_id)
+    {
+        $records = HealthEvaluation::where('visitor_id', $visitor_id)->get();
+        $patients = PatientProfile::all();
+        $chief_complaints = ChiefComplaint::all();
+
+        return view("pages.clinic_staff.health-eval.clinic-staff.visitor.show-consultation-record")->with(compact(
+            "visitor_id",
+            "records", $records,
+            "patients", $patients,
+            "chief_complaints", $chief_complaints,
+        ));
+    }
+
+    public function edit2($id){
+        $record = HealthEvaluation::find($id);
+        $patients = PatientProfile::all();
+        $visitors = Visitor::all();
+
+        return view("pages.clinic_staff.health-eval.clinic-staff.edit-consultation-record", compact(
+            "record",
+            "patients",
+            "visitors",
+
+        ));
+    }
+
+    public function editVisitor2($id){
+        $record = HealthEvaluation::find($id);
+        $patients = PatientProfile::all();
+        $visitors = Visitor::all();
+
+        return view("pages.clinic_staff.health-eval.clinic-staff.visitor.edit-consultation-record", compact(
+            "record",
+            "patients",
+            "visitors",
+
+        ));
+    }
 
     public function update2(Request $request, $id)
     {
+        $dt = Carbon::now();
+        $todayDate = $dt->toDayDateTimeString();
+
         $record = HealthEvaluation::find($id);
-        $record->patient_id = $request->id;
+
+        // $record->patient_id = $request->id;
         $record->weight = $request->weight;
         $record->height = $request->height;
-        $record->BMI = $request->bmi;
+
+        $bmi = $request->weight / ($request->height * $request->height);
+        $record->BMI = $bmi;
+
         $record->BP = $request->bloodpressure;
+        $record->temperature = $request->temperature;
         $record->doctors_note = $request->doctors_note;
+        $record->doctors_name = $request->doctors_name;
+        $record->nurse_note = $request->nurse_note;
+        $record->nurse_name = $request->nurse_name;
+        $record->followupCheckup = $request->nextCheckup;
+        $record->eval_date = $todayDate;
         $record->archived = 0;
         $record->save();
 
-        if($request->patient_role == "Employee"){
-            $position = Position::where('health_evaluation_id',$record->id)->first();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
-        }
-        elseif($request->patient_role == "Student"){
-        
-            $position = Position::where('health_evaluation_id',$record->id)->first();
-            $position->personnel_position = $request->personnel_position;
-            $position->personnel_rank = $request->personnel_rank;
-            $position->department_id = $request->department;
-            $position->yearLevel_id = $request->grade_level;
-            $position->health_evaluation_id = $record->id;
-            $position->save();
+        $position = Position::where('health_evaluation_id',$record->id)->first();
+        $position->personnel_rank = $request->personnel_rank;
+        $position->department_id = $request->department;
+        $position->yearLevel_id = $request->grade_level;
+        $position->health_evaluation_id = $record->id;
+        $position->save();
+    
+        $chiefComplaints = Complaint::where('health_evaluation_id',$record->id)->get();
+        foreach($chiefComplaints as $chiefComplaint){
+            $CC = Complaint::find($chiefComplaint->id);
+            $CC->delete();
         }
 
-        $complaints = Complaint::where('health_evaluation_id',$record->id)->get();
-        foreach($complaints as $complaint){
-            $chiefComplaint = Complaint::find($complaint->id);
-            $chiefComplaint->delete();
-        }
-
-        foreach($request->complaints as $complaint){
-            $chiefComplaint = Complaint::create([
-                'chief_complaints_id' => $complaint,
-                'health_evaluation_id' => $record->id,
-            ]);
+        if($request->complaints){
+            foreach($request->complaints as $complaint){
+                $chiefComplaint = Complaint::create([
+                    'chief_complaints_id' => $complaint,
+                    'health_evaluation_id' => $record->id,
+                ]);
+            }
         }
 
         $otherComplaint = OtherComplaint::where('health_evaluation_id',$record->id)->first();
         $otherComplaint->other_chief_complaint = $request->other_complaint;
         $otherComplaint->health_evaluation_id = $record->id;
         $otherComplaint->save();
+
 
         return redirect()->route('clinicstaff/consultation-record');
     }
@@ -331,6 +482,17 @@ class ConsultationController extends Controller
         $chief_complaints = ChiefComplaint::all();
 
         return view("pages.clinic_staff.health-eval.clinic-staff.printAll-health-eval")->with(compact(
+            "records", $records,
+            "chief_complaints", $chief_complaints,
+
+        ));
+    }
+    public function printVisitorAll2($visitor_id)
+    {
+        $records = HealthEvaluation::where('visitor_id', $visitor_id)->get();
+        $chief_complaints = ChiefComplaint::all();
+
+        return view("pages.clinic_staff.health-eval.clinic-staff.visitor.printAll-health-eval")->with(compact(
             "records", $records,
             "chief_complaints", $chief_complaints,
 

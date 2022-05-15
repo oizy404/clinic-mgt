@@ -13,7 +13,8 @@ class HistoryIllness extends Model
 
     protected $fillable = [
         'illness_id',
-        'patient_id'
+        'patient_id',
+        'visitor_id',
     ];
 
     public function illness(){
@@ -24,4 +25,7 @@ class HistoryIllness extends Model
         return $this->belongsTo(PatientProfile::class, "patient_id");
     }
     
+    public function visitor(){
+        return $this->belongsTo(Visitor::class, "visitor_id");
+    }
 }

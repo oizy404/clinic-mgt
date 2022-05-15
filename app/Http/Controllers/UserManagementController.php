@@ -40,11 +40,10 @@ class UserManagementController extends Controller
 
         $activityLog->username = $request->username;
         $activityLog->email = $request->email;
-        $activityLog->phone_number = $request->phone_number;
         $password = $request->password;
         $activityLog->password = Hash::make($password);
         $activityLog->rank = 'patient';
-        $activityLog->archived = 1;
+        $activityLog->archived = 0;
         $activityLog->date_time = $todayDate;
 
         $activityLog->save();
@@ -68,8 +67,8 @@ class UserManagementController extends Controller
 
         $activityLog->username = $request->username;
         $activityLog->email = $request->email;
-        $activityLog->phone_number = $request->phone_number;
-        $activityLog->status = $request->status;
+        $password = $request->password;
+        $activityLog->password = Hash::make($password);        
         $activityLog->rank = $request->rank;
         $activityLog->date_time = $todayDate;
 
@@ -78,9 +77,33 @@ class UserManagementController extends Controller
         return redirect()->route('patientLogs-page');
     }
 
+    public function archive($id){
+        $activityLog = User::find($id);
+        $activityLog->archived = 1;
+        $activityLog->save();
+        
+        return redirect()->back();
+    }
+
+    public function delete($id){
+        $patient = User::find($id);
+        $patient->delete(); //delete a column
+
+        return redirect()->back();
+    }
+
+    public function restore($id){
+        $patient = User::find($id);
+        $patient->archived = 0;
+        $patient->save();
+        
+        return redirect()->back();
+    }
+
     public function activityLogInLogOut(){ //display users activity
 
-        $activityLogs = ActivityLog::all();
+        $activityLogs = ActivityLog::orderBy('created_at', 'asc')->get();
+
 
         return view('pages.clinic_staff.patient-logs.user-activity-logs', compact(
             'activityLogs',

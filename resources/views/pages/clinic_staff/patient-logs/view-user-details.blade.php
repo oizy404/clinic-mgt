@@ -53,10 +53,7 @@
                                                 <label for="email"><strong>Email Address</strong></label>
                                             </div>
                                             <div class="form-group input-group-sm mb-3">
-                                                <label for="phone_number"><strong>Phone Number</strong></label>
-                                            </div>
-                                            <div class="form-group input-group-sm mb-3">
-                                                <label for="status"><strong>Status</strong></label>
+                                                <label for="password"><strong>Password</strong></label>
                                             </div>
                                             <div class="form-group input-group-sm mb-3">
                                                 <label for="Role"><strong>Role</strong></label>
@@ -70,10 +67,7 @@
                                                 <input type="text" class="form-control" name="email" value="{{$activityLog->email}}">
                                             </div>
                                             <div class="form-group input-group-sm mb-2">
-                                                <input type="text" class="form-control" name="phone_number" value="{{$activityLog->phone_number}}">
-                                            </div>
-                                            <div class="form-group input-group-sm mb-2">
-                                                <input type="text" class="form-control" name="status" value="{{$activityLog->status}}">
+                                                <input type="text" class="form-control" name="password" value="">
                                             </div>
                                             <div class="form-group input-group-sm mb-2">
                                                 <input type="text" class="form-control" name="rank" value="{{$activityLog->rank}}">
@@ -84,7 +78,7 @@
                                 
                                 <div class="card-footer bg-white" style="border-top: none;">
                                     <button type="submit" class="btn btn-primary" style="float: right;">Update</button>
-                                    <button type="button" class="btn btn-danger">Back</button>
+                                    <a href="/patientLogs-page" class="btn btn-danger">Back</a>
                                 </div>
                             </form>
                         </div>

@@ -26,21 +26,21 @@
                     <div class="col-md-11" style="margin: auto; padding: 0px;">
                         <div class="row">
                             <div class="col-md-3">
-                                <i class="fa fa-pen"></i> <a href="{{route('edit-healthData', $patient->id)}}" >Update Health Data</a>
+                                <i class="fa fa-pen"></i> <a href="{{route('editHealthData', $patient->id)}}" >Update Health Data</a>
                             </div>
                             <div class="col-md-3">
-                                <i class="fa fa-print"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#newUserAccount">Print Health Data</a>
+                                <!-- <i class="fa fa-print"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#newUserAccount">Print Health Data</a> -->
                             </div>
                             <div class="col-md-4"></div> 
                         </div>
                         <hr>
                     </div>
                 </div>
-                <div class="hds-heading">
+                <!-- <div class="hds-heading">
                     <div class="col-md-4 offset-md-8 p-head">
                         <h4 class="mb-0">HEALTH DATA SHEET</h4>
                     </div>
-                </div>
+                </div> -->
                 <div class="" id="create-health-data">
                         <!-- Start of Patients Personal Info -->
                         <div class="form-group" id="patients-personalinfo" style="background-color: white;">
@@ -137,6 +137,7 @@
                         <h5>FAMILY DATA</h5>
                         <div class="form-group" id="patients-family-data" style="background-color: white;">
                             <!-- start of Father's info -->
+                @if($patient->parent)
                     @foreach($patient->parent as $parentt)
                         @if($parentt->relationship == 'Father')
                             <div class="row">
@@ -216,6 +217,7 @@
                     @endforeach
                             <!-- end of mother's info -->
                             <!-- start of guardian's info -->
+                @elseif($patient->guardian)
                     @foreach($patient->guardian as $guardiann)
                         @foreach($guardiann->location as $locations)
                             <div class="row mt-2">
@@ -272,6 +274,7 @@
                             </div>
                         @endforeach
                     @endforeach
+                @endif
                             <!-- end of guardian's info -->
                             <!-- start siblings info -->
                     @foreach($patient->sibling as $siblingg)
@@ -311,20 +314,38 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                    @foreach($deseases as $desease)
                                         <div class="form-group input-group-sm">
-                                        <input type="checkbox" name="deseases[]" value="{{$desease->id}}"
+                                        <input type="checkbox" name="deseases[]" value="1"
                                             @foreach($patient->familyDesease as $family_desease)
-                                                <?php
-                                                    if( in_array($desease->id, $family_desease->pluck('desease_id')->toArray())){
-                                                        echo 'checked="checked"'; 
-                                                    }
-                                                ?>
+                                            {{ ($family_desease->desease_id == 1 ? ' checked' : '') }}
+
                                             @endforeach
-                                        />
-                                        {{ $desease->desease_name }}
+                                        > Diabetes <br>
+                                        <input type="checkbox" name="deseases[]" value="2"
+                                            @foreach($patient->familyDesease as $family_desease)
+                                            {{ ($family_desease->desease_id == 2 ? ' checked' : '') }}
+
+                                            @endforeach
+                                        > Asthma <br>
+                                        <input type="checkbox" name="deseases[]" value="3"
+                                            @foreach($patient->familyDesease as $family_desease)
+                                            {{ ($family_desease->desease_id == 3 ? ' checked' : '') }}
+
+                                            @endforeach
+                                        > Mental Disorder/Psychological Problem <br>
+                                        <input type="checkbox" name="deseases[]" value="4"
+                                            @foreach($patient->familyDesease as $family_desease)
+                                            {{ ($family_desease->desease_id == 4 ? ' checked' : '') }}
+
+                                            @endforeach
+                                        > Hypertension or High Blood Pressure <br>
+                                        <input type="checkbox" name="deseases[]" value="5"
+                                            @foreach($patient->familyDesease as $family_desease)
+                                            {{ ($family_desease->desease_id == 5 ? ' checked' : '') }}
+
+                                            @endforeach
+                                        > Tuberculosis <br>
                                         </div>
-                                    @endforeach
                                     </div>
                                     <div class="col">
                                         <div class="col input-group-sm">
@@ -353,20 +374,43 @@
                                     <div class="row mt-2">
                                         <div class="col">
                                             <h6><strong>NAME OF VACCINE</strong></h6><hr>
-                                            @foreach($vaccines as $vaccine)
                                                 <div class="form-group input-group-sm">
-                                                <input type="checkbox" name="vaccines[]" value="{{$vaccine->id}}"
-                                                    @foreach($patient->immunization as $immunizations)
-                                                        <?php
-                                                            if( in_array($vaccine->id, $immunizations->pluck('vaccine_id')->toArray())){
-                                                                echo 'checked="checked"'; 
-                                                            }
-                                                        ?>
-                                                    @endforeach
-                                                />
-                                                {{ $vaccine->vaccine_name }} <hr>
+                                                    <input type="checkbox" id="vaccine1" name="vaccines[]" value="1"
+                                                        @foreach($patient->immunization as $immunizations)
+                                                        {{ ($immunizations->vaccine_id == 1 ? ' checked' : '') }}
+                                                        @endforeach
+                                                    > BCG <br><hr>
+                                                    <input type="checkbox" id="vaccine1" name="vaccines[]" value="2"
+                                                        @foreach($patient->immunization as $immunizations)
+                                                        {{ ($immunizations->vaccine_id == 2 ? ' checked' : '') }}
+                                                        @endforeach
+                                                    > HEPATITIS B <br><hr>
+                                                    <input type="checkbox" id="vaccine1" name="vaccines[]" value="3"
+                                                        @foreach($patient->immunization as $immunizations)
+                                                        {{ ($immunizations->vaccine_id == 3 ? ' checked' : '') }}
+                                                        @endforeach
+                                                    > PENTAVALENT VACCINE (DPT- HEP B - HiB) <br><hr>
+                                                    <input type="checkbox" id="vaccine1" name="vaccines[]" value="4"
+                                                        @foreach($patient->immunization as $immunizations)
+                                                        {{ ($immunizations->vaccine_id == 4 ? ' checked' : '') }}
+                                                        @endforeach
+                                                    > ORAL POLIO VACCINE (OPV) <br><hr>
+                                                    <input type="checkbox" id="vaccine1" name="vaccines[]" value="5"
+                                                        @foreach($patient->immunization as $immunizations)
+                                                        {{ ($immunizations->vaccine_id == 5 ? ' checked' : '') }}
+                                                        @endforeach
+                                                    > INACTIVATED POLIO VACCINE (IPV) <br><hr>
+                                                    <input type="checkbox" id="vaccine1" name="vaccines[]" value="6"
+                                                        @foreach($patient->immunization as $immunizations)
+                                                        {{ ($immunizations->vaccine_id == 6 ? ' checked' : '') }}
+                                                        @endforeach
+                                                    > PNEUMOCOCCAL CONJUGATE VACCINE (PCV) <br><hr>
+                                                    <input type="checkbox" id="vaccine1" name="vaccines[]" value="7"
+                                                        @foreach($patient->immunization as $immunizations)
+                                                        {{ ($immunizations->vaccine_id == 7 ? ' checked' : '') }}
+                                                        @endforeach
+                                                    > MEASILES, MUMPS, RUBELLA (MMR) <br><hr>
                                                 </div>
-                                            @endforeach
                                         </div>
                                         <div class="col">
                                             <h6><strong>NAME OF DISEASE</strong></h6><hr>
@@ -426,76 +470,132 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-3">
-                                    @foreach($illnesses as $illness)
-                                        @if($illness->id >= 1 && $illness->id <= 6 )
-                                        <div class="form-group input-group-sm">
-                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                    <div class="form-group input-group-sm">
+                                        <input type="checkbox" name="illnesses[]" value="1"
                                             @foreach($patient->historyIllness as $history_illness)
-                                                <?php
-                                                    if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
-                                                        echo 'checked="checked"'; 
-                                                    }
-                                                ?>
+                                                {{ ($history_illness->illness_id == 1 ? ' checked' : '') }}
                                             @endforeach
-                                        />
-                                        {{ $illness->illness_name }}
-                                        </div>
-                                        @endif
-                                    @endforeach
+                                        > Chickenpox(Hangga) <br>
+                                        <input type="checkbox" name="illnesses[]" value="2"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 2 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Measles(Tigdas/Tipdas) <br>
+                                        <input type="checkbox" name="illnesses[]" value="3"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 3 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Mumps(Beke/Bayuok) <br>
+                                        <input type="checkbox" name="illnesses[]" value="4"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 4 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Dengue Fever <br>
+                                        <input type="checkbox" name="illnesses[]" value="5"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 5 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Asthma(Hubak,Hika) <br>
+                                        <input type="checkbox" name="illnesses[]" value="6"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 6 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Pneumonia (Pulmonya) <br>
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
-                                    @foreach($illnesses as $illness)
-                                        @if($illness->id >= 7 && $illness->id <= 12 )
-                                        <div class="form-group input-group-sm">
-                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                    <div class="form-group input-group-sm">
+                                        <input type="checkbox" name="illnesses[]" value="7"
                                             @foreach($patient->historyIllness as $history_illness)
-                                                <?php
-                                                    if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
-                                                        echo 'checked="checked"'; 
-                                                    }
-                                                ?>
+                                                {{ ($history_illness->illness_id == 7 ? ' checked' : '') }}
                                             @endforeach
-                                        />
-                                        {{ $illness->illness_name }}
-                                        </div>
-                                        @endif
-                                    @endforeach
+                                        > Primary Complex <br>
+                                        <input type="checkbox" name="illnesses[]" value="8"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 8 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Tuberculosis <br>
+                                        <input type="checkbox" name="illnesses[]" value="9"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 9 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Hearing Problems <br>
+                                        <input type="checkbox" name="illnesses[]" value="10"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 10 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Speech Problem <br>
+                                        <input type="checkbox" name="illnesses[]" value="11"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 11 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Visual Problem <br>
+                                        <input type="checkbox" name="illnesses[]" value="12"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 12 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Ear Discharge <br>
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
-                                    @foreach($illnesses as $illness)
-                                        @if($illness->id >= 13 && $illness->id <= 17 )
-                                        <div class="form-group input-group-sm">
-                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                    <div class="form-group input-group-sm">
+                                    
+                                        <input type="checkbox" name="illnesses[]" value="13"
                                             @foreach($patient->historyIllness as $history_illness)
-                                                <?php
-                                                    if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
-                                                        echo 'checked="checked"'; 
-                                                    }
-                                                ?>
+                                                {{ ($history_illness->illness_id == 13 ? ' checked' : '') }}
                                             @endforeach
-                                        />
-                                        {{ $illness->illness_name }}
-                                        </div>
-                                        @endif
-                                    @endforeach
+                                        > Tonsilitis <br>
+                                        <input type="checkbox" name="illnesses[]" value="14"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 14 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Anemia <br>
+                                        <input type="checkbox" name="illnesses[]" value="15"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 15 ? ' checked' : '') }}
+                                            @endforeach
+                                        > G6PD (Glucose-6-phosphate dehydrogenase deficiency) <br>
+                                        <input type="checkbox" name="illnesses[]" value="16"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 16 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Bleeding Problems <br>
+                                        <input type="checkbox" name="illnesses[]" value="17"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 17 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Urinary Tract Infection (UTI) <br>
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
-                                    @foreach($illnesses as $illness)
-                                        @if($illness->id >= 18 && $illness->id <= 22 )
-                                        <div class="form-group input-group-sm">
-                                        <input type="checkbox" name="illnesses[]" value="{{$illness->id}}"
+                                    <div class="form-group input-group-sm">
+                                    
+                                        <input type="checkbox" name="illnesses[]" value="18"
                                             @foreach($patient->historyIllness as $history_illness)
-                                                <?php
-                                                    if( in_array($illness->id, $history_illness->pluck('illness_id')->toArray())){
-                                                        echo 'checked="checked"'; 
-                                                    }
-                                                ?>
+                                                {{ ($history_illness->illness_id == 18 ? ' checked' : '') }}
                                             @endforeach
-                                        />
-                                        {{ $illness->illness_name }}
-                                        </div>
-                                        @endif
-                                    @endforeach
+                                        > Kidney Disease <br>
+                                        <input type="checkbox" name="illnesses[]" value="19"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 19 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Diabetes <br>
+                                        <input type="checkbox" name="illnesses[]" value="20"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 20 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Recurrent Indigestion <br>
+                                        <input type="checkbox" name="illnesses[]" value="21"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 22 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Heart or Cardiac Desease <br>
+                                        <input type="checkbox" name="illnesses[]" value="22"
+                                            @foreach($patient->historyIllness as $history_illness)
+                                                {{ ($history_illness->illness_id == 22 ? ' checked' : '') }}
+                                            @endforeach
+                                        > Seizures (Patol) <br>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mt-2">

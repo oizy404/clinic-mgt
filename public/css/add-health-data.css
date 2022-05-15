@@ -1,13 +1,13 @@
 .add-health-data{
     padding-top: 30px;
 }
-.acdheader{
+/* .acdheader{
     margin: auto;
     width: 95%;
     border-top: 1px solid rgba(var(--b6a,219,219,219),1);
     border-left: 1px solid rgba(var(--b6a,219,219,219),1);
     border-right: 1px solid rgba(var(--b6a,219,219,219),1);
-}
+} */
 .hds-heading{
     background-color: rgb(226, 226, 226);
     border-top: 1px solid rgba(var(--b6a,219,219,219),1);
@@ -15,7 +15,7 @@
     border-right: 1px solid rgba(var(--b6a,219,219,219),1);
     border-bottom: none;
     padding: 10px 15px 10px 15px;
-    width: 95%;
+    width: 94%;
     margin: auto;
     text-align: center;
 }
@@ -24,7 +24,7 @@ div #create-health-data{
     margin: 0;
     padding: 10px 20px 20px 20px;
     margin: auto;
-    width: 95%;
+    width: 94%;
 }
 #create-health-data p{
     margin-bottom: 0px;

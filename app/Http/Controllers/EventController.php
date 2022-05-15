@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\PatientProfile;
+use App\Models\HealthEvaluation;
 use App\Models\Event;
 use App\Models\Message;
 use App\Models\User;
@@ -17,14 +18,22 @@ class EventController extends Controller
     
     public function index()
     {
-        $event = Event::where('archived', 0)->latest()->get(); //get the latest data
+        $event = Event::where([
+            ['archived', 0],
+            'patient_id', '=', null,
+            'patient_id', '=', !null,
+            ])->latest()->get(); //get the latest data
         
         return response()->json($event);
     }
 
     public function index2(){
         $patients = PatientProfile::all();
-        $event = Event::where('archived',0)->get();
+        $event = Event::where([
+            ['archived', 0],
+            'patient_id', '=', null,
+            'patient_id', '=', !null,
+            ])->get();
         $listEvent = Event::all();
   
         return view('pages.clinic_staff.appoint-event.doctor.appointments', compact(
@@ -50,18 +59,48 @@ class EventController extends Controller
             else{
                 if(empty($request->event_id)){ //Create Event
                     if(empty($request->patient_id)){
-                        $event = new Event();
-                        $event->title = $request->title;
-                        $event->start = $request->start;
-                        $event->end = $request->end;
-                        $event->color = $request->color;
-                        $event->textColor = $request->textColor;
-                        $event->patient_id = $request->patient_id;
-                        $event->archived = 0;
-                        $event->save();
+                        if(empty($request->patientRole)){
+                            $event = new Event();
+                            $event->title = $request->title;
+                            $event->start = $request->start;
+                            $event->end = $request->end;
+                            $event->color = $request->color;
+                            $event->textColor = $request->textColor;
+                            $event->patient_id = $request->patient_id;
+                            $event->archived = 0;
+                            $event->save();
 
-                        Alert::success('Success','Event Created Successfully');
-                        return redirect()->back();
+                        }
+                        elseif($request->patientRole){
+                            $patients = PatientProfile::all();
+
+                            foreach($patients as $patient){
+                                if($request->patientRole == 'Employee' && $patient->patient_role == 'Employee'){
+                                    
+                                        $event = new Event();
+                                        $event->title = $request->title;
+                                        $event->start = $request->start;
+                                        $event->end = $request->end;
+                                        $event->color = $request->color;
+                                        $event->textColor = $request->textColor;
+                                        $event->patient_id = $patient->id;
+                                        $event->archived = 0;
+
+                                        $event->save();
+                                        
+                                        if($patient->user_id){
+                                            $msg = new Message();
+                                            $msg->sender = Auth::id();
+                                            $msg->event_id = $event->id;
+                                            $msg->receiver = $patient->user_id;
+                                            $msg->readmsg = 0;
+                                            $msg->save();
+                                        }
+
+                                }
+                                
+                            }
+                        }
                     }
                     else{
                         $event = new Event();
@@ -74,13 +113,13 @@ class EventController extends Controller
                         $event->archived = 0;
                         $event->save();
 
+
                         $msg = new Message();
                         $msg->sender = Auth::id();
                         $msg->event_id = $event->id;
                         $msg->receiver = $request->user_id;
                         $msg->read = 0;
 
-                        // dd($msg);
                         $msg->save();
 
                         Alert::success('Success','Event Created Successfully');
@@ -123,6 +162,7 @@ class EventController extends Controller
     public function clinicstaffIndex()
     {
         $event = Event::where('archived', 0)->latest()->get(); //get the latest data
+        // dd($event);
         
         return response()->json($event);
     }
@@ -130,6 +170,8 @@ class EventController extends Controller
     public function clinicstaffIndex2(){
         $patients = PatientProfile::all();
         $event = Event::where('archived', 0)->get();
+        // dd($event);
+
         $listEvent = Event::all();
   
         return view('pages.clinic_staff.appoint-event.clinic-staff.appointments', compact(
@@ -155,15 +197,47 @@ class EventController extends Controller
             else{
                 if(empty($request->event_id)){ //Create Event
                     if(empty($request->patient_id)){
-                        $event = new Event();
-                        $event->title = $request->title;
-                        $event->start = $request->start;
-                        $event->end = $request->end;
-                        $event->color = $request->color;
-                        $event->textColor = $request->textColor;
-                        $event->patient_id = $request->patient_id;
-                        $event->archived = 0;
-                        $event->save();
+                        if(empty($request->patientRole)){
+                            $event = new Event();
+                            $event->title = $request->title;
+                            $event->start = $request->start;
+                            $event->end = $request->end;
+                            $event->color = $request->color;
+                            $event->textColor = $request->textColor;
+                            $event->patient_id = $request->patient_id;
+                            $event->archived = 0;
+                            $event->save();
+
+                        }
+                        elseif($request->patientRole){
+                            $patients = PatientProfile::all();
+
+                            foreach($patients as $patient){
+                                if($request->patientRole == 'Employee' && $patient->patient_role == 'Employee'){
+                                    
+                                        $event = new Event();
+                                        $event->title = $request->title;
+                                        $event->start = $request->start;
+                                        $event->end = $request->end;
+                                        $event->color = $request->color;
+                                        $event->textColor = $request->textColor;
+                                        $event->patient_id = $patient->id;
+                                        $event->archived = 0;
+
+                                        $event->save();
+
+                                        if($patient->user_id){
+                                            $msg = new Message();
+                                            $msg->sender = Auth::id();
+                                            $msg->event_id = $event->id;
+                                            $msg->receiver = $patient->user_id;
+                                            $msg->readmsg = 0;
+                                            $msg->save();
+                                        }
+                                }
+                                
+                            }
+                        }
 
                         Alert::success('Success','Event Created Successfully');
                         return redirect()->back();
@@ -175,15 +249,18 @@ class EventController extends Controller
                         $event->end = $request->end;
                         $event->color = $request->color;
                         $event->textColor = $request->textColor;
+
                         $event->patient_id = $request->patient_id;
+
                         $event->archived = 0;
                         $event->save();
+
     
                         $msg = new Message();
                         $msg->sender = Auth::id();
                         $msg->event_id = $event->id;
                         $msg->receiver = $request->user_id;
-                        $msg->read = 0;
+                        $msg->readmsg = 0;
                         $msg->save();
 
                         Alert::success('Success','Event Created Successfully');

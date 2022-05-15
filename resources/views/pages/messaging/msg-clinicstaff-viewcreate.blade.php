@@ -18,7 +18,18 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group input-group-sm" style="padding-left: 20px;">
-                                                <input type="text" class="form-control" id="search-sender" placeholder="Search">
+                                                @foreach($patientusers as $patientuser)
+                                                    @foreach($patients as $patient)
+                                                        @if($patientuser->id == $id)
+                                                            @if($patientuser->username == $patient->school_id)
+                                                            <?php 
+                                                                $fullname = $patient->first_name." ".$patient->last_name;
+                                                            ?>
+                                                            <input type="text" class="form-control" id="search-sender" placeholder="Search" value="{{$patient->first_name}} {{$patient->last_name}}">
+                                                            @endif
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
                                             </div>
                                         </div>
                                         <div class="col-md-1">
@@ -67,7 +78,8 @@
                                                 <label for="fileups">
                                                     <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
                                                 </label>
-                                                <input type="file" class="input-file" id="fileups" name="file">
+                                                
+                                                <input type="file" class="form-control input-file" id="fileups" name="file">
                                             </div>
                                             <input type="text" name="receiver_id" id="receiver_id" style="display:none">
                                             <textarea name="message" class="form-control type_msg" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
@@ -133,7 +145,12 @@
             $(".user-receiver").show();
             $(".patient-msgs").hide();
             $("#search-sender").hide();
-        })
+        });
+        $('#fileups').change(function(){
+            var file = $(this).val();
+            var filename = file.match(/[^\\/]*$/)[0];
+            $('#message').attr("placeholder", filename);
+        });
         
     });
 </script>

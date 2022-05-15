@@ -9,7 +9,9 @@
 @include('shared.patient-header')
 @include('shared.patient-sidenav') 
     <div class="patient-dashboard main-container">
+        <div class="col-md-6 offset-md-3" style="margin-top: 150px;">
 
+        </div>
     </div>
 
 
@@ -36,4 +38,5 @@
   </script>
 
 @include('pages.messaging.message-patient')   
+@include('vendor.sweetalert.alert')
 @stop

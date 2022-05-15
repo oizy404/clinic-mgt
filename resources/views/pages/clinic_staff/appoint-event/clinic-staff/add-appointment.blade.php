@@ -12,7 +12,7 @@
                         <div class="form-group input-group-sm">
                             <input type="hidden" name="user_id" id="user_id">
                             <input type="hidden" name="patient_id" id="patient_id">
-                            <label for="complete-name">Patient Name</label>
+                            <label for="complete-name"><b>Patient Name</b></label>
                             <input type="text" class="form-control" name="complete_name" id="complete_name">
                         </div>
                         <div class="form-group input-group-sm">

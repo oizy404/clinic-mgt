@@ -60,34 +60,142 @@
             </div>
             <div class="row">
                 <div class="col-md-11 userTable" style="margin: auto;">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-hover" id="userTable">
-                                <thead>
-                                    <tr>
-                                        <th class="bg-primary text-white">User Name</th>
-                                        <th class="bg-primary text-white">Email</th>
-                                        <th class="bg-primary text-white">Phone Number</th>
-                                        <th class="bg-primary text-white">Role</th>
-                                        <!-- <th class="bg-primary text-white text-center">Status</th> -->
-                                        <th class="bg-primary text-white text-center">Modify User</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($activityLogs as $activityLog)
-                                    <tr>
-                                        <td>{{$activityLog->username}}</td>
-                                        <td>{{$activityLog->email}}</td>
-                                        <td>{{$activityLog->phone_number}}</td>
-                                        <td >{{$activityLog->rank}}</td>
-                                        <td class="text-center">
-                                            <a href="{{route('edit-user-details', $activityLog->id)}}" class="rounded bg-success text-dark" style="padding: 3px 10px;">Update</a>
-                                            <a href="" class="rounded bg-danger text-dark" style="padding: 3px 10px;">Delete</a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Active Patient Users</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Inactive Patient Users</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="card border border-top-0">
+                                <div class="card-body mt-3">
+                                    <table class="table table-hover" id="userTable">
+                                        <thead>
+                                            <tr>
+                                                <th class="bg-primary text-white">User Name</th>
+                                                <th class="bg-primary text-white">Email</th>
+                                                <th class="bg-primary text-white">Role</th>
+                                                <!-- <th class="bg-primary text-white text-center">Status</th> -->
+                                                <th class="bg-primary text-white text-center">Modify User</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($activityLogs as $activityLog)
+                                            @if($activityLog->archived == 0)
+                                            <tr>
+                                                <td>{{$activityLog->username}}</td>
+                                                <td>{{$activityLog->email}}</td>
+                                                <td >{{$activityLog->rank}}</td>
+                                                <td class="text-center">
+                                                    <a href="{{route('edit-user-details', $activityLog->id)}}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></a>
+                                                
+                                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#archiveUser"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                                    <!-- Archive Modal -->
+                                                    <div class="modal fade" id="archiveUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="row mb-1" style="text-align: left;">
+                                                                        <p>Confirm To Archive Patient User Account.</p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col"></div>
+                                                                        <div class="col-md-4">
+                                                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        <a href="{{route('archive-user-details', $activityLog->id)}}" class="btn btn-danger btn-sm">Archive</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="card border border-top-0">
+                                <div class="card-body mt-3">
+                                    <table class="table table-hover" id="inactiveUserTable">
+                                        <thead>
+                                            <tr>
+                                                <th class="bg-primary text-white">User Name</th>
+                                                <th class="bg-primary text-white">Email</th>
+                                                <th class="bg-primary text-white">Role</th>
+                                                <!-- <th class="bg-primary text-white text-center">Status</th> -->
+                                                <th class="bg-primary text-white text-center">Modify User</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($activityLogs as $activityLog)
+                                            @if($activityLog->archived == 1)
+                                            <tr>
+                                                <td>{{$activityLog->username}}</td>
+                                                <td>{{$activityLog->email}}</td>
+                                                <td >{{$activityLog->rank}}</td>
+                                                <td class="text-center">
+
+                                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#restoreUser"><i class="fa fa-arrow-rotate-left"></i></button>
+                                        
+                                                    <!-- Restore Modal -->
+                                                    <div class="modal fade" id="restoreUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="row mb-1" style="text-align: left;">
+                                                                        <p>Confirm To Restore Patient User Account.</p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col"></div>
+                                                                        <div class="col-md-4">
+                                                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        <a href="{{route('restore-user-details', $activityLog->id)}}" class="btn btn-danger btn-sm">Restore</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUser"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                                    <!-- Delete Modal -->
+                                                    <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="row mb-1" style="text-align: left;">
+                                                                        <p>Confirm To Permanently Delete Patient User Account.</p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col"></div>
+                                                                        <div class="col-md-4">
+                                                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        <a href="{{route('delete-user-details', $activityLog->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -165,20 +273,11 @@
             $(".wrapper").toggleClass("active")
         });
 
-        $('.theHealthData').click(function(){
-            window.location = $(this).data("href");
-        });
+        // $('.theHealthData').click(function(){
+        //     window.location = $(this).data("href");
+        // });
 
     });
-        function confirmArchive(){
-            var result = confirm("Confirm to archive All Health Evaluation Records.");
-            if (result != true) {
-                event.preventDefault();
-                returnToPreviousPage();
-                return false;
-            }
-            return true;
-        }
   </script>
 @stop
 

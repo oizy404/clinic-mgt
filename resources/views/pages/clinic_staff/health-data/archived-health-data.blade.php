@@ -9,7 +9,7 @@
             <div class="row mb-1" id="hlthdash-header">
                 <div class="col-md-11 mt-4" style="margin: auto; padding: 0px;">
                     <div class="col-md-5">
-                        <h5>PATIENT HEALTH DATA</h5>
+                        <h5>ARCHIVED PATIENT HEALTH DATA</h5>
                     </div>
                     <div class="col-md-6"></div>  
                     <hr>
@@ -17,7 +17,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-md-11 health-data">
-                    <table id="health-data" class="table table-hover" style="width:100%">
+                    <table id="archive-health-data" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th class="bg-primary text-white">ID Number</th>
@@ -34,7 +34,7 @@
                                 <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->first_name}} {{$patient->last_name}}</td>
                                 <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->patient_role}}</td>
                                 <td class="text-center">
-                                    <a href="{{route('restoreHealthData', $patient->id)}}" onclick="confirmRestore()" class="btn btn-primary" ><center><i class="fa fa-arrow-rotate-left"></i></center></a>
+                                    <a href="{{route('restoreHealthData', $patient->id)}}" onclick="confirmRestore()" class="btn btn-warning" ><center><i class="fa fa-arrow-rotate-left"></i></center></a>
                                     <a href="{{route('delete-health-data', $patient->id)}}" onclick="confirmDelete()" class="btn btn-danger" ><center><i class="fa fa-trash"></i></center></a>
                                 </td>
                             </tr>

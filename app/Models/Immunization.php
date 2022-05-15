@@ -13,7 +13,8 @@ class Immunization extends Model
 
     protected $fillable = [
         'vaccine_id',
-        'patient_id'
+        'patient_id',
+        'visitor_id',
     ];
 
     public function vaccine(){
@@ -22,5 +23,8 @@ class Immunization extends Model
 
     public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
+    }
+    public function visitor(){
+        return $this->belongsTo(Visitor::class, "visitor_id");
     }
 }

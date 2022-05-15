@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-5" id="lisEvents">
                 <div class="add-event mb-3">
-                    <i class="fa fa-plus"></i> <a href="#" id="addEventBtn">&nbsp New Event</a>
+                    <i class="fa fa-plus"></i> <a href="#" id="addEventBtn">&nbspEmployees' Annual Check Up</a><hr>
                     <!-- <i class="fa fa-box-archive"></i> <a href="">Archived</a> -->
                     <div class="form-group" id="eventList">
                         <div class="form-group">
@@ -109,22 +109,67 @@ jQuery(document).ready(function($){
             return [year,month,day].join('-')+' '+[hour,minutes,seconds].join(':');
         }
         $('#addEventBtn').on('click',function(){
-            $('#dialog').show();
-            $('#complete_name').click(function(){
-                $('.appoint-patient').show();
+            $('#annual').show();
+            // $('#complete_name').click(function(){
+            //     $('.appoint-patient').show();
+            // });
+            $('#annual-btn-cancel').click(function(){
+                $('#annual').hide();
             });
-            $('#apt-btn-cancel').click(function(){
-                $('#dialog').hide();
-            });
-            $('.patientsData').click(function(){
-                var patient_id =  $(this).find(":first-child").text();
-                var complete_name = $(this).find(":first-child").next().next().text();
-                $('.appoint-patient').hide();
-                $('#patient_id').val(patient_id);
-                $('#complete_name').val(complete_name);
-            });
-            $('#apt-patient-cancel').click(function(){
-                $('.appoint-patient').hide();
+            // $('.patientsData').click(function(){
+            //     var patient_id =  $(this).find(":first-child").text();
+            //     var complete_name = $(this).find(":first-child").next().next().text();
+            //     $('.appoint-patient').hide();
+            //     $('#patient_id').val(patient_id);
+            //     $('#complete_name').val(complete_name);
+            // });
+            // $('#apt-patient-cancel').click(function(){
+            //     $('.appoint-patient').hide();
+            // });
+
+            $('#patient-role').change(function(){
+
+                if($(this).val() == 'Student'){
+                    $('#row1Col1').append(
+                        '<div class="form-group" id="grade_level">'+
+                            '<label for="grade_level"><b>Grade Level</b></label>'+
+                            '<select class="form-select form-select-sm" name="grade_level" id="grade-level" aria-label=".form-select-sm example">'+
+                                '<option selected>-- Select --</option>'+
+                                '<option value="1">Kinder</option>'+
+                                '<option value="2">Grade 1</option>'+
+                                '<option value="3">Grade 2</option>'+
+                                '<option value="4">Grade 3</option>'+
+                                '<option value="5">Grade 4</option>'+
+                                '<option value="6">Grade 5</option>'+
+                                '<option value="7">Grade 6</option>'+
+                                '<option value="8">Grade 7</option>'+
+                                '<option value="9">Grade 8</option>'+
+                                '<option value="10">Grade 9</option>'+
+                                '<option value="11">Grade 10</option>'+
+                                '<option value="12">Grade 11</option>'+
+                                '<option value="13">Grade 12</option>'+
+                                '<option value="14">Year 1</option>'+
+                                '<option value="15">Year 2</option>'+
+                                '<option value="16">Year 3</option>'+
+                                '<option value="17">Year 4</option>'+
+                            '</select>'+
+                        '</div>'
+                    );
+                    $('#EmployeeStat').remove();
+                }
+                else if($(this).val() == 'Employee'){
+                    $('#row1Col1').append(
+                        '<div class="form-group" id="EmployeeStat">'+
+                            '<label for="role"><b>Employee Status</b></label>'+
+                            '<select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">'+
+                                '<option selected>-- Select --</option>'+
+                                '<option value="NTP">Non-Teaching Personnel</option>'+
+                                '<option value="NTP">Teaching Personnel</option>'+
+                            '</select>'+
+                        '</div>'
+                    );
+                    $('#grade_level').remove();
+                }
             });
             
         })
@@ -263,6 +308,7 @@ jQuery(document).ready(function($){
 });
 </script>
 @include('pages.clinic_staff.appoint-event.clinic-staff.add-appointment')
+@include('pages.clinic_staff.appoint-event.clinic-staff.annual-appointment')
 @include('pages.clinic_staff.appoint-event.clinic-staff.edit-appointment')
 @include('pages.clinic_staff.appoint-event.clinic-staff.appoint-patient')
 

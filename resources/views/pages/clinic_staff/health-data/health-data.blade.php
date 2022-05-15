@@ -36,7 +36,6 @@
 
         {{session('rank')}}
         <div class="main-container">
-            <!-- <div class="row hlth-dashboard"> -->
                 <div class="row mb-1" id="hlthdash-header">
                     <div class="col-md-11" style="margin: auto; padding: 0px;">
                         <div class="col-md-5">
@@ -50,7 +49,7 @@
                     <div class="col-md-11" style="margin: auto;">
                         <div class="row">
                             <div class="col-md-2">
-                                <i class="fa fa-box-archive"></i> <a href="{{route('archived-health-data')}}">Archived</a>
+                                <i class="fa fa-box-archive"></i> <a href="{{route('view-archived-health-data')}}">Archived</a>
                             </div>
                             <div class="col-md-3">
                                 <i class="fa fa-plus"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#uploadHealthData"> Upload Batch User</a>
@@ -61,33 +60,218 @@
                 </div>
                 <div class="row">
                     <div class="col-md-11 health-data">
-                        <table id="health-data" class="table table-hover" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th class="bg-primary text-white">ID Number</th>
-                                    <th class="bg-primary text-white">Name</th>
-                                    <th class="bg-primary text-white">Patient Status</th>
-                                    <th class="bg-primary text-white text-center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($patients as $patient)
-                                @if($patient->archived == 0)
-                                <tr>
-                                    <td class="theHealthData text-center" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->school_id}}</td>
-                                    <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->first_name}} {{$patient->last_name}}</td>
-                                    <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->patient_role}}</td>
-                                    <!-- <td class="text-center"><a href="" class="btn btn-success"><center><i class="far fa-print"></center></a></i></td> -->
-                                    <td class="text-center">
-                                        <a href="{{route('edit-health-data', $patient->id)}}" class="btn btn-warning" id="btn-edit-healthdata"><center><i class="far fa-edit"></i></center></a>
-                                
-                                        <a href="{{route('archiveHealthData', $patient->id)}}" onclick="confirmArchive()" class="btn btn-danger" ><center><i class="fas fa-trash-alt"></i></center></a>
-                                    </td>
-                                </tr>
-                                @endif
-                            @endforeach
-                            </tbody>
-                        </table>
+
+
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Student</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Employee</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Visitor</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
+                                <table id="hlt-student" class="table table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg-primary text-white">ID Number</th>
+                                            <th class="bg-primary text-white">Name</th>
+                                            <th class="bg-primary text-white">Patient Status</th>
+                                            <th class="bg-primary text-white">Date Created</th>
+                                            <th class="bg-primary text-white text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($patients as $patient)
+                                        @if($patient->archived == 0 && $patient->patient_role == 'Student')
+                                        <tr>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->school_id}}</td>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->first_name}} {{$patient->last_name}}</td>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->patient_role}}</td>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{date('F d, Y', strtotime($patient->created_at))}}</td>
+                                            <td class="text-center">
+                                                <a href="{{route('edit-health-data', $patient->id)}}" class="btn btn-warning btn-sm" id="btn-edit-healthdata"><center><i class="far fa-edit"></i></center></a>
+                                        
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#archiveStudentModal"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                                <!-- Archive Modal -->
+                                                <div class="modal fade" id="archiveStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                @foreach($patient->records as $record)
+                                                                    @if($record->patient_id)
+                                                                        <div class="row mb-1" style="text-align: left;">
+                                                                            <p>You can't delete this Health Data, check Consultation Record.</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col"></div>
+                                                                            <div class="col-md-3">
+                                                                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    @break
+                                                                    @else
+                                                                        <div class="row mb-1" style="text-align: left;">
+                                                                            <p>Confirm to archive Health Data.</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col"></div>
+                                                                            <div class="col-md-4">
+                                                                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                            <a href="{{route('archive-health-data', $patient->id)}}" class="btn btn-danger btn-sm">Archive</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    @break
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endif
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br>
+                                <table id="hlt-employee" class="table table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg-primary text-white">ID Number</th>
+                                            <th class="bg-primary text-white">Name</th>
+                                            <th class="bg-primary text-white">Patient Status</th>
+                                            <th class="bg-primary text-white">Date Created</th>
+                                            <th class="bg-primary text-white text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($patients as $patient)
+                                        @if($patient->archived == 0 && $patient->patient_role == 'Employee')
+                                        <tr>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->school_id}}</td>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->first_name}} {{$patient->last_name}}</td>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{$patient->patient_role}}</td>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{date('F d, Y', strtotime($patient->created_at))}}</td>
+                                            <td class="text-center">
+                                                <a href="{{route('edit-health-data', $patient->id)}}" class="btn btn-warning btn-sm" id="btn-edit-healthdata"><center><i class="far fa-edit"></i></center></a>
+                                        
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#archiveEmployeeModal"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                                <!-- Archive Modal -->
+                                                <div class="modal fade" id="archiveEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                @foreach($patient->records as $record)
+                                                                    @if($record->patient_id)
+                                                                        <div class="row mb-1" style="text-align: left;">
+                                                                            <p>You can't delete this Health Data, check Consultation Record.</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col"></div>
+                                                                            <div class="col-md-3">
+                                                                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    @break
+                                                                    @else
+                                                                        <div class="row mb-1" style="text-align: left;">
+                                                                            <p>Confirm to archive Health Data.</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col"></div>
+                                                                            <div class="col-md-4">
+                                                                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                            <a href="{{route('archive-health-data', $patient->id)}}" class="btn btn-danger btn-sm">Archive</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    @break
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endif
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br>
+                                <table id="hlt-visitor" class="table table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg-primary text-white">Name</th>
+                                            <th class="bg-primary text-white">Patient Status</th>
+                                            <th class="bg-primary text-white">Date Created</th>
+                                            <th class="bg-primary text-white text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($visitors as $visitor)
+                                        @if($visitor->archived == 0 && $visitor->patient_role == 'Visitor')
+                                        <tr>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $visitor->id)}}">{{$visitor->first_name}} {{$visitor->last_name}}</td>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $visitor->id)}}">{{$visitor->patient_role}}</td>
+                                            <td class="theHealthData" data-href="{{route('show-health-data', $patient->id)}}">{{date('F d, Y', strtotime($visitor->created_at))}}</td>
+                                            <td class="text-center">
+                                                <a href="{{route('edit-health-data', $patient->id)}}" class="btn btn-warning btn-sm" id="btn-edit-healthdata"><center><i class="far fa-edit"></i></center></a>
+                                        
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#archiveVisitorModal"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                                <!-- Archive Modal -->
+                                                <div class="modal fade" id="archiveVisitorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                @foreach($visitor->records as $record)
+                                                                    @if($record->visitor_id)
+                                                                        <div class="row mb-1" style="text-align: left;">
+                                                                            <p>You can't delete this Health Data, check Consultation Record.</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col"></div>
+                                                                            <div class="col-md-3">
+                                                                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    @break
+                                                                    @else
+                                                                        <div class="row mb-1" style="text-align: left;">
+                                                                            <p>Confirm to archive Health Data.</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col"></div>
+                                                                            <div class="col-md-4">
+                                                                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                            <a href="{{route('archive-health-data', $visitor->id)}}" class="btn btn-danger btn-sm">Archive</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    @break
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endif
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+    
                     </div>  
                 </div>
             <!-- </div> -->
@@ -138,15 +322,6 @@
         });
 
     });
-        function confirmArchive(){
-            var result = confirm("Confirm to archive All Health Evaluation Records.");
-            if (result != true) {
-                event.preventDefault();
-                returnToPreviousPage();
-                return false;
-            }
-            return true;
-        }
   </script>
 @stop
 

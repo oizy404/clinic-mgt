@@ -1,7 +1,7 @@
 @extends('layout.clinicstaff-master1')
 
 @section('title')
-    Consultation Record
+    Consultation Records
 @stop
 
 @section('content')
@@ -35,18 +35,8 @@
 </style>
         {{session('rank')}}
         <div class="main-container">
-            <!-- <div class="row consultation-record-dashboard"> -->
-                <!-- <div class="col-md-11 consultation-record-addbtn">
-                    <div class="col-md-4"> -->
-                        <!-- <button class="btn" id="btn-record"><i class="fas fa-plus"></i> Add Consultation Datum</button><br> -->
-                        <!-- <button class="btn btn-info mt-1" id="btn-batchrecord"><i class="fas fa-plus"></i> Upload Batch Record</button>
-                    </div>    
-                    <div class="col-md-5 offset-md-3 consultation-record">
-                        <h3>CONSULTATION RECORD</h3>
-                    </div>
-                </div> -->
 
-                <div class="row mb-1" id="evaldash-header">
+                <div class="row mb-3" id="evaldash-header">
                     <div class="col-md-11" style="margin: auto; padding: 0px;">
                         <div class="col-md-5">
                             <h5>CONSULTATION RECORD</h5>
@@ -55,7 +45,7 @@
                         <hr>
                     </div>
                 </div>
-                <div class="row mb-4" id="evaldash-subhead">
+                <!-- <div class="row mb-4" id="evaldash-subhead">
                     <div class="col-md-11" style="margin: auto;">
                         <div class="row">
                             <div class="col-md-2">
@@ -64,34 +54,180 @@
                             <div class="col-md-4"></div> 
                         </div>
                     </div>
-                </div>
+                </div> -->
             <div class="row">
                 <div class="col-md-11 consultation-records">
-                    <table id="consultation-record" class="table table-hover" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th class="bg-primary text-white">ID Number</th>
-                                <th class="bg-primary text-white">Name</th>
-                                <th class="bg-primary text-white">Role</th>
-                                <th class="bg-primary text-white text-center">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($records as $record)
-                            @if($record->first()->archived == 0)
-                            <tr class="theRecord" data-href="">
-                                <td>{{$record->first()->patient->school_id}}</td>
-                                <td>{{$record->first()->patient->last_name}}, {{$record->first()->patient->first_name}}</td>
-                                <td>{{$record->first()->patient->patient_role}}</td>
-                                <td class="text-center">
-                                    <a href="{{route('clinicstaff/show/consultation-record', $record->first()->patient_id)}}" class="btn btn-warning"><i class="fa fa-eye"></i></a>
-                                    <a href="{{route('clinicstaff/archiveAll/consultation-record', $record->first()->patient_id)}}" onclick="confirmArchive()" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                </td>
-                            </tr>
-                            @endif
-                        @endforeach
-                        </tbody>
-                    </table>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Student</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Employee</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Visitor</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
+                            <table id="studentConsultation-record" class="table table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-primary text-white">ID Number</th>
+                                        <th class="bg-primary text-white">Name</th>
+                                        <th class="bg-primary text-white">Patient Status</th>
+                                        <th class="bg-primary text-white text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($patientsRecords as $patientsRecord)
+                                    @foreach($patients as $patient)
+                                        @if($patientsRecord->first()->patient_id == $patient->id)
+                                            @if($patientsRecord->first()->archived == 0 && $patient->patient_role == "Student")
+                                            <tr class="theRecord" data-href="">
+                                                <td>{{$patient->school_id}}</td>
+                                                <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
+                                                <td>{{$patient->patient_role}}</td>
+                                                <td class="text-center">
+                                                    <a href="{{route('clinicstaff/show/consultation-record', $patientsRecord->first()->patient_id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                                
+                                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#archiveStudentRecord"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                                    <!-- Archive Modal -->
+                                                    <div class="modal fade" id="archiveStudentRecord" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="row mb-1" style="text-align: left;">
+                                                                        <p>Confirm To Archive All Health Evaluation.</p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col"></div>
+                                                                        <div class="col-md-4">
+                                                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        <a href="{{route('clinicstaff/archiveAll/consultation-record', $patientsRecord->first()->patient_id)}}" class="btn btn-danger btn-sm">Archive</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                </td>
+                                            </tr>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br>
+                            <table id="employeeConsultation-record" class="table table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-primary text-white">ID Number</th>
+                                        <th class="bg-primary text-white">Name</th>
+                                        <th class="bg-primary text-white">Patient Status</th>
+                                        <th class="bg-primary text-white text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($patientsRecords as $patientsRecord)
+                                    @foreach($patients as $patient)
+                                        @if($patientsRecord->first()->patient_id == $patient->id)
+                                            @if($patientsRecord->first()->archived == 0 && $patient->patient_role == "Employee")
+                                            <tr class="theRecord" data-href="">
+                                                <td>{{$patient->school_id}}</td>
+                                                <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
+                                                <td>{{$patient->patient_role}}</td>
+                                                <td class="text-center">
+                                                    <a href="{{route('clinicstaff/show/consultation-record', $patientsRecord->first()->patient_id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                                
+                                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#archiveEmployeeRecord"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                                    <!-- Archive Modal -->
+                                                    <div class="modal fade" id="archiveEmployeeRecord" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="row mb-1" style="text-align: left;">
+                                                                        <p>Confirm To Archive All Health Evaluation.</p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col"></div>
+                                                                        <div class="col-md-4">
+                                                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        <a href="{{route('clinicstaff/archiveAll/consultation-record', $patientsRecord->first()->patient_id)}}" class="btn btn-danger btn-sm">Archive</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                </td>
+                                            </tr>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br>
+                            <table id="visitorConsultation-record" class="table table-hover" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-primary text-white">Name</th>
+                                        <th class="bg-primary text-white">Patient Status</th>
+                                        <th class="bg-primary text-white text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($visitorsRecords as $visitorsRecord)
+                                    @foreach($visitors as $visitor)
+                                        @if($visitorsRecord->first()->visitor_id == $visitor->id)
+                                            @if($visitor->archived == 0)
+                                            <tr class="theRecord" data-href="">
+                                                <td>{{$visitor->last_name}}, {{$visitor->first_name}}</td>
+                                                <td>{{$visitor->patient_role}}</td>
+                                                <td class="text-center">
+                                                    <a href="{{route('clinicstaff/showVisitor/consultation-record', $visitorsRecord->first()->visitor_id)}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+                                                
+                                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#archiveVisitorRecord"><i class="fas fa-trash-alt"></i></button>
+                                        
+                                                    <!-- Archive Modal -->
+                                                    <div class="modal fade" id="archiveVisitorRecord" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div class="row mb-1" style="text-align: left;">
+                                                                        <p>Confirm To Archive All Health Evaluation.</p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col"></div>
+                                                                        <div class="col-md-4">
+                                                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                                                        <a href="{{route('clinicstaff/archiveAll/consultation-record', $visitorsRecord->first()->visitor_id)}}" class="btn btn-danger btn-sm">Archive</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                </td>
+                                            </tr>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
                 </div>  
             <!-- </div> -->
             </div>
@@ -109,19 +245,11 @@
             $(".wrapper").toggleClass("active")
         });
 
-        $('.theRecord').click(function(){
-            window.location = $(this).data("href");
-        });
 
-        function confirmArchive(){
-            var result = confirm("Confirm to archive All Health Evaluation Records.");
-            if (result != true) {
-                event.preventDefault();
-                returnToPreviousPage();
-                return false;
-            }
-            return true;
-        }
+        // $('.theRecord').click(function(){
+        //     window.location = $(this).data("href");
+        // });
+
       
   </script>
 @stop

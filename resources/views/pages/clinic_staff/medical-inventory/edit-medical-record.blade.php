@@ -31,13 +31,13 @@
                                     <div class="col">
                                         <div class="form-group input-group-sm">
                                             <label for="product_name"><b>Product Name</b></label>
-                                            <input type="text" class="form-control" name="product_name" value="{{$med_supply->product_name}}">
+                                            <input type="text" class="shadow-sm form-control" name="product_name" value="{{$med_supply->product_name}}">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group input-group-sm">
                                             <label for="medicine_type"><b>Medicine Type</b></label>
-                                            <select name="medicine_type" class="form-control" id="medicine_type">
+                                            <select name="medicine_type" class="shadow-sm form-control" id="medicine_type">
                                                 <option value="{{$med_supply->med_type->id}}">{{$med_supply->med_type->medicine_type}}</option>
                                             </select>
                                         </div>
@@ -47,13 +47,13 @@
                                     <div class="col">
                                         <div class="form-group input-group-sm">
                                             <label for="quantity"><b>Quantity/Pieces</b></label>
-                                            <input type="text" class="form-control" name="quantity">
+                                            <input type="text" class="shadow-sm form-control" name="quantity">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group input-group-sm">
                                             <label for="reciever_name"><b>Reciever Name</b></label>
-                                            <input type="text" class="form-control" name="reciever_name">
+                                            <input type="text" class="shadow-sm form-control" name="reciever_name">
                                         </div>
                                     </div>
                                 </div>

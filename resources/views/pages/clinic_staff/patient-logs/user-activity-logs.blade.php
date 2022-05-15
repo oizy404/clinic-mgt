@@ -53,12 +53,12 @@
                 <div class="col-md-11 userTable" style="margin: auto;">
                     <div class="card">
                         <div class="card-body">
-                            <table class="table" id="userTable">
+                            <table class="table" id="userActivityLogs">
                                 <thead>
                                     <tr>
                                         <th class="bg-primary text-white">User Name</th>
                                         <th class="bg-primary text-white">Email</th>
-                                        <th class="bg-primary text-white">Description</th>
+                                        <th class="bg-primary text-white text-center">Description</th>
                                         <th class="bg-primary text-white">Date Time</th>
                                     </tr>
                                 </thead>
@@ -67,7 +67,7 @@
                                     <tr>
                                         <td>{{$activityLog->user_name}}</td>
                                         <td>{{$activityLog->email}}</td>
-                                        <td>{{$activityLog->description}}</td>
+                                        <td class="text-center">{{$activityLog->description}}</td>
                                         <td>{{$activityLog->date_time}}</td>
                                     </tr>
                                     @endforeach

@@ -12,8 +12,6 @@
                     <?php
                         use App\Models\PatientProfile;
                         $patients = PatientProfile::all();
-                    
-                        
                     ?>
                     @foreach($patients as $patient)
                             @if(Auth::user()->username == $patient->school_id)

@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-5" id="lisEvents">
                 <div class="add-event mb-3">
-                    <i class="fa fa-plus"></i> <a href="#" id="addEventBtn">&nbsp New Event</a>
+                    <i class="fa fa-plus"></i> <a href="#" id="addEventBtn">&nbspEmployees' Annual Check Up</a>
                     <div class="form-group" id="eventList">
                         <div class="form-group">
                             <table class="table table-hover" id="appointments">

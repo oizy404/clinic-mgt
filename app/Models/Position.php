@@ -25,6 +25,6 @@ class Position extends Model
         return $this->belongsTo(Department::class, "department_id");
     }
     public function yearlevel(){
-        return $this->belongsTo(YearLevel::class, "department_id");
+        return $this->belongsTo(YearLevel::class, "yearLevel_id");
     }
 }

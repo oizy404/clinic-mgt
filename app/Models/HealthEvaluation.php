@@ -13,6 +13,7 @@ class HealthEvaluation extends Model
 
     protected $fillable = [
         'patient_id',
+        'visitor_id',
         'weight',
         'height',
         'BMI',
@@ -31,5 +32,9 @@ class HealthEvaluation extends Model
     }
     public function patient(){
         return $this->belongsTo(PatientProfile::class, "patient_id");
+    }
+    
+    public function visitor(){
+        return $this->belongsTo(Visitor::class, "visitor_id");
     }
 }

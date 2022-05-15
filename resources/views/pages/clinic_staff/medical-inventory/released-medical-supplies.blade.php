@@ -6,22 +6,7 @@
 
 @section('content')
 <style>
-    .add-data{
-        position:fixed;
-        width:60px;
-        height:60px;
-        bottom:40px; 
-        right:40px;
-        background-color: #006dff;
-        color: #ffffff;
-        border-radius:50px;
-        text-align:center;
-        box-shadow: 2px 2px 3px #999;
-        
-    }
-    .add-data i{
-        margin-top:22px;
-    }#med-header hr{
+    #med-header hr{
         margin-top: 0px;
     }
     #med-subhead a{
@@ -55,13 +40,13 @@
                 </div>
             <div class="row">
                 <div class="col-md-11 supplies-inventory">
-                    <table class="table table-hover rounded" id="supplies-inventory">
+                    <table class="table table-hover rounded" id="released-supplies-inventory">
                         <thead>
                             <tr>                            
                                 <th class="bg-primary text-white">Product Name</th>
                                 <th class="bg-primary text-white">Product Type</th>
                                 <th class="bg-primary text-white">Packaging Type</th>
-                                <th class="bg-primary text-white text-center">Quantity</th>
+                                <th class="bg-primary text-white text-center">Quantity/Pieces</th>
                                 <th class="bg-primary text-white">Receiver Name</th>
                                 <th class="bg-primary text-white">Released Date</th>
                                 <th class="bg-primary text-white text-center">Actions</th>
@@ -69,29 +54,27 @@
                         </thead>
                         <tbody>
                         @foreach($med_supplies as $med_supply)
-                            @if($med_supply->archived == 0)
-                            <tr>
-                                <td>{{$med_supply->product_name}}</td>
-                                <td>{{$med_supply->med_type->medicine_type}}</td>
-                                <td>{{$med_supply->packaging_type->packaging_type}}</td>
                             @foreach($med_supply->med_release as $med_released)
-                                <td class="text-center">{{$med_released->quantity}}</td>
-                                <td>{{$med_released->receiver_name}}</td>
-                                <td class="">{{$med_released->released_date}}</td>
+                                @if($med_released)
+                                    @if($med_supply->archived == 0)
+                                    <tr>
+                                        <td>{{$med_supply->product_name}}</td>
+                                        <td>{{$med_supply->med_type->medicine_type}}</td>
+                                        <td>{{$med_supply->packaging_type->packaging_type}}</td>
+                                        <td class="text-center">{{$med_released->quantity}}</td>
+                                        <td>{{$med_released->receiver_name}}</td>
+                                        <td class="">{{$med_released->released_date}}</td>
+                                        <td class="text-center"><a href="" class="bg-danger rounded text-white" style="padding: 2px 5px;">Delete</a></td>
+                                    </tr>
+                                    @endif
+                                @endif
                             @endforeach
-                                <td class="text-center"><a href="" class="bg-danger rounded text-white" style="padding: 2px 5px;">Delete</a></td>
-                            </tr>
-                            @endif
                         @endforeach
                         </tbody>
                     </table>
                 </div>  
             </div>
         </div>
-
-        <a href="#" class="add-data" id="btn-item">
-        <i class="fas fa-plus"></i>
-        </a>
 
     </div> <!-- closing div connect from admin-sidenav -->
 </div> <!-- closing div connect from admin-header -->

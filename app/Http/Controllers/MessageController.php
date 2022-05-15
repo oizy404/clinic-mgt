@@ -130,7 +130,8 @@ class MessageController extends Controller
     
     public function clinicstaffViewCreate($id){
         // dd($id);
-        $messageRead = Message::where('sender',$id)->update(['readmsg' => 1]);
+        $messageRead = Message::where('sender',$id)->orWhere('receiver',$id)->update(['readmsg' => 1]);
+        // dd($messageRead);
 
         $messages = Message::orderBy('created_at', 'asc')->get();
         $users = DB::table('users')

@@ -24,6 +24,24 @@
           </a>
         </li>
 
+        <li>
+          <a href="/message-doctor" class="position-relative" style="padding-top: 0px;">
+            <span class="icon"><i class="fa fa-message mt-4"></i></span>
+            <span class="list">Inbox</span>
+            <span class="position-absolute top-50 start-50 translate-middle badge rounded-pill bg-danger">
+              <?php
+                $msgCount = DB::table('tbl_messages')->where([
+                    ['readmsg', 0],
+                    ['receiver',1],
+                  ])->orWhere([
+                    ['readmsg',0],
+                    ['receiver',2]
+                  ])->count();
+                print($msgCount);
+              ?>            
+            </span>
+          </a>
+        </li>
         <!-- <li>
 
           <a href="/logout">

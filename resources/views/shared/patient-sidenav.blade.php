@@ -11,7 +11,7 @@
         </li>
 
         <li>
-          <a href="{{route('view-health-data')}}">
+          <a href="{{route('viewHealthData')}}">
             <span class="icon"><i class="fas fa-book-medical"></i></span>
             <span class="list">Health Data</span>
           </a>
@@ -23,13 +23,6 @@
             <span class="list">Message</span>
           </a>
         </li>
-        <!-- <li>
-
-          <a href="/logout">
-            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-            <span class="list">Log Out</span>
-          </a>
-        </li> -->
         
       </ul>
       <div class="hamburger">

@@ -15,6 +15,7 @@ class PatientProfile extends Model
         'user_id',
         'school_id',
         'patient_role',
+        'employee_status',
         'first_name',
         'middle_name',
         'last_name',
@@ -30,6 +31,9 @@ class PatientProfile extends Model
 
     public function user(){
         return $this->belongsTo(User::class, "user_id");
+    }
+    public function visitor(){
+        return $this->hasMany(Visitor::class, "patient_id");
     }
 
     public function parent(){

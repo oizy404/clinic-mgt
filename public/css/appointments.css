@@ -53,6 +53,12 @@
 #apt-patient-cancel{
     float: right;
 }
+#annual-btn-cancel{
+    float: left;
+}
+#action-btn{
+    float: right;
+}
 #apt-update-cancel{
     float: right;
 }

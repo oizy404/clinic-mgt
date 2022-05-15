@@ -7,12 +7,16 @@
 }
 .container{
     position: relative;
-    align-items: center;
+    text-align: center;
     padding: 20px 25px;
     width: 350px;
     background: #ffff; 
     border-radius: 4px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3)
+}
+.container .card, .card-header{
+    border: none;
+    background-color: #ffff;
 }
 #acdlogo{
     min-width: 10%;
@@ -125,8 +129,19 @@ input::placeholder{
 } */
 #btnn1{
     padding: 5px 25px;
-    width: 80%;
+    width: 90%;
     background: #007bff;
+    border-radius: 50px;
+    font-size: 13px;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 3px;
+    cursor: pointer;
+}
+#btnn1:hover{
+    padding: 5px 25px;
+    width: 90%;
+    background: #01a3fb;
     border-radius: 50px;
     font-size: 13px;
     text-transform: uppercase;

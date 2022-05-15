@@ -13,12 +13,15 @@ class MedicalSupply extends Model
 
     protected $fillable = [
         'product_name',
+        'generic_name',
         'med_type_id',
         'packaging_id',
         'quantity',
         'stock',
         'expiry_date',
         'purchase_date',
+        'lot_number',
+        'supplier',
     ];
 
     

@@ -36,6 +36,8 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- User/Patient Receiver List -->
         <div class="card user-receiver" style="display:none;">
             <div class="card-body" style="padding: 0px;">
                 <table class="" style="width:100%" id="msg">

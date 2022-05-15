@@ -78,17 +78,10 @@
                                         <label for="complete_name" class=""><b>Patient Name</b></label>
                                         <input type="text" class="form-control" name="complete_name" id="complete_name" data-bs-toggle="modal" data-bs-target="#patientModal">
                                         <input type="hidden" class="form-control" name="id" id="id">
+                                        <input type="hidden" class="form-control" name="visitorId" id="visitorId">
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group input-group-sm">
-                                            <label for="role"><b>Patient Role</b></label>
-                                            <select class="form-select form-select-sm" name="patient_role" aria-label=".form-select-sm example" id="patient_role">
-                                                <option selected>---</option>
-                                                <option>Employee</option>
-                                                <option>Visitor</option>
-                                                <option>Student</option>
-                                            </select>
-                                        </div>
+                                    <div class="col" id="employeeStatColumn">
+
                                     </div>
                                 </div>
                                 <div class="col" id="column2">   
@@ -98,36 +91,30 @@
                             <div class="row mt-3">
                                 <div class="col">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col">
                                             <div class="form-group input-group-sm">
-                                                <label for="height" class=""><b>Height</b></label>
+                                                <label for="height" class=""><b>Height <small><i>(in m)</i></small></b></label>
                                                 <input type="text" class="form-control" name="height">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group input-group-sm">
-                                                <label for="weight" class=""><b>Weight</b></label>
-                                                <input type="text" class="form-control" name="weight">
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group input-group-sm">
-                                                <label for="temperature"><b>Temperature</b></label>
-                                                <input type="text" class="form-control" name="temperature">
-                                            </div>
-                                        </div>          
-                                    </div>
-                                    <div class="row">                              
-                                        <div class="col">
-                                            <div class="form-group input-group-sm">
-                                                <label for="bmi" class=""><b>Body Mass Index</b></label>
-                                                <input type="text" class="form-control" name="bmi">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group input-group-sm">
                                                 <label for="bloodpressure" class=""><b>Blood Pressure(BP)</b></label>
                                                 <input type="text" class="form-control" name="bloodpressure">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="weight" class=""><b>Weight <small><i>(in kg)</i></small></b></label>
+                                                <input type="text" class="form-control" name="weight">
+                                            </div>
+                                        </div>                               
+                                        <div class="col">
+                                            <div class="form-group input-group-sm">
+                                                <label for="temperature"><b>Temperature</b></label>
+                                                <input type="text" class="form-control" name="temperature">
                                             </div>
                                         </div>
                                     </div>
@@ -173,14 +160,32 @@
                                     </div>
                                 </div>
                             </div> 
-                                
-                            <div class="form-group mt-2">
-                                <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
-                                <textarea class="form-control" name="doctors_note" id="doctors_note" cols="10" rows="2"></textarea>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mt-2">
+                                        <label for="doctors_note" class=""><b>Doctor's Notes</b></label>
+                                        <textarea class="form-control" name="doctors_note" id="doctors_note" cols="10" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group input-group-sm mt-2">
+                                        <label for="doctors_name"><b>Doctor's Complete Name</b></label>
+                                        <input type="text" name="doctors_name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mt-2">
+                                        <label for="nurse_note" class=""><b>Nurse Notes</b></label>
+                                        <textarea class="form-control" name="nurse_note" id="nurse_note" cols="10" rows="2"></textarea>
+                                    </div>
+                                    <div class="form-group input-group-sm mt-2">
+                                        <label for="nurse_name"><b>Nurse Complete Name</b></label>
+                                        <input type="text" name="nurse_name" class="form-control">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group mt-2">
-                                <label for="nurse_note" class=""><b>Nurse Notes</b></label>
-                                <textarea class="form-control" name="nurse_note" id="nurse_note" cols="10" rows="2"></textarea>
+
+                            <div class="form-group input-group-sm mt-2">
+                                <label for=""><b>Follow Up Check Up Schedule</b></label>
+                                <input type="date" name="nextCheckup" class="form-control">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="btn-add-consultation">Submit</button>
@@ -198,26 +203,92 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <table class="table table-hover table-bordered" style="width:100%" id="health-data">
-                            <thead>
-                                <tr>
-                                    <th style="display:none">ID</th>
-                                    <th class="bg-info text-dark">ID Number</th>
-                                    <th class="bg-info text-dark">Name</th>
-                                    <th class="bg-info text-dark">Role</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($patients as $patient)
-                                <tr class="theData">
-                                    <td style="display: none">{{$patient->id}}</td>
-                                    <td>{{$patient->school_id}}</td>
-                                    <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
-                                    <td>{{$patient->patient_role}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Student</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Employee</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Visitor</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
+                                <table class="table table-hover table-bordered" style="width:100%" id="studentModal-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="display:none">ID</th>
+                                            <th class="bg-info text-dark">ID Number</th>
+                                            <th class="bg-info text-dark">Name</th>
+                                            <th class="bg-info text-dark">Patient Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($patients as $patient)
+                                            @if($patient->patient_role == "Student" && $patient->archived == 0)
+                                            <tr class="theStudentData">
+                                                <td style="display: none">{{$patient->id}}</td>
+                                                <td>{{$patient->school_id}}</td>
+                                                <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
+                                                <td>{{$patient->patient_role}}</td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br>
+                                <table class="table table-hover table-bordered" style="width:100%" id="employeeModal-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="display:none">ID</th>
+                                            <th class="bg-info text-dark">ID Number</th>
+                                            <th class="bg-info text-dark">Name</th>
+                                            <th class="bg-info text-dark">Patient Status</th>
+                                            <th class="bg-info text-dark">Employee Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($patients as $patient)
+                                            @if($patient->patient_role == "Employee" && $patient->archived == 0)
+                                            <tr class="theEmployeeData">
+                                                <td style="display: none">{{$patient->id}}</td>
+                                                <td>{{$patient->school_id}}</td>
+                                                <td>{{$patient->last_name}}, {{$patient->first_name}}</td>
+                                                <td>{{$patient->patient_role}}</td>
+                                                <td>{{$patient->employee_status}}</td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br>
+                                <table class="table table-hover table-bordered" style="width:100%" id="visitorModal-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="display:none">ID</th>
+                                            <th class="bg-info text-dark">Name</th>
+                                            <th class="bg-info text-dark">Patient Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($visitors as $visitor)
+                                            @if($visitor->patientVisitor_role == "Visitor" && $visitor->archived == 0)
+                                            <tr class="theVisitorData">
+                                                <td style="display: none">{{$visitor->id}}</td>
+                                                <td>{{$visitor->last_name}}, {{$visitor->first_name}}</td>
+                                                <td>{{$visitor->patientVisitor_role}}</td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -237,7 +308,11 @@
             $(".wrapper").toggleClass("active")
         });
 
-        $('.theData').click(function(){
+        $('#studentModal-table').DataTable();
+        $('#employeeModal-table').DataTable();
+        $('#visitorModal-table').DataTable();
+
+        $('.theStudentData').click(function(){
             var id =  $(this).find(":first-child").text();
             var complete_name =  $(this).find(":first-child").next().next().text();
             var role = $(this).find(":first-child").next().next().next().text();
@@ -245,12 +320,17 @@
             $('#id').val(id);
             $('#complete_name').val(complete_name);
             $('#patient_role').val(role);
-            // alert(id);
+
+            
+            $('#tpEmployeeStat').remove();
+            $('#ntpEmployeeStat').remove();
+            $('#tp').remove();
+            $('#ntp').remove();
 
             if(role == "Student"){
-                $('#column2').append(
+                $('#employeeStatColumn').append(
                     '<div class="form-group" id="department">'+
-                        '<label for="role"><b>Grade/Year Level</b></label>'+
+                        '<label for="role"><b>Department</b></label>'+
                         '<select class="form-select form-select-sm" name="department" id="department-id" aria-label=".form-select-sm example">'+
                             '<option selected>-- Select Grade --</option>'+
                             '<option value="1">Elementary</option>'+
@@ -335,54 +415,88 @@
                 $('#tp').remove();
                 $('#ntp').remove();
             }
-            else if(role == "Employee"){
+        
+        });
+        $('.theEmployeeData').click(function(){
+            var id =  $(this).find(":first-child").text();
+            var complete_name =  $(this).find(":first-child").next().next().text();
+            var role = $(this).find(":first-child").next().next().next().text();
+            var employeeStat = $(this).find(":first-child").next().next().next().next().text();
+            $('#patientModal').modal('hide');
+            $('#id').val(id);
+            $('#complete_name').val(complete_name);
+            $('#patient_role').val(role);
+
+            
+            if(employeeStat == "NTP"){
+
+                $('#employeeStatColumn').append(
+                '<div class="form-group" id="ntpEmployeeStat">'+
+                    '<label for="role"><b>Employee Status</b></label>'+
+                    '<select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">'+
+                        '<option value="NTP">Non-Teaching Personnel</option>'+
+                    '</select>'+
+                '</div>'
+                );
+
                 $('#column2').append(
-                    '<div class="form-group" id="employee">'+
-                        '<label for="role"><b>Employee</b></label>'+
-                        '<select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">'+
+                    '<div class="form-group" id="ntp">'+
+                        '<label for="role"><b>Non-Teaching Status</b></label>'+
+                        '<select class="form-select form-select-sm" name="personnel_rank" aria-label=".form-select-sm example">'+
                             '<option selected>-- Select --</option>'+
-                            '<option value="NTP">Non-Teaching Personnel</option>'+
-                            '<option value="TP">Teaching Personnel</option>'+
+                            '<option value="ma">M.A</option>'+
+                            '<option value="admin">Admin</option>'+
+                            '<option value="supervisor">Supervisor</option>'+
+                            '<option value="faculty">Faculty</option>'+
                         '</select>'+
                     '</div>'
                 );
-                $('#employee-role').change(function(){
-                    if($(this).val() == "NTP"){
-                        $('#column2').append(
-                            '<div class="form-group" id="ntp">'+
-                                '<label for="role"><b>Non-Teaching Personnel</b></label>'+
-                                '<select class="form-select form-select-sm" name="personnel_rank" aria-label=".form-select-sm example">'+
-                                    '<option selected>-- Select --</option>'+
-                                    '<option value="ma">M.A</option>'+
-                                    '<option value="admin">Admin</option>'+
-                                    '<option value="supervisor">Supervisor</option>'+
-                                    '<option value="faculty">Faculty</option>'+
-                                '</select>'+
-                            '</div>'
-                        );
-                        $('#tp').remove();
-                    }
-                    else if($(this).val() == "TP"){
-                        $('#column2').append(
-                            '<div class="form-group" id="tp">'+
-                                '<label for="role"><b>Teaching Personnel</b></label>'+
-                                '<select class="form-select form-select-sm" name="department" aria-label=".form-select-sm example">'+
-                                    '<option selected>-- Select Department --</option>'+
-                                    '<option value="1">GHS</option>'+
-                                    '<option value="2">JHS</option>'+
-                                    '<option value="3">SHS</option>'+
-                                    '<option value="4">COLLEGE</option>'+
-                                    '<option value="5">MWSP</option>'+
-                                    '<option value="6">APCSM</option>'+
-                                '</select>'+
-                            '</div>'
-                        );
-                        $('#ntp').remove();
-                    }
-                });
-                
-                $('#department').remove();
+                $('#tp').remove();
             }
+            else if(employeeStat == "TP"){
+
+                $('#employeeStatColumn').append(
+                '<div class="form-group" id="tpEmployeeStat">'+
+                    '<label for="role"><b>Employee Status</b></label>'+
+                    '<select class="form-select form-select-sm" name="personnel_position" aria-label=".form-select-sm example" id="employee-role">'+
+                        '<option value="TP">Teaching Personnel</option>'+
+                    '</select>'+
+                '</div>'
+                );
+
+                $('#column2').append(
+                    '<div class="form-group" id="tp">'+
+                        '<label for="role"><b>Teaching Department</b></label>'+
+                        '<select class="form-select form-select-sm" name="department" aria-label=".form-select-sm example">'+
+                            '<option selected>-- Select Department --</option>'+
+                            '<option value="1">GHS</option>'+
+                            '<option value="2">JHS</option>'+
+                            '<option value="3">SHS</option>'+
+                            '<option value="4">COLLEGE</option>'+
+                            '<option value="5">MWSP</option>'+
+                            '<option value="6">APCSM</option>'+
+                        '</select>'+
+                    '</div>'
+                );
+                $('#ntp').remove();
+            }
+                
+            $('#department').remove();
+        });
+
+        $('.theVisitorData').click(function(){
+            var visitorId =  $(this).find(":first-child").text();
+            var complete_name =  $(this).find(":first-child").next().text();
+            var role =  $(this).find(":first-child").next().next().text();
+            $('#patientModal').modal('hide');
+            $('#visitorId').val(visitorId);
+            $('#complete_name').val(complete_name);
+            $('#patient_role').val(role);
+            $('#tpEmployeeStat').remove();
+            $('#ntpEmployeeStat').remove();
+            $('#tp').remove();
+            $('#ntp').remove();
+
         });
     });
   </script>
