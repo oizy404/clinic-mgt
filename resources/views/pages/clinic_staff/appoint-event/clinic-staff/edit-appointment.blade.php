@@ -41,7 +41,7 @@
                         <div class="form-group mt-2">
                             <button type="submit" id="action-btn" class="btn btn-primary">Update</button>
                         
-                            <a href="" class="btn btn-danger" id="deleteEvent" style="float: right;">Delete</a>
+                            <a href="" class="btn btn-danger" id="deleteEvent" style="float: left;">Delete</a>
                             </div>
                         <!-- </div> -->
                     </form>

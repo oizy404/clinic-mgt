@@ -46,6 +46,8 @@ class PatientUserController extends Controller
 
     public function patientView(){
 
+        $messages = Message::orderBy('created_at', 'asc')->get();
+
         $userProfiles = PatientProfile::where('user_id', Auth::id())->value('user_id');
 
         if($userProfiles == Auth::id()){
@@ -58,6 +60,7 @@ class PatientUserController extends Controller
                 $illnesses = Illness::all();
 
                 return view("pages.patient.view-health-data")->with(compact(
+                    "messages", $messages,
                     "patient", $patient,
                     "deseases", $deseases,
                     "vaccines", $vaccines,
@@ -67,10 +70,13 @@ class PatientUserController extends Controller
             }
         }
         else{
+            $messages = Message::orderBy('created_at', 'asc')->get();
+
             $patients = PatientProfile::all();
             $provinces = Province::all();
 
             return view("pages.patient.add-health-data", compact(
+            "messages", $messages,
             "patients",$patients,
             "provinces",$provinces));
         }
@@ -227,6 +233,7 @@ class PatientUserController extends Controller
     }
 
     public function patientEdit($id){
+        $messages = Message::orderBy('created_at', 'asc')->get();
 
         $patient = PatientProfile::find($id);
         $deseases = Desease::all();
@@ -234,6 +241,7 @@ class PatientUserController extends Controller
         $illnesses = Illness::all();
 
         return view("pages.patient.edit-health-data")->with(compact(
+            "messages", $messages,
             "patient", $patient,
             "deseases", $deseases,
             "vaccines", $vaccines,

@@ -41,6 +41,25 @@ class MessageController extends Controller
             "patientusers", $patientusers
         ));
     }
+    public function doctorCreateNew(){
+        $messages = Message::orderBy('created_at', 'asc')->get();
+        
+        $users = DB::table('users')
+            ->join('tbl_messages', 'users.id', '=', 'tbl_messages.receiver')
+            ->select('users.*','tbl_messages.receiver')
+            ->orderBy('tbl_messages.created_at','desc')
+            ->where('rank','patient')
+            ->get()->groupBy('receiver');
+        $patientusers = User::all();
+        $patients = PatientProfile::all();
+
+        return view("pages.messaging.msg-doctor-createnewmsg", compact(
+            "users", $users,
+            "messages", $messages,
+            "patientusers", $patientusers,
+            "patients", $patients,
+        ));
+    }
     
     public function doctorViewCreate($id){
         $messages = Message::orderBy('created_at', 'asc')->get();

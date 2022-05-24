@@ -168,6 +168,7 @@ Route::middleware(['ifLoggedOut', 'manageDoctorAccess'])->group(function () {
     // MESSAGING FEATURE ------------------------
 
     Route::get('/message-doctor', [MessageController::class, "doctorIndex"])->name("message-doctor");
+    Route::get('/message-doctor-new', [MessageController::class, "doctorCreateNew"])->name("message-doctor-new");
     Route::get('/doctorViewCreate/{id}', [MessageController::class, "doctorViewCreate"])->name("doctorViewCreate");
     Route::post('/insertDoctorMsg/{id}', [MessageController::class, "insertDoctorMsg"])->name("insertDoctorMsg");
 

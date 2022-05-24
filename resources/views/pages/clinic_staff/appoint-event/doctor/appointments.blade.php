@@ -71,13 +71,17 @@
 </div> <!-- closing div connect from admin-header -->
 
 <!-- Jquery min-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <!-- moment js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
 <!-- Jquery Ui js -->
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<!-- <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> -->
 <!-- Fullcalendar js -->
-<script src="{{asset('js/fullcalendar.js')}}"></script>
+<!-- <script src="{{asset('js/fullcalendar.js')}}"></script> -->
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+<script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
 <!-- Alert -->
 <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
 

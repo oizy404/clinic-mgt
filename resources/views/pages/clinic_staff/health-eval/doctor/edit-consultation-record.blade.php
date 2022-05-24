@@ -1,4 +1,4 @@
-@extends('layout.clinicstaff-master1')
+@extends('layout.doctor-master1')
 
 @section('title')
     Update Consultaion Record

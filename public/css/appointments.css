@@ -48,10 +48,10 @@
     margin: 0;
 }
 #apt-btn-cancel{
-    float: right;
+    float: left;
 }
 #apt-patient-cancel{
-    float: right;
+    float: left;
 }
 #annual-btn-cancel{
     float: left;
@@ -59,8 +59,11 @@
 #action-btn{
     float: right;
 }
+#deleteEvent{
+    float: left;
+}
 #apt-update-cancel{
-    float: right;
+    float: left;
 }
 
 #appointments_length{

@@ -710,4 +710,7 @@
         })
     });
   </script>
+  
+@include('pages.messaging.message-patient')   
+
 @stop

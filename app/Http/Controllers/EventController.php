@@ -18,22 +18,16 @@ class EventController extends Controller
     
     public function index()
     {
-        $event = Event::where([
-            ['archived', 0],
-            'patient_id', '=', null,
-            'patient_id', '=', !null,
-            ])->latest()->get(); //get the latest data
+        $event = Event::where('archived', 0)->latest()->get(); //get the latest data
         
         return response()->json($event);
     }
 
     public function index2(){
         $patients = PatientProfile::all();
-        $event = Event::where([
-            ['archived', 0],
-            'patient_id', '=', null,
-            'patient_id', '=', !null,
-            ])->get();
+        $event = Event::where('archived', 0)->get();
+        // dd($event);
+
         $listEvent = Event::all();
   
         return view('pages.clinic_staff.appoint-event.doctor.appointments', compact(
